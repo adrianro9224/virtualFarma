@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteCond $1 !^(index\.php|embed-test|public|downloads|assets|uploads|tests|robots\.txt)
+RewriteRule ^(.*)$ /index.php?/$1 [L]
+
+##RewriteRule ^(.*)$ /product/show_products_by_category/$1 [L]   http://virtualfarma/
