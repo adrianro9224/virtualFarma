@@ -50,6 +50,10 @@ div , body, html{
 	margin-top: 40.5px;
 }
 
+.no-margin {
+	margin: 0 !important;
+}
+
 #logo {
 	padding: 2px 0;
 }
@@ -364,7 +368,8 @@ fieldset[disabled] .btn-primary.active {
 	border: 1px solid #CCC;
 	background-color: #E5E5E5;
 	padding: 10px;
-	border-radius: 4px;	
+	border-radius: 4px;
+	margin-bottom: 15px;	
 }
 
 #open-message-button {

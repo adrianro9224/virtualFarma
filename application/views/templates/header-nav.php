@@ -1,5 +1,5 @@
-<header>
-	<div class="hidden-lg hidden-md" ng-controller="DevicesMenuAccordionCtrl">
+<header ng-controller="DevicesMenuAccordionCtrl">
+	<div class="hidden-lg hidden-md">
 		<div id="device-menu-button">
 			<button type="button" class="btn btn-default btn-lg" ng-click="activeMenu()">
 				<span class="glyphicon glyphicon-list"></span>
@@ -21,8 +21,8 @@
 	<div class="container hidden-sm hidden-xs" id="sticky">
 		<div class="row">
 			<div id="logo" class="pull-left">
-				<img class="hidden-xs hidden-sm" src="<?= base_url() . 'assets/images/logo/logo_virtualfarma_small.png'?>" class="img-responsive" alt="Fuck you !">
-				<img class="hidden-lg hidden-md" src="<?= base_url() . 'assets/images/logo/logo_virtualfarma_small_alone.png'?>" class="img-responsive" alt="Fuck you !">
+				<img class="hidden-xs hidden-sm" id="normal-logo" src="<?= base_url() . 'assets/images/logo/logo_virtualfarma_small.png'?>" class="img-responsive" alt="Fuck you !">
+				<img class="hidden" id="logo-for-sticky" src="<?= base_url() . 'assets/images/logo/logo_virtualfarma_small_alone.png'?>" class="img-responsive" alt="Fuck you !">
 			</div>
 			<div class="pull-right" id="primary-nav">
 		    	<ul class="nav nav-pills">
