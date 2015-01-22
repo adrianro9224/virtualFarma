@@ -10,14 +10,6 @@ farmapp.controller('MessageCtrl', ['$scope', '$window', '$http', '$location', '$
     $scope.sentActived = false;
     $scope.receivedActived = true;
 
-    //text initialization
-    $scope.messageComesText = "De";
-
-    function writeTexts() {
-
-
-
-    }
 
     $scope.openCreateMessage = function() {
 
@@ -96,15 +88,11 @@ farmapp.controller('MessageCtrl', ['$scope', '$window', '$http', '$location', '$
     };
 
     $scope.activeReceivedMessages = function() {
-        $scope.messageComesText = "De";
-
         $scope.receivedActived = true;
         $scope.sentActived = false;
     }
 
     $scope.activeSentMessages = function() {
-        $scope.messageComesText = "Para";
-
         $scope.sentActived = true;
         $scope.receivedActived = false;
     }
