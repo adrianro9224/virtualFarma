@@ -7,7 +7,7 @@ farmapp.controller('DevicesMenuAccordionCtrl', ['$scope', '$rootScope', function
     $scope.menuStatus =false;
 
     $scope.activeMenu = function(){
-        
+
         if($scope.menuStatus) {
             $scope.menuStatus = false;
         }else {

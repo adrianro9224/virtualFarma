@@ -1,4 +1,5 @@
 <header ng-controller="DevicesMenuAccordionCtrl">
+	<div id="sticky-anchor-s-devices"></div>
 	<div class="hidden-lg hidden-md">
 		<div id="device-menu-button">
 			<button type="button" class="btn btn-default btn-lg" ng-click="activeMenu()">

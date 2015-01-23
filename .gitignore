@@ -1,0 +1,10 @@
+
+# no .a files
+*.[oa]
+*~
+# files of config webstorm project
+/public/app/.idea/workspace.xml
+
+#files of config eclipse IDE
+.project
+.settings/
