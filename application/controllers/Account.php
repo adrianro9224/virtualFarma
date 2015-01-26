@@ -178,6 +178,7 @@ class Account extends MY_controller {
 		$session_data = array();
 		
 		$data['messages'] = null;
+		$data['pathologies'] = null;
 		
 		$data['title'] = "Mi cuenta";
 		
@@ -217,10 +218,15 @@ class Account extends MY_controller {
 				
 			if(isset($account)){
 				$messages = $this->messages->get_every_messages($account->email);
+				$pathologies = $this->account_model->get_pathologies_by_id( $session_data['account_id'] );
 				
-				if( $messages ) {
+				if( isset($messages) ) {
 					$messages_sorted = $this->messages->sort_messages($messages, $account->email);
 					$data['messages'] = $messages_sorted;
+				}
+				
+				if( isset($pathologies) ) {
+					$data['pathologies'] =  $pathologies;
 				}
 				
 				$data['user_logged_account'] = $account;

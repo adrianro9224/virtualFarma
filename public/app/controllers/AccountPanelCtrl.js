@@ -6,9 +6,9 @@
 
 farmapp.controller('AccountPanelCtrl', ['$scope', function($scope) {
 
-    $scope.myAccountSelected = true;
+    $scope.myAccountSelected = false;
     $scope.myPurchasesSelected = false;
-    $scope.myDiagnosticSelected = false;
+    $scope.myDiagnosticSelected = true;
 
     $scope.openSection = function ( panelSelection) {
 
@@ -28,7 +28,6 @@ farmapp.controller('AccountPanelCtrl', ['$scope', function($scope) {
                 }
             break;
             case 'myDiagnostic':
-                alert('asdasd');
                 if(!$scope.myDiagnosticSelected) {
                     $scope.myDiagnosticSelected = true;
                     $scope.myPurchasesSelected = false;

@@ -88,4 +88,25 @@ class Account_model extends CI_Model {
 		
 		return NULL;
 	}
+	
+	public function get_pathologies_by_id( $account_id ) {
+		
+		$this->db->select('pathologies');
+		
+		$this->db->where( 'id', $account_id );
+		
+		$query = $this->db->get('account');
+		
+		if($query->num_rows() > 0) {
+			$result = $query->row();
+			if( isset($result->pathologies) ){
+				return $result;
+			}else{
+				return null;
+			}
+		}
+		
+		return NULL;
+		
+	}
 }
