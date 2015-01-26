@@ -3,7 +3,7 @@
 *.[oa]
 *~
 # files of config webstorm project
-/public/app/.idea/workspace.xml
+/public/app/.idea/
 
 #files of config eclipse IDE
 .project

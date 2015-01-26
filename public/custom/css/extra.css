@@ -187,7 +187,7 @@ a , .link {
 	color: #777 !important;
 }
 
-a , .emphasis, span, button.btn.btn-default, .header-item {
+a , .emphasis, span, button.btn.btn-default, a.btn.btn-default,.header-item {
 	
 	color: #16A085;
 } 

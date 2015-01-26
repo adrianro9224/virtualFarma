@@ -22,14 +22,7 @@
 					<li><a href="/account/log_out">Cerrar sessión</a></li>
 				</ul>
 			<?php else:?>
-				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-					Iniciar sesión <span class="glyphicon glyphicon-user"></span>
-				</button>
-				<ul class="dropdown-menu" role="menu">
-					<li><a href="/account">Iniciar sesión</a></li>
-					<li class="divider"></li>
-					<li><a href="/account">Registrarse</a></li>
-				</ul>
+				<a class="btn btn-default" href="/account" role="button">Iniciar sesión <span class="glyphicon glyphicon-user"></span></a>
 			<?php endif;?>
 		</div>
 	</div>
