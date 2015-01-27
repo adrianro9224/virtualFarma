@@ -10,7 +10,7 @@ class Account extends MY_controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->helper(array('form', 'url', 'account_helper'));
-		$this->load->library(array('form_validation', 'messages'));
+		$this->load->library(array('form_validation', 'messages', 'accounts'));
 		$this->load->model('account_model');// add second param for add a "alias" ex: $this->load->model('Account', 'user')
 	}
 	
@@ -217,17 +217,27 @@ class Account extends MY_controller {
 			$account = $this->account_model->get_account_by_id($session_data['account_id']);
 				
 			if(isset($account)){
-				$messages = $this->messages->get_every_messages($account->email);
-				$pathologies = $this->account_model->get_pathologies_by_id( $session_data['account_id'] );
+				$pathologies = new stdClass();
 				
+				$messages = $this->messages->get_every_messages($account->email);
+				$account_pathologies = $this->accounts->get_pathologies( $session_data['account_id'] );
+				
+				$account_pathologies_dropdown_items_ids = $this->accounts->generate_pathologies_dropdown_items_ids( $categories );
+				$pathologies->dropdown_items_ids = $account_pathologies_dropdown_items_ids;
+				 
 				if( isset($messages) ) {
 					$messages_sorted = $this->messages->sort_messages($messages, $account->email);
 					$data['messages'] = $messages_sorted;
 				}
-				
-				if( isset($pathologies) ) {
-					$data['pathologies'] =  $pathologies;
+								
+				if( isset($account_pathologies) ) {
+					$pathologies->account_pathologies = $account_pathologies;
+					
+				}else {
+					$pathologies->account_pathologies = null;
 				}
+				
+				$data['pathologies'] = $pathologies;
 				
 				$data['user_logged_account'] = $account;
 					

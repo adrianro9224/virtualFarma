@@ -97,7 +97,7 @@ class Account_model extends CI_Model {
 		
 		$query = $this->db->get('account');
 		
-		if($query->num_rows() > 0) {
+		if($query->num_rows() == 1) {
 			$result = $query->row();
 			if( isset($result->pathologies) ){
 				return $result;
