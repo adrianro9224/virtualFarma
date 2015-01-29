@@ -1,22 +1,20 @@
-<div class="col-md-3">
-	<div class="panel panel-default">
-	  	<!-- Default panel contents -->	
-	  	<div class="panel-heading">
-	  		<h3>Categorias</h3>
-	  	</div>
-	  	<div class="panel-body">
-	    	<p>...</p>
-  		</div>
+<div class="panel panel-default">
+	<!-- Default panel contents -->	
+	<div class="panel-heading">
+		<h3>Categorias</h3>
+	</div>
+	<div class="panel-body">
+		<p>...</p>
+	</div>
 
-	  	<!-- List group -->
-	  	<ul class="list-group">
-	  		<?php foreach( $categories as $category ): ?>
-	  			<li class="list-group-item no-padding">
-	  				<a href=<?= "/product/show_products_by_category/" . lcfirst(str_replace(' ', '_', $category->name))?> >
-	  					<?= $category->name?>
-	  				</a>
-	  			</li>
-	    	<?php endforeach; ?>
-	  	</ul>
-	</div>	
-</div>
+	<!-- List group -->
+	<ul class="list-group">
+		<?php foreach( $categories as $category ): ?>
+			<li class="list-group-item no-padding">
+				<a href=<?= "/product/show_products_by_category/" . lcfirst(str_replace(' ', '_', $category->name))?> >
+					<?= $category->name?>
+				</a>
+			</li>
+		<?php endforeach; ?>
+	</ul>
+</div>	

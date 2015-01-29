@@ -38,13 +38,17 @@
 				
 					<!-- category left sidebar start -->
 					<section id="category_left_sidebar">
-						<?php include_once( __ROOT__TEMPLATES__ . 'category-left-sidebar.php');?>
+						<div class="col-md-3">
+							<?php include_once( __ROOT__TEMPLATES__ . 'category-left-sidebar.php');?>
+						</div>
 					</section>
 					<!-- category left sidebar over -->
 					
 					<!-- product list start -->
 					<section id="product_list">
-						<?php include_once( __ROOT__TEMPLATES__ . 'product-list.php');?>
+						<div class="col-md-9">
+							<?php include_once( __ROOT__TEMPLATES__ . 'product-list.php');?>
+						</div>
 					</section>
 					<!-- product list over -->
 				</div>
