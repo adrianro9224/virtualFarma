@@ -32,18 +32,23 @@
 						</button>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
 							<?php foreach ($pathologies->dropdown_items_ids as $id=>$phatology_info):?>
-								<li role="presentation"><a role="menuitem" tabindex="-1" ng-click="showPhatologyInfo('<?= $id?>')"><?= $phatology_info->name?></a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1" ng-click="showPhatologyDescription('<?= $id?>')"><?= $phatology_info->name?></a></li>
 							<?php endforeach;?>
 						</ul>
 					</div>
 				</div>
 			</div>
-			<?php foreach ($pathologies->dropdown_items_ids as $phatology_info):?>
-				<div id="<?= $id?>" class="row hidden">
-					<div class="col-md-offset-3 col-md-9">
-						<p class="bg-warning">
+			<?php foreach ($pathologies->dropdown_items_ids as $id=>$phatology_info):?>
+				<div id="<?= $id?>" class="row hidden pathology-description-well">
+					<div class="col-md-offset-2 col-md-9">
+						<button id="close-button-patholigy-description" type="button" class="close" ng-click="closePhatologyDescription('<?= $id?>')">
+							<span class="glyphicon glyphicon-remove"></span>
+						</button>
+						<p class="bg-primary pathology-description-well-title"><?= $phatology_info->name?></p>		
+						<p class="bg-primary pathology-description-well-content">
 						 	<?= $phatology_info->description?>
 						</p>
+						
 					</div>
 				</div>
 			<?php endforeach;?>

@@ -260,12 +260,30 @@ class Account extends MY_controller {
 					$account = $this->account_model->get_account_by_email($userEmail);
 						
 					if( isset($account) ) {
+						
+						$pathologies = new stdClass();
+						
 						$messages = $this->messages->get_every_messages( $account->email );
 						
 						if( $messages ) {
 							$messages_sorted = $this->messages->sort_messages($messages, $account->email);
 							$data['messages'] = $messages_sorted;
 						}
+						
+						$account_pathologies = $this->accounts->get_pathologies( $account->id );
+						
+						$account_pathologies_dropdown_items_ids = $this->accounts->generate_pathologies_dropdown_items_ids( $categories );
+						$pathologies->dropdown_items_ids = $account_pathologies_dropdown_items_ids;
+						
+						if( isset($account_pathologies) ) {
+							$pathologies->account_pathologies = $account_pathologies;
+								
+						}else {
+							$pathologies->account_pathologies = null;
+						}
+						
+						$data['pathologies'] = $pathologies;
+						
 						$account_password_decrypted = _password_account_h2o( $account->password, $userEmail);;
 						$user_password = md5( $log_in_form['userPassword'] );
 			

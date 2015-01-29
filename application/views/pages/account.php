@@ -148,7 +148,7 @@
 		  					</div>
 		  					<div class="panel-body">
 		  						<p>Ya estas registrado ?, ingresa con tu cuenta de virtualFarma:</p>
-		    					<form id="log-in-form" name="LogInForm" action="<?= base_url() . 'account/log_in' ?>" method="post" novalidate autocomplete="off">
+		    					<form id="log-in-form" name="LogInForm" action="<?= base_url() . 'account/log_in' ?>" method="post" novalidate >
 									<div class="form-group" ng-class="{ 'has-error' : !LogInForm.userEmail.$valid && LogInForm.userEmail.$dirty }">
     									<label for="userEmail">Correo electrónico<span class="primary-emphasis">*</span></label>
     									<input type="text" name="userEmail" ng-model="userEmail" class="form-control" id="InputEmail" placeholder="Ingrese su correo electrónico" ng-maxLength="90" ng-pattern="/[\w.]+?\@{1}[\w.]+(\.+[\w.]+)/" required>

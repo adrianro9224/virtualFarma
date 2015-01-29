@@ -200,7 +200,7 @@
 							<div class="col-md-12">
 								<div class="pull-right">
 									<button type="submit" class="btn btn-primary" ng-disabled="SendMessage.$invalid">Enviar</button>
-									<button type="submit" class="btn btn-primary" >Cancelar</button>
+									<a class="btn btn-primary" ng-click="openCreateMessage()" >Cancelar</a>
 								</div>
 							</div>
 						</form>

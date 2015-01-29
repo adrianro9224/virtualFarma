@@ -173,6 +173,10 @@ button.close {
 * General styles start
 */
 
+button#close-button-patholigy-description span.glyphicon.glyphicon-remove {
+	color:#000;
+}
+
 .link {
 	padding-top: 4px;
 }
@@ -285,6 +289,18 @@ button.btn-danger:hover, button.btn-danger:focus {
 
 p.bg-primary, p.bg-warning, p.bg-info {
 	font-size: 30px;
+	padding: 7px;
+	border-radius: 5px;
+}
+
+.pathology-description-well p.bg-primary.pathology-description-well-title {
+	font-size: 30px;
+	padding: 7px;
+	border-radius: 5px;
+}
+
+.pathology-description-well p.bg-primary.pathology-description-well-content {
+	font-size: 25px;
 	padding: 7px;
 	border-radius: 5px;
 }
