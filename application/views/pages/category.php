@@ -39,7 +39,15 @@
 					<!-- category left sidebar start -->
 					<section id="category_left_sidebar">
 						<div class="col-md-3">
-							<?php include_once( __ROOT__TEMPLATES__ . 'category-left-sidebar.php');?>
+							<div class="col-md-12">
+								<a id="button-payment" class="btn btn-default" href="#" role="button">Pagar</a>
+							</div>
+							<div class="col-md-12" id="shopping-cart-panel">
+								<?php include_once( __ROOT__TEMPLATES__ . 'shopping-cart.php');?>
+							</div>
+							<div class="col-md-12">
+								<?php include_once( __ROOT__TEMPLATES__ . 'category-left-sidebar.php');?>								
+							</div>
 						</div>
 					</section>
 					<!-- category left sidebar over -->

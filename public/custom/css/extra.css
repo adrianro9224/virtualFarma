@@ -217,8 +217,15 @@ input.form-control {
 	color: #FFF !important;
 }
 
+#shopping-cart-panel .panel {
+	border-top :1px solid #DDD;
+}
+
+#shopping-cart-panel ul {
+	padding: 0 5px;
+}
 .panel {
-	border-top:none !important;
+	border-top:none;
 	border-radius: 1px !important;
 }
 
@@ -349,7 +356,46 @@ section #my-account .panel.panel-default {
 	padding: 0 15px 0 15px;
 }
 .primary-emphasis {
-	color: #16A085;
+	color: #16A085 !important;
+}
+.secondary-emphasis {
+	color:#337AB7 !important;	
+}
+
+
+/*shoping-cart-panel*/
+
+#shopping-cart-panel-content {
+	padding: 5px;
+}
+
+.shopping-cart-item {
+	padding: 7px 5px;
+	border-bottom: 1px solid #DDD;
+}
+
+.shopping-cart-item-content {
+	display: inline;
+}
+
+.shopping-cart-item .shopping-cart-item-content>span.value {
+	font-style: italic;
+	font-weight: bold;
+	color: #2C3E50;
+}
+
+.shopping-cart-item .shopping-cart-item-content>span.value.secondary-emphasis {
+	font-style: normal;
+	font-size: 17px;
+}
+
+.shopping-cart-item .shopping-cart-item-content>span.title {
+	font-size: 13px;
+}
+
+#button-payment {
+	width: 100%;
+	margin-bottom: 5px;
 }
 
 .btn-primary.disabled, 
