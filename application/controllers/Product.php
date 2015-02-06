@@ -96,6 +96,25 @@ class Product extends MY_controller {
 		$this->load->view('pages/category', $data);
 	}
 	
+	public function convert_csv_file_to_array_of_products() {
+		if ( $this->input->is_cli_request() ) {
+		}
+		//$handle = fopen("ftp://user:password@example.com/somefile.txt", "w");
+		$handle = fopen(__ROOT__FILES__ . "\\preciosmnd.csv", "r+");
+		
+		if( $handle !== FALSE ) {
+			
+			$rows = array();
+			while ( ($data = fgetcsv($handle, 130, '|')) !== FALSE ){
+				
+				if( (count($data)) >= 6 )
+					$rows[] = $data;
+				
+			}
+			
+			fclose( $handle );
+		}
+	}
 	
 	/**
 	 * Calculate the discount of all products
