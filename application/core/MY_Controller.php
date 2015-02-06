@@ -1,6 +1,7 @@
 <?php
 
-define('__ROOT__TEMPLATES__', dirname(dirname(__FILE__)) . '/views/templates/');
+define("__ROOT__TEMPLATES__", dirname(dirname(__FILE__)) . "\\views\\templates\\");
+define("__ROOT__FILES__", dirname(dirname(dirname(__FILE__))) . "\\assets\\csv\\");
 
 class MY_controller extends CI_Controller {
 
