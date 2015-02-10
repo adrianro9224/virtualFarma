@@ -2,7 +2,7 @@
 
 require(APPPATH.'/libraries/REST_Controller.php');
 
-class Messages extends REST_Controller {
+class Messages {
 	
 	/**
 	 * Controller contructor

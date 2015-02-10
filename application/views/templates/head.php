@@ -40,6 +40,7 @@
 	<script type="text/javascript" src="../../public/app/controllers/EditAccountForm.js"></script>
 	<script type="text/javascript" src="../../public/app/controllers/MessageCtrl.js"></script>
 	<script type="text/javascript" src="../../public/app/controllers/MyDiagnosticCtrl.js"></script>
+	<script type="text/javascript" src="../../public/app/controllers/PaginationCtrl.js"></script>
 	<!-- Angular js controllers over -->
 	
 	<!-- Angular js services start -->

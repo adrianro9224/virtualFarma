@@ -152,7 +152,7 @@ div , body, html{
 */
 
 /**
-* error banner styles
+* error banner styles start
 */
 #errors p.bg-primary, 
 #errors p.bg-success, 
@@ -167,12 +167,28 @@ button.close {
 	padding: 15px !important;
 }
 /**
-* error banner styles
+* error banner styles over
+*/
+
+/**
+* pagination list start
+*/
+
+#product_list #product_pagination ul {
+	float: right;
+}
+
+/**
+* pagination list over
 */
 
 /* 
 * General styles start
 */
+
+.stock-dropdown {
+	padding: 13px;
+}
 
 button#close-button-patholigy-description span.glyphicon.glyphicon-remove {
 	color:#000;

@@ -55,7 +55,16 @@
 					<!-- product list start -->
 					<section id="product_list">
 						<div class="col-md-9">
-							<?php include_once( __ROOT__TEMPLATES__ . 'product-list.php');?>
+							<section id="product_pagination">
+								<div class="col-md-12">
+									<?php include_once( __ROOT__TEMPLATES__ . 'product-pagination.php');?>
+								</div>
+							</section>
+							<section id="product_listing">
+								<div class="col-md-12">
+									<?php include_once( __ROOT__TEMPLATES__ . 'product-list.php');?>
+								</div>
+							</section>	
 						</div>
 					</section>
 					<!-- product list over -->

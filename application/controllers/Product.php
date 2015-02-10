@@ -76,6 +76,9 @@ class Product extends MY_controller {
 				if( isset($products_by_category_id) ) {
 					//calculate product discounts
 					$products_with_discount = $this->_calculate_product_discount($products_by_category_id);
+					
+					$num_of_products = count( $products_with_discount );
+					
 					$data['products_by_category_id'] = $products_with_discount;
 				}else {
 					$notifications['warning'] = "No existen productos con esta categoría";
@@ -101,18 +104,41 @@ class Product extends MY_controller {
 		}
 		//$handle = fopen("ftp://user:password@example.com/somefile.txt", "w");
 		$handle = fopen(__ROOT__FILES__ . "\\preciosmnd.csv", "r+");
+		$categories = $this->get_categories();
 		
 		if( $handle !== FALSE ) {
 			
-			$rows = array();
-			while ( ($data = fgetcsv($handle, 130, '|')) !== FALSE ){
-				
-				if( (count($data)) >= 6 )
-					$rows[] = $data;
-				
-			}
+			$products =array();
 			
+			$category_id = 1;
+			
+			while ( ($data = fgetcsv($handle, 130, '|')) !== FALSE ){
+				$current_row = new stdClass();
+				
+				if( (count($data)) >= 6 ){
+					
+					if ($category_id > 4 )
+						$category_id = 0;
+					
+					$current_row->PLU = $data[0];
+					$current_row->name = $data[2];
+					$current_row->category_id = $category_id; //WTF ?
+					$current_row->presentation = $data[3];
+					$current_row->description = $data[3];
+					$current_row->stock = $data[4];
+					$current_row->price = $data[5];
+					
+					$products[] = $current_row;
+					
+					$category_id++;
+				}
+			}
 			fclose( $handle );
+			
+			$num_of_products = count( $products );
+			 
+			$product_ids = $this->product_model->create_produts_from_csv( $products );
+			
 		}
 	}
 	
