@@ -53,7 +53,7 @@
 					<!-- category left sidebar over -->
 					
 					<!-- product list start -->
-					<section id="product_list">
+					<section ng-controller="ProductListCtrl" id="product_list">
 						<div class="col-md-9">
 							<section id="product_pagination">
 								<div class="col-md-12">

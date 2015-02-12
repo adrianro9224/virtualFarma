@@ -2,7 +2,7 @@
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Account extends MY_controller {
+class Account extends MY_Controller {
 	
 	/**
 	 * Controller constructor 

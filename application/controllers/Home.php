@@ -1,7 +1,7 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Home extends MY_controller {
+class Home extends MY_Controller {
 	
 	public function index($page = 'home') {
 		if ( ! file_exists(APPPATH.'/views/pages/'.$page.'.php'))
@@ -9,8 +9,8 @@ class Home extends MY_controller {
 			// Whoops, we don't have a page for that!
 			show_404();
 		}
-// 		phpinfo();
-		
+//   		phpinfo();
+  		
 		$data['title'] = ucfirst($page); // Capitalize the first letter
 		$data['notifications'] = $this->session->flashdata('notifications');
 		

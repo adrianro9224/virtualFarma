@@ -1,7 +1,7 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Message extends MY_controller {
+class Message extends MY_Controller {
 	/**
 	 * Controller contructor
 	 */
