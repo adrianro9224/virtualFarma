@@ -25,7 +25,7 @@
 						</div>
 						<div class="stock-dropdown pull-left">
 							<?php if( isset($product->stock) ): ?>
-								<select name="<?="product-" . $product->id . "-cant"?>">
+								<select name="<?="product-" . $product->id . "-cant"?>" ng-model="<?="product" . $product->id . "cant"?>" ng-init="<?="product" . $product->id . "cant=1"?>">
 		                	    	<?php for ($i=1 ; $i <= $product->stock ; $i++):?>
 		                	    		<option value="<?= $i?>"><?= $i?></option>
 		                	    	<?php endfor;?>
@@ -35,7 +35,7 @@
 			                <?php endif;?>	
 	                	</div>
 						<div class="pull-right">
-	                		<button class="btn btn-danger btn-sm addtocart">Add to Cart</button>
+	                		<a class="btn btn-danger btn-sm addtocart <?= ( isset($product->stock) ) ? '' : "disabled"?>" ng-click="addToShoppingCart('<?= $product->id?>' ,'<?= $product->PLU ?>', '<?= $product->barcode?>', '<?= $product->category_id?>', '<?= $product->presentation?>', product<?= $product->id?>cant, '<?= ($product->has_discount) ? $product->new_price : $product->price ;?>')">Add to Cart</a>
 	                    	<a href="productdetail.html" class="btn btn-primary btn-sm hidden-xs">More info</a>
 						</div>
 					</div>

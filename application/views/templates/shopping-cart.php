@@ -1,3 +1,4 @@
+<a id="button-payment" class="btn btn-default" href="#" role="button">Pagar</a>
 <div class="panel panel-default">
 	<div id="shopping-cart-panel-content">
 		<div id="total-products" class="shopping-cart-item">

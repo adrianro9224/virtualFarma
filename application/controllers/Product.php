@@ -121,6 +121,7 @@ class Product extends MY_Controller {
 						$category_id = 0;
 					
 					$current_row->PLU = $data[0];
+					$current_row->barcode = $data[1];
 					$current_row->name = $data[2];
 					$current_row->category_id = $category_id; //WTF ?
 					$current_row->presentation = $data[3];

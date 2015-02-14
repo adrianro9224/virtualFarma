@@ -41,6 +41,8 @@
 	<script type="text/javascript" src="../../public/app/controllers/MessageCtrl.js"></script>
 	<script type="text/javascript" src="../../public/app/controllers/MyDiagnosticCtrl.js"></script>
 	<script type="text/javascript" src="../../public/app/controllers/PaginationCtrl.js"></script>
+	<script type="text/javascript" src="../../public/app/controllers/ProductListCtrl.js"></script>
+	<script type="text/javascript" src="../../public/app/controllers/ShoppingCartCtrl.js"></script>
 	<!-- Angular js controllers over -->
 	
 	<!-- Angular js services start -->

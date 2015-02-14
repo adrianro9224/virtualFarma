@@ -25,6 +25,7 @@ class Product_model extends CI_Model {
 		foreach ($list_products as $product ) {
 			$data = array(
 					"PLU" => $product->PLU,
+					"barcode" => $product->barcode,
 					"name" => $product->name,
 					"category_id" => $product->category_id,
 					"presentation" => $product->presentation,
