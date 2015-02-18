@@ -294,7 +294,7 @@ class Account extends MY_Controller {
 
 							if( isset($session_data['shoppingcart']) ) {
 									
-								$notifications['success'][] = "Acà estan todos los productos que habías agregado";
+								$notifications['success'][] = "Los productos en tu carrito de compras, están seguros :)!";
 								$this->session->set_flashdata("notifications" ,$notifications);
 									
 								redirect("/checkout");
