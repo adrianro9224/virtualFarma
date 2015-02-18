@@ -39,14 +39,15 @@ class Account extends MY_Controller {
 			$account = $this->account_model->get_account_by_id($session_data['account_id']);
 			
 			if( isset($account) ) {
-				
 				$data['user_logged'] = true;
 				
 			}else {
-				$notifications['warning'] = "Oops! algo a sucedido, el administrador ya esta siendo notificado";
+				$notifications['warning'] = "Oops! algo a sucedido, el administrador ya a sido notificado";
 				$data['notifications'] = $notifications;
 			}
 		}
+		
+
 		
 		$breadcrumb = new stdClass();
 		
@@ -286,11 +287,19 @@ class Account extends MY_Controller {
 						
 						$account_password_decrypted = _password_account_h2o( $account->password, $userEmail);;
 						$user_password = md5( $log_in_form['userPassword'] );
-			
+						
 						if( $account_password_decrypted === $user_password ) {
 								
 							$this->_do_login( $account, $data );
-								
+
+							if( isset($session_data['shoppingcart']) ) {
+									
+								$notifications['success'][] = "Acà estan todos los productos que habías agregado";
+								$this->session->set_flashdata("notifications" ,$notifications);
+									
+								redirect("/checkout");
+							}
+							
 							$this->load->view('pages/account-panel', $data);
 								
 						}else {

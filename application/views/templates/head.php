@@ -25,8 +25,9 @@
 	<!-- Bootstrap js over -->
 	
 	<!-- Angular js start -->
-<!-- 	<script type="text/javascript" src="../../public/app/angular.min.js"></script> -->
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+	<script type="text/javascript" src="../../public/app/angular.min.js"></script>
+	<script type="text/javascript" src="../../public/app/angular.min.js.map"></script>
+<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script> -->
 	<!-- Angular js over -->
 	
 	<!-- Angular js controllers start -->
@@ -43,6 +44,7 @@
 	<script type="text/javascript" src="../../public/app/controllers/PaginationCtrl.js"></script>
 	<script type="text/javascript" src="../../public/app/controllers/ProductListCtrl.js"></script>
 	<script type="text/javascript" src="../../public/app/controllers/ShoppingCartCtrl.js"></script>
+	<script type="text/javascript" src="../../public/app/controllers/CheckoutPanelCtrl.js"></script>
 	<!-- Angular js controllers over -->
 	
 	<!-- Angular js services start -->
@@ -53,7 +55,11 @@
 	<script type="text/javascript" src="../../public/bootstrap-3.3.0-dist/dist/js/ui-bootstrap-tpls-0.11.2.min.js"></script>
 	<!-- UI Bootstrap js over -->
 	
-	
+	<!-- ngCookies dependencie start -->
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script> -->
+	<script type="text/javascript" src="../../public/app/angular-cookies.min.js"></script>
+	<script type="text/javascript" src="../../public/app/angular-cookies.min.js.map"></script>
+	<!-- ngCookies dependencie over -->
 	
 	
 </head>

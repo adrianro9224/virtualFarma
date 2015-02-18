@@ -109,7 +109,7 @@ div , body, html{
 	border-color: #16A085;
 }
 
-.nav>li>a:hover, .nav>li>div>a:hover, .nav>li>a:active, .nav>li>div>a:active, .nav .open>a:focus, .nav div>.open>a:active, #category_left_sidebar li.list-group-item a:hover {
+.nav>li>a:hover, .nav>li>div>a:hover, .nav>li>a:active, .nav>li>div>a:active, .nav .open>a:focus, .nav div>.open>a:active, #left_sidebar li.list-group-item a:hover {
 	color:#555 !important;
 	text-decoration:none;
 	background-color:#f5f5f5;
@@ -258,7 +258,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-#category_left_sidebar li.list-group-item a {
+#left_sidebar li.list-group-item a {
 	display: block;
 	padding: 10px 15px;
 }

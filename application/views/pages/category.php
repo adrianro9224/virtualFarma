@@ -37,10 +37,11 @@
 				<div class="row">
 				
 					<!-- category left sidebar start -->
-					<section id="category_left_sidebar">
+					<section id="left_sidebar">
 						<div class="col-md-3">
 							<section  id="shopping-cart-panel" ng-controller="ShoppingCartCtrl">
-								<div class="col-md-12" ng-show="shoppingCartWithProducts">
+								<div class="col-md-12" ng-if="shoppingCartWithProducts">
+<!-- 									{{shoppingcart}} -->
 									<?php include_once( __ROOT__TEMPLATES__ . 'shopping-cart.php');?>
 								</div>
 							</section>
