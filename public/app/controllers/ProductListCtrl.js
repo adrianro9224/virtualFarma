@@ -2,16 +2,33 @@
  * Created by Adrian on 12/02/2015.
  */
 
-farmapp.controller('ProductListCtrl', ['$scope' ,'$log' ,'$rootScope' , function( $scope ,$log ,$rootScope ){
+farmapp.controller('ProductListCtrl', ['$scope' ,'$log' ,'$rootScope' ,'$cookieStore' ,function( $scope ,$log ,$rootScope ,$cookieStore ){
 
     'use strict';
 
+    var shoppingCartInCookie = $cookieStore.get('shoppingcart');
+
+    if( shoppingCartInCookie != undefined ) {
+        $scope.shoppingcart = shoppingCartInCookie;
+    }
+
+
     $scope.addToShoppingCart = function(productId ,PLU ,barcode ,categoryId ,presentation ,cant ,price) {
 
+
+        var quantity = parseInt(cant ,10);
+        var priceUnit =  parseFloat( price );
+
         if( ($scope.shoppingcart == undefined) ) {
-            $log.log("1");
+
             $scope.shoppingcart = {};
             $scope.shoppingcart.products = [{}];
+            $scope.shoppingcart.subtotal = 0;
+            $scope.shoppingcart.shippingCharge = 0;
+            $scope.shoppingcart.tax = 0;
+            $scope.shoppingcart.total = 0;
+            $scope.shoppingcart.numOfproductsSubtotal = 0;
+            $scope.shoppingcart.numOfproductsTotal = 0;
 
             var product = new Object();
 
@@ -20,34 +37,49 @@ farmapp.controller('ProductListCtrl', ['$scope' ,'$log' ,'$rootScope' , function
             product.barcode = barcode;
             product.categoryId = categoryId;
             product.presentation = presentation;
-            product.cant = cant;
-            product.price = price;
+            product.cant = quantity;
+            product.price = priceUnit;
 
-            $scope.shoppingcart.products[product.id] = product;
+            $scope.shoppingcart.products[$scope.shoppingcart.numOfproductsSubtotal] = product;
+            $scope.shoppingcart.numOfproductsSubtotal++;
+            $scope.shoppingcart.numOfproductsTotal++;
             $scope.shoppingcart.status = 'WITH_PRODUCTS';
-
-            $log.log($scope.shoppingcart.products);//log
-
-            $rootScope.$broadcast('SHOPPINGCART_INITIALIZED', $scope.shoppingcart);
 
         } else {
             if ( ($scope.shoppingcart != undefined) && ($scope.shoppingcart.products != undefined) ) {
-                $log.log("2");
+
                 var currentProduct = new Object();
+
 
                 currentProduct.id = productId;
                 currentProduct.PLU = PLU;
                 currentProduct.barcode = barcode;
                 currentProduct.categoryId = categoryId;
                 currentProduct.presentation = presentation;
-                currentProduct.cant = cant;
-                currentProduct.price = price;
+                currentProduct.cant = quantity;
+                currentProduct.price = priceUnit;
 
-                $scope.shoppingcart.products[currentProduct.id] = currentProduct;
-                $log.log($scope.shoppingcart.products);//log
+                var products = $scope.shoppingcart.products;
+
+
+                angular.forEach( products, function( product ,key ) {
+                    if(product != undefined ){
+                        if( (productId == product.id) && (PLU == product.PLU) ) {
+                            $scope.shoppingcart.products[key].cant += quantity;
+                            $scope.shoppingcart.numOfproductsTotal += quantity;
+                        }else {
+                            $scope.shoppingcart.products[$scope.shoppingcart.numOfproductsSubtotal] = currentProduct;
+                            $scope.shoppingcart.numOfproductsSubtotal++;
+                            $scope.shoppingcart.numOfproductsTotal++;
+                        }
+                    }
+                });
+
             }
         }
 
+        $rootScope.$broadcast('SHOPPINGCART_INITIALIZED', $scope.shoppingcart);
 
     }
+
 }]);

@@ -1,10 +1,8 @@
 /**
- * Created by Adrian on 01/12/2014.
+ * Created by Adrian on 17/02/2015.
  */
 
-
-
-farmapp.controller('AccountPanelCtrl', ['$scope', function($scope) {
+farmapp.controller('CheckoutPanelCtrl', ['$scope' , function($scope) {
 
     $scope.shippingData = true;
     $scope.paymentMethod = false;
@@ -13,30 +11,29 @@ farmapp.controller('AccountPanelCtrl', ['$scope', function($scope) {
     $scope.openSection = function ( panelSelection) {
 
         switch (panelSelection) {
-            case 'myAccount':
+            case 'shippingData':
                 if(!$scope.shippingData) {
                     $scope.shippingData = true;
                     $scope.paymentMethod = false;
                     $scope.orderSummary = false;
                 }
-            break;
-            case 'myPurchases':
+                break;
+            case 'paymentMethod':
                 if(!$scope.paymentMethod) {
                     $scope.paymentMethod = true;
                     $scope.shippingData = false;
                     $scope.orderSummary = false;
                 }
-            break;
-            case 'myDiagnostic':
+                break;
+            case 'orderSummary':
                 if(!$scope.orderSummary) {
                     $scope.orderSummary = true;
                     $scope.paymentMethod = false;
                     $scope.shippingData = false;
                 }
-            break;
+                break;
         }
 
     }
-
 
 }]);

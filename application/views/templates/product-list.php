@@ -2,7 +2,7 @@
 	<div class="product-product">
 		<div class="row">
 			<div class="col-lg-3 col-md-4 col-xs-5">
-	        	<img src="<?= base_url() . 'assets/images/products/' . $product->uri_img . $product->image_format_id ?>" class="img-responsive" alt="">
+	        	<img src="<?= base_url() . 'assets/images/products/' . $product->uri_img . $product->image_format_id ?>" class="img-responsive" alt=":D">
 			</div>
 			<div class="col-lg-9 col-md-8 col-xs-7">
 	        	<div class="product-body">
@@ -27,7 +27,7 @@
 							<?php if( isset($product->stock) ): ?>
 								<select name="<?="product-" . $product->id . "-cant"?>" ng-model="<?="product" . $product->id . "cant"?>" ng-init="<?="product" . $product->id . "cant=1"?>">
 		                	    	<?php for ($i=1 ; $i <= $product->stock ; $i++):?>
-		                	    		<option value="<?= $i?>"><?= $i?></option>
+		                	    		<option><?= $i?></option>
 		                	    	<?php endfor;?>
 			                	</select>
 			                <?php else:?>
