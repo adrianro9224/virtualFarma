@@ -132,9 +132,17 @@ class Account extends MY_Controller {
 				
 				$this->_do_login( $account , $data);
 				
-				$notifications['success'] = "Su cuenta a sido creada con éxito, te damos la bienvenida a VirtualFarma!"; 
+				$notifications['success'][] = "Su cuenta a sido creada con éxito, te damos la bienvenida a VirtualFarma!"; 
 				
 				$data['notifications'] = $notifications;
+				
+				if( isset($session_data['shoppingcart']) ) {
+						
+					$notifications['success'][] = "Los productos en tu carrito de compras, están seguros :)!";
+					$this->session->set_flashdata("notifications" ,$notifications);
+						
+					redirect("/checkout");
+				}
 				
 				$this->load->view('pages/account-panel', $data); // admin account panel
 			}else {
