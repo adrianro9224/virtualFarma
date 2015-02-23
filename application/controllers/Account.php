@@ -10,7 +10,7 @@ class Account extends MY_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->helper(array('form', 'url', 'account_helper'));
-		$this->load->library(array('form_validation', 'messages', 'accounts'));
+		$this->load->library(array('form_validation', 'messages', 'accounts', 'address'));
 		$this->load->model('account_model');// add second param for add a "alias" ex: $this->load->model('Account', 'user')
 	}
 	
@@ -132,9 +132,17 @@ class Account extends MY_Controller {
 				
 				$this->_do_login( $account , $data);
 				
-				$notifications['success'] = "Su cuenta a sido creada con éxito, te damos la bienvenida a VirtualFarma!"; 
+				$notifications['success'][] = "Su cuenta a sido creada con éxito, te damos la bienvenida a VirtualFarma!"; 
 				
 				$data['notifications'] = $notifications;
+				
+				if( isset($session_data['shoppingcart']) ) {
+						
+					$notifications['success'][] = "Los productos en tu carrito de compras, están seguros :)!";
+					$this->session->set_flashdata("notifications" ,$notifications);
+						
+					redirect("/checkout");
+				}
 				
 				$this->load->view('pages/account-panel', $data); // admin account panel
 			}else {
@@ -240,6 +248,10 @@ class Account extends MY_Controller {
 				
 				$data['pathologies'] = $pathologies;
 				
+				$address = $this->address->get_all_address( $account->id );
+				
+				$data['address'] = $address;
+				
 				$data['user_logged_account'] = $account;
 					
 				$this->load->view('pages/account-panel', $data);
@@ -285,6 +297,10 @@ class Account extends MY_Controller {
 						
 						$data['pathologies'] = $pathologies;
 						
+						$address = $this->address->get_all_address( $account->id );
+						
+						$data['address'] = $address;
+						
 						$account_password_decrypted = _password_account_h2o( $account->password, $userEmail);;
 						$user_password = md5( $log_in_form['userPassword'] );
 						
@@ -294,7 +310,7 @@ class Account extends MY_Controller {
 
 							if( isset($session_data['shoppingcart']) ) {
 									
-								$notifications['success'][] = "Acà estan todos los productos que habías agregado";
+								$notifications['success'][] = "Los productos en tu carrito de compras, están seguros :)!";
 								$this->session->set_flashdata("notifications" ,$notifications);
 									
 								redirect("/checkout");
@@ -351,13 +367,20 @@ class Account extends MY_Controller {
 				$validation_response = $this->_validate_update_account_form($update_account_form);
 				
 				if($validation_response) {
+					$address = new stdClass();
+					
+					$address->line1 = $update_account_form['userAddressLine1'];
+					$address->neighborhood = $update_account_form['userNeighborhood'];
+					$address->from = "ACCOUNT_SING_UP";
+					
+					$address_registered_status = $this->address->write_account_sing_up_address( $address, $account_id );
 					
 					$result = $this->account_model->update_account($update_account_form, $account_id);
 					
-					if( isset($result) ) {
+					if( isset($result) && isset($address_registered_status)) {
 						$notifications['success'] = "Tu cuenta a sido actualizada con exito!";
 					}else{
-						$notifications['warning'] = "No se realizaron cambion!";
+						$notifications['warning'] = "No se realizaron los cambios!";
 					}
 				}else{
 					$notifications['danger'] = validation_errors();
@@ -426,6 +449,8 @@ class Account extends MY_Controller {
 	
 		$this->form_validation->set_rules('userFirstName', 'UserFirstName', 'required|max_length[64]|xss_clean');
 		$this->form_validation->set_rules('userSecondName', 'UserSecondName', 'max_length[64]|xss_clean');
+		$this->form_validation->set_rules('userAddressLine1', 'UserAddressLine1', 'max_length[64]|xss_clean');
+		$this->form_validation->set_rules('userNeighborhood', 'UserNeighborhood', 'max_length[64]|xss_clean');
 		$this->form_validation->set_rules('userLastName', 'UserLastName', 'max_length[64]|xss_clean');
 		$this->form_validation->set_rules('userSurname', 'UserSurname', 'max_length[64]|xss_clean');
 		$this->form_validation->set_rules('userEmail', 'UserEmail', 'required|max_length[64]|xss_clean');

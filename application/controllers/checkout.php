@@ -8,6 +8,7 @@ class Checkout extends MY_Controller {
 	 */
 	function __construct() {
 		parent::__construct();
+		$this->load->library('address');
 	}
 	
 	
@@ -45,6 +46,10 @@ class Checkout extends MY_Controller {
 		
 		if( isset($session_data['account_id']) ){
 			$data['user_logged'] = true;
+			
+			$address = $this->address->get_all_address( $session_data['account_id'] );
+			$data['address'] = $address;
+						
 		}else {
 			$notifications['warning'][] = "Por favor inicia sesión para continuar con tu compra";
 			$this->session->set_flashdata('notifications', $notifications);

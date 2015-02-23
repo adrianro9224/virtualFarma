@@ -6,32 +6,34 @@
 
 farmapp.controller('AccountPanelCtrl', ['$scope', function($scope) {
 
-    $scope.shippingData = true;
-    $scope.paymentMethod = false;
-    $scope.orderSummary = false;
+    "use strict";
 
-    $scope.openSection = function ( panelSelection) {
+    $scope.myAccountSelected = true;
+    $scope.myPurchasesSelected = false;
+    $scope.myDiagnosticSelected = false;
+
+    $scope.openSection = function ( panelSelection ) {
 
         switch (panelSelection) {
             case 'myAccount':
-                if(!$scope.shippingData) {
-                    $scope.shippingData = true;
-                    $scope.paymentMethod = false;
-                    $scope.orderSummary = false;
+                if(!$scope.myAccountSelected) {
+                    $scope.myAccountSelected = true;
+                    $scope.myPurchasesSelected = false;
+                    $scope.myDiagnosticSelected = false;
                 }
             break;
             case 'myPurchases':
-                if(!$scope.paymentMethod) {
-                    $scope.paymentMethod = true;
-                    $scope.shippingData = false;
-                    $scope.orderSummary = false;
+                if(!$scope.myPurchasesSelected) {
+                    $scope.myPurchasesSelected = true;
+                    $scope.myAccountSelected = false;
+                    $scope.myDiagnosticSelected = false;
                 }
             break;
             case 'myDiagnostic':
-                if(!$scope.orderSummary) {
-                    $scope.orderSummary = true;
-                    $scope.paymentMethod = false;
-                    $scope.shippingData = false;
+                if(!$scope.myDiagnosticSelected) {
+                    $scope.myDiagnosticSelected = true;
+                    $scope.myPurchasesSelected = false;
+                    $scope.myDiagnosticSelected = false;
                 }
             break;
         }

@@ -35,7 +35,7 @@ farmapp.controller('MessageCtrl', ['$scope', '$window', '$http', '$location', '$
 
     $scope.openMessage = function( messageId, account_id_view ) {
 
-        $http.post('http://virtualfarma.com.co/message/mark_as_read/' + messageId + '/' + account_id_view + '/' )
+        $http.get('http://virtualfarma.com.co/message/mark_as_read/' + messageId + '/' + account_id_view + '/' )
             .success(function(data, status, headers, config) {
 
                 $rootScope.$broadcast("MESSAGE_READED");
@@ -52,8 +52,7 @@ farmapp.controller('MessageCtrl', ['$scope', '$window', '$http', '$location', '$
 
     $scope.deleteMessage = function( messageId , account_id_view, typeOfdelete) {
 
-        $window.alert(messageId + account_id_view + typeOfdelete);
-        $http.post('http://virtualfarma.com.co/message/mark_as_delete/' + messageId + '/' + account_id_view + '/' + typeOfdelete + '/')
+        $http.get('http://virtualfarma.com.co/message/mark_as_delete/' + messageId + '/' + account_id_view + '/' + typeOfdelete + '/')
             .success(function(data, status, headers, config) {
 
                 $rootScope.$broadcast("MESSAGE_DELETED");

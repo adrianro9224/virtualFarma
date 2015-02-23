@@ -45,6 +45,10 @@ div , body, html{
 .handy {
 	cursor: pointer;
 }
+#shipping-data .disabled-panel-heading ,#payment-methods .disabled-panel-heading ,#order-summary .disabled-panel-heading {
+	background-color: #EEE !important;
+	cursor: no-drop;
+}
 
 #primary-nav {
 	margin-top: 40.5px;
@@ -249,6 +253,9 @@ input.form-control {
 h1, h2, h3, h4, h5, h6 {
 	margin: 0 !important;
 }
+.panel p {
+	margin-bottom: 20px;
+}
 
 .header-item {
 	display: inline-block;
@@ -361,6 +368,10 @@ section #my-account .panel.panel-default {
 	margin-bottom: 10px;
 }
 
+#checkout-panel-nav {
+	margin-bottom: 20px;
+}
+
 /* padding css */
 .no-padding {
 	padding: 0;
@@ -453,6 +464,10 @@ fieldset[disabled] .btn-primary.active {
 
 #open-message-button {
 	padding: 0 15px 11px 15px;
+}
+
+.help-block {
+	font-size: 12px;
 }
 
 /* 
@@ -604,6 +619,7 @@ footer .footer-content {
 	border-top: #403E44 1px dashed;
 	padding: 30px 0;
 	display: block;
+	min-height: 250px; 
 }
 
 footer p.contact-desc {
