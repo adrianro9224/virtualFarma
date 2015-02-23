@@ -3,5 +3,4 @@
  */
 
 farmapp.controller('ShippingDataFormCtrl', ['$scope' , function($scope){
-
 }]);

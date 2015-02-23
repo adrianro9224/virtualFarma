@@ -46,8 +46,14 @@
 									</div>
 								</div>
 								<div class="row" id="checkout-panel-content-views">
-									<section id="shipping-data" ng-if="shippingData" class="col-md-12">
+									<section id="shipping-data" class="col-md-12">
 										<?php include_once( __ROOT__TEMPLATES__ . '/checkout/shipping-data.php');?>
+									</section>
+									<section id="payment-methods" class="col-md-12">
+										<?php include_once( __ROOT__TEMPLATES__ . '/checkout/payment-methods.php');?>
+									</section>
+									<section id="order-summary" class="col-md-12">
+										<?php include_once( __ROOT__TEMPLATES__ . '/checkout/order-summary.php');?>
 									</section>
 								</div>
 							</section>
@@ -60,6 +66,7 @@
 						<div class="col-md-3">
 							<section  id="shopping-cart-panel" ng-controller="ShoppingCartCtrl">
 								<div class="col-md-12" ng-if="shoppingCartWithProducts">
+								<!-- define content -->
 								</div>
 							</section>
 							<div class="col-md-12">

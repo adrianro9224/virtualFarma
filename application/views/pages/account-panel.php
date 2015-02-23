@@ -37,7 +37,7 @@
 				<div class="row" id="user-name-panel">
 					<div class="col-md-6 no-padding">
 						<p class="bg-primary">
-							<?= 'Hi! ' . $user_logged_account->first_name?>
+							<?= 'Hola! ' . $user_logged_account->first_name?>
 						</p>
 					</div>
 				</div>
@@ -47,7 +47,7 @@
 				</section>
 				
 				<div class="row" id="account-content">
-					<section id="my-account" class="col-md-8 no-padding" ng-if="myAccountSelected">
+					<section id="my-account" class="col-md-12 no-padding" ng-if="myAccountSelected">
 						<?php include_once( __ROOT__TEMPLATES__ . '/account/my-account-section.php');?>
 					</section>
 					

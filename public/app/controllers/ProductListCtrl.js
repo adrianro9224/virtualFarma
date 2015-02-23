@@ -58,9 +58,10 @@ farmapp.controller('ProductListCtrl', ['$scope' ,'$log' ,'$rootScope' ,'$cookieS
                 currentProduct.presentation = presentation;
                 currentProduct.cant = quantity;
                 currentProduct.price = priceUnit;
+                currentProduct.status = "JUST_ADDED";
+
 
                 var products = $scope.shoppingcart.products;
-
 
                 angular.forEach( products, function( product ,key ) {
                     if(product != undefined ){

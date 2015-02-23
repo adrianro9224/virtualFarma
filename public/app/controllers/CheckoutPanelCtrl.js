@@ -2,13 +2,28 @@
  * Created by Adrian on 17/02/2015.
  */
 
-farmapp.controller('CheckoutPanelCtrl', ['$scope' , function($scope) {
+farmapp.controller('CheckoutPanelCtrl', ['$scope' ,'$rootScope' ,'$log' ,'$cookieStore' , function($scope ,$rootScope ,$log ,$cookieStore) {
+
+    "use strict";
 
     $scope.shippingData = true;
     $scope.paymentMethod = false;
     $scope.orderSummary = false;
 
-    $scope.openSection = function ( panelSelection) {
+    $scope.shippingDataComplete = false;
+    $scope.paymentMethodComplete = false;
+    $scope.orderSummaryEnable = false;
+
+    var order = $cookieStore.get('order');
+
+    if( order != undefined ) {
+        $scope.order = order;
+    }else {
+        $scope.order = {};
+    }
+
+
+    function switchCheckoutPanelSection( panelSelection ) {
 
         switch (panelSelection) {
             case 'shippingData':
@@ -34,6 +49,23 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope' , function($scope) {
                 break;
         }
 
-    }
+    };
+
+    $scope.openSection = function (panelSelectionName){
+        switchCheckoutPanelSection( panelSelectionName )
+    };
+
+    $scope.stepCompleted = function ( checkoutFormSection, sectionName ) {
+        switch ( sectionName ) {
+            case "shippingData":
+                $cookieStore.put('order', checkoutFormSection);
+                $scope.shippingDataComplete = true;
+            break;
+            case "paymentMethod":
+            break;
+            case "orderSummary":
+            break;
+        }
+    };
 
 }]);

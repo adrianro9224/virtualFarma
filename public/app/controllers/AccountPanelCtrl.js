@@ -6,6 +6,8 @@
 
 farmapp.controller('AccountPanelCtrl', ['$scope', function($scope) {
 
+    "use strict";
+
     $scope.myAccountSelected = true;
     $scope.myPurchasesSelected = false;
     $scope.myDiagnosticSelected = false;
@@ -30,7 +32,7 @@ farmapp.controller('AccountPanelCtrl', ['$scope', function($scope) {
             case 'myDiagnostic':
                 if(!$scope.myDiagnosticSelected) {
                     $scope.myDiagnosticSelected = true;
-                    $scope.myAccountSelected = false;
+                    $scope.myPurchasesSelected = false;
                     $scope.myDiagnosticSelected = false;
                 }
             break;
