@@ -2,7 +2,7 @@
  * Created by Adrian on 13/02/2015.
  */
 
-farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookieStore' ,'$http' ,'$window' ,function( $scope ,$rootScope, $log ,$cookieStore ,$http ,$window ) {
+farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookieStore' ,'$http' ,'$window', 'ConstantsService' ,function( $scope ,$rootScope, $log ,$cookieStore ,$http ,$window, ConstantsService ) {
 
     'use strict';
 
@@ -12,8 +12,21 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
     $scope.shippingCharge = "Gratis";
     $scope.tax = 0;
     $scope.total = 0;
+    $scope.limitOrderValueInvalid = false;
 
     $scope.shoppingcart = undefined;
+
+    var constantService = ConstantsService;
+
+    if( constantService != undefined ){
+
+        var limitOrderValue = constantService.getLimitOrderValue();
+
+        if( limitOrderValue != undefined ) {
+            $scope.limitOrderValue = limitOrderValue;
+        }
+    }
+
 
     $rootScope.$on('SHOPPINGCART_INITIALIZED', function(event, data){
         $scope.shoppingcart = data;
@@ -27,6 +40,15 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
 
             $scope.shoppingcart.total = $scope.shoppingcart.subtotal + $scope.shoppingcart.tax;
 
+            if( $scope.limitOrderValue != undefined ) {
+                if( $scope.shoppingcart.total > $scope.limitOrderValue ){
+                    $scope.limitOrderValueInvalid = true;
+                    $scope.shoppingcart.limitOrderValueInvalid = true;
+                }
+            }
+
+
+
             $scope.total = $scope.shoppingcart.total;
 
             $cookieStore.put('shoppingcart', $scope.shoppingcart);
@@ -37,7 +59,7 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
 
     var shoppingCartInCookie = $cookieStore.get('shoppingcart');
 
-    if( shoppingCartInCookie != undefined) {
+    if( shoppingCartInCookie != undefined ) {
 
         $scope.shoppingCartWithProducts = true;
 

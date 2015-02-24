@@ -49,7 +49,7 @@
 	<!-- Angular js controllers over -->
 	
 	<!-- Angular js services start -->
-<!-- 	<script type="text/javascript" src="../../public/app/services/MessagesService.js"></script> -->
+	<script type="text/javascript" src="../../public/app/services/ConstantsService.js"></script>
 	<!-- Angular js services over -->
 	
 	<!-- UI Bootstrap js start -->

@@ -30,8 +30,17 @@
 				<span class="title">Total</span>
 			</div>
 			<div class="shopping-cart-item-content">
-				<span class="pull-right value secondary-emphasis">{{total | currency}}</span>
+				<span class="pull-right value secondary-emphasis" ng-class="{'text-danger' : limitOrderValueInvalid}">{{total | currency}}</span>
 			</div>
+			<div class="form-group" ng-if="limitOrderValueInvalid">
+				<!-- tooltip -->
+ 				<div class="arrow-up-info"> 
+    			</div>
+	    		<div class="farma-tooltip-info">
+	    			<span>El mónto máximo de tu compra no debe superar los 2'800.000 si vas a realizar tu compra atravez de Payu :'(</span>
+	    		</div>
+    			<!-- tooltip -->
+	    	</div>
 		</div>
 	</div>
 </div>

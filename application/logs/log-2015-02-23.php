@@ -680,3 +680,25 @@ DEBUG - 2015-02-23 20:38:38 --> Security Class Initialized
 DEBUG - 2015-02-23 20:38:38 --> Input Class Initialized
 DEBUG - 2015-02-23 20:38:38 --> Global POST and COOKIE data sanitized
 DEBUG - 2015-02-23 20:38:38 --> Language Class Initialized
+DEBUG - 2015-02-23 21:38:08 --> Config Class Initialized
+DEBUG - 2015-02-23 21:38:08 --> Hooks Class Initialized
+DEBUG - 2015-02-23 21:38:08 --> Utf8 Class Initialized
+DEBUG - 2015-02-23 21:38:08 --> UTF-8 Support Enabled
+DEBUG - 2015-02-23 21:38:08 --> URI Class Initialized
+DEBUG - 2015-02-23 21:38:08 --> Router Class Initialized
+DEBUG - 2015-02-23 21:38:09 --> Output Class Initialized
+DEBUG - 2015-02-23 21:38:09 --> Security Class Initialized
+DEBUG - 2015-02-23 21:38:10 --> Input Class Initialized
+DEBUG - 2015-02-23 21:38:10 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-02-23 21:38:10 --> Language Class Initialized
+DEBUG - 2015-02-23 21:38:33 --> Config Class Initialized
+DEBUG - 2015-02-23 21:38:33 --> Hooks Class Initialized
+DEBUG - 2015-02-23 21:38:33 --> Utf8 Class Initialized
+DEBUG - 2015-02-23 21:38:33 --> UTF-8 Support Enabled
+DEBUG - 2015-02-23 21:38:33 --> URI Class Initialized
+DEBUG - 2015-02-23 21:38:33 --> Router Class Initialized
+DEBUG - 2015-02-23 21:38:33 --> Output Class Initialized
+DEBUG - 2015-02-23 21:38:33 --> Security Class Initialized
+DEBUG - 2015-02-23 21:38:33 --> Input Class Initialized
+DEBUG - 2015-02-23 21:38:33 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-02-23 21:38:33 --> Language Class Initialized
