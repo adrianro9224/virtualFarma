@@ -246,6 +246,11 @@ class Account extends MY_Controller {
 					$pathologies->account_pathologies = null;
 				}
 				
+				$shoppingcart = $session_data['shoppingcart'];
+				
+				if ( isset($shoppingcart) )
+					$data['shoppingcart'] = $shoppingcart;
+				
 				$data['pathologies'] = $pathologies;
 				
 				$address = $this->address->get_all_address( $account->id );

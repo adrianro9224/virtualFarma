@@ -421,7 +421,7 @@ section #my-account .panel.panel-default {
 	font-size: 13px;
 }
 
-#button-payment {
+#shopping-cart-panel #button-payment {
 	width: 100%;
 	margin-bottom: 5px;
 }

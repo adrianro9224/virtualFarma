@@ -3,6 +3,7 @@
 		<h4>Datos de envío</h4>
 	</div>
 	<div class="panel-body" ng-if="shippingData">
+	<?php var_dump($shippingdata)?>
 		<p>Por favor ingresa los datos de la persona a quien se la hará el envío.</p>
 <!-- 		<div class="checkbox"> -->
 <!-- 			<label> -->
@@ -71,6 +72,21 @@
 						</div>
 						<div class="farma-tooltip-error">
 							<span ng-if="ShippingDataForm.shippingDataCompany.$error.maxlength">El nombre de tu compañia es muy extenso!</span>
+						</div>
+					</div>
+					<!-- tooltip -->
+				</div>
+				<div class="form-group" ng-class="{'has-error': !ShippingDataForm.shippingDataId.$valid && ShippingDataForm.shippingDataId.$dirty}">
+					<label for="shippingDataId">Número de identificación<span class="primary-emphasis">*</span></label>
+					<input type="text" name="shippingDataId" ng-model="shippingDataId" class="form-control" id="shippingDataId" placeholder="Ingrese su numero de identificación" ng-pattern="/[\d-.]/" required ng-maxLength="20">
+					<!-- tooltip -->
+					<div ng-if="ShippingDataForm.shippingDataId.$invalid && ShippingDataForm.shippingDataId.$dirty">
+						<div class="arrow-up-error"> 
+						</div>
+						<div class="farma-tooltip-error">
+							<span ng-if="ShippingDataForm.shippingDataId.$error.required && ShippingDataForm.shippingDataId.$dirty">Tu número de identificación es obligatorio!</span>
+							<span ng-if="ShippingDataForm.shippingDataId.$error.maxlength">Es muy extenso!</span>
+							<span ng-if="ShippingDataForm.shippingDataId.$error.pattern ">Solo se permiten valores numéricos y los caractéres {-.}</span>
 						</div>
 					</div>
 					<!-- tooltip -->

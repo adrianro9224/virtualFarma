@@ -25,6 +25,11 @@ class Product extends MY_Controller {
 
 			$account = $this->account_model->get_account_by_id($session_data['account_id']);
 			
+			$shoppingcart = $session_data['shoppingcart'];
+			
+			if ( isset($shoppingcart) )
+				$data['shoppingcart'] = $shoppingcart;
+			
 			if( isset($account) ) {
 				$data['account_id'] = $session_data['account_id'];
 				$data['user_logged'] = true;

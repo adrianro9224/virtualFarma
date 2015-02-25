@@ -44,14 +44,51 @@ class Checkout extends MY_Controller {
 		
 		$data['categories'] = $categories;
 		
+		$shippingdata = null;
+		
 		if( isset($session_data['account_id']) ){
 			$data['user_logged'] = true;
 			
+			$account = $this->get_account( $session_data['account_id'] );
+			
 			$address = $this->address->get_all_address( $session_data['account_id'] );
 			$data['address'] = $address;
+			
+			
+			if ( isset($account) && isset($address) ) {
+				
+				if (	(isset($account->first_name)) 
+						&& (isset($account->second_name)) 
+						&& (isset($account->last_name))
+						&& (isset($account->surname))
+						&& (isset($account->surname))
+						&& (isset($account->identification_number))
+						&& (isset($account->phone))
+						&& (isset($account->mobile))
+						&& (isset($account->email))
+						&& (isset($address->address_line))
+						&& (isset($address->neighborhood))
 						
+					) {
+						die('a');
+						$shippingdata = new stdClass();
+						
+						$shippingdata->names = $account->first_name . ' ' . $account->second_name;
+						$shippingdata->last_names = $account->last_name . ' ' . $account->surname;
+						$shippingdata->email = $account->email;
+						$shippingdata->identification_number = $account->identification_number;
+						$shippingdata->address_line1 = $address->address_line;
+						$shippingdata->neighborhood = $address->neighborhood;
+						$shippingdata->phone = $account->phone;
+						$shippingdata->mobile = $account->mobile;
+						
+				}
+			}
+			
+			$data['shippingdata'] = $shippingdata;
+			
 		}else {
-			$notifications['warning'][] = "Por favor inicia sesión para continuar con tu compra";
+			$notifications['warning'][] = "Por favor registrate ó inicia sesión para continuar con tu compra";
 			$this->session->set_flashdata('notifications', $notifications);
 			redirect("/account");
 		}

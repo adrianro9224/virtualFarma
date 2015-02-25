@@ -2,7 +2,7 @@
  * Created by Adrian on 13/02/2015.
  */
 
-farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookieStore' ,'$http' ,'$window', 'ConstantsService' ,function( $scope ,$rootScope, $log ,$cookieStore ,$http ,$window, ConstantsService ) {
+farmapp.controller('ShoppingCartCtrl' ,['$scope', '$rootScope', '$log', '$cookieStore', '$http', '$window', 'ConstantsService', '$location', '$anchorScroll' ,function( $scope, $rootScope, $log, $cookieStore, $http, $window, ConstantsService, $location, $anchorScroll, $locationProvider ) {
 
     'use strict';
 
@@ -18,14 +18,12 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
 
     var constantService = ConstantsService;
 
-    if( constantService != undefined ){
+    var limitOrderValue = constantService.getLimitOrderValue();
 
-        var limitOrderValue = constantService.getLimitOrderValue();
+    if( limitOrderValue != undefined )
+        $scope.limitOrderValue = limitOrderValue;
 
-        if( limitOrderValue != undefined ) {
-            $scope.limitOrderValue = limitOrderValue;
-        }
-    }
+
 
 
     $rootScope.$on('SHOPPINGCART_INITIALIZED', function(event, data){
@@ -44,10 +42,10 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
                 if( $scope.shoppingcart.total > $scope.limitOrderValue ){
                     $scope.limitOrderValueInvalid = true;
                     $scope.shoppingcart.limitOrderValueInvalid = true;
+
+                    $location.hash('button-payment'); $anchorScroll();
                 }
             }
-
-
 
             $scope.total = $scope.shoppingcart.total;
 
@@ -67,7 +65,7 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
         $scope.subtotal = $scope.shoppingcart.subtotal;
         $scope.tax = $scope.shoppingcart.tax;
         $scope.total = $scope.shoppingcart.total;
-
+        $scope.limitOrderValueInvalid = $scope.shoppingcart.limitOrderValueInvalid;
     }
 
     function calculateSubtotal( products ) {
