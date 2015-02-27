@@ -68,6 +68,10 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
         $scope.tax = $scope.shoppingcart.tax;
         $scope.total = $scope.shoppingcart.total;
 
+        if($scope.total > $scope.limitOrderValue )
+            $scope.limitOrderValueInvalid = true;
+
+
     }
 
     function calculateSubtotal( products ) {

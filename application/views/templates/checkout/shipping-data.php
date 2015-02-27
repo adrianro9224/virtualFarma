@@ -2,19 +2,28 @@
 	<div class="panel-heading handy" ng-click="openSection('shippingData')" ng-class="{'disabled-panel-heading' : !shippingData}">
 		<h4>Datos de envío</h4>
 	</div>
-	<div class="panel-body" ng-if="shippingData">
+	<?= var_dump($shipping_data)?>
+	<div class="panel-body" ng-init="useMyData = false">
 		<p>Por favor ingresa los datos de la persona a quien se la hará el envío.</p>
-<!-- 		<div class="checkbox"> -->
-<!-- 			<label> -->
-<!-- 		    	<input type="checkbox" value=""> -->
-<!-- 		    	Usar los datos de mi cuenta -->
-<!-- 		  	</label> -->
-<!-- 		</div> -->
-		<form id="shipping-data-form" name="ShippingDataForm" ng-controller="ShippingDataFormCtrl" action="" method="post" novalidate >
+		<div class="checkbox" ng-init="shippingDataCompleted=<?= ( isset($shipping_data) ) ? 1 : 0 ?>">
+			<label>
+		    	<input type="checkbox" ng-model="useMyData" ng-disabled="!shippingDataCompleted">
+		    	Usar los datos de mi cuenta
+		  	</label>
+		  	<!-- helptext -->
+			<span id="helpBlock" class="help-block">Si todos los datos de tu cuenta estàn completos, podrás usarlos para el envío</span>
+			<!-- helptext -->
+		</div>
+		<form id="shipping-data-form" name="ShippingDataForm" ng-controller="ShippingDataFormCtrl" method="post" novalidate >
 			<div class="col-md-6">
 				<div class="form-group" ng-class="{'has-error': !ShippingDataForm.shippingDataNames.$valid && ShippingDataForm.shippingDataNames.$dirty}">
 					<label for="shippingDataNames">Nombres<span class="primary-emphasis">*</span></label>
-					<input type="text" name="shippingDataNames" ng-model="order.shippingData.names" class="form-control"  id="shippingDataNames" placeholder="Ingresa tus nombres" ng-maxLength="50" required>
+					<div ng-if="useMyData">
+						<input type="text" name="shippingDataNames" ng-model="order.shippingData.names" class="form-control"  id="shippingDataNames" placeholder="Ingresa tus nombres" ng-init="order.shippingData.names='<?= ( isset($shipping_data) ) ? $shipping_data->names : null ?>'" ng-maxLength="50" required>
+					</div>
+					<div ng-if="!useMyData">
+						<input type="text" name="shippingDataNames" ng-model="order.shippingData.names" class="form-control"  id="shippingDataNames" placeholder="Ingresa tus nombres" ng-init="order.shippingData.names=false" ng-maxLength="50" required>
+					</div>
 					<!-- tooltip -->
 					<div ng-if="ShippingDataForm.shippingDataNames.$invalid && ShippingDataForm.shippingDataNames.$dirty">
 						<div class="arrow-up-error"> 
@@ -71,6 +80,21 @@
 						</div>
 						<div class="farma-tooltip-error">
 							<span ng-if="ShippingDataForm.shippingDataCompany.$error.maxlength">El nombre de tu compañia es muy extenso!</span>
+						</div>
+					</div>
+					<!-- tooltip -->
+				</div>
+				<div class="form-group" ng-class="{'has-error': !ShippingDataForm.shippingDataId.$valid && ShippingDataForm.shippingDataId.$dirty}">
+					<label for="shippingDataId">Número de identificación<span class="primary-emphasis">*</span></label>
+					<input type="text" name="shippingDataId" ng-model="shippingDataId" class="form-control" id="shippingDataId" placeholder="Ingrese su numero de identificación" ng-pattern="/[\d-.]/" required>
+					<!-- tooltip -->
+					<div ng-if="ShippingDataForm.shippingDataId.$invalid && ShippingDataForm.shippingDataId.$dirty">
+						<div class="arrow-up-error"> 
+						</div>
+						<div class="farma-tooltip-error">
+							<span ng-if="ShippingDataForm.shippingDataId.$error.required && ShippingDataForm.shippingDataId.$dirty">Es muy extenso!</span>
+							<span ng-if="ShippingDataForm.shippingDataId.$error.maxlength && ShippingDataForm.shippingDataId.$dirty">Es muy extenso!</span>
+							<span ng-if="ShippingDataForm.shippingDataId.$error.pattern && ShippingDataForm.shippingDataId.$dirty">Solo se permiten valores numéricos y los caractéres {-.}</span>
 						</div>
 					</div>
 					<!-- tooltip -->

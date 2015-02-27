@@ -43,13 +43,23 @@ class Checkout extends MY_Controller {
 		$categories = $this->get_categories();
 		
 		$data['categories'] = $categories;
+		$data['shoppingcart'] = null;
 		
 		if( isset($session_data['account_id']) ){
 			$data['user_logged'] = true;
 			
 			$address = $this->address->get_all_address( $session_data['account_id'] );
-			$data['address'] = $address;
-						
+			$account_data = $this->get_account($session_data['account_id']);
+			
+			if ( isset($address->account_sing_up) && isset($account_data)){
+				$shipping_data = $this->_check_if_shipping_data_completed($account_data, $address->account_sing_up);
+				
+				if( isset($shipping_data) )
+					$data['shipping_data'] = $shipping_data;
+					
+				
+			}//create else with info for complete the account info
+			
 		}else {
 			$notifications['warning'][] = "Por favor inicia sesión para continuar con tu compra";
 			$this->session->set_flashdata('notifications', $notifications);
@@ -58,6 +68,32 @@ class Checkout extends MY_Controller {
 		
 		
 		$this->load->view("pages/" . $page, $data);
+	}
+	
+	private function _check_if_shipping_data_completed($account_data, $addres_sign_up) {
+		$shipping_data = null;
+		if ( isset($account_data->first_name) 
+				&& isset($account_data->second_name) 
+				&& isset($account_data->last_name) 
+				&& isset($account_data->surname) 
+				&& isset($account_data->email) 
+				&& isset($account_data->identification_number)
+				&& isset($account_data->phone)
+				&& isset($account_data->mobile)
+				&& isset($addres_sign_up->address_line)
+				&& isset($addres_sign_up->neighborhood)
+			) {
+			$shipping_data = new stdClass();
+			
+			$shipping_data->names = $account_data->first_name . ' ' . $account_data->second_name;
+			$shipping_data->last_names = $account_data->last_name . ' ' . $account_data->surname;
+			$shipping_data->identification_number = $account_data->identification_number;
+			$shipping_data->address_line1 = $addres_sign_up->address_line;
+			$shipping_data->neighborhood = $addres_sign_up->neighborhood;
+			
+		}
+		
+		return $shipping_data;
 	}
 	
 	public function save_spc() {
