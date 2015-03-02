@@ -479,6 +479,10 @@ fieldset[disabled] .btn-primary.active {
 * Tooltip start
 */
 
+#shipping-data-checkbox-tooltip .arrow-up-info {
+	left: 7% !important;
+}
+
 .farma-tooltip-error span, .farma-tooltip-info span {
 	color: #FFF;	
 }

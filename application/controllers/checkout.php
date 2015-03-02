@@ -54,6 +54,8 @@ class Checkout extends MY_Controller {
 			if ( isset($address->account_sing_up) && isset($account_data)){
 				$shipping_data = $this->_check_if_shipping_data_completed($account_data, $address->account_sing_up);
 				
+				$data['shipping_data'] = null;
+				
 				if( isset($shipping_data) )
 					$data['shipping_data'] = $shipping_data;
 					
@@ -61,7 +63,7 @@ class Checkout extends MY_Controller {
 			}//create else with info for complete the account info
 			
 		}else {
-			$notifications['warning'][] = "Por favor inicia sesión para continuar con tu compra";
+			$notifications['warning'][] = "Por favor regístrate ó inicia sesión para continuar con tu compra";
 			$this->session->set_flashdata('notifications', $notifications);
 			redirect("/account");
 		}
@@ -87,9 +89,12 @@ class Checkout extends MY_Controller {
 			
 			$shipping_data->names = $account_data->first_name . ' ' . $account_data->second_name;
 			$shipping_data->last_names = $account_data->last_name . ' ' . $account_data->surname;
+			$shipping_data->email = $account_data->email;
 			$shipping_data->identification_number = $account_data->identification_number;
 			$shipping_data->address_line1 = $addres_sign_up->address_line;
 			$shipping_data->neighborhood = $addres_sign_up->neighborhood;
+			$shipping_data->phone = $account_data->phone;
+			$shipping_data->mobile  = $account_data->mobile;
 			
 		}
 		

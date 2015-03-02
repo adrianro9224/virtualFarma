@@ -10,7 +10,7 @@
 				<div class="col-md-6">
 					<div class="form-group" ng-class="{'has-error': !EditAccountForm.userFirstName.$valid}">
 						<label for="userFirstName">Primer Nombre<span class="primary-emphasis">*</span></label>
-						<input type="text" name="userFirstName" ng-model="userFirstName" class="form-control" id="userFirstName" placeholder="Ingrese su primer nombre" ng-init="userFirstName='<?= (isset($user_logged_account->first_name) ? $user_logged_account->first_name : null)?>'" ng-maxLength="50" required>
+						<input type="text" name="userFirstName" ng-model="userFirstName" class="form-control" id="userFirstName" placeholder="Ingrese su primer nombre" ng-init="userFirstName='<?= ( isset($user_logged_account->first_name) ) ? $user_logged_account->first_name : null?>'" ng-maxLength="50" required>
 						<!-- tooltip -->
 						<div ng-if="EditAccountForm.userFirstName.$invalid">
 							<div class="arrow-up-error"> 
@@ -24,7 +24,7 @@
 					</div>
 					<div class="form-group" ng-class="{'has-error': !EditAccountForm.userSecondName.$valid}">
 						<label for="userSecondName">Segundo Nombre</label>
-						<input type="text" name="userSecondName" ng-model="userSecondName" class="form-control" id="userSecondName" placeholder="Ingrese su segundo nombre" ng-init="userSecondName='<?= (isset($user_logged_account->second_name) ? $user_logged_account->second_name : null)?>'" ng-maxLength="50">
+						<input type="text" name="userSecondName" ng-model="userSecondName" class="form-control" id="userSecondName" placeholder="Ingrese su segundo nombre" ng-init="userSecondName='<?= ( isset($user_logged_account->second_name) ) ? $user_logged_account->second_name : null?>'" ng-maxLength="50">
 						<!-- tooltip -->
 						<div ng-if="EditAccountForm.userSecondName.$invalid">
 							<div class="arrow-up-error"> 
@@ -37,7 +37,7 @@
 					</div>
 					<div class="form-group" ng-class="{'has-error': !EditAccountForm.userLastName.$valid}">
 						<label for="userLastName">Primer Apellido<span class="primary-emphasis">*</span></label>
-						<input type="text" name="userLastName" ng-model="userLastName" class="form-control" id="userLastName" placeholder="Ingrese su primer apellido" ng-init="userLastName='<?= (isset($user_logged_account->last_name) ? $user_logged_account->last_name : null)?>'" ng-maxLength="50" required>
+						<input type="text" name="userLastName" ng-model="userLastName" class="form-control" id="userLastName" placeholder="Ingrese su primer apellido" ng-init="userLastName='<?= ( isset($user_logged_account->last_name) ) ? $user_logged_account->last_name : null?>'" ng-maxLength="50" required>
 						<!-- tooltip -->
 						<div ng-if="EditAccountForm.userLastName.$invalid">
 							<div class="arrow-up-error"> 
@@ -51,7 +51,7 @@
 					</div>
 					<div class="form-group" ng-class="{'has-error': !EditAccountForm.userSurname.$valid}">
 						<label for="userSurname">Segundo Apellido</label>
-						<input type="text" name="userSurname" ng-model="userSurname" class="form-control" id="userSurname" placeholder="Ingrese su segundo apellido" ng-init="userSurname='<?= (isset($user_logged_account->surname) ? $user_logged_account->surname : null)?>'" ng-maxLength="50">
+						<input type="text" name="userSurname" ng-model="userSurname" class="form-control" id="userSurname" placeholder="Ingrese su segundo apellido" ng-init="userSurname='<?= ( isset($user_logged_account->surname) ) ? $user_logged_account->surname : null?>'" ng-maxLength="50">
 						<!-- tooltip -->
 						<div ng-if="EditAccountForm.userSurname.$invalid">
 							<div class="arrow-up-error"> 
@@ -64,7 +64,7 @@
 					</div>
 					<div class="form-group" ng-class="{'has-error': !EditAccountForm.addressLine1.$valid && EditAccountForm.addressLine1.$dirty}">
 						<label for="userAddressLine1">Dirección<span class="primary-emphasis">*</span></label>
-						<input type="text" name="userAddressLine1" ng-model="userAddressLine1" class="form-control" id="userAddressLine1" placeholder="Ingresa tu dirección" ng-init="userAddressLine1='<?= (isset($address->account_sing_up) ? $address->account_sing_up->address_line : null)?>'" ng-maxLength="50" required>
+						<input type="text" name="userAddressLine1" ng-model="userAddressLine1" class="form-control" id="userAddressLine1" placeholder="Ingresa tu dirección" ng-init="userAddressLine1='<?= ( isset($address->account_sing_up) ) ? $address->account_sing_up->address_line : null?>'" ng-maxLength="50" required>
 						<!-- tooltip -->
 						<div ng-if="EditAccountForm.addressLine1.$invalid && EditAccountForm.addressLine1.$dirty">
 							<div class="arrow-up-error"> 
@@ -80,16 +80,16 @@
 						<!-- helptext -->
 					</div>
 					<label class="radio-inline">
-						<input type="radio" name="userGender" id="userGenderMale" value="M" <?= ( (isset($user_logged_account->gender) && ($user_logged_account->gender == 'M') ) ? 'checked' : null) ?>> Hombre
+						<input type="radio" name="userGender" id="userGenderMale" value="M" <?= ( ( isset($user_logged_account->gender) ) && ($user_logged_account->gender == 'M') ) ? 'checked' : null ?>> Hombre
 					</label>
 					<label class="radio-inline">
-						<input type="radio" name="userGender" id="userGenderFemale" value="F" <?= ( (isset($user_logged_account->gender) && ($user_logged_account->gender == 'F') ) ? 'checked' : null) ?>> Mujer
+						<input type="radio" name="userGender" id="userGenderFemale" value="F" <?= ( ( isset($user_logged_account->gender) ) && ($user_logged_account->gender == 'F') ) ? 'checked' : null ?>> Mujer
 					</label>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group" ng-class="{'has-error': !EditAccountForm.neighborhood.$valid && EditAccountForm.neighborhood.$dirty}">
 						<label for="userNeighborhood">Barrio<span class="primary-emphasis">*</span></label>
-						<input type="text" name="userNeighborhood" ng-model="userNeighborhood" class="form-control" id="userNeighborhood" placeholder="Ingresa el nombre de tu Barrio" ng-init="userNeighborhood='<?= (isset($address->account_sing_up) ? $address->account_sing_up->neighborhood : null)?>'" ng-maxLength="50" required>
+						<input type="text" name="userNeighborhood" ng-model="userNeighborhood" class="form-control" id="userNeighborhood" placeholder="Ingresa el nombre de tu Barrio" ng-init="userNeighborhood='<?= ( isset($address->account_sing_up) ) ? $address->account_sing_up->neighborhood : null?>'" ng-maxLength="50" required>
 						<!-- tooltip -->
 						<div ng-if="EditAccountForm.neighborhood.$invalid && EditAccountForm.neighborhood.$dirty">
 							<div class="arrow-up-error"> 
@@ -108,7 +108,7 @@
 						<label for="userPhone">Teléfono fijo</label>
 						<div class="input-group">
 							<div class="input-group-addon">#</div>
-							<input type="text" name="userPhone" ng-model="userPhone" class="form-control" id="userPhone" placeholder="Ingrese su teléfono fijo" ng-init="userPhone='<?= (isset($user_logged_account->phone) ? $user_logged_account->phone : null)?>'" ng-maxLength="32" ng-minLength="7" ng-pattern="/[\d-]/" autocomplete="off">
+							<input type="text" name="userPhone" ng-model="userPhone" class="form-control" id="userPhone" placeholder="Ingrese su teléfono fijo" ng-init="userPhone='<?= ( isset($user_logged_account->phone) )? $user_logged_account->phone : null?>'" ng-maxLength="32" ng-minLength="7" ng-pattern="/[\d-]/" autocomplete="off">
 						</div>
 						<!-- tooltip -->
 						<div ng-if="EditAccountForm.userPhone.$invalid">
@@ -127,7 +127,7 @@
 						<label for="userMobile">Teléfono celular</label>
 						<div class="input-group">
 							<div class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></div>
-							<input type="text" name="userMobile" ng-model="userMobile" class="form-control" id="userMobile" placeholder="Ingrese su teléfono celular" ng-init="userMobile='<?= (isset($user_logged_account->mobile) ? $user_logged_account->mobile : null)?>'" ng-maxLength="32" ng-minLength="10" ng-pattern="/[\d-]/" autocomplete="off">
+							<input type="text" name="userMobile" ng-model="userMobile" class="form-control" id="userMobile" placeholder="Ingrese su teléfono celular" ng-init="userMobile='<?= ( isset($user_logged_account->mobile) ) ? $user_logged_account->mobile : null?>'" ng-maxLength="32" ng-minLength="10" ng-pattern="/[\d-]/" autocomplete="off">
 						</div>
 						<!-- tooltip -->
 						<div ng-if="EditAccountForm.userMobile.$invalid">
@@ -146,7 +146,7 @@
 						<label for="userEmail">Correo electrónico<span class="primary-emphasis">*</span></label>
 						<div class="input-group">
 							<div class="input-group-addon">@</div>
-							<input type="text" name="userEmail" ng-model="userEmail" class="form-control" id="userEmail" placeholder="Ingrese su email" ng-init="userEmail='<?= (isset($user_logged_account->email) ? $user_logged_account->email : null)?>'" ng-pattern="/[\w.]+?\@{1}[\w.]+(\.+[\w.]+)/" autocomplete="off" required>
+							<input type="text" name="userEmail" ng-model="userEmail" class="form-control" id="userEmail" placeholder="Ingrese su email" ng-init="userEmail='<?= ( isset($user_logged_account->email) ) ? $user_logged_account->email : null?>'" ng-pattern="/[\w.]+?\@{1}[\w.]+(\.+[\w.]+)/" autocomplete="off" required>
 						</div>
 						<!-- tooltip -->
 						<div ng-if="EditAccountForm.userEmail.$invalid">
@@ -165,7 +165,7 @@
 					</div>
 					<div class="form-group" ng-class="{'has-error': !EditAccountForm.userId.$valid}">
 						<label for="userId">Número de identificación</label>
-						<input type="text" name="userId" ng-model="userId" class="form-control" id="userId" placeholder="Ingrese su numero de identificación" ng-init="userId='<?= (isset($user_logged_account->identification_number) ? $user_logged_account->identification_number : null)?>'" ng-pattern="/[\d-.]/" >
+						<input type="text" name="userId" ng-model="userId" class="form-control" id="userId" placeholder="Ingrese su numero de identificación" ng-init="userId='<?= ( isset($user_logged_account->identification_number) ) ? $user_logged_account->identification_number : null?>'" ng-pattern="/[\d-.]/" >
 						<!-- tooltip -->
 						<div ng-if="EditAccountForm.userId.$invalid">
 							<div class="arrow-up-error"> 
