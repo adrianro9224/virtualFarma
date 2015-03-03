@@ -2,7 +2,7 @@
  * Created by Adrian on 17/02/2015.
  */
 
-farmapp.controller('CheckoutPanelCtrl', ['$scope' ,'$rootScope' ,'$log' ,'$cookieStore' , function($scope ,$rootScope ,$log ,$cookieStore) {
+farmapp.controller('CheckoutPanelCtrl', ['$scope' ,'$rootScope' ,'$log' ,'$cookieStore' , function($scope ,$rootScope ,$log ,$cookies) {
 
     "use strict";
 
@@ -14,7 +14,7 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope' ,'$rootScope' ,'$log' ,'$cooki
     $scope.paymentMethodComplete = false;
     $scope.orderSummaryEnable = false;
 
-    var order = $cookieStore.get('order');
+    var order = $cookies.get('order');
 
     if( order != undefined ) {
         $scope.order = order;
@@ -58,8 +58,12 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope' ,'$rootScope' ,'$log' ,'$cooki
     $scope.stepCompleted = function ( checkoutFormSection, sectionName ) {
         switch ( sectionName ) {
             case "shippingData":
-                $cookieStore.put('order', checkoutFormSection);
+                $cookies.put('order', checkoutFormSection);
+
+                $log.log(order);
                 $scope.shippingDataComplete = true;
+
+                switchCheckoutPanelSection("paymentMethod");
             break;
             case "paymentMethod":
             break;

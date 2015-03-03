@@ -2,8 +2,7 @@
 	<div class="panel-heading handy" ng-click="openSection('shippingData')" ng-class="{'disabled-panel-heading' : !shippingData}">
 		<h4>Datos de envío</h4>
 	</div>
-	<?= var_dump($shipping_data)?>
-	<div class="panel-body" ng-init="useMyData = false">
+	<div class="panel-body" ng-init="useMyData = false" ng-if="shippingData">
 		<p>Por favor ingresa los datos de la persona a quien se la hará el envío.</p>
 		<div class="checkbox" ng-init="shippingDataCompleted=<?= ( isset($shipping_data) ) ? 1 : 0 ?>">
 			<label>

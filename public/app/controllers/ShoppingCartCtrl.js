@@ -2,11 +2,20 @@
  * Created by Adrian on 13/02/2015.
  */
 
-farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookieStore' ,'$http' ,'$window', 'ConstantsService' ,function( $scope ,$rootScope, $log ,$cookieStore ,$http ,$window, ConstantsService ) {
+farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookieStore' ,'$http' ,'$window', 'ConstantsService' ,function( $scope ,$rootScope, $log ,$cookies ,$http ,$window, ConstantsService ) {
 
     'use strict';
 
     $scope.shoppingCartWithProducts = false;
+
+    var todayFull = new Date();
+    var todayDay = todayFull.getDate();
+
+    todayFull.setDate( todayDay + 3 );
+
+    var cookiesOptions = {};
+    cookiesOptions.path = "/";
+    $log.log(cookiesOptions);
 
     $scope.subtotal = 0;
     $scope.shippingCharge = "Gratis";
@@ -51,13 +60,13 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
 
             $scope.total = $scope.shoppingcart.total;
 
-            $cookieStore.put('shoppingcart', $scope.shoppingcart);
+            $cookies.put('shoppingcart', $scope.shoppingcart, cookiesOptions);
 
         }
 
     });
 
-    var shoppingCartInCookie = $cookieStore.get('shoppingcart');
+    var shoppingCartInCookie = $cookies.get('shoppingcart');
 
     if( shoppingCartInCookie != undefined ) {
 
