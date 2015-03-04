@@ -2,7 +2,7 @@
  * Created by Adrian on 13/02/2015.
  */
 
-farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookieStore' ,'$http' ,'$window', 'ConstantsService' ,function( $scope ,$rootScope, $log ,$cookies ,$http ,$window, ConstantsService ) {
+farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookies' ,'$http' ,'$window', 'ConstantsService' ,function( $scope ,$rootScope, $log ,$cookies ,$http ,$window, ConstantsService) {
 
     'use strict';
 
@@ -13,41 +13,26 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
 
     todayFull.setDate( todayDay + 3 );
 
-    var cookiesOptions = {};
-    cookiesOptions.path = "/";
-    $log.log(cookiesOptions);
+    var cookiesOptions = { path: "/" , expires: todayFull };
 
     $scope.subtotal = 0;
-    $scope.shippingCharge = "Gratis";
+    $scope.shippingCharge = 600;
     $scope.tax = 0;
     $scope.total = 0;
     $scope.limitOrderValueInvalid = false;
+    $scope.limitOrderValue = ConstantsService.getLimitOrderValue();
 
-    $scope.shoppingcart = undefined;
-
-    var constantService = ConstantsService;
-
-    if( constantService != undefined ){
-
-        var limitOrderValue = constantService.getLimitOrderValue();
-
-        if( limitOrderValue != undefined ) {
-            $scope.limitOrderValue = limitOrderValue;
-        }
-    }
-
-
-    $rootScope.$on('SHOPPINGCART_INITIALIZED', function(event, data){
+    $rootScope.$on( ConstantsService.SHOPPINGCART_INITIALIZED, function(event, data){
         $scope.shoppingcart = data;
 
-        if($scope.shoppingcart.status == 'WITH_PRODUCTS') {
+        if ( $scope.shoppingcart.status == ConstantsService.SHOPPINGCART_WITH_PRODUCTS ) {
 
             $scope.shoppingCartWithProducts = true;
             $scope.shoppingcart.subtotal = calculateSubtotal($scope.shoppingcart.products);
 
             $scope.subtotal = $scope.shoppingcart.subtotal;
 
-            $scope.shoppingcart.total = $scope.shoppingcart.subtotal + $scope.shoppingcart.tax;
+            $scope.shoppingcart.total = $scope.shoppingcart.subtotal + $scope.shoppingcart.tax + $scope.shippingCharge;
 
             if( $scope.limitOrderValue != undefined ) {
                 if( $scope.shoppingcart.total > $scope.limitOrderValue ){
@@ -56,17 +41,15 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
                 }
             }
 
-
-
             $scope.total = $scope.shoppingcart.total;
 
-            $cookies.put('shoppingcart', $scope.shoppingcart, cookiesOptions);
+            $cookies.putObject('shoppingcart', $scope.shoppingcart, cookiesOptions);
 
         }
 
     });
 
-    var shoppingCartInCookie = $cookies.get('shoppingcart');
+    var shoppingCartInCookie = $cookies.getObject( 'shoppingcart' );
 
     if( shoppingCartInCookie != undefined ) {
 

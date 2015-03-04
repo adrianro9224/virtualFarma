@@ -2,6 +2,7 @@
 	<div class="panel-heading handy" ng-click="openSection('shippingData')" ng-class="{'disabled-panel-heading' : !shippingData}">
 		<h4>Datos de envío</h4>
 	</div>
+	{{order}}
 	<div class="panel-body" ng-init="useMyData = false" ng-if="shippingData">
 		<p>Por favor ingresa los datos de la persona a quien se la hará el envío.</p>
 		<div class="checkbox" ng-init="shippingDataCompleted=<?= ( isset($shipping_data) ) ? 1 : 0 ?>">
@@ -30,7 +31,7 @@
 						<input type="text" name="shippingDataNames" ng-model="order.shippingData.names" class="form-control"  id="shippingDataNames" placeholder="Ingresa tus nombres" ng-init="order.shippingData.names='<?= ( isset($shipping_data) ) ? $shipping_data->names : null ?>'" ng-maxLength="50" required>
 					</div>
 					<div ng-if="!useMyData">
-						<input type="text" name="shippingDataNames" ng-model="order.shippingData.names" class="form-control"  id="shippingDataNames" placeholder="Ingresa tus nombres" ng-init="order.shippingData.names=false" ng-maxLength="50" required>
+						<input type="text" name="shippingDataNames" ng-model="order.shippingData.names" class="form-control"  id="shippingDataNames" placeholder="Ingresa tus nombres" ng-init="order.shippingData.names=undefined" ng-maxLength="50" required>
 					</div>
 					<!-- tooltip -->
 					<div ng-if="ShippingDataForm.shippingDataNames.$invalid && ShippingDataForm.shippingDataNames.$dirty">
@@ -49,7 +50,7 @@
 						<input type="text" name="shippingDataLastNames" ng-model="order.shippingData.lastNames" class="form-control" id="shippingDataLastNames" placeholder="Ingresea tus apellidos" ng-init="order.shippingData.lastNames='<?= ( isset($shipping_data) ) ? $shipping_data->last_names : null ?>'" ng-maxLength="50" required>
 					</div>
 					<div ng-if="!useMyData">
-						<input type="text" name="shippingDataLastNames" ng-model="order.shippingData.lastNames" class="form-control" id="shippingDataLastNames" placeholder="Ingresea tus apellidos" ng-init="order.shippingData.lastNames=false" ng-maxLength="50" required>
+						<input type="text" name="shippingDataLastNames" ng-model="order.shippingData.lastNames" class="form-control" id="shippingDataLastNames" placeholder="Ingresea tus apellidos" ng-init="order.shippingData.lastNames=undefined" ng-maxLength="50" required>
 					</div>
 					<!-- tooltip -->
 					<div ng-if="ShippingDataForm.shippingDataLastNames.$invalid && ShippingDataForm.shippingDataLastNames.$dirty">
@@ -71,7 +72,7 @@
 							<input type="text" name="shippingDataEmail" ng-model="order.shippingData.email" class="form-control" id="shippingDataEmail" placeholder="Ingrese su email" ng-init="order.shippingData.email='<?= ( isset($shipping_data) ) ? $shipping_data->email : null ?>'" ng-pattern="/[\w.]+?\@{1}[\w.]+(\.+[\w.]+)/" >
 						</div>
 						<div ng-if="!useMyData">
-							<input type="text" name="shippingDataEmail" ng-model="order.shippingData.email" class="form-control" id="shippingDataEmail" placeholder="Ingrese su email" ng-init="order.shippingData.email=false" ng-pattern="/[\w.]+?\@{1}[\w.]+(\.+[\w.]+)/" >
+							<input type="text" name="shippingDataEmail" ng-model="order.shippingData.email" class="form-control" id="shippingDataEmail" placeholder="Ingrese su email" ng-init="order.shippingData.email=undefined" ng-pattern="/[\w.]+?\@{1}[\w.]+(\.+[\w.]+)/" >
 						</div>
 					</div>
 					<!-- tooltip -->
@@ -108,7 +109,7 @@
 						<input type="text" name="shippingDataId" ng-model="order.shippingData.id" class="form-control" id="shippingDataId" placeholder="Ingrese su numero de identificación" ng-init="order.shippingData.id='<?= ( isset($shipping_data) ) ? $shipping_data->identification_number : null ?>'" ng-pattern="/[\d-.]/" required>
 					</div>
 					<div ng-if="!useMyData">
-						<input type="text" name="shippingDataId" ng-model="order.shippingData.id" class="form-control" id="shippingDataId" placeholder="Ingrese su numero de identificación" ng-init="order.shippingData.id=false" ng-pattern="/[\d-.]/" required>
+						<input type="text" name="shippingDataId" ng-model="order.shippingData.id" class="form-control" id="shippingDataId" placeholder="Ingrese su numero de identificación" ng-init="order.shippingData.id=undefined" ng-pattern="/[\d-.]/" required>
 					</div>
 					<!-- tooltip -->
 					<div ng-if="ShippingDataForm.shippingDataId.$invalid && ShippingDataForm.shippingDataId.$dirty">
@@ -130,7 +131,7 @@
 						<input type="text" name="shippingDataAddressLine1" ng-model="order.shippingData.addressLine1" class="form-control" id="shippingDataAddressLine1" placeholder="Ingresa tu dirección" ng-init="order.shippingData.addressLine1='<?= ( isset($shipping_data) ) ? $shipping_data->address_line1 : null ?>'" ng-maxLength="50" required>
 					</div>
 					<div ng-if="!useMyData">
-						<input type="text" name="shippingDataAddressLine1" ng-model="order.shippingData.addressLine1" class="form-control" id="shippingDataAddressLine1" placeholder="Ingresa tu dirección" ng-init="order.shippingData.addressLine1=false" ng-maxLength="50" required>
+						<input type="text" name="shippingDataAddressLine1" ng-model="order.shippingData.addressLine1" class="form-control" id="shippingDataAddressLine1" placeholder="Ingresa tu dirección" ng-init="order.shippingData.addressLine1=undefined" ng-maxLength="50" required>
 					</div>
 					<!-- tooltip -->
 					<div ng-if="ShippingDataForm.shippingDataAddressLine1.$invalid && ShippingDataForm.shippingDataAddressLine1.$dirty">
@@ -153,7 +154,7 @@
 						<input type="text" name="shippingDataNeighborhood" ng-model="order.shippingData.neighborhood" class="form-control" id="shippingDataNeighborhood" placeholder="Ingresa tu dirección" ng-init="order.shippingData.neighborhood='<?= ( isset($shipping_data) ) ? $shipping_data->neighborhood : null ?>'" ng-maxLength="50" required>
 					</div>
 					<div ng-if="!useMyData">
-						<input type="text" name="shippingDataNeighborhood" ng-model="order.shippingData.neighborhood" class="form-control" id="shippingDataNeighborhood" placeholder="Ingresa tu dirección" ng-init="order.shippingData.neighborhood=false" ng-maxLength="50" required>
+						<input type="text" name="shippingDataNeighborhood" ng-model="order.shippingData.neighborhood" class="form-control" id="shippingDataNeighborhood" placeholder="Ingresa tu dirección" ng-init="order.shippingData.neighborhood=undefined" ng-maxLength="50" required>
 					</div>
 					<!-- tooltip -->
 					<div ng-if="ShippingDataForm.shippingDataNeighborhood.$invalid && ShippingDataForm.shippingDataNeighborhood.$dirty">
@@ -178,7 +179,7 @@
 							<input type="text" name="shippingDataPhone" ng-model="order.shippingData.phone" class="form-control" id="shippingDataPhone" placeholder="Ingresa tu teléfono fijo" ng-init="order.shippingData.phone='<?= ( isset($shipping_data) ) ? $shipping_data->phone : null ?>'" ng-maxLength="32" ng-minLength="7" ng-pattern="/[\d-]/" required>
 						</div>
 						<div ng-if="!useMyData">
-							<input type="text" name="shippingDataPhone" ng-model="order.shippingData.phone" class="form-control" id="shippingDataPhone" placeholder="Ingresa tu teléfono fijo" ng-init="order.shippingData.phone=false" ng-maxLength="32" ng-minLength="7" ng-pattern="/[\d-]/" required>
+							<input type="text" name="shippingDataPhone" ng-model="order.shippingData.phone" class="form-control" id="shippingDataPhone" placeholder="Ingresa tu teléfono fijo" ng-init="order.shippingData.phone=undefined" ng-maxLength="32" ng-minLength="7" ng-pattern="/[\d-]/" required>
 						</div>
 					</div>
 					<!-- tooltip -->
@@ -206,7 +207,7 @@
 							<input type="text" name="ShippingDataMobile" ng-model="order.shippingData.mobile" class="form-control" id="ShippingDataMobile" placeholder="Ingrese su teléfono celular" ng-init="order.shippingData.mobile='<?= ( isset($shipping_data) ) ? $shipping_data->mobile : null ?>'" ng-maxLength="32" ng-minLength="10" ng-pattern="/[\d-]/" required>
 						</div>
 						<div ng-if="!useMyData">
-							<input type="text" name="ShippingDataMobile" ng-model="order.shippingData.mobile" class="form-control" id="ShippingDataMobile" placeholder="Ingrese su teléfono celular" ng-init="order.shippingData.mobile=false" ng-maxLength="32" ng-minLength="10" ng-pattern="/[\d-]/" required>
+							<input type="text" name="ShippingDataMobile" ng-model="order.shippingData.mobile" class="form-control" id="ShippingDataMobile" placeholder="Ingrese su teléfono celular" ng-init="order.shippingData.mobile=undefined" ng-maxLength="32" ng-minLength="10" ng-pattern="/[\d-]/" required>
 						</div>
 					</div>
 					<!-- tooltip -->

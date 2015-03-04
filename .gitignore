@@ -4,6 +4,7 @@
 *~
 # files of config webstorm project
 public/app/.idea/
+public/app/.idea/workspace.xml
 
 #files of config eclipse IDE
 .project

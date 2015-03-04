@@ -2,7 +2,7 @@
  * Created by Adrian on 17/02/2015.
  */
 
-farmapp.controller('CheckoutPanelCtrl', ['$scope' ,'$rootScope' ,'$log' ,'$cookieStore' , function($scope ,$rootScope ,$log ,$cookies) {
+farmapp.controller('CheckoutPanelCtrl', ['$scope' ,'$rootScope' ,'$log' ,'$cookies' ,'ConstantsService' , function( $scope ,$rootScope ,$log ,$cookies, ConstantsService ) {
 
     "use strict";
 
@@ -14,33 +14,43 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope' ,'$rootScope' ,'$log' ,'$cooki
     $scope.paymentMethodComplete = false;
     $scope.orderSummaryEnable = false;
 
-    var order = $cookies.get('order');
+    var orderInCookie = $cookies.getObject("order");
+    var shoppingcartInCookie = $cookies.getObject("shoppingcart");
 
-    if( order != undefined ) {
-        $scope.order = order;
+    if( (orderInCookie != undefined) && (shoppingcartInCookie != undefined) ) {
+            orderInCookie.shoppingcart = shoppingcartInCookie;
+            $scope.order = orderInCookie;
+
+            updateOrder( orderInCookie );
+
     }else {
         $scope.order = {};
+        if ( shoppingcartInCookie != undefined )
+            $scope.order.shoppingcart = shoppingcartInCookie;
+        
+        updateOrder( $scope.order );
     }
 
+    $log.log($scope.order);
 
     function switchCheckoutPanelSection( panelSelection ) {
 
         switch (panelSelection) {
-            case 'shippingData':
+            case "shippingData":
                 if(!$scope.shippingData) {
                     $scope.shippingData = true;
                     $scope.paymentMethod = false;
                     $scope.orderSummary = false;
                 }
                 break;
-            case 'paymentMethod':
+            case "paymentMethod":
                 if(!$scope.paymentMethod) {
                     $scope.paymentMethod = true;
                     $scope.shippingData = false;
                     $scope.orderSummary = false;
                 }
                 break;
-            case 'orderSummary':
+            case "orderSummary":
                 if(!$scope.orderSummary) {
                     $scope.orderSummary = true;
                     $scope.paymentMethod = false;
@@ -49,7 +59,7 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope' ,'$rootScope' ,'$log' ,'$cooki
                 break;
         }
 
-    };
+    }
 
     $scope.openSection = function (panelSelectionName){
         switchCheckoutPanelSection( panelSelectionName )
@@ -58,9 +68,8 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope' ,'$rootScope' ,'$log' ,'$cooki
     $scope.stepCompleted = function ( checkoutFormSection, sectionName ) {
         switch ( sectionName ) {
             case "shippingData":
-                $cookies.put('order', checkoutFormSection);
+                updateOrder();
 
-                $log.log(order);
                 $scope.shippingDataComplete = true;
 
                 switchCheckoutPanelSection("paymentMethod");
@@ -72,4 +81,7 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope' ,'$rootScope' ,'$log' ,'$cooki
         }
     };
 
+    function updateOrder ( order ){
+        $cookies.putObject("order", order);
+    }
 }]);

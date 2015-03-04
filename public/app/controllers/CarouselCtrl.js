@@ -2,7 +2,9 @@
  * Created by Adrian on 12/11/2014.
  */
 
-var farmapp = angular.module('farmapp', ['ui.bootstrap', 'ngCookies']);//Create the farmapp module
+var farmapp = angular.module('farmapp', ['ui.bootstrap', 'ngCookies']);
+
+    //Create the farmapp module
 
 farmapp.controller('CarouselCtrl', ['$scope', function($scope) {
     $scope.myInterval = 5000;

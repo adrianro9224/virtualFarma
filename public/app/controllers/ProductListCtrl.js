@@ -2,17 +2,17 @@
  * Created by Adrian on 12/02/2015.
  */
 
-farmapp.controller('ProductListCtrl', ['$scope' ,'$log' ,'$rootScope' ,'$cookieStore' ,'ConstantsService' ,function( $scope ,$log ,$rootScope ,$cookieStore ,ConstantsService ){
+farmapp.controller( 'ProductListCtrl', ['$scope' ,'$log' ,'$rootScope' ,'$cookies' ,'ConstantsService' ,function( $scope ,$log ,$rootScope ,$cookies, ConstantsService ){
 
     'use strict';
 
-    var shoppingCartInCookie = $cookieStore.get('shoppingcart');
+    var shoppingCartInCookie = $cookies.getObject( 'shoppingcart' );
 
     if( shoppingCartInCookie != undefined ) {
         $scope.shoppingcart = shoppingCartInCookie;
     }
 
-    $scope.addToShoppingCart = function(productId ,PLU ,barcode ,categoryId ,presentation ,cant ,price) {
+    $scope.addToShoppingCart = function( productId ,PLU ,barcode ,categoryId ,presentation ,cant ,price ) {
 
         var quantity = parseInt(cant ,10);
         var priceUnit =  parseFloat( price );
@@ -42,13 +42,12 @@ farmapp.controller('ProductListCtrl', ['$scope' ,'$log' ,'$rootScope' ,'$cookieS
             $scope.shoppingcart.products[$scope.shoppingcart.numOfproductsSubtotal] = product;
             $scope.shoppingcart.numOfproductsSubtotal++;
             $scope.shoppingcart.numOfproductsTotal++;
-            $scope.shoppingcart.status = 'WITH_PRODUCTS';
+            $scope.shoppingcart.status = ConstantsService.SHOPPINGCART_WITH_PRODUCTS;
 
         } else {
             if ( ($scope.shoppingcart != undefined) && ($scope.shoppingcart.products != undefined) ) {
 
                 var currentProduct = new Object();
-
 
                 currentProduct.id = productId;
                 currentProduct.PLU = PLU;
@@ -57,14 +56,12 @@ farmapp.controller('ProductListCtrl', ['$scope' ,'$log' ,'$rootScope' ,'$cookieS
                 currentProduct.presentation = presentation;
                 currentProduct.cant = quantity;
                 currentProduct.price = priceUnit;
-                currentProduct.status = "JUST_ADDED";
-
 
                 var products = $scope.shoppingcart.products;
                 var quantityProductIncreased = false;
 
                 angular.forEach( products, function( product ,key ) {
-                    if(product != undefined ){
+                    if( product != undefined ){
                         if( (productId == product.id) && (PLU == product.PLU) ) {
                             quantityProductIncreased = true;
                             $scope.shoppingcart.products[key].cant += quantity;
@@ -83,7 +80,7 @@ farmapp.controller('ProductListCtrl', ['$scope' ,'$log' ,'$rootScope' ,'$cookieS
             }
         }
 
-        $rootScope.$broadcast('SHOPPINGCART_INITIALIZED', $scope.shoppingcart);
+        $rootScope.$broadcast( ConstantsService.SHOPPINGCART_INITIALIZED , $scope.shoppingcart );
 
     }
 

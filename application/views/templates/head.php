@@ -25,8 +25,22 @@
 	<!-- Bootstrap js over -->
 	
 	<!-- Angular js start -->
-	<script type="text/javascript" src="../../public/app/angular.min.js"></script>
-	<script type="text/javascript" src="../../public/app/angular.min.js.map"></script>
+	
+	<!-- Angular 1.3.2 start -->
+<!-- 	<script type="text/javascript" src="../../public/app/1.3.14/angular.min.js"></script> -->
+<!-- 	<script type="text/javascript" src="../../public/app/1.3.14/angular.min.js.map"></script> -->
+	<!-- Angular 1.3.2 over -->
+	
+	<!-- Angular 1.4.0 start -->
+<!-- 	<script type="text/javascript" src="../../public/app/1.4.0/angular-1.4.0-beta.5/angular.min.js"></script> -->
+<!-- 	<script type="text/javascript" src="../../public/app/1.4.0/angular-1.4.0-beta.5/angular.min.js.map"></script> -->
+	<!-- Angular 1.4.0 over -->
+	
+	<!-- Angular 1.4.0 snapshot start -->
+	<script type="text/javascript" src="../../public/app/snapshot/angular.min.js"></script>
+	<script type="text/javascript" src="../../public/app/snapshot/angular.min.js.map"></script>
+	<!-- Angular 1.4.0 snapshot start -->
+	
 <!-- 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script> -->
 	<!-- Angular js over -->
 	
@@ -52,14 +66,28 @@
 	<script type="text/javascript" src="../../public/app/services/ConstantsService.js"></script>
 	<!-- Angular js services over -->
 	
-	<!-- UI Bootstrap js start -->
+	<!-- UI Bootstrap dependencie js start -->
 	<script type="text/javascript" src="../../public/bootstrap-3.3.0-dist/dist/js/ui-bootstrap-tpls-0.11.2.min.js"></script>
-	<!-- UI Bootstrap js over -->
+	<!-- UI Bootstrap dependencie js over -->
 	
 	<!-- ngCookies dependencie start -->
 	<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script> -->
-	<script type="text/javascript" src="../../public/app/angular-cookies.min.js"></script>
-	<script type="text/javascript" src="../../public/app/angular-cookies.min.js.map"></script>
+	
+	<!-- Angular 1.4.0 snapshot start -->
+		<script type="text/javascript" src="../../public/app/snapshot/angular-cookies.min.js"></script>
+		<script type="text/javascript" src="../../public/app/snapshot/angular-cookies.min.js.map"></script>
+	<!-- Angular 1.4.0 snapshot over -->
+	
+	<!-- Angular 1.4.0 start -->
+<!-- 	<script type="text/javascript" src="../../public/app/1.4.0/angular-1.4.0-beta.5/angular-cookies.min.js"></script> -->
+<!-- 	<script type="text/javascript" src="../../public/app/1.4.0/angular-1.4.0-beta.5/angular-cookies.min.js.map"></script> -->
+	<!-- Angular 1.4.0 over -->
+	
+	<!-- Angular 1.3.2 start -->
+<!-- 	<script type="text/javascript" src="../../public/app/1.3.14/angular-cookies.min.js"></script> -->
+<!-- 	<script type="text/javascript" src="../../public/app/1.3.14/angular-cookies.min.js.map"></script> -->
+	<!-- Angular 1.3.2 over -->
+	
 	<!-- ngCookies dependencie over -->
 	
 	

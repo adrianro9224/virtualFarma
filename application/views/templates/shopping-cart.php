@@ -11,10 +11,10 @@
 		</div>
 		<div id="total-products" class="shopping-cart-item">
 			<div class="shopping-cart-item-content">
-				<span class="title" ng-bind="shippingCharge"></span>
+				<span class="title" >Costo de envío</span>
 			</div>
 			<div class="shopping-cart-item-content">
-				<span class="pull-right value">{{shippingCharge}}</span>
+				<span class="pull-right value">{{shippingCharge | currency : "$ " : 0}}</span>
 			</div>
 		</div>
 		<div id="total-products" class="shopping-cart-item">
