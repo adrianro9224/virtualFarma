@@ -346,7 +346,7 @@ p.bg-primary, p.bg-warning, p.bg-info {
 	padding: 10px;	
 }
 
-section #my-account .panel.panel-default .panel-heading span {
+section #my-account .panel.panel-default .panel-heading span, section#checkout-panel-content .panel.panel-default .panel-heading span {
 	color:#FFF;
 }
 
@@ -468,6 +468,10 @@ fieldset[disabled] .btn-primary.active {
 
 .help-block {
 	font-size: 12px;
+}
+
+.glyphicon.glyphicon-ok {
+	color:#FFF;
 }
 
 /* 

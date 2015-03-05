@@ -14,20 +14,25 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope' ,'$rootScope' ,'$log' ,'$cooki
     $scope.paymentMethodComplete = false;
     $scope.orderSummaryEnable = false;
 
+    $scope.checkoutCurrentStep = "shippingData";
+
     var orderInCookie = $cookies.getObject("order");
     var shoppingcartInCookie = $cookies.getObject("shoppingcart");
 
     if( (orderInCookie != undefined) && (shoppingcartInCookie != undefined) ) {
             orderInCookie.shoppingcart = shoppingcartInCookie;
             $scope.order = orderInCookie;
-
+            $scope.shippingDataComplete = orderInCookie.shippingData.status;
+            $scope.checkoutCurrentStep = orderInCookie.currentStep;
             updateOrder( orderInCookie );
 
+            if( $scope.shippingDataComplete != orderInCookie.currentStep )
+                switchCheckoutPanelSection( $scope.checkoutCurrentStep );
     }else {
         $scope.order = {};
         if ( shoppingcartInCookie != undefined )
             $scope.order.shoppingcart = shoppingcartInCookie;
-        
+
         updateOrder( $scope.order );
     }
 
@@ -61,18 +66,19 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope' ,'$rootScope' ,'$log' ,'$cooki
 
     }
 
-    $scope.openSection = function (panelSelectionName){
+    $scope.openSection = function ( panelSelectionName ){
         switchCheckoutPanelSection( panelSelectionName )
     };
 
-    $scope.stepCompleted = function ( checkoutFormSection, sectionName ) {
+    $scope.stepCompleted = function ( newOrder, sectionName ) {
         switch ( sectionName ) {
             case "shippingData":
-                updateOrder();
-
+                newOrder.shippingData.status = true;
+                newOrder.currentStep = "paymentMethod";
                 $scope.shippingDataComplete = true;
 
-                switchCheckoutPanelSection("paymentMethod");
+                updateOrder( newOrder );
+                switchCheckoutPanelSection( "paymentMethod" );
             break;
             case "paymentMethod":
             break;
@@ -83,5 +89,11 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope' ,'$rootScope' ,'$log' ,'$cooki
 
     function updateOrder ( order ){
         $cookies.putObject("order", order);
+    }
+
+    $scope.changeUseAccountDataStatus = function(){
+
+        updateOrder( $scope.order );
+
     }
 }]);
