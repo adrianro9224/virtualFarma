@@ -1,5 +1,5 @@
 <div class="panel panel-default">
-	<div class="panel-heading handy" ng-click="openSection('shippingData')" ng-class="{'disabled-panel-heading' : !shippingData && !shippingDataComplete}">
+	<div class="panel-heading handy" ng-click="openSection('shippingData')" ng-class="{'disabled-panel-heading' : !shippingData && !order.shippingData.status}">
 		<h4>Datos de envío <span ng-show="shippingDataComplete" class="glyphicon glyphicon-ok" aria-hidden="true"></span> </h4>
 	</div>
 	{{order}}

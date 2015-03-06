@@ -9,6 +9,7 @@ class Checkout extends MY_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->library('address');
+		$this->load->model("Payment_method_model");
 	}
 	
 	
@@ -50,6 +51,10 @@ class Checkout extends MY_Controller {
 			
 			$address = $this->address->get_all_address( $session_data['account_id'] );
 			$account_data = $this->get_account($session_data['account_id']);
+			$payment_methods = $this->Payment_method_model->get_enabled_payment_methods();
+			
+			if ( isset($payment_methods) )
+				$data['payment_methods'] = $payment_methods;
 			
 			if ( isset($address->account_sing_up) && isset($account_data)){
 				$shipping_data = $this->_check_if_shipping_data_completed($account_data, $address->account_sing_up);

@@ -5,7 +5,7 @@
 farmapp.controller('AccordionCtrl', ['$scope', function($scope) {
 
     $scope.oneAtATime = true;
-    
+
     $scope.status = {
         isFirstOpen: true,
         isFirstDisabled: false

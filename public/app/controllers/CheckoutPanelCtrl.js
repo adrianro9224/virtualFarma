@@ -22,12 +22,11 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope' ,'$rootScope' ,'$log' ,'$cooki
     if( (orderInCookie != undefined) && (shoppingcartInCookie != undefined) ) {
             orderInCookie.shoppingcart = shoppingcartInCookie;
             $scope.order = orderInCookie;
-            $scope.shippingDataComplete = orderInCookie.shippingData.status;
+
             $scope.checkoutCurrentStep = orderInCookie.currentStep;
             updateOrder( orderInCookie );
 
-            if( $scope.shippingDataComplete != orderInCookie.currentStep )
-                switchCheckoutPanelSection( $scope.checkoutCurrentStep );
+            switchCheckoutPanelSection( $scope.checkoutCurrentStep );
     }else {
         $scope.order = {};
         if ( shoppingcartInCookie != undefined )
@@ -78,9 +77,15 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope' ,'$rootScope' ,'$log' ,'$cooki
                 $scope.shippingDataComplete = true;
 
                 updateOrder( newOrder );
-                switchCheckoutPanelSection( "paymentMethod" );
+                switchCheckoutPanelSection( newOrder.currentStep );
             break;
             case "paymentMethod":
+                newOrder.paymentMethod.status = true;
+                newOrder.currentStep = "orderSummary";
+                $scope.paymentMethodComplete = true;
+
+                updateOrder( newOrder );
+                switchCheckoutPanelSection( newOrder.currentStep );
             break;
             case "orderSummary":
             break;

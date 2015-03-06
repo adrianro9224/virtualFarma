@@ -13,7 +13,7 @@
 
 div , body, html{
     font-family: 'Open Sans', sans-serif;
-    color: #555;
+    color: #737373;
 }
 
 
@@ -227,12 +227,28 @@ input.form-control {
 	border-radius: 1px;
 }
 
-.panel-heading {
-	background-color: #16A085 !important;
-	border-color: rgba(0,0,0,0.1) !important;
-	border-top-left-radius: 0 !important;
-	border-top-right-radius: 0 !important;
+.panel.panel-default>.panel-heading {
+	background-color: #16A085;
+	border-color: rgba(0,0,0,0.1);
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
 }
+#checkout-panel-content #payment-method-accordion .panel.panel-default>.panel-heading {
+	background-color: #428BCA;
+	border-color: rgba(0,0,0,0.1);
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	
+}
+
+#checkout-panel-content #payment-method-accordion .panel.panel-default{
+	margin-bottom: 5px;
+}
+
+#checkout-panel-content #payment-method-accordion .panel.panel-default .panel-body payment-method-description span {
+	
+}
+
 
 .panel-default>.panel-heading {
 	color: #FFF !important;

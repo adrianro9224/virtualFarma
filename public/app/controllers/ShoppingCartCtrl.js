@@ -16,7 +16,7 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
     var cookiesOptions = { path: "/" , expires: todayFull };
 
     $scope.subtotal = 0;
-    $scope.shippingCharge = 600;
+    $scope.shippingCharge = 700;
     $scope.tax = 0;
     $scope.total = 0;
     $scope.limitOrderValueInvalid = false;
@@ -32,7 +32,10 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
 
             $scope.subtotal = $scope.shoppingcart.subtotal;
 
-            $scope.shoppingcart.total = $scope.shoppingcart.subtotal + $scope.shoppingcart.tax + $scope.shippingCharge;
+            $scope.shoppingcart.total = $scope.shoppingcart.subtotal + $scope.shoppingcart.tax;
+
+            if( $scope.shoppingcart.total > 50000 )
+                $scope.shoppingcart.total += $scope.shippingCharge;
 
             if( $scope.limitOrderValue != undefined ) {
                 if( $scope.shoppingcart.total > $scope.limitOrderValue ){
