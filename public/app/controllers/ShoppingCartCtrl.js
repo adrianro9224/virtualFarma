@@ -22,20 +22,28 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
     $scope.limitOrderValueInvalid = false;
     $scope.limitOrderValue = ConstantsService.getLimitOrderValue();
 
-    $rootScope.$on( ConstantsService.SHOPPINGCART_INITIALIZED, function(event, data){
+    $rootScope.$on( ConstantsService.SHOPPINGCART_INITIALIZED(), function(event, data){
         $scope.shoppingcart = data;
 
-        if ( $scope.shoppingcart.status == ConstantsService.SHOPPINGCART_WITH_PRODUCTS ) {
+        var shoppingCartSubtotals = 0;
+
+        if ( $scope.shoppingcart.status == ConstantsService.SHOPPINGCART_WITH_PRODUCTS() ) {
 
             $scope.shoppingCartWithProducts = true;
-            $scope.shoppingcart.subtotal = calculateSubtotal($scope.shoppingcart.products);
+
+            shoppingCartSubtotals = calculateShoppingcartSubtotals( $scope.shoppingcart.products );
+
+            $scope.shoppingcart.subtotal = shoppingCartSubtotals.productsSubtotal;
+            $scope.shoppingcart.tax = shoppingCartSubtotals.productsTaxTotal;
 
             $scope.subtotal = $scope.shoppingcart.subtotal;
 
             $scope.shoppingcart.total = $scope.shoppingcart.subtotal + $scope.shoppingcart.tax;
 
-            if( $scope.shoppingcart.total > 50000 )
+            if( $scope.shoppingcart.total > 50000 ) {
                 $scope.shoppingcart.total += $scope.shippingCharge;
+                $scope.shoppingcart.shippingCharge = $scope.shippingCharge;
+            }
 
             if( $scope.limitOrderValue != undefined ) {
                 if( $scope.shoppingcart.total > $scope.limitOrderValue ){
@@ -69,14 +77,19 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
 
     }
 
-    function calculateSubtotal( products ) {
+    function calculateShoppingcartSubtotals( products ) {
+
         var subtotal = 0;
+        var tax = 0;
 
         angular.forEach( products, function(value ,key) {
-                subtotal += value.price * value.cant;
+                subtotal += ( value.price * value.cant );
+                tax += ( value.tax * value.price );
         });
 
-        return subtotal;
+        var shoppingCartSubtotals = { productsSubtotal : subtotal,  productsTaxTotal : tax };
+
+        return shoppingCartSubtotals;
     }
 
     $scope.createShoppingcartToken = function ( shoppingCart ) {
@@ -92,7 +105,7 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
                 console.info(data + ":(");
             });
 
-    };
+    }
 
 
 }]);

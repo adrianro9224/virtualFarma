@@ -258,12 +258,22 @@ input.form-control {
 	border-top :1px solid #DDD;
 }
 
+#checkout-panel-content-views #order-summary #order-totals.panel {
+	border-radius: 0 0 4px 4px;
+	
+	border-top:2px solid #DDD;
+	border-right:none;
+	border-bottom:none;
+	border-left:none;
+	
+}
+ 
 #shopping-cart-panel ul {
 	padding: 0 5px;
 }
 .panel {
 	border-top:none;
-	border-radius: 1px !important;
+	border-radius: 1px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -409,32 +419,39 @@ section #my-account .panel.panel-default {
 
 /*shoping-cart-panel*/
 
-#shopping-cart-panel-content {
+#shopping-cart-panel-content, #order-summary-content {
 	padding: 5px;
 }
 
-.shopping-cart-item {
+.shopping-cart-item, .order-summary-item {
 	padding: 7px 5px;
 	border-bottom: 1px solid #DDD;
 }
 
-.shopping-cart-item-content {
+.shopping-cart-item-content, .order-summary-item-content {
 	display: inline;
 }
 
-.shopping-cart-item .shopping-cart-item-content>span.value {
+.shopping-cart-item .shopping-cart-item-content>span.value, .order-summary-item .order-summary-item-content>span.value {
 	font-style: italic;
 	font-weight: bold;
 	color: #2C3E50;
 }
 
-.shopping-cart-item .shopping-cart-item-content>span.value.secondary-emphasis {
+.shopping-cart-item .shopping-cart-item-content>span.value.secondary-emphasis, .order-summary-item .order-summary-item-content>span.value.secondary-emphasis {
 	font-style: normal;
 	font-size: 17px;
 }
 
 .shopping-cart-item .shopping-cart-item-content>span.title {
 	font-size: 13px;
+}
+.order-summary-item .order-summary-item-content>span.title {
+	font-size: 17px;	
+}
+
+#confirm-order-button {
+	width: 100%;
 }
 
 #button-payment {

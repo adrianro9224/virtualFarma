@@ -1,6 +1,6 @@
 <div class="panel panel-default">
 	<div class="panel-heading handy" ng-click="openSection('shippingData')" ng-class="{'disabled-panel-heading' : !shippingData && !order.shippingData.status}">
-		<h4>Datos de envío <span ng-show="shippingDataComplete" class="glyphicon glyphicon-ok" aria-hidden="true"></span> </h4>
+		<h4>Datos de envío <span ng-show="order.shippingData.status" class="glyphicon glyphicon-ok" aria-hidden="true"></span> </h4>
 	</div>
 	{{order}}
 	<div class="panel-body" ng-if="shippingData">
