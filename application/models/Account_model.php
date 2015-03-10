@@ -57,9 +57,8 @@ class Account_model extends CI_Model {
 		$this->db->where('id', $account_id);
 		$this->db->update('account');
 		
-		if($this->db->affected_rows() > 0) {
+		if($this->db->affected_rows() > 0)
 			return true;
-		}
 		
 		return NULL;
 		

@@ -13,7 +13,7 @@
 	    	</button>
 	  	</div>
   		<div class="btn-group" role="group">
-		    <button type="button" class="btn btn-default" ng-click="openSection('orderSummary')" ng-class="{active: orderSummary}" ng-disabled="!order.shippingData.status && !order.paymentMethod.status">
+		    <button type="button" class="btn btn-default" ng-click="openSection('orderSummary')" ng-class="{active: orderSummary}" ng-disabled="!order.shippingData.status || !order.paymentMethod.status">
 				<span class="glyphicon glyphicon-shopping-cart"></span>
 			    Resumen de la orden
 		    </button>

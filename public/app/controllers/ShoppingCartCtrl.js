@@ -38,12 +38,11 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
 
             $scope.subtotal = $scope.shoppingcart.subtotal;
 
-            $scope.shoppingcart.total = $scope.shoppingcart.subtotal + $scope.shoppingcart.tax;
+            $scope.shoppingcart.total = $scope.shoppingcart.subtotal + $scope.shoppingcart.tax + $scope.shoppingcart.shippingCharge;
 
-            if( $scope.shoppingcart.total > 50000 ) {
-                $scope.shoppingcart.total += $scope.shippingCharge;
-                $scope.shoppingcart.shippingCharge = $scope.shippingCharge;
-            }
+            if( $scope.shoppingcart.total > 50000 )
+                $scope.shoppingcart.shippingCharge = 0;
+
 
             if( $scope.limitOrderValue != undefined ) {
                 if( $scope.shoppingcart.total > $scope.limitOrderValue ){

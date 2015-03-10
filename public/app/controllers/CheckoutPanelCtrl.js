@@ -2,7 +2,7 @@
  * Created by Adrian on 17/02/2015.
  */
 
-farmapp.controller('CheckoutPanelCtrl', ['$scope' ,'$rootScope' ,'$log' ,'$cookies' ,'ConstantsService' , function( $scope ,$rootScope ,$log ,$cookies, ConstantsService ) {
+farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cookies', '$http', function( $scope ,$rootScope ,$log ,$cookies, $http ) {
 
     "use strict";
 
@@ -88,6 +88,29 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope' ,'$rootScope' ,'$log' ,'$cooki
                 switchCheckoutPanelSection( newOrder.currentStep );
             break;
             case "orderSummary":
+                $scope.sendingOrder = true;
+                var order = newOrder;
+
+                delete order.currentStep;
+                delete order.paymentMethod.status;
+                delete order.shippingData.status;
+                delete order.shippingData.useMyDataStatus;
+                delete order.shoppingcart.limitOrderValueInvalid;
+                delete order.shoppingcart.status;
+
+                //var orderJSON = angular.toJson(order);
+
+                $http.post("http://virtualfarma.com.co/checkout/create_order" , { data : order} )
+                    .success(function(data, status, headers, config) {
+
+                        $log.log(data , status, headers, config )
+
+                    }).
+                    error(function(data, status, headers, config) {
+                        console.info(data + ":(");
+                    });
+
+
             break;
         }
     };

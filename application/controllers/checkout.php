@@ -8,7 +8,7 @@ class Checkout extends MY_Controller {
 	 */
 	function __construct() {
 		parent::__construct();
-		$this->load->library('address');
+		$this->load->library( array('address', 'orders') );
 		$this->load->model("Payment_method_model");
 	}
 	
@@ -106,7 +106,11 @@ class Checkout extends MY_Controller {
 		return $shipping_data;
 	}
 	
+	/**
+	 * Push the shopping cart from Javascript object to a php cookie 
+	 */
 	public function save_spc() {
+		//add sleep
 		$data = file_get_contents("php://input");
 		
 		$shopping_cart_token = json_decode($data);
@@ -114,4 +118,15 @@ class Checkout extends MY_Controller {
 		$this->session->set_userdata('shoppingcart', $shopping_cart_token->data);
 		
 	}
+	
+	public function create_order() {
+		//add sleep
+		$data = file_get_contents("php://input");
+		
+		$order = json_decode( $data );
+		
+		$result = $this->orders->save_order( $order->data );
+		
+	}
+	
 }

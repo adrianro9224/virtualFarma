@@ -2,7 +2,6 @@
 	<div class="panel-heading handy" ng-click="openSection('shippingData')" ng-class="{'disabled-panel-heading' : !shippingData && !order.shippingData.status}">
 		<h4>Datos de envío <span ng-show="order.shippingData.status" class="glyphicon glyphicon-ok" aria-hidden="true"></span> </h4>
 	</div>
-	{{order}}
 	<div class="panel-body" ng-if="shippingData">
 		<p>Por favor ingresa los datos de la persona a quien se la hará el envío.</p>
 		<div class="checkbox" ng-init="shippingDataCompleted=<?= ( isset($shipping_data) ) ? 1 : 0 ?>">
@@ -144,7 +143,7 @@
 					</div>
 					<!-- tooltip -->
 					<!-- helptext -->
-					<span id="helpBlock" class="help-block">Ej: Carrera 73 # 96 - 75</span>
+					<span id="helpBlock" class="help-block">Ej: Carrera 73 # 96 - 75 apto 206</span>
 					<!-- helptext -->
 				</div>		
 				
