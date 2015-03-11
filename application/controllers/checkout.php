@@ -125,7 +125,13 @@ class Checkout extends MY_Controller {
 		
 		$order = json_decode( $data );
 		
-		$result = $this->orders->save_order( $order->data );
+		$session_data = $this->session->all_userdata();
+		
+		if ( isset($session_data['account_id']) ) 
+			$result = $this->orders->save_order( $order->data, $session_data['account_id'] );
+		else 
+			redirect('/account');
+		
 		
 	}
 	

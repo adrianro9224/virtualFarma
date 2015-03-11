@@ -18,11 +18,11 @@ class Order_model extends CI_Model {
 	public function insert_order( $order_data, $recipient_id, $account_id ) {
 		
 		$data = array(
-				'value' => $order_data['total'],
-				'tax' => $order_data['tax'],
-				'payment_method_id' => $order_data['selectedPaymentMethod'],
-				'products' => json_encode( $order_data['products'] ),
-				'shipping_charge' => $order_data['shippingCharge'],
+				'value' => $order_data->shoppingcart->total,
+				'tax' => $order_data->shoppingcart->tax,
+				'payment_method_id' => $order_data->paymentMethod->selectedPaymentMethod,
+				'products' => json_encode( $order_data->shoppingcart->products ),
+				'shipping_charge' => $order_data->shoppingcart->shippingCharge,
 				'recipient_id' => $recipient_id,
 				'account_id' => $account_id,
 				'status' => 'RECEIVED'

@@ -450,7 +450,7 @@ section #my-account .panel.panel-default {
 	font-size: 17px;	
 }
 
-#confirm-order-button {
+#confirm-order-button, #go-to-orders-button {
 	width: 100%;
 }
 

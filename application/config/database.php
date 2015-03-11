@@ -56,7 +56,7 @@ $active_record = TRUE;
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
 $db['default']['password'] = '';
-$db['default']['database'] = 'virtual_farma';
+$db['default']['database'] = 'l9000182_vfarma';
 
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';

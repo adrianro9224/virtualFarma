@@ -1,4 +1,4 @@
-<div class="panel panel-default" id="payment-method-accordion">
+<div class="panel panel-default" id="payment-method-accordion" ng-hide="order.sended">
 	<div class="panel-heading handy" ng-click="openSection('paymentMethod')" ng-class="{'disabled-panel-heading' : !paymentMethod && !order.paymentMethod.status}">
 		<h4>Método de pago <span ng-show="order.paymentMethod.status" class="glyphicon glyphicon-ok" aria-hidden="true"></h4> 
 	</div>
