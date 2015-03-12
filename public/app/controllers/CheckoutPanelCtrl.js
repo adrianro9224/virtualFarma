@@ -2,7 +2,7 @@
  * Created by Adrian on 17/02/2015.
  */
 
-farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cookies', '$http', function( $scope ,$rootScope ,$log ,$cookies, $http ) {
+farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cookies', '$http', '$location', function( $scope ,$rootScope ,$log ,$cookies, $http, $location ) {
 
     "use strict";
 
@@ -19,7 +19,7 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
     var orderInCookie = $cookies.getObject("order");
     var shoppingcartInCookie = $cookies.getObject("shoppingcart");
 
-    if( (orderInCookie != undefined) && (shoppingcartInCookie != undefined) ) {
+    if( ((orderInCookie != undefined) && (shoppingcartInCookie != undefined)) && !orderInCookie.sended) {
             orderInCookie.shoppingcart = shoppingcartInCookie;
             $scope.order = orderInCookie;
 
@@ -31,6 +31,8 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
         $scope.order = {};
         if ( shoppingcartInCookie != undefined )
             $scope.order.shoppingcart = shoppingcartInCookie;
+        else
+            window.location = "/account/log_in";
 
         updateOrder( $scope.order );
     }
@@ -95,6 +97,8 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
                     .success(function(data, status, headers, config) {
                         newOrder.sended = true;
                         $scope.sendingOrder = false;
+
+                        $cookies.remove('shoppingcart');
                         updateOrder( newOrder );
                     }).
                     error(function(data, status, headers, config) {

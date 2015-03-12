@@ -13,13 +13,12 @@ farmapp.controller('MessageCtrl', ['$scope', '$window', '$http', '$location', '$
 
     $scope.openCreateMessage = function() {
 
-        if($scope.open) {
+        if($scope.open)
             $scope.open = false;
-        }else {
+        else
             $scope.open = true;
-        }
 
-    }
+    };
 
 
     $scope.closeMessage = function ( messageId ) {
@@ -31,7 +30,7 @@ farmapp.controller('MessageCtrl', ['$scope', '$window', '$http', '$location', '$
 
     $scope.openMessageSingle = function( messageId ) {
         removeClassHiddenToMessageBox( messageId );
-    }
+    };
 
     $scope.openMessage = function( messageId, account_id_view ) {
 

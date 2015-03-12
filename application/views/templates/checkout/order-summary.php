@@ -75,21 +75,22 @@
 		</p>
 		<h3>¿Que desear hacer ahora?</h3>
 		<div class="list-group">
+			<!-- Add if isset discount -->
 			<a href="#" class="list-group-item active">
-				<h4 class="list-group-item-heading">List group item heading</h4>
-				<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+				<h4 class="list-group-item-heading">Hacer otra compra, aprovecha nuestras ofertas!</h4>
+				<p class="list-group-item-text">En esta sección encontraras todos nuestros prodructos con descuentos.</p>
+			</a>
+			<a href="/account/log_in" class="list-group-item">
+				<h4 class="list-group-item-heading">Ir a mi cuenta</h4>
+				<p class="list-group-item-text">Acá podras editar tus datos personales, ver tus mensájes.</p>
 			</a>
 			<a href="#" class="list-group-item">
-				<h4 class="list-group-item-heading">List group item heading</h4>
-				<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-			</a>
-			<a href="#" class="list-group-item">
-				<h4 class="list-group-item-heading">List group item heading</h4>
-				<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+				<h4 class="list-group-item-heading">Ir a ver mis compras</h4>
+				<p class="list-group-item-text">Acá podras ver el estado de todas tu ordenes.</p>
 			</a>
 		</div>		
 		</div>
-		<a ng-click="goToMyOrdersSection()" ng-show="order.sended" id="go-to-orders-button" class="btn btn-success btn-lg" role="button">Ir al modulo de ordenes</a>
+		<a href="/account/log_in" ng-show="order.sended" id="go-to-orders-button" class="btn btn-success btn-lg" role="button">Compra completada, ir a mi cuenta</a>
 		<a ng-click="stepCompleted( order, 'orderSummary' )" ng-hide="order.sended" ng-disabled="!(order.shippingData.status && order.paymentMethod.status) || sendingOrder" id="confirm-order-button" class="btn btn-warning btn-lg" role="button">Confirmar Orden</a>
 	</div>
 </div>

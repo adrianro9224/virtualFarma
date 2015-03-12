@@ -90,21 +90,5 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
 
         return shoppingCartSubtotals;
     }
-
-    $scope.createShoppingcartToken = function ( shoppingCart ) {
-        var obj = shoppingCart;
-
-        $http.post("http://virtualfarma.com.co/checkout/save_spc" , {"data" : obj} )
-            .success(function(data, status, headers, config) {
-
-                window.location ="/checkout";
-
-            }).
-            error(function(data, status, headers, config) {
-                console.info(data + ":(");
-            });
-
-    }
-
-
+    
 }]);

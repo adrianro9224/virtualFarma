@@ -106,18 +106,6 @@ class Checkout extends MY_Controller {
 		return $shipping_data;
 	}
 	
-	/**
-	 * Push the shopping cart from Javascript object to a php cookie 
-	 */
-	public function save_spc() {
-		//add sleep
-		$data = file_get_contents("php://input");
-		
-		$shopping_cart_token = json_decode($data);
-		
-		$this->session->set_userdata('shoppingcart', $shopping_cart_token->data);
-		
-	}
 	
 	public function create_order() {
 		//add sleep

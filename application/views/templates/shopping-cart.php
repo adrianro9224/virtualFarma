@@ -1,4 +1,4 @@
-<a id="button-payment" class="btn btn-default" ng-click="createShoppingcartToken(shoppingcart)" role="button">Pagar</a>
+<a id="button-payment" href="/checkout"class="btn btn-default" role="button">Pagar</a>
 <div class="panel panel-default" >
 	<div id="shopping-cart-panel-content">
 		<div id="total-products" class="shopping-cart-item">

@@ -190,6 +190,14 @@ button.close {
 * General styles start
 */
 
+/* Margin styles start */
+
+.margin-bottom-5{
+	margin-bottom: 5px;
+}
+
+/* Margin styles over */
+
 .stock-dropdown {
 	padding: 13px;
 }
@@ -277,7 +285,7 @@ input.form-control {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	margin: 0 !important;
+	margin: 0;
 }
 .panel p {
 	margin-bottom: 20px;
@@ -507,6 +515,10 @@ fieldset[disabled] .btn-primary.active {
 	color:#FFF;
 }
 
+#order-summary h3 {
+	margin-bottom:15px;
+}
+
 /* 
 * General styles over
 */
@@ -561,6 +573,9 @@ fieldset[disabled] .btn-primary.active {
 	border-bottom: 5px solid #5BC0DE;
 }
 
+#info-tooltip-arrow-left .arrow-up-info {
+	left:93%;
+}
 
 
 /**

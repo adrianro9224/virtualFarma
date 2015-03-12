@@ -18,6 +18,7 @@ class Recipient_model extends CI_Model {
 		$data = array(
 			'address_line' => $recipient_data->addressLine1,
 			'neighborhood' => $recipient_data->neighborhood,
+				'note' => $recipient_data->notes,
 			'identification_number' => $recipient_data->id,
 			'names' => $recipient_data->names,
 			'last_names' => $recipient_data->lastNames,

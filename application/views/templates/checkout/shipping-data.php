@@ -42,6 +42,9 @@
 						</div>
 					</div>
 					<!-- tooltip -->
+					<!-- helptext -->
+					<span id="helpBlock" class="help-block">Ej: Pedro pablo</span>
+					<!-- helptext -->
 				</div>
 				<div class="form-group" ng-class="{'has-error': !ShippingDataForm.shippingDataLastNames.$valid && ShippingDataForm.shippingDataLastNames.$dirty}">
 					<label for="shippingDataLastNames">Apellidos<span class="primary-emphasis">*</span></label>
@@ -61,31 +64,8 @@
 						</div>
 					</div>
 					<!-- tooltip -->
-				</div>
-				
-				<div class="form-group" ng-class="{'has-error': !ShippingDataForm.shippingDataEmail.$valid && ShippingDataForm.shippingDataEmail.$dirty}">
-					<label for="shippingDataEmail">Correo electrónico</label>
-					<div class="input-group">
-						<div class="input-group-addon">@</div>
-						<div ng-if="order.shippingData.useMyDataStatus">
-							<input type="text" name="shippingDataEmail" ng-model="order.shippingData.email" class="form-control" id="shippingDataEmail" placeholder="Ingrese su email" ng-init="order.shippingData.email='<?= ( isset($shipping_data) ) ? $shipping_data->email : null ?>'" ng-pattern="/[\w.]+?\@{1}[\w.]+(\.+[\w.]+)/" >
-						</div>
-						<div ng-if="!order.shippingData.useMyDataStatus">
-							<input type="text" name="shippingDataEmail" ng-model="order.shippingData.email" class="form-control" id="shippingDataEmail" placeholder="Ingrese su email" ng-init="order.shippingData.email=undefined" ng-pattern="/[\w.]+?\@{1}[\w.]+(\.+[\w.]+)/" >
-						</div>
-					</div>
-					<!-- tooltip -->
-					<div ng-if="ShippingDataForm.shippingDataEmail.$invalid && ShippingDataForm.shippingDataEmail.$dirty">
-						<div class="arrow-up-error"> 
-						</div>
-						<div class="farma-tooltip-error">
-							<span ng-if="ShippingDataForm.shippingDataEmail.$error.maxlength && ShippingDataForm.shippingDataEmail.$dirty">Es muy extenso!</span>
-							<span ng-if="ShippingDataForm.shippingDataEmail.$error.pattern && ShippingDataForm.shippingDataEmail.$dirty">Por favor ingresa un correo electrónico válido!</span>
-						</div>
-					</div>
-					<!-- tooltip -->
 					<!-- helptext -->
-					<span id="helpBlock" class="help-block">Ej: example@example.com</span>
+					<span id="helpBlock" class="help-block">Ej: Perez Rodrigues</span>
 					<!-- helptext -->
 				</div>
 				
@@ -101,6 +81,9 @@
 						</div>
 					</div>
 					<!-- tooltip -->
+					<!-- helptext -->
+					<span id="helpBlock" class="help-block">Ej: Example S.A.S</span>
+					<!-- helptext -->
 				</div>
 				<div class="form-group" ng-class="{'has-error': !ShippingDataForm.shippingDataId.$valid && ShippingDataForm.shippingDataId.$dirty}">
 					<label for="shippingDataId">Número de identificación<span class="primary-emphasis">*</span></label>
@@ -121,6 +104,9 @@
 						</div>
 					</div>
 					<!-- tooltip -->
+					<!-- helptext -->
+					<span id="helpBlock" class="help-block">Ej: Puedes usar valores numéricos y los caractéres - .</span>
+					<!-- helptext -->
 				</div>
 			</div>	
 			<div class="col-md-6">
@@ -226,11 +212,26 @@
 					<!-- helptext -->
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<a class="btn btn-primary center-horizontaly pull-right" ng-click="stepCompleted( order, 'shippingData' )" ng-disabled="ShippingDataForm.$invalid">Continuar</a>
-				</div>
+			<div class="col-md-12 margin-bottom-5" >
+				<label for="ShippingDataNotes" >Notas</label>
+				<textarea name="ShippingDataNotes" class="form-control" ng-model="order.shippingData.notes" rows="3"></textarea>
 			</div>
+			<div class="col-md-12" ng-mouseover="showSubmitButtonTooltip()" ng-mouseleave="hideSubmitButtonTooltip()" >
+				<a class="btn btn-primary center-horizontaly pull-right" ng-click="stepCompleted( order, 'shippingData' )" ng-disabled="ShippingDataForm.$invalid">Continuar</a>
+			</div>
+			<div class="col-md-12" id="info-tooltip-arrow-left">
+				<div class="form-group" ng-if="(!ShippingDataForm.$dirty && ShippingDataForm.$invalid) && mouseover" >
+					<!-- tooltip -->
+					<div class="arrow-up-info"> 
+		    		</div>
+		    		<div class="farma-tooltip-info">
+		    			<span ng-show="ShippingDataForm.$invalid">Debes completar sin errores todos los campos obligatorios del formulario.</span>
+		    			<span ng-show="!ShippingDataForm.$dirty">No haz realizado ningún cambio.</span>
+		    		</div>
+			    	<!-- tooltip -->
+	    		</div>
+    		</div>
+			
 		</form>
 	</div>
 </div>

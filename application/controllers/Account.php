@@ -136,7 +136,7 @@ class Account extends MY_Controller {
 				
 				$data['notifications'] = $notifications;
 				
-				if( isset($session_data['shoppingcart']) ) {
+				if( isset($_COOKIE['shoppingcart']) ) {
 						
 					$notifications['success'][] = "Los productos en tu carrito de compras están seguros :)!";
 					$this->session->set_flashdata("notifications" ,$notifications);
@@ -250,8 +250,8 @@ class Account extends MY_Controller {
 				
 				$address = $this->address->get_all_address( $account->id );
 				
-				if( isset($session_data['shoppingcart']) ) {
-					$data['shoppingcart'] = $session_data['shoppingcart'];
+				if( isset($_COOKIE['shoppingcart']) ) {
+					$data['shoppingcart'] = $_COOKIE['shoppingcart'];
 				}
 				
 				$data['address'] = $address;
@@ -312,7 +312,7 @@ class Account extends MY_Controller {
 								
 							$this->_do_login( $account, $data );
 
-							if( isset($session_data['shoppingcart']) ) {
+							if( isset($_COOKIE['shoppingcart']) ) {
 									
 								$notifications['success'][] = "Los productos en tu carrito de compras están seguros :)!";
 								$this->session->set_flashdata("notifications" ,$notifications);

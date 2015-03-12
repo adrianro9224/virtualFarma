@@ -62,21 +62,21 @@
 						</div>
 						<!-- tooltip -->
 					</div>
-					<div class="form-group" ng-class="{'has-error': !EditAccountForm.addressLine1.$valid && EditAccountForm.addressLine1.$dirty}">
+					<div class="form-group" ng-class="{'has-error': !EditAccountForm.userAddressLine1.$valid && EditAccountForm.userAddressLine1.$dirty}">
 						<label for="userAddressLine1">Dirección<span class="primary-emphasis">*</span></label>
 						<input type="text" name="userAddressLine1" ng-model="userAddressLine1" class="form-control" id="userAddressLine1" placeholder="Ingresa tu dirección" ng-init="userAddressLine1='<?= ( isset($address->account_sing_up) ) ? $address->account_sing_up->address_line : null?>'" ng-maxLength="50" required>
 						<!-- tooltip -->
-						<div ng-if="EditAccountForm.addressLine1.$invalid && EditAccountForm.addressLine1.$dirty">
+						<div ng-if="EditAccountForm.userAddressLine1.$invalid && EditAccountForm.userAddressLine1.$dirty">
 							<div class="arrow-up-error"> 
 							</div>
 							<div class="farma-tooltip-error">
-								<span ng-if="EditAccountForm.addressLine1.$error.required && EditAccountForm.addressLine1.$dirty">Tu dirección es obligatoria!</span>
-								<span ng-if="EditAccountForm.addressLine1.$error.maxlength && EditAccountForm.addressLine1.$dirty">Tu dirección es muy extensa!</span>
+								<span ng-if="EditAccountForm.userAddressLine1.$error.required && EditAccountForm.userAddressLine1.$dirty">Tu dirección es obligatoria!</span>
+								<span ng-if="EditAccountForm.userAddressLine1.$error.maxlength && EditAccountForm.userAddressLine1.$dirty">Tu dirección es muy extensa!</span>
 							</div>
 						</div>
 						<!-- tooltip -->
 						<!-- helptext -->
-						<span id="helpBlock" class="help-block">Ej: Carrera 73 # 96 - 75</span>
+						<span id="helpBlock" class="help-block">Ej: Carrera 73 # 96 - 75 apto 201</span>
 						<!-- helptext -->
 					</div>
 					<label class="radio-inline">
@@ -87,16 +87,16 @@
 					</label>
 				</div>
 				<div class="col-md-6">
-					<div class="form-group" ng-class="{'has-error': !EditAccountForm.neighborhood.$valid && EditAccountForm.neighborhood.$dirty}">
+					<div class="form-group" ng-class="{'has-error': !EditAccountForm.userNeighborhood.$valid && EditAccountForm.userNeighborhood.$dirty}">
 						<label for="userNeighborhood">Barrio<span class="primary-emphasis">*</span></label>
 						<input type="text" name="userNeighborhood" ng-model="userNeighborhood" class="form-control" id="userNeighborhood" placeholder="Ingresa el nombre de tu Barrio" ng-init="userNeighborhood='<?= ( isset($address->account_sing_up) ) ? $address->account_sing_up->neighborhood : null?>'" ng-maxLength="50" required>
 						<!-- tooltip -->
-						<div ng-if="EditAccountForm.neighborhood.$invalid && EditAccountForm.neighborhood.$dirty">
+						<div ng-if="EditAccountForm.userNeighborhood.$invalid && EditAccountForm.userNeighborhood.$dirty">
 							<div class="arrow-up-error"> 
 							</div>
 							<div class="farma-tooltip-error">
-								<span ng-if="EditAccountForm.neighborhood.$error.required && EditAccountForm.neighborhood.$dirty">El nombre de tu barrio es obligatorio!</span>
-								<span ng-if="EditAccountForm.neighborhood.$error.maxlength && EditAccountForm.neighborhood.$dirty">El nombre de tu barrio es muy extenso!</span>
+								<span ng-if="EditAccountForm.userNeighborhood.$error.required && EditAccountForm.userNeighborhood.$dirty">El nombre de tu barrio es obligatorio!</span>
+								<span ng-if="EditAccountForm.userNeighborhood.$error.maxlength && EditAccountForm.userNeighborhood.$dirty">El nombre de tu barrio es muy extenso!</span>
 							</div>
 						</div>
 						<!-- tooltip -->
@@ -178,17 +178,18 @@
 						<!-- tooltip -->
 					</div>
 				</div>
-				<div ng-mouseover="showSubmitButtonTooltip()" ng-mouseleave="hideSubmitButtonTooltip()"> 
+				 
+			 	<div class="col-md-12" ng-mouseover="showSubmitButtonTooltip()" ng-mouseleave="hideSubmitButtonTooltip()">
 					<button type="submit" class="btn btn-primary center-horizontaly" ng-disabled="EditAccountForm.$invalid || !EditAccountForm.$dirty">Guardar</button>
 				</div>
-				<div class="form-group" ng-if="EditAccountForm.$invalid">
+				
+				<div class="form-group" ng-if="(!EditAccountForm.$dirty || EditAccountForm.$invalid) && mouseover">
 					<!-- tooltip -->
-					<div ng-if="mouseover">
-	    				<div class="arrow-up-info"> 
-	    				</div>
-		    			<div class="farma-tooltip-info">
-		    				<span>Debes completar todos los campos obligatorios del formulario.</span>
-		    			</div>
+    				<div class="arrow-up-info"> 
+    				</div>
+	    			<div class="farma-tooltip-info">
+	    				<span ng-show="EditAccountForm.$invalid">Debes completar sin errores todos los campos obligatorios del formulario.</span>
+	    				<span ng-show="!EditAccountForm.$dirty">No haz realizado ningún cambio.</span>
 	    			</div>
 	    			<!-- tooltip -->
 	    		</div>
