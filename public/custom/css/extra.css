@@ -168,11 +168,23 @@ div , body, html{
 }
 
 button.close {
-	padding: 15px !important;
+	padding: 15px;
 }
 /**
 * error banner styles over
 */
+
+/**
+* Mini-shopping-cart-details styles start
+**/
+#shopping-cart-panel #mini-shopping-cart-details button.close {
+	padding: 0;
+}
+/**
+* Mini-shopping-cart-details styles over
+**/
+
+
 
 /**
 * pagination list start
@@ -465,6 +477,19 @@ section #my-account .panel.panel-default {
 #button-payment {
 	width: 100%;
 	margin-bottom: 5px;
+}
+
+#mini-shopping-cart-details.table-emphasis {
+	border-top: 2px solid #16A085;
+	border-bottom: 2px solid #16A085;
+}
+
+.shopping-cart-item.end-item {
+	border: none;
+}
+
+#order-summary-container a#increase, #order-summary-container a#decrease {
+	text-decoration: none;
 }
 
 .btn-primary.disabled, 

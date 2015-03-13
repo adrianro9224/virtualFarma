@@ -14,7 +14,9 @@
 						  <th>Presentación</th>
 						  <th>IVA</th>
 						  <th>Precio Unit</th>
+						  <th></th>
 						  <th>Cantidad</th>
+						  <th></th>
 						  <th>Total</th>
 						</tr>
 					</thead>
@@ -25,7 +27,9 @@
 						  <td ng-bind="product.presentation"></td>
 						  <td ng-bind="product.tax | currency : '$' : 0"></td>
 						  <td ng-bind="product.price | currency : '$' : 0"></td>
-						  <td ng-bind="product.cant"></td>
+						  <td><a id="decrease" class="glyphicon glyphicon-minus"></a></td>
+						  <td ng-init="order.shoppingcart.products[key].cant = product.cant" ><input type="text" name="productQty" ng-model="order.shoppingcart.products[key].cant" ng-change="recalculateTotals()"></td>
+						  <td><a id="increase" class="glyphicon glyphicon-plus"></a></td>
 						  <td ng-bind="(product.price * product.cant) | currency : '$' : 0"></td>
 						</tr>
 					</tbody>

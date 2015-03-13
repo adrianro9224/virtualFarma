@@ -2,7 +2,7 @@
  * Created by Adrian on 17/02/2015.
  */
 
-farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cookies', '$http', '$location', function( $scope ,$rootScope ,$log ,$cookies, $http, $location ) {
+farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cookies', '$http', 'ConstantsService', function( $scope ,$rootScope ,$log ,$cookies, $http, ConstantsService) {
 
     "use strict";
 
@@ -118,5 +118,9 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
 
         updateOrder( $scope.order );
 
+    };
+
+    $scope.recalculateTotals = function () {
+      $rootScope.$broadcast( ConstantsService.SHOPPINGCART_CHANGED, $scope.order.shoppingcart );
     }
 }]);

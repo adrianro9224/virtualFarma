@@ -6,8 +6,6 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
 
     'use strict';
 
-    $scope.shoppingCartWithProducts = false;
-
     var todayFull = new Date();
     var todayDay = todayFull.getDate();
 
@@ -16,46 +14,47 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
     var cookiesOptions = { path: "/" , expires: todayFull };
 
     $scope.subtotal = 0;
-    $scope.shippingCharge = 700;
     $scope.tax = 0;
     $scope.total = 0;
     $scope.limitOrderValueInvalid = false;
-    $scope.limitOrderValue = ConstantsService.getLimitOrderValue();
+    var limitPayuOrderValue = ConstantsService.LIMIT_PAYU_ORDER_VALUE;
 
-    $rootScope.$on( ConstantsService.SHOPPINGCART_INITIALIZED(), function(event, data){
+    $rootScope.$on( ConstantsService.SHOPPINGCART_CHANGED, function(event, data){
         $scope.shoppingcart = data;
 
-        var shoppingCartSubtotals = 0;
-
-        if ( $scope.shoppingcart.status == ConstantsService.SHOPPINGCART_WITH_PRODUCTS() ) {
-
-            $scope.shoppingCartWithProducts = true;
+        var shoppingCartSubtotals;
 
             shoppingCartSubtotals = calculateShoppingcartSubtotals( $scope.shoppingcart.products );
 
             $scope.shoppingcart.subtotal = shoppingCartSubtotals.productsSubtotal;
             $scope.shoppingcart.tax = shoppingCartSubtotals.productsTaxTotal;
 
+            var shippingCharge = getShippingCharge( $scope.shoppingcart.subtotal );
+
+            $scope.shoppingcart.shippingCharge = shippingCharge;
+
+            if( angular.isString( shippingCharge ) ) {
+                $scope.shoppingcart.total = $scope.shoppingcart.subtotal + $scope.shoppingcart.tax;
+                $scope.shoppingcart.shippingFree = true;
+            }else {
+                $scope.shoppingcart.total = $scope.shoppingcart.subtotal + $scope.shoppingcart.tax + $scope.shoppingcart.shippingCharge;
+                $scope.shoppingcart.shippingFree = false;
+            }
+
+
+            $scope.shippingCharge = $scope.shoppingcart.shippingCharge;
             $scope.subtotal = $scope.shoppingcart.subtotal;
 
-            $scope.shoppingcart.total = $scope.shoppingcart.subtotal + $scope.shoppingcart.tax + $scope.shoppingcart.shippingCharge;
 
-            if( $scope.shoppingcart.total > 50000 )
-                $scope.shoppingcart.shippingCharge = 0;
-
-
-            if( $scope.limitOrderValue != undefined ) {
-                if( $scope.shoppingcart.total > $scope.limitOrderValue ){
-                    $scope.limitOrderValueInvalid = true;
+            if( limitPayuOrderValue != undefined ) {
+                if( $scope.shoppingcart.total > limitPayuOrderValue )
                     $scope.shoppingcart.limitOrderValueInvalid = true;
-                }
             }
 
             $scope.total = $scope.shoppingcart.total;
 
             $cookies.putObject('shoppingcart', $scope.shoppingcart, cookiesOptions);
 
-        }
 
     });
 
@@ -63,16 +62,11 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
 
     if( shoppingCartInCookie != undefined ) {
 
-        $scope.shoppingCartWithProducts = true;
-
         $scope.shoppingcart = shoppingCartInCookie;
         $scope.subtotal = $scope.shoppingcart.subtotal;
+        $scope.shippingCharge = $scope.shoppingcart.shippingCharge;
         $scope.tax = $scope.shoppingcart.tax;
         $scope.total = $scope.shoppingcart.total;
-
-        if($scope.total > $scope.limitOrderValue )
-            $scope.limitOrderValueInvalid = true;
-
 
     }
 
@@ -90,5 +84,37 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
 
         return shoppingCartSubtotals;
     }
-    
+
+
+    $scope.removeProduct = function ( key ) {
+
+        if ( $scope.shoppingcart.products[key].cant > 1 ) {
+            $scope.shoppingcart.products[key].cant -= 1;
+            $scope.shoppingcart.numOfproductsTotal--;
+        }else {
+            $scope.shoppingcart.products.splice( key, 1 );
+            $scope.shoppingcart.numOfproductsTotal--;
+            $scope.shoppingcart.numOfproductsSubtotal--;
+        }
+
+        if ( $scope.shoppingcart.numOfproductsTotal == 0 ){
+            $scope.shoppingcart.haveProducts = false;
+
+        }
+
+        $rootScope.$broadcast( ConstantsService.SHOPPINGCART_CHANGED, $scope.shoppingcart );
+
+    };
+
+    function getShippingCharge ( subtotal ) {
+
+        var shippingCharge;
+
+        if ( subtotal > ConstantsService.LIMIT_FOR_FREE_SHIPPING )
+            shippingCharge = "Es gratis";
+        else
+            shippingCharge = ConstantsService.SHIPPING_CHARGE;
+
+        return shippingCharge;
+    }
 }]);

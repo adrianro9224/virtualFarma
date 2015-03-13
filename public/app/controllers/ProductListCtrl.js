@@ -16,7 +16,7 @@ farmapp.controller( 'ProductListCtrl', ['$scope' ,'$log' ,'$rootScope' ,'$cookie
 
         var quantity = parseInt(cant ,10);
 
-        if( ($scope.shoppingcart == undefined) ) {
+        if( ($scope.shoppingcart == undefined || !$scope.shoppingcart.haveProducts) ) {
 
             $scope.shoppingcart = {};
             $scope.shoppingcart.products = [{}];
@@ -34,7 +34,7 @@ farmapp.controller( 'ProductListCtrl', ['$scope' ,'$log' ,'$rootScope' ,'$cookie
             $scope.shoppingcart.products[$scope.shoppingcart.numOfproductsSubtotal] = firtsProduct;
             $scope.shoppingcart.numOfproductsSubtotal++;
             $scope.shoppingcart.numOfproductsTotal++;
-            $scope.shoppingcart.status = ConstantsService.SHOPPINGCART_WITH_PRODUCTS();
+            $scope.shoppingcart.haveProducts = true;
 
         } else {
             if ( ($scope.shoppingcart != undefined) && ($scope.shoppingcart.products != undefined) ) {
@@ -64,7 +64,7 @@ farmapp.controller( 'ProductListCtrl', ['$scope' ,'$log' ,'$rootScope' ,'$cookie
             }
         }
 
-        $rootScope.$broadcast( ConstantsService.SHOPPINGCART_INITIALIZED() , $scope.shoppingcart );
+        $rootScope.$broadcast( ConstantsService.SHOPPINGCART_CHANGED , $scope.shoppingcart );
 
     };
 
