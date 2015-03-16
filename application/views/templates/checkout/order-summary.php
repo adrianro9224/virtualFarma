@@ -14,10 +14,9 @@
 						  <th>Presentación</th>
 						  <th>IVA</th>
 						  <th>Precio Unit</th>
-						  <th></th>
 						  <th>Cantidad</th>
-						  <th></th>
 						  <th>Total</th>
+						  <th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -27,10 +26,15 @@
 						  <td ng-bind="product.presentation"></td>
 						  <td ng-bind="product.tax | currency : '$' : 0"></td>
 						  <td ng-bind="product.price | currency : '$' : 0"></td>
-						  <td><a id="decrease" class="glyphicon glyphicon-minus"></a></td>
-						  <td ng-init="order.shoppingcart.products[key].cant = product.cant" ><input type="text" name="productQty" ng-model="order.shoppingcart.products[key].cant" ng-change="recalculateTotals()"></td>
-						  <td><a id="increase" class="glyphicon glyphicon-plus"></a></td>
+						  <td ng-init="order.shoppingcart.products[key].cant = product.cant" class="order-summary-input-container">
+						  	<a id="decrease" ng-click="recalculateTotals( key , 'decrease' )"><i class="fa fa-minus fa-lg"></i></a>
+						  	<input type="text" name="productQty" ng-model="order.shoppingcart.products[key].cant" ng-change="recalculateTotals()">
+						  	<a id="increase" ng-click="recalculateTotals( key , 'increase' )"><i class="fa fa-plus fa-lg"></i></a>
+						  </td>
 						  <td ng-bind="(product.price * product.cant) | currency : '$' : 0"></td>
+						  <td>
+						  	<a ng-click="recalculateTotals( key , 'delete' )"><i class="fa fa-trash-o fa-lg"></i></a>
+						  </td>
 						</tr>
 					</tbody>
 				</table>
@@ -50,7 +54,8 @@
 							<span class="title">Costo de envío</span>
 						</div>
 						<div class="order-summary-item-content">
-							<span class="pull-right value" ng-bind="order.shoppingcart.shippingCharge | currency : '$' : 0"></span>
+							<span class="pull-right value" ng-bind="order.shoppingcart.shippingCharge" ng-show="order.shoppingcart.shippingFree"></span>
+							<span class="pull-right value" ng-bind="order.shoppingcart.shippingCharge | currency : '$' : 0" ng-show="!order.shoppingcart.shippingFree"></span>
 						</div>
 					</div>
 					<div id="total-products" class="order-summary-item">

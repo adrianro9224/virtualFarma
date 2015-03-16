@@ -492,6 +492,10 @@ section #my-account .panel.panel-default {
 	text-decoration: none;
 }
 
+#order-summary .order-summary-input-container>input {
+	width: 62px;
+}
+
 .btn-primary.disabled, 
 .btn-primary[disabled], 
 fieldset[disabled] 

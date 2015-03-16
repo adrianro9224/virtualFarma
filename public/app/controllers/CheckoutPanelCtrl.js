@@ -120,7 +120,60 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
 
     };
 
+    /**
+     *  Update the every shoppingcart values
+     * @param param0 the key of a product to change
+     * @param param1 the type of change ('increase', 'decrease', 'delete') or default
+     */
     $scope.recalculateTotals = function () {
-      $rootScope.$broadcast( ConstantsService.SHOPPINGCART_CHANGED, $scope.order.shoppingcart );
+
+        if( (arguments != undefined) ) {
+            switch ( arguments[1] ) {
+
+                case 'decrease':
+                    decreaseShoppingCart( arguments[0] );
+                    break;
+                case 'increase':
+                    increaseShoppingCart( arguments[0] );
+                    break;
+                case 'delete':
+                    deleteShoppingCartProduct( arguments[0] );
+                    break;
+
+            }
+
+            if ($scope.order.shoppingcart.numOfproductsTotal == 0) {
+                $scope.order.shoppingcart.haveProducts = false;
+
+            }
+        }
+
+        $log.log($scope.order.shoppingcart.products[key].cant);
+
+        //$rootScope.$broadcast( ConstantsService.SHOPPINGCART_CHANGED, $scope.order.shoppingcart );
+    };
+
+
+    function decreaseShoppingCart( key ) {
+
+        if ( $scope.order.shoppingcart.products[key].cant > 1 ) {
+            $scope.order.shoppingcart.products[key].cant--;
+            $scope.order.shoppingcart.numOfproductsTotal--;
+        }
+
+    }
+
+    function increaseShoppingCart( key ) {
+
+        $scope.order.shoppingcart.products[key].cant++;
+        $scope.order.shoppingcart.numOfproductsTotal++;
+
+    }
+
+    function deleteShoppingCartProduct( key ){
+
+        $scope.order.shoppingcart.products.splice( key, 1 );
+        $scope.order.shoppingcart.numOfproductsTotal--;
+        $scope.order.shoppingcart.numOfproductsSubtotal--;
     }
 }]);
