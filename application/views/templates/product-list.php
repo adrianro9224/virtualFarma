@@ -17,19 +17,17 @@
 	                <div class="clearfix">
 	                	<div class="product-price pull-left">
 	                		<?php if( $product->has_discount ): ?>
-	                	    	<span class="old-price"><?= $product->old_price ?></span>
-	                	    	<span class="new-price"><?= $product->new_price ?></span>
+	                	    	<span class="old-price" ng-bind="<?= $product->old_price ?> | currency : '$' : 0"></span>
+	                	    	<span class="new-price" ng-bind="<?= $product->new_price ?> | currency : '$' : 0"></span>
 	                	    <?php else: ?>
-	                	    	<span class="new-price"><?= $product->price ?></span>
+	                	    	<span class="new-price" ng-bind="<?= $product->price ?> | currency : '$' : 0"></span>
 	                	    <?php endif; ?>
 						</div>
 						<div class="stock-dropdown pull-left">
 							<?php if( isset($product->stock) ): ?>
-								<select name="<?="product-" . $product->id . "-cant"?>" ng-model="<?="product" . $product->id . "cant"?>" ng-init="<?="product" . $product->id . "cant=1"?>">
-		                	    	<?php for ( $i = 1 ; $i <= $product->stock ; $i++ ):?>
-		                	    		<option value="<?= $i?>"><?= $i?></option>
-		                	    	<?php endfor;?>
-			                	</select>
+								<a id="decrease" ng-click="<?='product' . $product->id . 'cant = product' . $product->id . 'cant - 1'?>"><i class="fa fa-minus fa-lg"></i></a>
+								<input type="number" name="<?='product-' . $product->id . '-cant'?>" ng-model="<?='product' . $product->id . 'cant'?>" ng-init="<?='product' . $product->id . 'cant=1'?>">
+								<a id="increase" ng-click="<?='product' . $product->id . 'cant = product' . $product->id . 'cant + 1'?>"><i class="fa fa-plus fa-lg"></i></a>
 			                <?php else:?>
 								<span class="label label-info">Out of stock</span>			                
 			                <?php endif;?>	

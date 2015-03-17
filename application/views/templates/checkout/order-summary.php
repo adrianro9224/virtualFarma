@@ -28,7 +28,7 @@
 						  <td ng-bind="product.price | currency : '$' : 0"></td>
 						  <td ng-init="order.shoppingcart.products[key].cant = product.cant" class="order-summary-input-container">
 						  	<a id="decrease" ng-click="recalculateTotals( key , 'decrease' )"><i class="fa fa-minus fa-lg"></i></a>
-						  	<input type="text" name="productQty" ng-model="order.shoppingcart.products[key].cant" ng-change="recalculateTotals()">
+						  	<input type="number" name="productQty" ng-model="order.shoppingcart.products[key].cant" ng-change="recalculateTotals( key )">
 						  	<a id="increase" ng-click="recalculateTotals( key , 'increase' )"><i class="fa fa-plus fa-lg"></i></a>
 						  </td>
 						  <td ng-bind="(product.price * product.cant) | currency : '$' : 0"></td>

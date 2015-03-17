@@ -211,7 +211,7 @@ button.close {
 /* Margin styles over */
 
 .stock-dropdown {
-	padding: 13px;
+	padding: 10px;
 }
 
 button#close-button-patholigy-description span.glyphicon.glyphicon-remove {
@@ -492,7 +492,7 @@ section #my-account .panel.panel-default {
 	text-decoration: none;
 }
 
-#order-summary .order-summary-input-container>input {
+#order-summary .order-summary-input-container>input, #product_listing .stock-dropdown input{
 	width: 62px;
 }
 

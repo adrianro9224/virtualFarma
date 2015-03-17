@@ -43,7 +43,7 @@
 					</div>
 					<!-- tooltip -->
 					<!-- helptext -->
-					<span id="helpBlock" class="help-block">Ej: Pedro pablo</span>
+					<span id="helpBlock" class="help-block">Ej: Pedro Pablo</span>
 					<!-- helptext -->
 				</div>
 				<div class="form-group" ng-class="{'has-error': !ShippingDataForm.shippingDataLastNames.$valid && ShippingDataForm.shippingDataLastNames.$dirty}">
@@ -65,7 +65,7 @@
 					</div>
 					<!-- tooltip -->
 					<!-- helptext -->
-					<span id="helpBlock" class="help-block">Ej: Perez Rodrigues</span>
+					<span id="helpBlock" class="help-block">Ej: Perez Rodriguez</span>
 					<!-- helptext -->
 				</div>
 				

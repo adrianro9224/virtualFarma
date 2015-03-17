@@ -2,7 +2,7 @@
  * Created by Adrian on 17/02/2015.
  */
 
-farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cookies', '$http', 'ConstantsService', function( $scope ,$rootScope ,$log ,$cookies, $http, ConstantsService) {
+farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cookies', '$http', 'ConstantsService', '$location', function( $scope ,$rootScope ,$log ,$cookies, $http, ConstantsService, $location) {
 
     "use strict";
 
@@ -102,6 +102,7 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
                         updateOrder( newOrder );
                     }).
                     error(function(data, status, headers, config) {
+                        $location.reload();
                         console.info(data + ":(");
                     });
 
@@ -126,6 +127,7 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
      * @param param1 the type of change ('increase', 'decrease', 'delete') or default
      */
     $scope.recalculateTotals = function () {
+        //var regex = /\./;
 
         if( (arguments != undefined) ) {
             switch ( arguments[1] ) {
@@ -139,18 +141,16 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
                 case 'delete':
                     deleteShoppingCartProduct( arguments[0] );
                     break;
-
+                default:
+                    if( !(angular.isNumber( $scope.order.shoppingcart.products[ arguments[0] ].cant )) || ($scope.order.shoppingcart.products[ arguments[0] ].cant < 1) )
+                        $scope.order.shoppingcart.products[ arguments[0] ].cant = 1;
             }
 
-            if ($scope.order.shoppingcart.numOfproductsTotal == 0) {
+            if ($scope.order.shoppingcart.numOfproductsTotal == 0)
                 $scope.order.shoppingcart.haveProducts = false;
-
-            }
         }
 
-        $log.log($scope.order.shoppingcart.products[key].cant);
-
-        //$rootScope.$broadcast( ConstantsService.SHOPPINGCART_CHANGED, $scope.order.shoppingcart );
+        $rootScope.$broadcast( ConstantsService.SHOPPINGCART_CHANGED, $scope.order.shoppingcart );
     };
 
 
