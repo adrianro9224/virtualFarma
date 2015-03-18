@@ -1,8 +1,8 @@
 /**
- * Created by Adrian on 16/12/2014.
+ * Created by Adrian on 18/03/2015.
  */
 
-farmapp.controller('LogInForm', ['$scope', function($scope) {
+farmapp.controller('AdminLogInForm', ['$scope' , function( $scope ){
 
     $scope.mouseover = false;
 
@@ -12,6 +12,6 @@ farmapp.controller('LogInForm', ['$scope', function($scope) {
 
     $scope.hideSubmitButtonTooltip = function() {
         $scope.mouseover = false;
-    }
+    }   
 
 }]);

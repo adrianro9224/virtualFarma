@@ -1,5 +1,5 @@
 <?php
-
+define("__ROOT__ADMIN__TEMPLATES__", dirname(dirname(__FILE__)) . "\\views\\admin\\templates\\");
 define("__ROOT__TEMPLATES__", dirname(dirname(__FILE__)) . "\\views\\templates\\");
 define("__ROOT__FILES__", dirname(dirname(dirname(__FILE__))) . "\\assets\\csv\\");
 
