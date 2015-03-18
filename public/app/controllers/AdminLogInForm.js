@@ -12,6 +12,6 @@ farmapp.controller('AdminLogInForm', ['$scope' , function( $scope ){
 
     $scope.hideSubmitButtonTooltip = function() {
         $scope.mouseover = false;
-    }   
+    }
 
 }]);
