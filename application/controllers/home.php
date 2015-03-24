@@ -9,7 +9,8 @@ class Home extends MY_Controller {
 			// Whoops, we don't have a page for that!
 			show_404();
 		}
-//   		phpinfo();
+//    		phpinfo();
+//    		die();
   		
 		$data['title'] = ucfirst($page); // Capitalize the first letter
 		$data['notifications'] = $this->session->flashdata('notifications');
