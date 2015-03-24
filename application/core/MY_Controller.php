@@ -1,6 +1,10 @@
 <?php
 define("__ROOT__ADMIN__TEMPLATES__", dirname(dirname(__FILE__)) . "/views/admin/templates/");
 define("__ROOT__TEMPLATES__", dirname(dirname(__FILE__)) . "/views/templates/");
+define("__ROOT__ADMIN-ADMIN__", dirname(dirname(__FILE__)) . "/views/admin/admin-admin/");
+define("__ROOT__ADMIN-ADMIN__TEMPLATES", dirname(dirname(__FILE__)) . "/views/admin/admin-admin/templates/");
+define("__ROOT__SELLER__", dirname(dirname(__FILE__)) . "/views/admin/seller/");
+define("__ROOT__SELLER__TEMPLATES", dirname(dirname(__FILE__)) . "/views/admin/seller/templates/");
 define("__ROOT__FILES__", dirname(dirname(dirname(__FILE__))) . "/assets/csv/");
 
 class MY_Controller extends CI_Controller {

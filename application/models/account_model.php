@@ -114,4 +114,17 @@ class Account_model extends CI_Model {
 		return NULL;
 		
 	}
+	
+	public function get_admin_account_by_identification_number( $admin_identification_number ) {
+		
+		$this->db->where('identification_number', $admin_identification_number);
+		
+		$query = $this->db->get('account');
+		
+		if ( $query->num_rows() == 1 ) 
+			return $query->result();
+		else 
+			return NULL;
+		
+	}
 }

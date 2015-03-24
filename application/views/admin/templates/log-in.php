@@ -18,17 +18,17 @@
 					</div>
 					<!-- tooltip -->
 				</div>
-				<div class="form-group" ng-class="{ 'has-error' : !AdminLogInForm.AdminUserPassword.$valid && AdminLogInForm.AdminUserPassword.$dirty }">
-					<label for="AdminUserPassword">Contraseña<span class="primary-emphasis">*</span></label>
-					<input type="password" name="AdminUserPassword" ng-model="AdminUserPassword" class="form-control" id="InputAdminPassword" placeholder="Ingrese su contraseña" ng-maxLength="50" ng-minLength="6" required>
+				<div class="form-group" ng-class="{ 'has-error' : !AdminLogInForm.adminUserPassword.$valid && AdminLogInForm.adminUserPassword.$dirty }">
+					<label for="adminUserPassword">Contraseña<span class="primary-emphasis">*</span></label>
+					<input type="password" name="adminUserPassword" ng-model="adminUserPassword" class="form-control" id="InputAdminPassword" placeholder="Ingrese su contraseña" ng-maxLength="50" ng-minLength="6" required>
 					<!-- tooltip -->
-					<div ng-if="AdminLogInForm.AdminUserPassword.$invalid && AdminLogInForm.AdminUserPassword.$dirty">
+					<div ng-if="AdminLogInForm.adminUserPassword.$invalid && AdminLogInForm.adminUserPassword.$dirty">
 						<div class="arrow-up-error"> 
 						</div>
 						<div class="farma-tooltip-error">
-							<span ng-if="AdminLogInForm.AdminUserPassword.$error.required && AdminLogInForm.AdminUserPassword.$dirty">Tu contraseña es obligatoria!</span>
-							<span ng-if="AdminLogInForm.AdminUserPassword.$error.maxlength && AdminLogInForm.AdminUserPassword.$dirty">Es demaciado extensa!</span>
-							<span ng-if="AdminLogInForm.AdminUserPassword.$error.minlength && AdminLogInForm.AdminUserPassword.$dirty">Tu contraseña es muy corta, debe contener mínimo 6 dígitos!</span>
+							<span ng-if="AdminLogInForm.adminUserPassword.$error.required && AdminLogInForm.adminUserPassword.$dirty">Tu contraseña es obligatoria!</span>
+							<span ng-if="AdminLogInForm.adminUserPassword.$error.maxlength && AdminLogInForm.adminUserPassword.$dirty">Es demaciado extensa!</span>
+							<span ng-if="AdminLogInForm.adminUserPassword.$error.minlength && AdminLogInForm.adminUserPassword.$dirty">Tu contraseña es muy corta, debe contener mínimo 6 dígitos!</span>
 						</div>
 					</div>
 					<!-- tooltip -->
