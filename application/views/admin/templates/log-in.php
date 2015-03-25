@@ -4,7 +4,7 @@
 			<h3>Administrador</h3>
 		</div>
 		<div class="panel-body">
-			<form id="admin-log-in-form" name="AdminLogInForm" action="<?= base_url() . 'log_in' ?>" method="post" novalidate >
+			<form id="admin-log-in-form" name="AdminLogInForm" action="<?= base_url() . 'admin/admin_login' ?>" method="post" novalidate >
 				<div class="form-group" ng-class="{ 'has-error' : !AdminLogInForm.adminUsername.$valid && AdminLogInForm.adminUsername.$dirty }">
 					<label for="adminUsername">Usuario<span class="primary-emphasis">*</span></label>
 					<input type="text" name="adminUsername" ng-model="adminUsername" class="form-control" id="InputAdminName" placeholder="Ingresa tu usuario" ng-maxLength="90" required>

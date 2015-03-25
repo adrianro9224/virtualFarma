@@ -104,7 +104,7 @@ class Product extends MY_Controller {
 		if ( $this->input->is_cli_request() ) {
 		}
 		//$handle = fopen("ftp://user:password@example.com/somefile.txt", "w");
-		$handle = fopen(__ROOT__FILES__ . "\\preciosmnd.csv", "r+");
+		$handle = fopen(__ROOT__FILES__ . "/preciosmnd.csv", "r+");
 		$categories = $this->get_categories();
 		
 		if( $handle !== FALSE ) {

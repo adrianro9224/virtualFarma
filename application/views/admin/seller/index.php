@@ -27,10 +27,14 @@
 		<section id="content">
 			<div  class="container">
 				<div class="row">
-					<section id="admin_log_in">
+					<section id="seller-left-sidebar">
 						<div class="col-md-3">
-							<h3>Hello seller</h3>
-							<?php include_once( __ROOT__SELLER__TEMPLATES__ . '/seller-left-sidebar.php');?>
+							<?php include_once( __ROOT__SELLER__TEMPLATES . 'seller-left-sidebar.php');?>
+						</div>
+					</section>
+					<section id="sales-module">
+						<div class="col-md-9">
+							<?php include_once( __ROOT__SELLER__TEMPLATES . 'sales-creator.php');?>
 						</div>
 					</section>
 				</div>

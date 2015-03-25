@@ -12,7 +12,9 @@
                 <div class="header-item"><i class="fa fa-phone"></i> +420 123 456 789</div>
         </div>
 		<div class="btn-group pull-right">
-			<a class="btn btn-default" href="/account" role="button">Iniciar sesión <span class="glyphicon glyphicon-user"></span></a>
+			<?php if( $type_of_admin == $account_types[2] || $type_of_admin == $account_types[3] ):?>
+				<a class="btn btn-default" href="/account" role="button">Iniciar nueva orden <span class="glyphicon glyphicon-user"></span></a>
+			<?php endif;?>	
 		</div>
 	</div>
 	
