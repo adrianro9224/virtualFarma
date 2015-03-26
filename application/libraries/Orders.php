@@ -17,6 +17,8 @@ class Orders {
 			if ( isset($recipient_id) ) {
 				log_message('debug', 'recipient created!'); 
 				$order_id = $CI->order_model->insert_order( $order, $recipient_id, $account_id );
+				if ( isset($order_id) )
+					log_message('debug', 'order created!');
 			}
 			
 		$CI->db->trans_complete();

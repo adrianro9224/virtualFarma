@@ -84,6 +84,20 @@ class Admin extends MY_Controller {
 		
 	}
 	
+	public function all_products() {
+		$test = '[
+			  {
+			    "FIELD1":"224072",
+			    "FIELD2":"7707019314205     ",
+			    "FIELD3":"CLOXIDIN 250 MG SUSPENSION                        ",
+			    "FIELD4":"FCO X  80 ML                  ",
+			    "FIELD5":"1",
+			    "FIELD6":"13000.00"
+			  }]';
+		$test1 = "asdasd";
+		echo json_encode($test);
+	}
+	
 	private function _admin_do_login( $type_of_admin, $admin_account, &$data = array()) {
 		
 		$this->session->set_userdata( $type_of_admin . '_id', $admin_account->identification_number);

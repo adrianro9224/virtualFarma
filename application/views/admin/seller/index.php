@@ -25,15 +25,15 @@
 		<!-- Content start -->
 		
 		<section id="content">
-			<div  class="container">
+			<div  class="container" id="sales-module">
 				<div class="row">
 					<section id="seller-left-sidebar">
 						<div class="col-md-3">
 							<?php include_once( __ROOT__SELLER__TEMPLATES . 'seller-left-sidebar.php');?>
 						</div>
 					</section>
-					<section id="sales-module">
-						<div class="col-md-9">
+					<section id="sales-creator">
+						<div class="col-md-9" ng-controller="SalesCreatorCtrl">
 							<?php include_once( __ROOT__SELLER__TEMPLATES . 'sales-creator.php');?>
 						</div>
 					</section>

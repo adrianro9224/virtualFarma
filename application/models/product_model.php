@@ -19,7 +19,7 @@ class Product_model extends CI_Model {
 		return null;
 	}
 	
-	public function create_produts_from_csv( $list_products ) {
+	public function create_products_from_csv( $list_products ) {
 		$product_ids = array();
 		
 		foreach ($list_products as $product ) {

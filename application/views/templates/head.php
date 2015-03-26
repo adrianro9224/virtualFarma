@@ -61,6 +61,7 @@
 	<script type="text/javascript" src="../../public/app/controllers/CheckoutPanelCtrl.js"></script>
 	<script type="text/javascript" src="../../public/app/controllers/ShippingDataFormCtrl.js"></script>
 	<script type="text/javascript" src="../../public/app/controllers/AdminLogInForm.js"></script>
+	<script type="text/javascript" src="../../public/app/controllers/SalesCreatorCtrl.js"></script>
 	<!-- Angular js controllers over -->
 	
 	<!-- Angular js services start -->
