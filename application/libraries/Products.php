@@ -70,5 +70,17 @@ Class Products {
 		}
 	}
 	
+	public function load_all_products() {
+		$CI =& get_instance();
+		
+		$CI->load->model('product_json_model');
+		
+		$json_string_of_products = $CI->product_json_model->get_json_products();
+		
+		if ( isset($json_string_of_products) )
+			return $json_string_of_products;
+		
+		return NULL;
+	}
 	
 }

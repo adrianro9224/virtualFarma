@@ -182,16 +182,17 @@
 			 	<div class="col-md-12" ng-mouseover="showSubmitButtonTooltip()" ng-mouseleave="hideSubmitButtonTooltip()">
 					<button type="submit" class="btn btn-primary center-horizontaly" ng-disabled="EditAccountForm.$invalid || !EditAccountForm.$dirty">Guardar</button>
 				</div>
-				
-				<div class="form-group" ng-if="(!EditAccountForm.$dirty || EditAccountForm.$invalid) && mouseover">
-					<!-- tooltip -->
-    				<div class="arrow-up-info"> 
-    				</div>
-	    			<div class="farma-tooltip-info">
-	    				<span ng-show="EditAccountForm.$invalid">Debes completar sin errores todos los campos obligatorios del formulario.</span>
-	    				<span ng-show="!EditAccountForm.$dirty">No haz realizado ningún cambio.</span>
-	    			</div>
-	    			<!-- tooltip -->
+				<div class="col-md-12">
+					<div class="form-group" ng-if="(!EditAccountForm.$dirty || EditAccountForm.$invalid) && mouseover">
+						<!-- tooltip -->
+	    				<div class="arrow-up-info"> 
+	    				</div>
+		    			<div class="farma-tooltip-info">
+		    				<span ng-show="EditAccountForm.$invalid">Debes completar sin errores todos los campos obligatorios del formulario.</span>
+		    				<span ng-show="!EditAccountForm.$dirty">No haz realizado ningún cambio.</span>
+		    			</div>
+		    			<!-- tooltip -->
+		    		</div>
 	    		</div>
 			</form>
 		</accordion-group>

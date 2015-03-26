@@ -11,7 +11,7 @@ class Admin extends MY_Controller {
 		
 		$this->load->model('account_model');
 		$this->load->helper(array('form', 'account_helper'));
-		$this->load->library( array('form_validation','account_types') );
+		$this->load->library( array('form_validation', 'account_types', 'products') );
 		
 	}
 	
@@ -25,9 +25,15 @@ class Admin extends MY_Controller {
 		
 		$admin_login_form = $this->input->post();
 		
-		$account_types = $this->account_types->get_account_types();
-		
 		$session_data = $this->session->all_userdata();
+		
+		if( !isset($session_data['account_types']) ) {
+			$account_types = $this->account_types->get_account_types();
+			$this->session->set_userdata('account_types', $account_types);
+		}else{
+			$account_types = $session_data['account_types'];
+			$data['account_types'] = $session_data['account_types'];
+		}
 		
 		if ( isset($session_data['seller_id']) ) {
 			echo 'asdasd';
@@ -63,8 +69,6 @@ class Admin extends MY_Controller {
 									//seller
 									$data['title'] = 'Ventas';
 									$data['type_of_admin'] = $account_types[2];
-									$data['account_types'] = $account_types;
-									
 									
 									$this->_admin_do_login( $account_types[2], $admin_account, $data );
 									$this->load->view('admin/seller/index', $data);
@@ -85,17 +89,25 @@ class Admin extends MY_Controller {
 	}
 	
 	public function all_products() {
-		$test = '[
-			  {
-			    "FIELD1":"224072",
-			    "FIELD2":"7707019314205     ",
-			    "FIELD3":"CLOXIDIN 250 MG SUSPENSION                        ",
-			    "FIELD4":"FCO X  80 ML                  ",
-			    "FIELD5":"1",
-			    "FIELD6":"13000.00"
-			  }]';
-		$test1 = "asdasd";
-		echo json_encode($test);
+		$session_data = $this->session->all_userdata();
+		
+		if ( isset($session_data['account_types']) ) 
+			$account_types = $session_data['account_types'];
+		else
+			$account_types = $this->account_types->get_account_types();
+		
+		if ( isset($session_data[$account_types[0] . '_id']) || isset($session_data[$account_types[2] . '_id']) ){
+			$json_string_of_products = $this->products->load_all_products();
+			
+			if( isset($json_string_of_products) ){
+				echo $json_string_of_products;
+			}else
+				echo 'NULL';
+				
+		}else{
+			echo 'NULL';
+		}
+			
 	}
 	
 	private function _admin_do_login( $type_of_admin, $admin_account, &$data = array()) {

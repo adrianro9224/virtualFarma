@@ -4,19 +4,20 @@
 
 farmapp.controller('SalesCreatorCtrl', ['$scope', '$http', function( $scope, $http ){
 
-    $scope.test = function() {
+    function load_products() {
+        
         $http.get("http://virtualfarma.com.co/admin/all_products")
             .success(function (data, status, headers, config) {
-                console.log(data);
-                var json = angular.fromJson(data);
-                console.log(json);
-                console.log(status);
-                console.log(headers);
-                console.log(config);
+                json = angular.fromJson(data);
+                $scope.products = json;
             }).
             error(function (data, status, headers, config) {
-
                 console.info(data + ":(");
             });
+
     }
+
+    load_products();
+
+
 }]);

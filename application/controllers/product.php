@@ -107,7 +107,7 @@ class Product extends MY_Controller {
 	
 		$result = $this->products->save_products();
 		
-		if(!$result)
+		if( !isset($result) )
 			log_message('error', 'products no created' );
 		else 
 			log_message('debug', 'products created' );
