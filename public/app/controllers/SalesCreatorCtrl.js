@@ -28,14 +28,17 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$http', '$filter', function( 
 
     $scope.search = function( searchText ) {
 
-        if ( searchText.length > 2){
-            var result = $filter('filter')( $scope.products, searchText, undefined)
+        if ( searchText.length > 2 ){
+            var result = $filter('filter')( $scope.products, searchText, undefined);
 
             if ( result.length > 0 )
                 $scope.results = result;
             else
                 $scope.noResults = true;
+        }else {
+            $scope.results = undefined;
         }
+
 
     }
 

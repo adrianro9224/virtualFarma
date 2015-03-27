@@ -18,7 +18,21 @@ class Admin extends MY_Controller {
 	public function index( $page = "admin" ) {
 		$data['title'] = $page;
 		
+		$session_data = $this->session->all_userdata();
+		
+		if( !isset($session_data['account_types']) ) {
+			$account_types = $this->account_types->get_account_types();
+			$this->session->set_userdata('account_types', $account_types);
+		}else{
+			$account_types = $session_data['account_types'];
+			$data['account_types'] = $session_data['account_types'];
+		}
+		
+		if ( isset($session_data[$account_types[0] . '_id']) || isset($session_data[$account_types[2] . '_id']) || isset($session_data[$account_types[3] . '_id']))
+			redirect('/admin/admin_login');
+		
 		$this->load->view($page . '/index', $data );
+		
 	}
 	
 	public function admin_login() {
@@ -35,8 +49,15 @@ class Admin extends MY_Controller {
 			$data['account_types'] = $session_data['account_types'];
 		}
 		
-		if ( isset($session_data['seller_id']) ) {
-			echo 'asdasd';
+		if ( isset($session_data[$account_types[0] . '_id']) || isset($session_data[$account_types[2] . '_id']) || isset($session_data[$account_types[3] . '_id'])) {
+			
+			$admin_id = $this->_search_admin_id_in_session($session_data, $account_types);
+				
+			
+			$admin_account = $this->account_model->get_admin_account_by_identification_number( $admin_id );
+			
+			$this->_choose_admin_account( $admin_account, $account_types );
+			
 		} else {
 			if ( $admin_login_form ) {
 				
@@ -53,40 +74,47 @@ class Admin extends MY_Controller {
 						$admin_user_password = md5($admin_login_form['adminUserPassword']);
 						
 						if ( $password_decrypted_from_db ==  $admin_user_password ) {
-							
-							unset( $admin_account->password );
-							
-							switch ( $admin_account->account_type_id ) {
-								case 1:
-									//admin
-									$this->_admin_do_login($account_types[0], $admin_account, $data);
-									$this->load->view('admin/control_panel', $data);
-								break;
-								case 2:
-									//user
-								break;
-								case 3:
-									//seller
-									$data['title'] = 'Ventas';
-									$data['type_of_admin'] = $account_types[2];
-									
-									$this->_admin_do_login( $account_types[2], $admin_account, $data );
-									$this->load->view('admin/seller/index', $data);
-								break;
-								case 4:
-									//root
-								break;
-							}
+							//call switch
+							$this->_choose_admin_account( $admin_account, $account_types );
 						}
 						
 					}
 					
 				}
-				
+			}else{
+				redirect('/admin');
 			}
 		} 
 		
 	}
+	
+	
+	private function _choose_admin_account( $admin_account, $account_types ) {
+		
+		unset( $admin_account->password );
+		
+		switch ( $admin_account->account_type_id ) {
+			case 1:
+				//admin
+				$this->_admin_do_login($account_types[0], $admin_account, $account_types, $data);
+				$this->load->view('admin/control_panel', $data);
+				break;
+			case 2:
+				//user
+				break;
+			case 3:
+				//seller
+				$data['title'] = 'Ventas';
+				$data['type_of_admin'] = $account_types[2];
+					
+				$this->_admin_do_login( $account_types[2], $admin_account, $account_types, $data );
+				$this->load->view('admin/seller/index', $data);
+				break;
+			case 4:
+				//root
+				break;
+		}
+	} 
 	
 	public function all_products() {
 		$session_data = $this->session->all_userdata();
@@ -110,9 +138,39 @@ class Admin extends MY_Controller {
 			
 	}
 	
-	private function _admin_do_login( $type_of_admin, $admin_account, &$data = array()) {
+	private function _search_admin_id_in_session( $session_data, $account_types ) {
 		
-		$this->session->set_userdata( $type_of_admin . '_id', $admin_account->identification_number);
+		foreach ( $session_data as $key=>$data ) {
+			foreach ($account_types as $type){
+				if( $key == ($type . '_id') )
+					return $data;
+			}
+		}
+		
+	}
+	
+	public function _delete_others_account_id_in_session( $account_for_put_in_session, $account_types ) {
+		$user_data = $this->session->all_userdata();
+		
+		$types_to_unset = array();
+		
+		foreach ( $account_types as $type ) {
+			if ( $type != $account_for_put_in_session )
+				$types_to_unset[] = $type;
+		}
+		
+		foreach ( $types_to_unset as $type ) {
+			if ( isset($user_data[$type . '_id']) )
+				$this->session->unset_userdata($user_data[$type . '_id']);
+		}
+		
+	}
+	
+	private function _admin_do_login( $type_of_admin, $admin_account, $account_types, &$data = array()) {
+		//add that delete other session id of other account if, exist just one
+		$this->_delete_others_account_id_in_session( $type_of_admin, $account_types );
+		
+		$this->session->set_userdata( $type_of_admin . '_id' , $admin_account->identification_number);
 		
 		$data[ $type_of_admin . '_account' ] = $admin_account;
 		$data[ $type_of_admin . '_logged' ] = true;
