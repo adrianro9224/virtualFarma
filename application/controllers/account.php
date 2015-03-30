@@ -10,7 +10,7 @@ class Account extends MY_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->helper(array('form', 'url', 'account_helper'));
-		$this->load->library(array('form_validation', 'messages', 'accounts', 'address'));
+		$this->load->library(array('form_validation', 'messages', 'accounts', 'address', 'account_types'));
 		$this->load->model('account_model');// add second param for add a "alias" ex: $this->load->model('Account', 'user')
 	}
 	
@@ -34,9 +34,17 @@ class Account extends MY_Controller {
 		
 		$session_data = $this->session->all_userdata();
 		
-		if( isset($session_data['account_id']) ) {
+		if( !isset($session_data['account_types']) ) {
+			$account_types = $this->account_types->get_account_types();
+			$this->session->set_userdata('account_types', $account_types);
+		}else{
+			$account_types = $session_data['account_types'];
+			$data['account_types'] = $session_data['account_types'];
+		}
+		
+		if( isset($session_data[$account_types[1] . '_id']) ) {
 			
-			$account = $this->account_model->get_account_by_id($session_data['account_id']);
+			$account = $this->account_model->get_account_by_id($session_data[$account_types[1] . '_id']);
 			
 			if( isset($account) ) {
 				$data['user_logged'] = true;
@@ -80,7 +88,15 @@ class Account extends MY_Controller {
 		
 		$session_data = $this->session->all_userdata();
 		
-		if(isset($session_data['account_id'])) {
+		if( !isset($session_data['account_types']) ) {
+			$account_types = $this->account_types->get_account_types();
+			$this->session->set_userdata('account_types', $account_types);
+		}else{
+			$account_types = $session_data['account_types'];
+			$data['account_types'] = $session_data['account_types'];
+		}
+		
+		if(isset($session_data[$account_types[1] . '_id'])) {
 			redirect("account/log_in", "refresh");
 		}
 		
@@ -130,7 +146,7 @@ class Account extends MY_Controller {
 				// do _log_in
 				$account = $this->account_model->get_account_by_id($insert_id);
 				
-				$this->_do_login( $account , $data);
+				$this->_do_login( $account , $data, $account_types);
 				
 				$notifications['success'][] = "Su cuenta a sido creada con éxito, te damos la bienvenida a VirtualFarma!"; 
 				
@@ -168,10 +184,10 @@ class Account extends MY_Controller {
 		
 	}
 	
-	private function _do_login( $account, &$data ) {
+	private function _do_login( $account, &$data, $account_types ) {
 		
 		$account_id = $account->id;
-		$this->session->set_userdata( 'account_id', $account_id );
+		$this->session->set_userdata( $account_types[1] . '_id', $account_id );
 		
 		$data['user_logged_account'] = $account;
 		$data['user_logged'] = true;
@@ -217,19 +233,27 @@ class Account extends MY_Controller {
 		
 		$session_data = $this->session->all_userdata();
 		
-		if( isset($session_data['account_id']) ){
+		if( !isset($session_data['account_types']) ) {
+			$account_types = $this->account_types->get_account_types();
+			$this->session->set_userdata('account_types', $account_types);
+		}else{
+			$account_types = $session_data['account_types'];
+			$data['account_types'] = $session_data['account_types'];
+		}
+		
+		if( isset($session_data[$account_types[1] . '_id']) ){
 			$data['user_logged'] = true;
 				
 			$notifications = $this->session->flashdata('notifications');
 			$data['notifications'] = $notifications;
 				
-			$account = $this->account_model->get_account_by_id($session_data['account_id']);
+			$account = $this->account_model->get_account_by_id($session_data[$account_types[1] . '_id']);
 				
 			if(isset($account)){
 				$pathologies = new stdClass();
 				
 				$messages = $this->messages->get_every_messages($account->email);
-				$account_pathologies = $this->accounts->get_pathologies( $session_data['account_id'] );
+				$account_pathologies = $this->accounts->get_pathologies( $session_data[$account_types[1] . '_id'] );
 				
 				$account_pathologies_dropdown_items_ids = $this->accounts->generate_pathologies_dropdown_items_ids( $categories );
 				$pathologies->dropdown_items_ids = $account_pathologies_dropdown_items_ids;
@@ -310,7 +334,7 @@ class Account extends MY_Controller {
 						
 						if( $account_password_decrypted === $user_password ) {
 								
-							$this->_do_login( $account, $data );
+							$this->_do_login( $account, $data, $account_types );
 
 							if( isset($_COOKIE['shoppingcart']) ) {
 									
@@ -348,8 +372,17 @@ class Account extends MY_Controller {
 	/**
 	 * Delete the account_id of the session for terminate the log_in
 	 */
-	public function log_out() {
-		$this->session->unset_userdata('account_id');
+	public function log_out( $account_types ) {
+		
+		if( !isset($session_data['account_types']) ) {
+			$account_types = $this->account_types->get_account_types();
+			$this->session->set_userdata('account_types', $account_types);
+		}else{
+			$account_types = $session_data['account_types'];
+			$data['account_types'] = $session_data['account_types'];
+		}
+		
+		$this->session->unset_userdata( $account_types[1] . '_id');
 		redirect("/");
 	}
 	
@@ -365,8 +398,16 @@ class Account extends MY_Controller {
 		
 		$session_data = $this->session->all_userdata();
 		
-		if(isset($session_data['account_id'])) {
-			if($session_data['account_id'] == $account_id) {
+		if( !isset($session_data['account_types']) ) {
+			$account_types = $this->account_types->get_account_types();
+			$this->session->set_userdata('account_types', $account_types);
+		}else{
+			$account_types = $session_data['account_types'];
+			$data['account_types'] = $session_data['account_types'];
+		}
+		
+		if(isset($session_data[$account_types[1] . '_id'])) {
+			if($session_data[$account_types[1] . '_id'] == $account_id) {
 				
 				$validation_response = $this->_validate_update_account_form($update_account_form);
 				
@@ -394,7 +435,7 @@ class Account extends MY_Controller {
 				redirect("/account/log_in");
 				
 			}else {
-				$this->session->unset_userdata('account_id');
+				$this->session->unset_userdata($account_types[1] . '_id');
 				
 				$notifications['info'] = "La sesion a expirado";
 				

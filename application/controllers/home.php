@@ -3,7 +3,14 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Home extends MY_Controller {
 	
+	function __construct(){
+		parent::__construct();
+		$this->load->library( array('account_types') );
+	}
+	
 	public function index($page = 'home') {
+		
+		
 		if ( ! file_exists(APPPATH.'/views/pages/'.$page.'.php'))
 		{
 			// Whoops, we don't have a page for that!
@@ -19,11 +26,19 @@ class Home extends MY_Controller {
 		
 		$session_data = $this->session->all_userdata();
 		
+		if( !isset($session_data['account_types']) ) {
+			$account_types = $this->account_types->get_account_types();
+			$this->session->set_userdata('account_types', $account_types);
+		}else{
+			$account_types = $session_data['account_types'];
+			$data['account_types'] = $session_data['account_types'];
+		}
+		
 		$categories = $this->get_categories();
 		
 		$data['categories'] = $categories;
 		
-		if( isset($session_data['account_id']) ){
+		if( isset($session_data[$account_types[1] . '_id']) ){
 			$data['user_logged'] = true;
 		}
 		

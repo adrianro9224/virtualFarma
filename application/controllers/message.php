@@ -7,7 +7,7 @@ class Message extends MY_Controller {
 	 */
 	function __construct() {
 		parent::__construct();
-		$this->load->library('form_validation');
+		$this->load->library( array('form_validation', 'account_types'));
 		$this->load->model( 'message_model' );
 	}
 	
@@ -19,10 +19,18 @@ class Message extends MY_Controller {
 		
 		$session_data = $this->session->all_userdata();
 		
+		if( !isset($session_data['account_types']) ) {
+			$account_types = $this->account_types->get_account_types();
+			$this->session->set_userdata('account_types', $account_types);
+		}else{
+			$account_types = $session_data['account_types'];
+			$data['account_types'] = $session_data['account_types'];
+		}
+		
 		if( isset( $message_id ) ) {
 			
-			if( isset($session_data['account_id']) ) {
-				$account_id_insession = $session_data['account_id'];
+			if( isset($session_data[$account_types[1] . '_id']) ) {
+				$account_id_insession = $session_data[$account_types[1] . '_id'];
 			
 				if( $account_id_view == $account_id_insession ) {
 						
@@ -44,10 +52,18 @@ class Message extends MY_Controller {
 		
 		$session_data = $this->session->all_userdata();
 		
+		if( !isset($session_data['account_types']) ) {
+			$account_types = $this->account_types->get_account_types();
+			$this->session->set_userdata('account_types', $account_types);
+		}else{
+			$account_types = $session_data['account_types'];
+			$data['account_types'] = $session_data['account_types'];
+		}
+		
 		if( isset($message_id) ) {
 			
-			if( isset($session_data['account_id']) ) {
-				$account_id_insession = $session_data['account_id'];
+			if( isset($session_data[$account_types[1] . '_id']) ) {
+				$account_id_insession = $session_data[$account_types[1] . '_id'];
 				
 				if( $account_id_view == $account_id_insession ) {
 					
@@ -65,7 +81,16 @@ class Message extends MY_Controller {
 		$message = $this->input->post();
 
 		$session_data = $this->session->all_userdata();
-		$acccount_id = $session_data['account_id'];
+		
+		if( !isset($session_data['account_types']) ) {
+			$account_types = $this->account_types->get_account_types();
+			$this->session->set_userdata('account_types', $account_types);
+		}else{
+			$account_types = $session_data['account_types'];
+			$data['account_types'] = $session_data['account_types'];
+		}
+		
+		$acccount_id = $session_data[$acccount_id[1] . '_id'];
 		
 		$notifications = array();
 		

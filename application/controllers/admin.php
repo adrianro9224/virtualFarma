@@ -39,6 +39,8 @@ class Admin extends MY_Controller {
 		
 		$admin_login_form = $this->input->post();
 		
+		$notifications = NULL;
+		
 		$session_data = $this->session->all_userdata();
 		
 		if( !isset($session_data['account_types']) ) {
@@ -56,7 +58,7 @@ class Admin extends MY_Controller {
 			
 			$admin_account = $this->account_model->get_admin_account_by_identification_number( $admin_id );
 			
-			$this->_choose_admin_account( $admin_account, $account_types );
+			$this->_choose_admin_account( $admin_account, $account_types, $notifications );
 			
 		} else {
 			if ( $admin_login_form ) {
@@ -75,7 +77,7 @@ class Admin extends MY_Controller {
 						
 						if ( $password_decrypted_from_db ==  $admin_user_password ) {
 							//call switch
-							$this->_choose_admin_account( $admin_account, $account_types );
+							$this->_choose_admin_account( $admin_account, $account_types, $notifications );
 						}
 						
 					}
@@ -89,18 +91,26 @@ class Admin extends MY_Controller {
 	}
 	
 	
-	private function _choose_admin_account( $admin_account, $account_types ) {
+	private function _choose_admin_account( $admin_account, $account_types, &$notifications ) {
 		
 		unset( $admin_account->password );
+		$data['account_types'] = $account_types;
 		
 		switch ( $admin_account->account_type_id ) {
 			case 1:
 				//admin
 				$this->_admin_do_login($account_types[0], $admin_account, $account_types, $data);
+				
+				$data['title'] = 'Administrador';
+				$data['type_of_admin'] = $account_types[0];
+				
 				$this->load->view('admin/control_panel', $data);
 				break;
 			case 2:
 				//user
+				$notifications['warning'] = "No tienes permisos para acceder :P";
+				$this->session->set_flashdata('notifications', $notifications);
+				redirect('/');
 				break;
 			case 3:
 				//seller
@@ -112,6 +122,8 @@ class Admin extends MY_Controller {
 				break;
 			case 4:
 				//root
+				$data['title'] = 'ROOT';
+				$data['type_of_admin'] = $account_types[3];
 				break;
 		}
 	} 

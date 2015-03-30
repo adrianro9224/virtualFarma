@@ -10,7 +10,7 @@ class Product extends MY_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model( array('product_model', 'account_model') );// add second param for add a "alias" ex: $this->load->model('Account', 'user')
- 		$this->load->library('products');
+ 		$this->load->library( array('products', 'account_types'));
 	}
 	
 	public function show_products_by_category($category_name) {
@@ -21,12 +21,20 @@ class Product extends MY_Controller {
 		
 		$session_data = $this->session->all_userdata();
 		
-		if( isset($session_data['account_id']) ){
+		if( !isset($session_data['account_types']) ) {
+			$account_types = $this->account_types->get_account_types();
+			$this->session->set_userdata('account_types', $account_types);
+		}else{
+			$account_types = $session_data['account_types'];
+			$data['account_types'] = $session_data['account_types'];
+		}
+		
+		if( isset($session_data[$account_types[1] . '_id']) ){
 
-			$account = $this->account_model->get_account_by_id($session_data['account_id']);
+			$account = $this->account_model->get_account_by_id($session_data[$account_types[1] . '_id']);
 			
 			if( isset($account) ) {
-				$data['account_id'] = $session_data['account_id'];
+				$data['account_id'] = $session_data[$account_types[1] . '_id'];
 				$data['user_logged'] = true;
 			}
 		}

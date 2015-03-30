@@ -8,7 +8,7 @@ class Checkout extends MY_Controller {
 	 */
 	function __construct() {
 		parent::__construct();
-		$this->load->library( array('address', 'orders') );
+		$this->load->library( array('address', 'orders', 'account_types') );
 		$this->load->model("Payment_method_model");
 	}
 	
@@ -39,18 +39,25 @@ class Checkout extends MY_Controller {
 		$data['breadcrumb'] = $breadcrumb;
 		
 		$session_data = $this->session->all_userdata();
+			
+		if( !isset($session_data['account_types']) ) {
+			$account_types = $this->account_types->get_account_types();
+			$this->session->set_userdata('account_types', $account_types);
+		}else{
+			$account_types = $session_data['account_types'];
+			$data['account_types'] = $session_data['account_types'];
+		}
 		
-
 		$categories = $this->get_categories();
 		
 		$data['categories'] = $categories;
 		$data['shoppingcart'] = null;
 		
-		if( isset($session_data['account_id']) ){
+		if( isset($session_data[$account_types[1] . '_id']) ){
 			$data['user_logged'] = true;
 			
-			$address = $this->address->get_all_address( $session_data['account_id'] );
-			$account_data = $this->get_account($session_data['account_id']);
+			$address = $this->address->get_all_address( $session_data[$account_types[1]. '_id'] );
+			$account_data = $this->get_account($session_data[$account_types[1] . '_id']);
 			$payment_methods = $this->Payment_method_model->get_enabled_payment_methods();
 			
 			if ( isset($payment_methods) )
@@ -115,8 +122,16 @@ class Checkout extends MY_Controller {
 		
 		$session_data = $this->session->all_userdata();
 		
-		if ( isset($session_data['account_id']) ) 
-			$result = $this->orders->save_order( $order->data, $session_data['account_id'] );
+		if( !isset($session_data['account_types']) ) {
+			$account_types = $this->account_types->get_account_types();
+			$this->session->set_userdata('account_types', $account_types);
+		}else{
+			$account_types = $session_data['account_types'];
+			$data['account_types'] = $session_data['account_types'];
+		}
+		
+		if ( isset($session_data[$account_types[1] . '_id']) ) 
+			$result = $this->orders->save_order( $order->data, $session_data[$account_types[1]. '_id'] );
 		else 
 			redirect('/account');
 		
