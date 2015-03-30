@@ -89,7 +89,7 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
     $scope.removeProduct = function ( key ) {
 
         if ( $scope.shoppingcart.products[key].cant > 1 ) {
-            $scope.shoppingcart.products[key].cant -= 1;
+            $scope.shoppingcart.products[key].cant--;
             $scope.shoppingcart.numOfproductsTotal--;
         }else {
             $scope.shoppingcart.products.splice( key, 1 );

@@ -9,10 +9,10 @@ farmapp.controller('RegisterForm', ['$scope', function($scope) {
 
     $scope.showSubmitButtonTooltip = function() {
         $scope.mouseover = true;
-    }
+    };
 
     $scope.hideSubmitButtonTooltip = function() {
         $scope.mouseover = false;
-    }
+    };
 
 }]);

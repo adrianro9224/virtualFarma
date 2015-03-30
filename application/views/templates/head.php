@@ -62,10 +62,12 @@
 	<script type="text/javascript" src="../../public/app/controllers/ShippingDataFormCtrl.js"></script>
 	<script type="text/javascript" src="../../public/app/controllers/AdminLogInForm.js"></script>
 	<script type="text/javascript" src="../../public/app/controllers/SalesCreatorCtrl.js"></script>
+	<script type="text/javascript" src="../../public/app/controllers/SalesFormCtrl.js"></script>
 	<!-- Angular js controllers over -->
 	
 	<!-- Angular js services start -->
 	<script type="text/javascript" src="../../public/app/services/ConstantsService.js"></script>
+	<script type="text/javascript" src="../../public/app/services/UtilService.js"></script>
 	<!-- Angular js services over -->
 	
 	<!-- UI Bootstrap dependencie js start -->

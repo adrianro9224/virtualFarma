@@ -2,7 +2,7 @@
  * Created by Adrian on 12/02/2015.
  */
 
-farmapp.controller( 'ProductListCtrl', ['$scope' ,'$log' ,'$rootScope' ,'$cookies' ,'ConstantsService' ,function( $scope ,$log ,$rootScope ,$cookies, ConstantsService ){
+farmapp.controller( 'ProductListCtrl', ['$scope' ,'$log' ,'$rootScope' ,'$cookies' ,'ConstantsService', 'UtilService', function( $scope ,$log ,$rootScope ,$cookies, ConstantsService, UtilService ){
 
     'use strict';
 
@@ -14,57 +14,64 @@ farmapp.controller( 'ProductListCtrl', ['$scope' ,'$log' ,'$rootScope' ,'$cookie
 
     $scope.addToShoppingCart = function( productId, name, PLU, barcode, categoryId, presentation, cant, price, discount, tax ) {
 
-        var quantity = parseInt(cant ,10);
+        var isNumber = UtilService.isInteger( cant );
 
-        if( ($scope.shoppingcart == undefined || !$scope.shoppingcart.haveProducts) ) {
+        if ( isNumber ) {
 
-            $scope.shoppingcart = {};
-            $scope.shoppingcart.products = [{}];
-            $scope.shoppingcart.subtotal = 0;
-            $scope.shoppingcart.shippingCharge = 0;
-            $scope.shoppingcart.tax = 0;
-            $scope.shoppingcart.total = 0;
-            $scope.shoppingcart.numOfproductsSubtotal = 0;
-            $scope.shoppingcart.numOfproductsTotal = 0;
-            $scope.shoppingcart.limitOrderValueInvalid = false;
-            $scope.shoppingcart.sended = false;
+            var quantity = parseInt(cant, 10);
 
-            var firtsProduct = _chargeProductObject( productId, name, PLU, barcode, categoryId, presentation, quantity, price, discount, tax );
+            if (($scope.shoppingcart == undefined || !$scope.shoppingcart.haveProducts)) {
 
-            $scope.shoppingcart.products[$scope.shoppingcart.numOfproductsSubtotal] = firtsProduct;
-            $scope.shoppingcart.numOfproductsSubtotal++;
-            $scope.shoppingcart.numOfproductsTotal++;
-            $scope.shoppingcart.haveProducts = true;
+                $scope.shoppingcart = {};
+                $scope.shoppingcart.products = [{}];
+                $scope.shoppingcart.subtotal = 0;
+                $scope.shoppingcart.shippingCharge = 0;
+                $scope.shoppingcart.tax = 0;
+                $scope.shoppingcart.total = 0;
+                $scope.shoppingcart.numOfproductsSubtotal = 0;
+                $scope.shoppingcart.numOfproductsTotal = 0;
+                $scope.shoppingcart.limitOrderValueInvalid = false;
+                $scope.shoppingcart.sended = false;
 
-        } else {
-            if ( ($scope.shoppingcart != undefined) && ($scope.shoppingcart.products != undefined) ) {
+                var firtsProduct = _chargeProductObject(productId, name, PLU, barcode, categoryId, presentation, quantity, price, discount, tax);
 
-                var currentProduct = _chargeProductObject( productId, name, PLU, barcode, categoryId, presentation, quantity, price, discount, tax );
+                $scope.shoppingcart.products[$scope.shoppingcart.numOfproductsSubtotal] = firtsProduct;
+                $scope.shoppingcart.numOfproductsSubtotal++;
+                $scope.shoppingcart.numOfproductsTotal += quantity;
+                $scope.shoppingcart.haveProducts = true;
 
-                var products = $scope.shoppingcart.products;
-                var quantityProductIncreased = false;
+            } else {
+                if (($scope.shoppingcart != undefined) && ($scope.shoppingcart.products != undefined)) {
 
-                angular.forEach( products, function( product ,key ) {
-                    if( product != undefined ){
-                        if( (productId == product.id) && (PLU == product.PLU) ) {
-                            quantityProductIncreased = true;
-                            $scope.shoppingcart.products[key].cant += quantity;
-                            $scope.shoppingcart.numOfproductsTotal += quantity;
+                    var currentProduct = _chargeProductObject(productId, name, PLU, barcode, categoryId, presentation, quantity, price, discount, tax);
+
+                    var products = $scope.shoppingcart.products;
+                    var quantityProductIncreased = false;
+
+                    angular.forEach(products, function (product, key) {
+                        if (product != undefined) {
+                            if ((productId == product.id) && (PLU == product.PLU)) {
+                                quantityProductIncreased = true;
+                                $scope.shoppingcart.products[key].cant += quantity;
+                                $scope.shoppingcart.numOfproductsTotal += quantity;
+                            }
+
                         }
+                    });
 
-                    }
-                });
-
-                if( !quantityProductIncreased ) {
+                    if (!quantityProductIncreased) {
                         $scope.shoppingcart.products[$scope.shoppingcart.numOfproductsSubtotal] = currentProduct;
                         $scope.shoppingcart.numOfproductsSubtotal++;
-                        $scope.shoppingcart.numOfproductsTotal++;
-                 }
+                        $scope.shoppingcart.numOfproductsTotal += quantity;
+                    }
 
+                }
             }
-        }
 
-        $rootScope.$broadcast( ConstantsService.SHOPPINGCART_CHANGED , $scope.shoppingcart );
+            $rootScope.$broadcast(ConstantsService.SHOPPINGCART_CHANGED, $scope.shoppingcart);
+        }else {
+
+        }
 
     };
 

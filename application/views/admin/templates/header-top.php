@@ -13,8 +13,9 @@
         </div>
 		<div class="btn-group pull-right">
 		<?php if( (isset($type_of_admin)) && (isset($account_types)) ):?>
-			<?php if( $type_of_admin == $account_types[2] || $type_of_admin == $account_types[3] ):?>
-				<a class="btn btn-default" href="/account" role="button">Iniciar nueva orden <span class="glyphicon glyphicon-user"></span></a>
+			<?php if( $type_of_admin == $account_types[0] || $type_of_admin == $account_types[2] || $type_of_admin == $account_types[3]):?>
+				<a class="btn btn-default" href="#" role="button">Iniciar nueva orden </span></a>
+				<a class="btn btn-default" href="#" role="button">Cerrar sesion <span class="glyphicon glyphicon-user"></span></a>
 			<?php endif;?>	
 		<?php endif;?>
 		</div>

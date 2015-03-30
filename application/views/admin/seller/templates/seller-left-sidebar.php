@@ -3,6 +3,5 @@
 		<h3>Opciones</h3>
 	</div>
 	<div class="panel-body">
-
 	</div>
 </div>
