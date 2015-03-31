@@ -1,29 +1,30 @@
-<div class="well well-lg" >
-	<!-- Nav start -->
-	<section id="sales-panel-nav">
-		<div class="btn-group btn-group-justified" role="group" aria-label="...">
-			<div class="btn-group" role="group">
-	    		<button type="button" class="btn btn-default" ng-click="openSection('shippingData')" ng-class="{active: shippingData}" ng-disabled="!sale.shippingData.status || sale.sended">
-	    			<span class="glyphicon glyphicon-map-marker"></span>
-	    			Datos de envío
-	    		</button>
-	  		</div>
-		  	<div class="btn-group" role="group">
-		    	<button type="button" class="btn btn-default" ng-click="openSection('paymentMethod')" ng-class="{active: paymentMethod}" ng-disabled="!sale.paymentMethod.status || sale.sended">
-		    		<span class="glyphicon glyphicon-usd"></span>
-		    		Forma de pago
-		    	</button>
-		  	</div>
-	  		<div class="btn-group" role="group">
-			    <button type="button" class="btn btn-default" ng-click="openSection('orderSummary')" ng-class="{active: orderSummary}" ng-disabled="(!sale.shippingData.status || !sale.paymentMethod.status)">
-					<span class="glyphicon glyphicon-shopping-cart"></span>
-				    Resumen de la orden
-			    </button>
-		  	</div>
-		</div>										
-	</section>
-	<!-- Nav over -->
-	<div ng-hide="sale.shippingData.status">
+<!-- Nav start -->
+<section id="sales-panel-nav">
+	<div class="btn-group btn-group-justified" role="group" aria-label="...">
+		<div class="btn-group" role="group">
+    		<button type="button" class="btn btn-default" ng-click="openSection('shippingData')" ng-class="{active: shippingData}" ng-disabled="!sale.shippingData.status || sale.sended">
+    			<span class="glyphicon glyphicon-map-marker"></span>
+    			Datos de envío
+    		</button>
+  		</div>
+	  	<div class="btn-group" role="group">
+	    	<button type="button" class="btn btn-default" ng-click="openSection('productsToSale')" ng-class="{active: productsToSale}" ng-disabled="!sale.productsToSale.status || sale.sended">
+	    		<span class="glyphicon glyphicon-usd"></span>
+	    		Productos
+	    	</button>
+	  	</div>
+  		<div class="btn-group" role="group">
+		    <button type="button" class="btn btn-default" ng-click="openSection('orderSummary')" ng-class="{active: orderSummary}" ng-disabled="(!sale.shippingData.status || !sale.productsToSale.status)">
+				<span class="glyphicon glyphicon-shopping-cart"></span>
+			    Resumen de la orden
+		    </button>
+	  	</div>
+	</div>										
+</section>
+<!-- Nav over -->
+<div class="well well-lg col-md-12" >
+	<div ng-show="shippingData || (sale.currentStep == 'shippingData') " ng-hide="!shippingData">
+		<span>Completa toda la información requerida para el envío:</span>
 		<form id="sales-form" name="SalesForm" ng-controller="SalesFormCtrl" method="post" novalidate >
 			<!-- shipping-data start -->
 			<div class="col-md-6">
@@ -86,7 +87,7 @@
 						<div class="arrow-up-error"> 
 						</div>
 						<div class="farma-tooltip-error">
-							<span ng-if="SalesForm.shippingDataId.$error.required && SalesForm.shippingDataId.$dirty">Es muy extenso!</span>
+							<span ng-if="SalesForm.shippingDataId.$error.required && SalesForm.shippingDataId.$dirty">El número de indentificaión es necesario!</span>
 							<span ng-if="SalesForm.shippingDataId.$error.maxlength && SalesForm.shippingDataId.$dirty">Es muy extenso!</span>
 							<span ng-if="SalesForm.shippingDataId.$error.pattern && SalesForm.shippingDataId.$dirty">Solo se permiten valores numéricos y los caractéres {-.}</span>
 						</div>
@@ -204,24 +205,49 @@
 	    	</div>
 		</form>
 	</div>
-	<div class="form-group">
-		<label class="sr-only" for="searchProductInput">Search</label>
-		<div class="input-group">
-			<div class="input-group-addon"></div>
-			<input type="text" class="form-control" ng-change="search( searchText )" ng-model="searchText" id="searchProductInput" placeholder="Producto a buscar">
-			<div class="input-group-addon"></div>
+	
+	<section ng-show="productsToSale || (sale.currentStep == 'productsToSale')" ng-hide="!productsToSale">
+		<div class="col-md-12">
+			<div class="form-group">
+				<label class="sr-only" for="searchProductInput">Search</label>
+				<div class="input-group">
+					<div class="input-group-addon"></div>
+					<input type="text" class="form-control" ng-change="search( searchText )" ng-model="searchText" id="searchProductInput" placeholder="Producto a buscar">
+					<div class="input-group-addon"></div>
+				</div>
+			</div>
+			<div class="panel panel-default" ng-show="results">
+				<div class="panel-heading">
+					<h3>Resultados</h3>
+				</div>
+				<div class="panel-body">
+					<table class="table table-condensed ng-cloak table-striped" ng-cloak >
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Presentación</th>
+								<th>Precio</th>
+								<th></th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="(key, product) in results" >
+								<td ng-bind="product.name"></td>
+								<td ng-bind="product.presentation"></td>
+								<td ng-bind="product.price"></td>
+								<th>
+									<input type="text" class="form-control" ng-model="product.cant" ng-init="product.cant = 1">
+								</th>
+								<th>
+									<a class="btn btn-primary btn-xs" ng-click="addToShoppingCart( product )" ng-disabled="">Añadir</a>
+								</th>
+							</tr>
+						</tbody>
+					</table>				
+				</div>
+			</div>
 		</div>
-	</div>
-	<div class="panel panel-default" ng-show="results">
-		<div class="panel-heading">
-			<h3>Resultados</h3>
-		</div>
-		<div class="panel-body">
-			<a ng-repeat="product in results">
-				<span class="name" ng-bind="product.name"></span>
-				<span ng-bind="product.presentation"></span>
-				<span ng-bind="product.price"></span>
-			</a>
-		</div>
-	</div>
+	</section>
 </div>
+	
