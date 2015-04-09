@@ -50,24 +50,29 @@ Class Products {
 			
 			$CI->db->trans_start();
 			
-			//$product_ids = $CI->product_model->create_products_from_csv( $products );
-			$products_json_id = $CI->product_json_model->insert_product_json( json_encode($products) );
+			$product_ids = $CI->product_model->create_products_from_csv( $products );
 			
 			$CI->db->trans_complete();
 			
 			if ($CI->db->trans_status() === FALSE)
 				return false;
 			
-			$result = new stdClass();
-			
-			$result->status = json_last_error();
-		//	$result->product_ids = $product_ids;
-			$result->products_json_id = $products_json_id;
+			$result->product_ids = $product_ids;
 			
 			return $result;
 			
 				
 		}
+	}
+	
+	public function create_json_of_products() {
+		
+		$products_json_id = $CI->product_json_model->insert_product_json( json_encode($products) );
+		$result = new stdClass();
+			
+		$result->status = json_last_error();
+
+		$result->products_json_id = $products_json_id;
 	}
 	
 	public function load_all_products() {

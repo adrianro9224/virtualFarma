@@ -112,13 +112,15 @@ class Product extends MY_Controller {
 		if ( $this->input->is_cli_request() ) {
 		}
 		//add security
-	
 		$result = $this->products->save_products();
 		
-		if( !isset($result) )
+		if( !isset($result) ){
 			log_message('error', 'products no created' );
-		else 
+			echo count( $result );	
+		}else { 
+			echo count( $result );
 			log_message('debug', 'products created' );
+		}
 		
 	}
 	
