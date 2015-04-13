@@ -10,7 +10,7 @@ class Product extends MY_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model( array('product_model', 'account_model') );// add second param for add a "alias" ex: $this->load->model('Account', 'user')
- 		$this->load->library( array('products', 'account_types'));
+ 		$this->load->library( array('products', 'account_types', 'roots'));
 	}
 	
 	public function show_products_by_category($category_name) {
@@ -108,20 +108,74 @@ class Product extends MY_Controller {
 		$this->load->view('pages/category', $data);
 	}
 	
-	public function convert_csv_file_to_array_of_products() {
+	public function convert_csv_files_to_products( $identification_number = NULL, $password = NULL ) {
 		if ( $this->input->is_cli_request() ) {
 		}
-		//add security
-		$result = $this->products->save_products();
+		//security
+		if ( isset($identification_number )&& isset($password) ) {
+			$access_permited = $this->roots->validate_root_identity( $identification_number, $password );
+				
+			//call funtion for read from csv the categories and save this
+			if ($access_permited) {
+				$result = $this->products->read_categories_and_potential_products();
+				
+				if ( isset($result->categories) && isset($result->potential_products) ) {
+					
+					$products = $this->products->read_products();
+					
+					if ( isset($products) ){
+						
+						//associate products
+						
+						foreach ( $products as $product ) {
+							
+							foreach ( $result->potential_products as $potential_product ) {
+								
+								if ( $potential_product->name == $product->name && $potential_product->presentation == $product->presentation )
+									$product->category_id = $potential_product->code_line;
+								
+							}
+							
+							
+						}
+						
+						echo count($products);
+						print_r($products);
+						
+						// saving in the db 
+						 
+						$CI->db->trans_start();
+							
+						$product_ids = $CI->product_model->create_products_from_csv( $products );
+							
+						$CI->db->trans_complete();
+							
+						if ($CI->db->trans_status() === FALSE)
+							return false;
+							
+						$result->product_ids = $product_ids;
+						
+						if( !isset($result->product_ids) ) {
+							log_message('error', 'products no created' );
+							echo "products not saved in DB :(";
+						} else { 
+							log_message('debug', 'products created' );
+							echo "products saved in DB :)";
+						}
+						
+					}else {
+						echo "Problems completing the second process(reading products)";
+					}
+					
+				}else {
+					echo "Problems completing the first process(reading categories and potential products)";
+				}
+				
+			} else
+				show_404();
 		
-		if( !isset($result) ){
-			log_message('error', 'products no created' );
-			echo count( $result );	
-		}else { 
-			echo count( $result );
-			log_message('debug', 'products created' );
-		}
-		
+		}else
+			show_404();
 	}
 	
 	/**
