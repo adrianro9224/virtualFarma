@@ -22,6 +22,8 @@ class Product_model extends CI_Model {
 	public function create_products_from_csv( $list_products ) {
 		$product_ids = array();
 		
+		$num_of_products_to_save = count($list_products);
+		
 		foreach ($list_products as $product ) {
 			$data = array(
 					"PLU" => $product->PLU,
@@ -41,7 +43,10 @@ class Product_model extends CI_Model {
 				$product_ids[] = $this->db->insert_id();
 		}
 		
-		return $product_ids;
+		if ( $num_of_products_to_save == count($product_ids) )
+			return true;
+		
+		return false;
 		
 	}
 }

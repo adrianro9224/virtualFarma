@@ -117,51 +117,95 @@ class Product extends MY_Controller {
 				
 			//call funtion for read from csv the categories and save this
 			if ($access_permited) {
+				
+				echo "reading categories...";
+				
 				$result = $this->products->read_categories_and_potential_products();
 				
 				if ( isset($result->categories) && isset($result->potential_products) ) {
-					
+
+					echo "reading products...";
 					$products = $this->products->read_products();
 					
 					if ( isset($products) ){
 						
 						//associate products
+						echo "associating products....";
 						
 						foreach ( $products as $product ) {
 							
 							foreach ( $result->potential_products as $potential_product ) {
 								
-								if ( $potential_product->name == $product->name && $potential_product->presentation == $product->presentation )
+								if ( $potential_product->name == $product->name )
 									$product->category_id = $potential_product->code_line;
-								
+								else 
+									$product->category_id = NULL;
 							}
-							
 							
 						}
 						
-						echo count($products);
-						print_r($products);
+						echo "Products to save: " . count($products);
 						
 						// saving in the db 
 						 
-						$CI->db->trans_start();
-							
-						$product_ids = $CI->product_model->create_products_from_csv( $products );
-							
-						$CI->db->trans_complete();
-							
-						if ($CI->db->trans_status() === FALSE)
-							return false;
-							
-						$result->product_ids = $product_ids;
+						$this->db->trans_start();
 						
-						if( !isset($result->product_ids) ) {
-							log_message('error', 'products no created' );
-							echo "products not saved in DB :(";
-						} else { 
+						echo "saving products in the DB ...";
+						
+						$products_saved = $this->product_model->create_products_from_csv( $products );
+						
+						if ( $products_saved ){
+							
 							log_message('debug', 'products created' );
 							echo "products saved in DB :)";
+							echo "Creating the JSON of products..";
+							
+							$result = $this->products->create_json_of_products( $products );
+							
+							switch( $result->code_status ) {
+								case JSON_ERROR_NONE:
+									echo ' - Sin errores';
+									echo "Saving JSON of products in product_json tabla...";
+									
+									$json_saved = $this->products->save_json_of_products( $products );
+									
+									if ( $json_saved ) 
+										echo "JSON of Products saved :D.";
+									else 
+										echo "JSON no saved";
+									
+									break;
+								case JSON_ERROR_DEPTH:
+									echo ' - Excedido tamaño máximo de la pila';
+									break;
+								case JSON_ERROR_STATE_MISMATCH:
+									echo ' - Desbordamiento de buffer o los modos no coinciden';
+									break;
+								case JSON_ERROR_CTRL_CHAR:
+									echo ' - Encontrado carácter de control no esperado';
+									break;
+								case JSON_ERROR_SYNTAX:
+									echo ' - Error de sintaxis, JSON mal formado';
+									break;
+								case JSON_ERROR_UTF8:
+									echo ' - Caracteres UTF-8 malformados, posiblemente están mal codificados';
+									break;
+								default:
+									echo ' - Error desconocido';
+									break;
+							}
+											
+							
+						}else {
+							log_message('error', 'products no created' );
+							echo "products not saved in DB :(";
 						}
+						
+						$this->db->trans_complete();
+							
+						if ($this->db->trans_status() === FALSE)
+							return false;
+							
 						
 					}else {
 						echo "Problems completing the second process(reading products)";

@@ -32,7 +32,7 @@ Class Products {
 						
 					$current_row->PLU = utf8_encode($data[0]);
 					$current_row->barcode = utf8_encode($data[1]);
-					$current_row->name =  ucfirst( strtolower( utf8_encode($data[2]) ) );
+					$current_row->name =  utf8_encode( ucfirst( strtolower( $data[2]) ));
 				//	$current_row->category_id = utf8_encode($category_id); //WTF ?
 					$current_row->presentation = utf8_encode($data[3]);
 					$current_row->description = utf8_encode($data[3]);
@@ -51,14 +51,30 @@ Class Products {
 		}
 	}
 	
-	public function create_json_of_products() {
+	public function create_json_of_products( $products ) {
 		
-		$products_json_id = $CI->product_json_model->insert_product_json( json_encode($products) );
+		$CI =& get_instance();
+		
+		$products_encoded = json_encode($products) ;
+		
 		$result = new stdClass();
 			
-		$result->status = json_last_error();
-
-		$result->products_json_id = $products_json_id;
+		$result->code_status = json_last_error();
+		$result->products_in_json = $products_encoded;
+		
+		return $result;
+	}
+	
+	public function save_json_of_products( $products ) {
+		$CI =& get_instance();
+		
+		$insert_id = $CI->product_json_model->insert_product_json( $products );
+		
+		if ( isset($insert_id) ) 
+			return TRUE;
+		
+		return FALSE;
+		
 	}
 	
 	public function load_all_products() {
@@ -93,8 +109,7 @@ Class Products {
 					$category->code_line = utf8_encode($data[6]);
 					$category->name = ucfirst( strtolower( utf8_encode($data[7]) ) );
 					
-					$potential_product->name = utf8_encode($data[0]);
-					$potential_product->presentation = utf8_encode($data[1]);
+					$potential_product->name = ucfirst( strtolower(utf8_encode($data[0])) );
 					$potential_product->code_line = $category->code_line;
 	
 					$result->categories[$category->code_line] = $category;
