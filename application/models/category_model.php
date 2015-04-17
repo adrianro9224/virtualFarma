@@ -22,4 +22,30 @@ class Category_model extends CI_Model {
 		
 		return NULL;
 	}
+	
+	public function insert_categories( $categories_to_save ) {
+		
+		$category_insert_ids = array();
+		
+		$num_of_categories_to_save = count($categories_to_save);
+		
+		foreach ($categories_to_save as $category ) {
+			$data = array(
+					"name" => $category->name,
+					"code_line" => $category->code_line
+			);
+				
+			$this->db->insert("category", $data);
+				
+			if( $this->db->affected_rows() == 1 )
+				$category_insert_ids[] = $this->db->insert_id();
+		}
+		
+		if ( $num_of_categories_to_save == count($category_insert_ids) )
+			return true;
+		
+		return false;
+		
+		
+	}
 }

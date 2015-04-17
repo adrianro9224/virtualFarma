@@ -51,7 +51,7 @@ div , body, html{
 }
 
 #primary-nav {
-	margin-top: 40.5px;
+	margin-top: 50.5px;
 }
 
 .no-margin {
@@ -67,16 +67,19 @@ div , body, html{
 	text-decoration: none;	
 }
 
-
-.nav>li>a, .nav>li>div>a {
-	
-	padding: 25px 22px !important;
+.navbar-default {
+	background-color: #F0F0F0;
 }
 
-.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus, .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
 	color: #fff;
 	background-color: #16A085;
 }
+
+.navbar-default .navbar-nav>li>a:hover {
+	background-color: #CCC;
+}
+
 
 #header-nav form.search {
 	float: right;
@@ -117,6 +120,10 @@ div , body, html{
 	color:#555 !important;
 	text-decoration:none;
 	background-color:#f5f5f5;
+}
+
+.navbar-form {
+	margin-bottom: 0;
 }
 
 #sticky.stick {
@@ -702,9 +709,9 @@ footer .footer-bar {
 footer .footer-content {
 	background: #2E363F;
 	border-top: #403E44 1px dashed;
-	padding: 30px 0;
+	padding: 6% 0;
 	display: block;
-	min-height: 250px; 
+	min-height: 350px; 
 }
 
 footer p.contact-desc {

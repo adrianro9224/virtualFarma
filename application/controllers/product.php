@@ -10,7 +10,7 @@ class Product extends MY_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model( array('product_model', 'account_model') );// add second param for add a "alias" ex: $this->load->model('Account', 'user')
- 		$this->load->library( array('products', 'account_types', 'roots'));
+ 		$this->load->library( array('products', 'account_types', 'roots', 'categories'));
 	}
 	
 	public function show_products_by_category($category_name) {
@@ -134,13 +134,13 @@ class Product extends MY_Controller {
 						
 						foreach ( $products as $product ) {
 							
-							foreach ( $result->potential_products as $potential_product ) {
+// 							foreach ( $result->potential_products as $potential_product ) {
 								
-								if ( $potential_product->name == $product->name )
-									$product->category_id = $potential_product->code_line;
+								if ( array_key_exists(str_replace(" ", "", $product->name), $result->potential_products) )
+									$product->category_id = $result->potential_products[str_replace(" ", "", $product->name)]->code_line;
 								else 
 									$product->category_id = NULL;
-							}
+// 							}
 							
 						}
 						
@@ -154,7 +154,11 @@ class Product extends MY_Controller {
 						
 						$products_saved = $this->product_model->create_products_from_csv( $products );
 						
-						if ( $products_saved ){
+						echo "saving categories in the DB ...";
+						
+						$categories_saved = $this->categories->save_categories( $result->categories );
+						
+						if ( $products_saved && $categories_saved ){
 							
 							log_message('debug', 'products created' );
 							echo "products saved in DB :)";
@@ -167,7 +171,7 @@ class Product extends MY_Controller {
 									echo ' - Sin errores';
 									echo "Saving JSON of products in product_json tabla...";
 									
-									$json_saved = $this->products->save_json_of_products( $products );
+									$json_saved = $this->products->save_json_of_products( $result->products_in_json );
 									
 									if ( $json_saved ) 
 										echo "JSON of Products saved :D.";

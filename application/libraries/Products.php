@@ -107,13 +107,13 @@ Class Products {
 				if( (count($data)) >= 8 ){
 						
 					$category->code_line = utf8_encode($data[6]);
-					$category->name = ucfirst( strtolower( utf8_encode($data[7]) ) );
+					$category->name =  utf8_encode(ucfirst( strtolower($data[7]) ) );
 					
-					$potential_product->name = ucfirst( strtolower(utf8_encode($data[0])) );
+					$potential_product->name = utf8_encode( ucfirst( strtolower($data[0])) );
 					$potential_product->code_line = $category->code_line;
 	
 					$result->categories[$category->code_line] = $category;
-					$result->potential_products[] = $potential_product; 
+					$result->potential_products[str_replace(" ", "", $potential_product->name)] = $potential_product; 
 				}
 			}
 			fclose( $handle );
