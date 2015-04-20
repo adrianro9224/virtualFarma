@@ -1,5 +1,6 @@
+<?=  str_replace("\":\"", "initProperty", str_replace("},", "endObject", str_replace("{\"", "initObject", str_replace("]", "!", str_replace("[", "¬", json_encode($products_by_category_id))))));?>
 <?php foreach ( $products_by_category_id as $product ): ?>
-	<div class="product-product">
+	<div class="product-product"  ng-init="test = ''">
 		<div class="row">
 			<div class="col-lg-3 col-md-4 col-xs-5">
 	        	<img src="<?= base_url() . 'assets/images/products/' . $product->uri_img . $product->image_format_id ?>" class="img-responsive" alt=":D">
@@ -13,7 +14,7 @@
 	                    <span class="label label-danger">New</span>
 					</div>
 	                <h3><a href="#"><?= $product->name ?></a></h3>
-	                <p><?= $product->description ?></p>
+	                <p><?= $product->description ?>{{test}}</p>
 	                <div class="clearfix">
 	                	<div class="product-price pull-left">
 	                		<?php if( $product->has_discount ): ?>

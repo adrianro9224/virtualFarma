@@ -34,17 +34,17 @@
 										<ul class="dropdown-menu" role="menu">
 											<?php foreach ($categories as $category):?>
 												<li>
-													<a href="<?= "/product/show_products_by_category/" . lcfirst(str_replace(' ', '_', $category->name))?>"><?= $category->name?></a>
+													<a href="<?= "/product/show_products_by_category/" . lcfirst(str_replace(array(' '), '_', $category->name))?>"><?= $category->name?></a>
 												</li>
 												<li class="divider"></li>
 											<?php endforeach;?>	
 										</ul>
 									</li>
-									<li><a href="#">Link</a></li>
+									<li><a href="#" title="Próximamente" >Ofertas</a></li>
 								</ul>
-								<form class="navbar-form navbar-right" role="search">
+								<form class="navbar-form navbar-right search-form" role="search">
 									<div class="input-group">
-										<input type="text" class="form-control" placeholder="Search for...">
+										<input type="text" class="form-control" placeholder="Busca aquí tus productos">
 										<span class="input-group-btn">
 											<button class="btn btn-default" type="button">Buscar</button>
 										</span>

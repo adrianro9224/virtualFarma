@@ -119,104 +119,127 @@ class Product extends MY_Controller {
 			if ($access_permited) {
 				
 				echo "reading categories...";
-				
+				print "\n";
 				$result = $this->products->read_categories_and_potential_products();
 				
 				if ( isset($result->categories) && isset($result->potential_products) ) {
 
 					echo "reading products...";
+					print "\n";
 					$products = $this->products->read_products();
 					
-					if ( isset($products) ){
+
+					echo "saving categories in the DB ...";
+					print "\n";
+					
+					$categories_saved = $this->categories->save_categories( $result->categories );
+					
+					if ( isset($products)  && $categories_saved ){
 						
-						//associate products
-						echo "associating products....";
+						echo "Getting categories";
+						$categories = $this->categories->load_categories();
 						
-						foreach ( $products as $product ) {
+						if ( isset($categories) ){
+
+							echo "Indexing categories";
 							
-// 							foreach ( $result->potential_products as $potential_product ) {
+							$indexed_by_code_line_categories = $this->categories->index_categories_by_code_line( $categories );
+							
+							//associate products
+							echo "associating products....";
+							print "\n";
+							
+							foreach ( $products as $product ) {
 								
-								if ( array_key_exists(str_replace(" ", "", $product->name), $result->potential_products) )
-									$product->category_id = $result->potential_products[str_replace(" ", "", $product->name)]->code_line;
-								else 
-									$product->category_id = NULL;
-// 							}
-							
-						}
-						
-						echo "Products to save: " . count($products);
-						
-						// saving in the db 
-						 
-						$this->db->trans_start();
-						
-						echo "saving products in the DB ...";
-						
-						$products_saved = $this->product_model->create_products_from_csv( $products );
-						
-						echo "saving categories in the DB ...";
-						
-						$categories_saved = $this->categories->save_categories( $result->categories );
-						
-						if ( $products_saved && $categories_saved ){
-							
-							log_message('debug', 'products created' );
-							echo "products saved in DB :)";
-							echo "Creating the JSON of products..";
-							
-							$result = $this->products->create_json_of_products( $products );
-							
-							switch( $result->code_status ) {
-								case JSON_ERROR_NONE:
-									echo ' - Sin errores';
-									echo "Saving JSON of products in product_json tabla...";
+	// 							foreach ( $result->potential_products as $potential_product ) {
 									
-									$json_saved = $this->products->save_json_of_products( $result->products_in_json );
-									
-									if ( $json_saved ) 
-										echo "JSON of Products saved :D.";
+									if ( array_key_exists(str_replace(" ", "", $product->name), $result->potential_products) )
+										$product->category_id = $indexed_by_code_line_categories[$result->potential_products[str_replace(" ", "", $product->name)]->code_line]->id;
 									else 
-										echo "JSON no saved";
-									
-									break;
-								case JSON_ERROR_DEPTH:
-									echo ' - Excedido tamaño máximo de la pila';
-									break;
-								case JSON_ERROR_STATE_MISMATCH:
-									echo ' - Desbordamiento de buffer o los modos no coinciden';
-									break;
-								case JSON_ERROR_CTRL_CHAR:
-									echo ' - Encontrado carácter de control no esperado';
-									break;
-								case JSON_ERROR_SYNTAX:
-									echo ' - Error de sintaxis, JSON mal formado';
-									break;
-								case JSON_ERROR_UTF8:
-									echo ' - Caracteres UTF-8 malformados, posiblemente están mal codificados';
-									break;
-								default:
-									echo ' - Error desconocido';
-									break;
+										$product->category_id = NULL;
+	// 							}
+								
 							}
-											
 							
-						}else {
-							log_message('error', 'products no created' );
-							echo "products not saved in DB :(";
-						}
-						
-						$this->db->trans_complete();
+							echo "Products to save: " . count($products);
+							print "\n";
 							
-						if ($this->db->trans_status() === FALSE)
-							return false;
+							//var_dump($products);
+							// saving in the db 
+							 
+							$this->db->trans_start();
+							
+							echo "saving products in the DB ...";
+							print "\n";
+							
+							$products_saved = $this->product_model->create_products_from_csv( $products );
+							
+							if ( $products_saved && $categories_saved ){
+								
+								log_message('debug', 'products created' );
+								echo "products saved in DB :)";
+								print "\n";
+								echo "Creating the JSON of products..";
+								print "\n";
+								
+								$result = $this->products->create_json_of_products( $products );
+								
+								switch( $result->code_status ) {
+									case JSON_ERROR_NONE:
+										echo ' - Sin errores';
+										echo "Saving JSON of products in product_json tabla...";
+										
+										$json_saved = $this->products->save_json_of_products( $result->products_in_json );
+										
+										if ( $json_saved ) 
+											echo "JSON of Products saved :D.";
+										else 
+											echo "JSON no saved";
+										
+										break;
+									case JSON_ERROR_DEPTH:
+										echo ' - Excedido tamaño máximo de la pila';
+										break;
+									case JSON_ERROR_STATE_MISMATCH:
+										echo ' - Desbordamiento de buffer o los modos no coinciden';
+										break;
+									case JSON_ERROR_CTRL_CHAR:
+										echo ' - Encontrado carácter de control no esperado';
+										break;
+									case JSON_ERROR_SYNTAX:
+										echo ' - Error de sintaxis, JSON mal formado';
+										break;
+									case JSON_ERROR_UTF8:
+										echo ' - Caracteres UTF-8 malformados, posiblemente están mal codificados';
+										break;
+									default:
+										echo ' - Error desconocido';
+										break;
+								}
+												
+								
+							}else {
+								log_message('error', 'products no created' );
+								echo "products not saved in DB :(";
+								print "\n";
+							}
+							
+							$this->db->trans_complete();
+								
+							if ($this->db->trans_status() === FALSE)
+								return false;
+						}else
+							echo "problem getting the categories";
 							
 						
 					}else {
 						echo "Problems completing the second process(reading products)";
+						print "\n";
 					}
 					
 				}else {
 					echo "Problems completing the first process(reading categories and potential products)";
+					print "\n";
 				}
 				
 			} else

@@ -5,7 +5,7 @@ class Home extends MY_Controller {
 	
 	function __construct(){
 		parent::__construct();
-		$this->load->library( array('account_types') );
+		$this->load->library( array('account_types', 'products') );
 	}
 	
 	public function index($page = 'home') {
@@ -43,6 +43,17 @@ class Home extends MY_Controller {
 		}
 		
 		$this->load->view('pages/' . $page, $data);
+		
+	}
+	
+	public function show_product_for_search() {
+		
+		$json_string_of_products = $this->products->load_all_products();
+			
+		if( isset($json_string_of_products) ){
+			echo $json_string_of_products;
+		}else
+			echo 'NULL';
 		
 	}
 } 

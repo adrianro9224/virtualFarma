@@ -71,6 +71,14 @@ div , body, html{
 	background-color: #F0F0F0;
 }
 
+#primary-nav .navbar-form .input-group .input-group-btn {
+	width: 1px;
+}
+
+#primary-nav .search-form .input-group {
+	width: 430px;
+}
+
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
 	color: #fff;
 	background-color: #16A085;

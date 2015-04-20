@@ -30,14 +30,14 @@ Class Products {
 // 					if ($category_id > 4 )
 // 						$category_id = 0;
 						
-					$current_row->PLU = utf8_encode($data[0]);
-					$current_row->barcode = utf8_encode($data[1]);
-					$current_row->name =  utf8_encode( ucfirst( strtolower( $data[2]) ));
+					$current_row->PLU = utf8_encode(trim($data[0]));
+					$current_row->barcode = utf8_encode(trim($data[1]));
+					$current_row->name =  utf8_encode( ucfirst( strtolower( trim( str_replace('/', '-', $data[2]))) ));
 				//	$current_row->category_id = utf8_encode($category_id); //WTF ?
-					$current_row->presentation = utf8_encode($data[3]);
-					$current_row->description = utf8_encode($data[3]);
-					$current_row->stock = utf8_encode($data[4]);
-					$current_row->price = utf8_encode($data[5]);
+					$current_row->presentation = utf8_encode(trim($data[3]));
+					$current_row->description = utf8_encode(trim($data[3]));
+					$current_row->stock = utf8_encode(trim($data[4]));
+					$current_row->price = utf8_encode(trim($data[5]));
 						
 					$products[] = $current_row;
 						
@@ -106,10 +106,10 @@ Class Products {
 	
 				if( (count($data)) >= 8 ){
 						
-					$category->code_line = utf8_encode($data[6]);
-					$category->name =  utf8_encode(ucfirst( strtolower($data[7]) ) );
+					$category->code_line = utf8_encode(trim($data[6]));
+					$category->name =  utf8_encode(ucfirst( strtolower(trim(str_replace('/', '-',$data[7]))) ) );
 					
-					$potential_product->name = utf8_encode( ucfirst( strtolower($data[0])) );
+					$potential_product->name = utf8_encode( ucfirst(strtolower(trim(str_replace('/', '-',$data[0])))) );
 					$potential_product->code_line = $category->code_line;
 	
 					$result->categories[$category->code_line] = $category;
