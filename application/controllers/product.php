@@ -10,10 +10,10 @@ class Product extends MY_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model( array('product_model', 'account_model') );// add second param for add a "alias" ex: $this->load->model('Account', 'user')
- 		$this->load->library( array('products', 'account_types', 'roots', 'categories'));
+ 		$this->load->library( array('products', 'account_types', 'roots', 'categories', 'pagination'));
 	}
 	
-	public function show_products_by_category($category_name) {
+	public function show_products_by_category($category_name, $page_number = 10){
 		
 		$breadcrumb = new stdClass();
 		
@@ -88,17 +88,31 @@ class Product extends MY_Controller {
 					
 					$num_of_products = count( $products_with_discount );
 					
-					$test = str_replace(":", "dPoS", 
+					/*$products_encoded = str_replace(":", "dPoS", 
 							str_replace("]", "cEnd", 
 							str_replace(",", "coInit", 
 							str_replace("\"", "cDInit", 
 							str_replace("}", "llEnd", 
 							str_replace("{", "llInit", 
 									str_replace("[", "cInit", 
-											json_encode($products_with_discount))))))));
+											json_encode($products_with_discount))))))));*/
+					
+					if ( isset($page_number) ){
+						$config['base_url'] = base_url() . '/product/show_products_by_category/'. $category_name . '/';
+						$config['total_rows'] = count($products_with_discount);
+						$config['per_page'] = 2;
+						$config['uri_segment'] = 4;
+							
+						$this->pagination->initialize($config);
+						
+						$data['pagination'] = $this->pagination->create_links();
+					}
+					
+					
 					
 					$data['products_by_category_id'] = $products_with_discount;
-					$data['test'] = $test;
+					
+					//$data['products_encoded'] = $products_encoded;
 				}else {
 					$notifications['warning'] = "No existen productos con esta categoría";
 					$this->session->set_flashdata('notifications', $notifications );

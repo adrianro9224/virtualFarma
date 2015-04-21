@@ -1,5 +1,6 @@
+<?= $pagination;?>
 <?php foreach ( $products_by_category_id as $product ): ?>
-	<div class="product-product"  ng-init="test = '<?= $test;?>'">
+	<div class="product-product" >
 		<div class="row">
 			<div class="col-lg-3 col-md-4 col-xs-5">
 	        	<img src="<?= base_url() . 'assets/images/products/' . $product->uri_img . $product->image_format_id ?>" class="img-responsive" alt=":D">

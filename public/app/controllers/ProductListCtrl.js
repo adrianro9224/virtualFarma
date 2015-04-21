@@ -2,7 +2,7 @@
  * Created by Adrian on 12/02/2015.
  */
 
-farmapp.controller( 'ProductListCtrl', ['$scope' ,'$log' ,'$rootScope' ,'$cookies' ,'ConstantsService', 'UtilService', '$timeout', function( $scope ,$log ,$rootScope ,$cookies, ConstantsService, UtilService, $timeout ){
+farmapp.controller( 'ProductListCtrl', ['$scope' ,'$log' ,'$rootScope' ,'$cookies' ,'ConstantsService', 'UtilService', '$timeout', '$document', function( $scope ,$log ,$rootScope ,$cookies, ConstantsService, UtilService, $timeout, $document ){
 
     'use strict';
 
@@ -97,22 +97,29 @@ farmapp.controller( 'ProductListCtrl', ['$scope' ,'$log' ,'$rootScope' ,'$cookie
         return currentProduct;
     }
 
+    angular.element(document).ready(function() {
+        //charge_products();
+    });
+
     function charge_products() {
-        $timeout(100000).finally(test());
 
+        var productsEncoded = $scope.productsEncoded;
 
-    }
-    charge_products();
+        if ( productsEncoded != undefined ) {
+            var productsJSON = productsEncoded.replace(/cInit/g, "[").replace(/llInit/g, "{").replace(/llEnd/g, "}").replace(/coInit/g, ",").replace(/cEnd/g, "]").replace(/cDInit/g, "\"").replace(/dPoS/g, ":");
 
-    function test() {
-        var products = $scope.test;
+            var productsDecoded = angular.fromJson(productsJSON);
 
+            $scope.productsDecoded = productsDecoded;
 
-        if (products != undefined) {
-            var productsJSON = products.replace("cInit", "[").replace("llInit", "{").replace("llEnd", "}").replace("cDInit", "\"")
-                .replace("coInit", ",").replace("cEnd", "]").replace("dPoS", ":");
+            //$emit('');
         }
-        $log.info(productsJSON);
+        //angular.element(document).controller('ngModel').$render();
+        $log.info( $scope.productsDecoded );
+
     }
+
+
+
 
 }]);

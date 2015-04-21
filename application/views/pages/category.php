@@ -60,7 +60,7 @@
 								</div>
 							</section>
 							<section id="product_listing">
-								<div class="col-md-12">
+								<div class="col-md-12" >
 									<?php include_once( __ROOT__TEMPLATES__ . 'product-list.php');?>
 								</div>
 							</section>	
