@@ -88,7 +88,17 @@ class Product extends MY_Controller {
 					
 					$num_of_products = count( $products_with_discount );
 					
+					$test = str_replace(":", "dPoS", 
+							str_replace("]", "cEnd", 
+							str_replace(",", "coInit", 
+							str_replace("\"", "cDInit", 
+							str_replace("}", "llEnd", 
+							str_replace("{", "llInit", 
+									str_replace("[", "cInit", 
+											json_encode($products_with_discount))))))));
+					
 					$data['products_by_category_id'] = $products_with_discount;
+					$data['test'] = $test;
 				}else {
 					$notifications['warning'] = "No existen productos con esta categoría";
 					$this->session->set_flashdata('notifications', $notifications );

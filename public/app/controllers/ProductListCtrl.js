@@ -2,7 +2,7 @@
  * Created by Adrian on 12/02/2015.
  */
 
-farmapp.controller( 'ProductListCtrl', ['$scope' ,'$log' ,'$rootScope' ,'$cookies' ,'ConstantsService', 'UtilService', function( $scope ,$log ,$rootScope ,$cookies, ConstantsService, UtilService ){
+farmapp.controller( 'ProductListCtrl', ['$scope' ,'$log' ,'$rootScope' ,'$cookies' ,'ConstantsService', 'UtilService', '$timeout', function( $scope ,$log ,$rootScope ,$cookies, ConstantsService, UtilService, $timeout ){
 
     'use strict';
 
@@ -95,6 +95,24 @@ farmapp.controller( 'ProductListCtrl', ['$scope' ,'$log' ,'$rootScope' ,'$cookie
         currentProduct.discount = discount == 0 ? 0 : discount;
 
         return currentProduct;
+    }
+
+    function charge_products() {
+        $timeout(100000).finally(test());
+
+
+    }
+    charge_products();
+
+    function test() {
+        var products = $scope.test;
+
+
+        if (products != undefined) {
+            var productsJSON = products.replace("cInit", "[").replace("llInit", "{").replace("llEnd", "}").replace("cDInit", "\"")
+                .replace("coInit", ",").replace("cEnd", "]").replace("dPoS", ":");
+        }
+        $log.info(productsJSON);
     }
 
 }]);
