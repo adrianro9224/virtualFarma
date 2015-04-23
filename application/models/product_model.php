@@ -49,4 +49,8 @@ class Product_model extends CI_Model {
 		return false;
 		
 	}
+	
+	public function get_by_name() {
+		
+	}
 }

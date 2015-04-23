@@ -76,7 +76,7 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$http', '$filter', '$cookies'
         }
 
 
-    }
+    };
 
     $scope.putSaveAndSound = function ( sale, IsValid ) {
 

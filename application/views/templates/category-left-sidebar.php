@@ -3,12 +3,12 @@
 	<div class="panel-heading">
 		<h3>Categorias</h3>
 	</div>
-	<div class="panel-body">
+	<div class="panel-body" >
 		<p>...</p>
 	</div>
 
 	<!-- List group -->
-	<ul class="list-group">
+	<ul class="list-group" id="left-sidebar-categories-list">
 		<?php foreach( $categories as $category ): ?>
 			<li class="list-group-item no-padding">
 				<a href=<?= "/product/show_products_by_category/" . lcfirst(str_replace(' ', '_', $category->name))?> >

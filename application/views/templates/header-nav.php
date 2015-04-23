@@ -31,7 +31,7 @@
 									<li class="active"><a href="/">Inicio<span class="sr-only">(current)</span></a></li>
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categorias <span class="caret"></span></a>
-										<ul class="dropdown-menu" role="menu">
+										<ul class="dropdown-menu" role="menu" id="categories-scroll">
 											<?php foreach ($categories as $category):?>
 												<li>
 													<a href="<?= "/product/show_products_by_category/" . lcfirst(str_replace(array(' '), '_', $category->name))?>"><?= $category->name?></a>
@@ -42,12 +42,9 @@
 									</li>
 									<li><a href="#" title="Próximamente" >Ofertas</a></li>
 								</ul>
-								<form class="navbar-form navbar-right search-form" role="search">
+								<form name="searchProductForm" class="navbar-form navbar-right search-form" role="search">
 									<div class="input-group">
-										<input type="text" class="form-control" placeholder="Busca aquí tus productos">
-										<span class="input-group-btn">
-											<button class="btn btn-default" type="button">Buscar</button>
-										</span>
+										<input popover-placement="top" popover="Escríbe aquí el nombre del producto que deseas!"  popover-trigger="focus" type="text" name="productName" ng-change="search( productNameToSearch )" ng-model="productNameToSearch" ng-model="productNameToSearch" class="form-control" placeholder="Busca aquí tus productos" required="required" ng-disabled="!productsCharged">
 									</div><!-- /input-group -->
 								</form>
 							</div><!-- /.navbar-collapse -->

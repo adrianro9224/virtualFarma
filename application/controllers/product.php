@@ -10,7 +10,7 @@ class Product extends MY_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model( array('product_model', 'account_model') );// add second param for add a "alias" ex: $this->load->model('Account', 'user')
- 		$this->load->library( array('products', 'account_types', 'roots', 'categories'));
+ 		$this->load->library( array('products', 'account_types', 'roots', 'categories') );
 	}
 	
 	public function show_products_by_category( $category_name, $from_items = 0 ){
@@ -288,7 +288,7 @@ class Product extends MY_Controller {
 		
 		$config['base_url'] = base_url() . "/product/show_products_by_category/" . $category_name . '/';
 		$config['total_rows'] = $num_of_products;
-		$config['per_page'] = 10;
+		$config['per_page'] = 8;
 		$config['uri_segment'] = 4;
 		$config['num_links'] = 5;
 		
@@ -334,5 +334,100 @@ class Product extends MY_Controller {
 		}
 		
 		
+	}
+	
+	public function all_products() {
+		
+		$json_string_of_products = $this->products->load_all_products();
+			
+		if( isset($json_string_of_products) ){
+			echo $json_string_of_products;
+		}else
+			echo 'NULL';
+		
+	}
+	
+// 	public function search_product() {
+		
+// 		$product_info_to_search = $this->input->post();
+		
+		
+// 		$data['title'] = "Resultados";
+		
+// 		$breadcrumb = new stdClass();
+		
+// 		$data['user_logged'] = false;
+		
+// 		$session_data = $this->session->all_userdata();
+		
+// 		if( !isset($session_data['account_types']) ) {
+// 			$account_types = $this->account_types->get_account_types();
+// 			$this->session->set_userdata('account_types', $account_types);
+// 		}else{
+// 			$account_types = $session_data['account_types'];
+// 			$data['account_types'] = $account_types;
+// 		}
+		
+// 		if( isset($session_data[$account_types[1] . '_id']) ){
+		
+// 			$account = $this->account_model->get_account_by_id($session_data[$account_types[1] . '_id']);
+				
+// 			if( isset($account) ) {
+// 				$data['account_id'] = $session_data[$account_types[1] . '_id'];
+// 				$data['user_logged'] = true;
+// 			}
+// 		}
+		
+		
+// 		$breadcrumb = new stdClass();
+		
+// 		$breadcrumb->title = "Resultados de búsqueda";
+		
+// 		$breadcrumb_item = new stdClass();
+		
+// 		$breadcrumb_item->name = "productos";
+// 		$breadcrumb_item->url = "/product/show_products_by_category/nuestros_productos";
+// 		$breadcrumb_item->active = true;
+		
+// 		$breadcrumb_list['register'] = $breadcrumb_item;
+		
+// 		$breadcrumb->items = $breadcrumb_list;
+		
+// 		$data['breadcrumb'] = $breadcrumb;
+		
+// 		$category_id = NULL;
+// 		$products_by_category_id = NULL;
+// 		$notifications = array();
+		
+// 		$categories = $this->get_categories();
+		
+		
+// 		$data['categories'] = $categories;
+		
+// 		$validation_response = $this->_validate_search_product_form();
+		
+// 		if ( $validation_response ) {
+			
+// 			$products = $this->product_model->get_by_name( $product_info_to_search );
+			
+// 		}
+		
+		
+		
+// 	}
+	
+	/**
+	 * Custom form sing_up valilation
+	 * @return result of form validation
+	 */
+	private function _validate_search_product_form() {
+	
+		$this->form_validation->set_rules('productName', 'productName', 'required|max_length[64]|xss_clean');
+	
+		if ($this->form_validation->run() == FALSE)
+			return false;
+	
+		return true;
+	
 	}
 }

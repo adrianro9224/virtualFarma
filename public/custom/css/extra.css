@@ -38,6 +38,18 @@ div , body, html{
 /*
 * header-nav styles start
 */
+
+#primary-nav #categories-scroll {
+	max-height: 580px;
+	overflow: auto;
+}
+
+#left_sidebar #categories_panel #left-sidebar-categories-list {
+	max-height: 740px;
+	overflow: auto;
+	
+}
+
 #header-nav {
 	/*height: 70px;*/
 }

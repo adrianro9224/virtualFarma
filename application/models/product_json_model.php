@@ -33,6 +33,8 @@ Class Product_json_model extends CI_Model{
 	 */
 	public function get_json_products() {
 		
+		$this->db->where('status', 1);
+		
 		$query = $this->db->get('product_json');
 		
 		if ($query->num_rows() == 1)

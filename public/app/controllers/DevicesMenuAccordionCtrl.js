@@ -2,7 +2,7 @@
  * Created by Adrian on 12/11/2014.
  */
 
-farmapp.controller('DevicesMenuAccordionCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+farmapp.controller('DevicesMenuAccordionCtrl', ['$scope', '$rootScope', '$http', '$filter', function( $scope, $rootScope, $http, $filter ) {
     $scope.oneAtATime = true;
     $scope.menuStatus =false;
 
@@ -60,5 +60,6 @@ farmapp.controller('DevicesMenuAccordionCtrl', ['$scope', '$rootScope', function
         $(window).scroll(sticky_relocate);
         sticky_relocate();
     });
+
 
 }]);

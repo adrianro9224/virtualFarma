@@ -2,7 +2,7 @@
 <html lang="en" ng-app="farmapp">
 <?php include_once(__ROOT__TEMPLATES__ . 'head.php');?>
 
-<body>
+<body ng-controller="MainCtrl">
 	<div id="wrapper">
 		<!-- Header start -->
 		<section id="header">
@@ -23,6 +23,13 @@
 			</div>
 		</div>
 		<!-- Errors over -->
+		
+		<!-- Search products results start -->
+		<div class="container" >
+			<?php include_once( __ROOT__TEMPLATES__ . 'search_results.php');?>
+		</div>
+		<!-- Search products results start -->
+		
 		<!-- Content start -->
 		<section id="carousel">
 			<?php include_once( __ROOT__TEMPLATES__ . 'carousel.php');?>

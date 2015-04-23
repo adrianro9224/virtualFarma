@@ -44,7 +44,7 @@
 									<?php include_once( __ROOT__TEMPLATES__ . 'shopping-cart.php');?>
 								</div>
 							</section>
-							<div class="col-md-12">
+							<div class="col-md-12" id="categories_panel">
 								<?php include_once( __ROOT__TEMPLATES__ . 'category-left-sidebar.php');?>								
 							</div>
 						</div>
