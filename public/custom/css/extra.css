@@ -205,7 +205,11 @@ button.close {
 * pagination list start
 */
 
-#product_list #product_pagination ul {
+#product_list #product_pagination_top ul {
+	float: right;
+}
+
+#product_list #product_pagination_bottom ul {
 	float: right;
 }
 

@@ -1,4 +1,3 @@
-<?= $pagination;?>
 <?php foreach ( $products_by_category_id as $product ): ?>
 	<div class="product-product" >
 		<div class="row">

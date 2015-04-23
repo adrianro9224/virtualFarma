@@ -54,14 +54,19 @@
 					<!-- product list start -->
 					<section ng-controller="ProductListCtrl" id="product_list" >
 						<div class="col-md-9">
-							<section id="product_pagination">
+							<section id="product_pagination_top">
 								<div class="col-md-12">
-									<?php include_once( __ROOT__TEMPLATES__ . 'product-pagination.php');?>
+									<?php include( __ROOT__TEMPLATES__ . 'product-pagination.php');?>
 								</div>
 							</section>
 							<section id="product_listing">
 								<div class="col-md-12" >
 									<?php include_once( __ROOT__TEMPLATES__ . 'product-list.php');?>
+								</div>
+							</section>
+							<section id="product_pagination_bottom">
+								<div class="col-md-12">
+									<?php include( __ROOT__TEMPLATES__ . 'product-pagination.php');?>
 								</div>
 							</section>	
 						</div>

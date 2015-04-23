@@ -10,10 +10,10 @@ class Product extends MY_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model( array('product_model', 'account_model') );// add second param for add a "alias" ex: $this->load->model('Account', 'user')
- 		$this->load->library( array('products', 'account_types', 'roots', 'categories', 'pagination'));
+ 		$this->load->library( array('products', 'account_types', 'roots', 'categories'));
 	}
 	
-	public function show_products_by_category($category_name, $page_number = 10){
+	public function show_products_by_category( $category_name, $from_items = 0 ){
 		
 		$breadcrumb = new stdClass();
 		
@@ -26,7 +26,7 @@ class Product extends MY_Controller {
 			$this->session->set_userdata('account_types', $account_types);
 		}else{
 			$account_types = $session_data['account_types'];
-			$data['account_types'] = $session_data['account_types'];
+			$data['account_types'] = $account_types;
 		}
 		
 		if( isset($session_data[$account_types[1] . '_id']) ){
@@ -86,8 +86,6 @@ class Product extends MY_Controller {
 					//calculate product discounts
 					$products_with_discount = $this->_calculate_product_discount($products_by_category_id);
 					
-					$num_of_products = count( $products_with_discount );
-					
 					/*$products_encoded = str_replace(":", "dPoS", 
 							str_replace("]", "cEnd", 
 							str_replace(",", "coInit", 
@@ -96,21 +94,7 @@ class Product extends MY_Controller {
 							str_replace("{", "llInit", 
 									str_replace("[", "cInit", 
 											json_encode($products_with_discount))))))));*/
-					
-					if ( isset($page_number) ){
-						$config['base_url'] = base_url() . '/product/show_products_by_category/'. $category_name . '/';
-						$config['total_rows'] = count($products_with_discount);
-						$config['per_page'] = 2;
-						$config['uri_segment'] = 4;
-							
-						$this->pagination->initialize($config);
-						
-						$data['pagination'] = $this->pagination->create_links();
-					}
-					
-					
-					
-					$data['products_by_category_id'] = $products_with_discount;
+					$this->_do_pagination( $category_name, $products_with_discount, $data, $from_items );
 					
 					//$data['products_encoded'] = $products_encoded;
 				}else {
@@ -128,7 +112,6 @@ class Product extends MY_Controller {
 		}else {
 			redirect('/');
 		} 
-		
 		$this->load->view('pages/category', $data);
 	}
 	
@@ -297,5 +280,59 @@ class Product extends MY_Controller {
 		}
 		
 		return $products;
+	}
+	
+	private function _do_pagination( $category_name , $products_with_discount, &$data, $from_items ) {
+		$this->load->library('pagination');
+		$num_of_products = count($products_with_discount); 
+		
+		$config['base_url'] = base_url() . "/product/show_products_by_category/" . $category_name . '/';
+		$config['total_rows'] = $num_of_products;
+		$config['per_page'] = 10;
+		$config['uri_segment'] = 4;
+		$config['num_links'] = 5;
+		
+		$config['full_tag_open'] = '<nav><ul class="pagination">';
+		$config['full_tag_close'] = '</ul></nav>';
+		
+		$config['first_link'] = 'Priméra';
+		$config['first_tag_open'] = '<li>';
+		$config['first_tag_close'] = '</li>';
+		
+		$config['last_link'] = 'Última';
+		$config['last_tag_open'] = '<li>';
+		$config['last_tag_close'] = '</li>';
+		
+		$config['next_link'] = '&gt;';
+		$config['next_tag_open'] = '<li>';
+		$config['next_tag_close'] = '</li>';
+		
+		$config['prev_link'] = '&lt;';
+		$config['prev_tag_open'] = '<li>';
+		$config['prev_tag_close'] = '</li>';
+		
+		$config['cur_tag_open'] = '<li class="active"><a>';
+		$config['cur_tag_close'] = '</a></li>';
+		
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		
+		//$config['use_page_numbers'] = TRUE;
+		
+		$this->pagination->initialize($config);
+		
+		$data['pagination'] = $this->pagination->create_links();
+		
+		if ( $num_of_products > $config['per_page'] ) {
+			
+			$products_to_show = array_slice( $products_with_discount, $from_items, $config['per_page'] );
+			
+			$data['products_by_category_id'] = $products_to_show;
+			
+		}else {
+			$data['products_by_category_id'] = $products_with_discount;
+		}
+		
+		
 	}
 }
