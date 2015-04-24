@@ -3,7 +3,7 @@
  */
 
 farmapp.controller('MainCtrl', ['$scope' ,'$http', '$filter' , function( $scope, $http, $filter ){
-
+/*
     $scope.search = function( searchText ) {
 
         if (searchText != undefined) {
@@ -47,5 +47,5 @@ farmapp.controller('MainCtrl', ['$scope' ,'$http', '$filter' , function( $scope,
     }
 
     load_products();
-
+*/
 }]);

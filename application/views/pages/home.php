@@ -25,9 +25,13 @@
 		<!-- Errors over -->
 		
 		<!-- Search products results start -->
-		<div class="container" >
-			<?php include_once( __ROOT__TEMPLATES__ . 'search_results.php');?>
-		</div>
+		<section id="search-widget-results">
+			<div class="container">
+				<div class="col-md-12">
+					<?php include_once( __ROOT__TEMPLATES__ . 'search_results.php');?>
+				</div>
+			</div>
+		</section>
 		<!-- Search products results start -->
 		
 		<!-- Content start -->

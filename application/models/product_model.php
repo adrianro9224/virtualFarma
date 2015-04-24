@@ -50,7 +50,16 @@ class Product_model extends CI_Model {
 		
 	}
 	
-	public function get_by_name() {
+	public function get_by_name( $pattern_to_search ) {
+		
+		$this->db->like('name', $pattern_to_search);
+		$query = $this->db->get('product');
+		
+		if( $query->num_rows() > 0 ) {
+			return $query->result();
+		}
+		
+		return NULL;
 		
 	}
 }

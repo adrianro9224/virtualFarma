@@ -28,6 +28,7 @@ div , body, html{
 	background-color: #F0F0F0;
 	border-bottom: 1px solid #DDDDDD;
 	padding: 7px 0 7px 0;
+	box-shadow: 0 -2px 15px #888888;
 }
 
 
@@ -39,11 +40,20 @@ div , body, html{
 * header-nav styles start
 */
 
+#search-module>input {
+	
+	border-radius: 5px;
+	border:2px solid #BBB;
+}
+
 #primary-nav #categories-scroll {
 	max-height: 580px;
 	overflow: auto;
 }
 
+#search-widget-results hr{
+	margin: 2px 0 9px 0;
+}
 #left_sidebar #categories_panel #left-sidebar-categories-list {
 	max-height: 740px;
 	overflow: auto;

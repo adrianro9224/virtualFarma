@@ -10,7 +10,7 @@ class Product extends MY_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model( array('product_model', 'account_model') );// add second param for add a "alias" ex: $this->load->model('Account', 'user')
- 		$this->load->library( array('products', 'account_types', 'roots', 'categories') );
+ 		$this->load->library( array('products', 'account_types', 'roots', 'categories' , 'form_validation') );
 	}
 	
 	public function show_products_by_category( $category_name, $from_items = 0 ){
@@ -67,6 +67,8 @@ class Product extends MY_Controller {
 		
 		if( isset($category_name) && !empty($category_name) ) {
 			
+			$breadcrumb->sub_title = ucfirst(str_replace('-', ' ', str_replace('_', ' ', $category_name)));
+			
 			foreach ( $categories as $category ) {
 					
 				if( $category->name == ucfirst( str_replace('_', ' ', $category_name ) ) )
@@ -86,6 +88,8 @@ class Product extends MY_Controller {
 					//calculate product discounts
 					$products_with_discount = $this->_calculate_product_discount($products_by_category_id);
 					
+					$base_url = base_url() . "/product/show_products_by_category/" . $category_name . '/';
+					$uri_segment = 4;
 					/*$products_encoded = str_replace(":", "dPoS", 
 							str_replace("]", "cEnd", 
 							str_replace(",", "coInit", 
@@ -94,7 +98,7 @@ class Product extends MY_Controller {
 							str_replace("{", "llInit", 
 									str_replace("[", "cInit", 
 											json_encode($products_with_discount))))))));*/
-					$this->_do_pagination( $category_name, $products_with_discount, $data, $from_items );
+					$this->_do_pagination( $base_url, $uri_segment, $products_with_discount, $data, $from_items );
 					
 					//$data['products_encoded'] = $products_encoded;
 				}else {
@@ -103,8 +107,7 @@ class Product extends MY_Controller {
 					redirect('/');
 				}
 			}else {
-				$notifications['warning'][] = "No existe esta categoría";
-				$notifications['warning'][] = $category_name;
+				$notifications['warning'][] = "No existe esta categoría " . $category_name;
 				$this->session->set_flashdata('notifications', $notifications );
 				redirect('/');
 			}
@@ -282,14 +285,14 @@ class Product extends MY_Controller {
 		return $products;
 	}
 	
-	private function _do_pagination( $category_name , $products_with_discount, &$data, $from_items ) {
+	private function _do_pagination( $base_url, $uri_segment , $products_with_discount, &$data, $from_items ) {
 		$this->load->library('pagination');
 		$num_of_products = count($products_with_discount); 
 		
-		$config['base_url'] = base_url() . "/product/show_products_by_category/" . $category_name . '/';
+		$config['base_url'] = $base_url;
 		$config['total_rows'] = $num_of_products;
 		$config['per_page'] = 8;
-		$config['uri_segment'] = 4;
+		$config['uri_segment'] = $uri_segment;
 		$config['num_links'] = 5;
 		
 		$config['full_tag_open'] = '<nav><ul class="pagination">';
@@ -347,74 +350,98 @@ class Product extends MY_Controller {
 		
 	}
 	
-// 	public function search_product() {
-		
-// 		$product_info_to_search = $this->input->post();
+	public function search_product( $product_info = NULL, $from_items = 0 ) {
 		
 		
-// 		$data['title'] = "Resultados";
+		$product_info_to_search = $this->input->post();
 		
-// 		$breadcrumb = new stdClass();
 		
-// 		$data['user_logged'] = false;
+		$data['title'] = "Resultados";
 		
-// 		$session_data = $this->session->all_userdata();
+		$breadcrumb = new stdClass();
 		
-// 		if( !isset($session_data['account_types']) ) {
-// 			$account_types = $this->account_types->get_account_types();
-// 			$this->session->set_userdata('account_types', $account_types);
-// 		}else{
-// 			$account_types = $session_data['account_types'];
-// 			$data['account_types'] = $account_types;
-// 		}
+		$data['user_logged'] = false;
 		
-// 		if( isset($session_data[$account_types[1] . '_id']) ){
+		$session_data = $this->session->all_userdata();
 		
-// 			$account = $this->account_model->get_account_by_id($session_data[$account_types[1] . '_id']);
+		if( !isset($session_data['account_types']) ) {
+			$account_types = $this->account_types->get_account_types();
+			$this->session->set_userdata('account_types', $account_types);
+		}else{
+			$account_types = $session_data['account_types'];
+			$data['account_types'] = $account_types;
+		}
+		
+		if( isset($session_data[$account_types[1] . '_id']) ){
+		
+			$account = $this->account_model->get_account_by_id($session_data[$account_types[1] . '_id']);
 				
-// 			if( isset($account) ) {
-// 				$data['account_id'] = $session_data[$account_types[1] . '_id'];
-// 				$data['user_logged'] = true;
-// 			}
-// 		}
+			if( isset($account) ) {
+				$data['account_id'] = $session_data[$account_types[1] . '_id'];
+				$data['user_logged'] = true;
+			}
+		}
 		
 		
-// 		$breadcrumb = new stdClass();
+		$breadcrumb = new stdClass();
 		
-// 		$breadcrumb->title = "Resultados de búsqueda";
+		$breadcrumb->title = "Resultados de búsqueda para";
 		
-// 		$breadcrumb_item = new stdClass();
+		$breadcrumb_item = new stdClass();
 		
-// 		$breadcrumb_item->name = "productos";
-// 		$breadcrumb_item->url = "/product/show_products_by_category/nuestros_productos";
-// 		$breadcrumb_item->active = true;
+		$breadcrumb_item->name = "productos";
+		$breadcrumb_item->url = "/product/show_products_by_category/nuestros_productos";
+		$breadcrumb_item->active = true;
 		
-// 		$breadcrumb_list['register'] = $breadcrumb_item;
+		$breadcrumb_list['register'] = $breadcrumb_item;
 		
-// 		$breadcrumb->items = $breadcrumb_list;
+		$breadcrumb->items = $breadcrumb_list;
 		
-// 		$data['breadcrumb'] = $breadcrumb;
+		$data['breadcrumb'] = $breadcrumb;
 		
-// 		$category_id = NULL;
-// 		$products_by_category_id = NULL;
-// 		$notifications = array();
+		$category_id = NULL;
+		$products_by_category_id = NULL;
+		$notifications = array();
 		
-// 		$categories = $this->get_categories();
+		$categories = $this->get_categories();
 		
 		
-// 		$data['categories'] = $categories;
+		$data['categories'] = $categories;
 		
-// 		$validation_response = $this->_validate_search_product_form();
+		$validation_response = $this->_validate_search_product_form();
 		
-// 		if ( $validation_response ) {
+		if ( $validation_response ) {
 			
-// 			$products = $this->product_model->get_by_name( $product_info_to_search );
+			$breadcrumb->sub_title = $product_info_to_search['productName'];
+			$products = $this->product_model->get_by_name( $product_info_to_search['productName'] );
+			//echo $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 			
-// 		}
+			if ( isset($products) ) {
+				
+				$this->_calculate_product_discount( $products );
+				//if ( !isset($product_info )) {
+					$base_url = $base_url = base_url() . "/product/search_product/";
+				//}
+				
+				$uri_segment = 3;
+				
+				$this->_do_pagination($base_url, $uri_segment, $products, $data, $from_items);
+				
+				$notifications['warning'] = "Productos encontrádos!!";
+				$this->session->set_flashdata('notifications', $notifications );
+				
+				$this->load->view('pages/category', $data);
+			}else {
+				$notifications['warning'] = "No existen productos con esta categoría";
+				$this->session->set_flashdata('notifications', $notifications );
+				redirect('/');
+			}
+			
+		}
 		
 		
 		
-// 	}
+	}
 	
 	/**
 	 * Custom form sing_up valilation

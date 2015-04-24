@@ -1,6 +1,6 @@
 <div class="col-md-12">
 	<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-		<h2><?= $breadcrumb->title?></h2>
+		<h2><?= $breadcrumb->title?>:</h2><span> <?= $breadcrumb->sub_title?></span>
 	</div>
 	<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 		<?php if( isset($shoppingcart) ): ?>

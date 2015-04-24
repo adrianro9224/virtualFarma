@@ -42,9 +42,10 @@
 									</li>
 									<li><a href="#" title="Próximamente" >Ofertas</a></li>
 								</ul>
-								<form name="searchProductForm" class="navbar-form navbar-right search-form" role="search">
-									<div class="input-group">
-										<input popover-placement="top" popover="Escríbe aquí el nombre del producto que deseas!"  popover-trigger="focus" type="text" name="productName" ng-change="search( productNameToSearch )" ng-model="productNameToSearch" ng-model="productNameToSearch" class="form-control" placeholder="Busca aquí tus productos" required="required" ng-disabled="!productsCharged">
+								<form name="searchProductForm" class="navbar-form navbar-right search-form" role="search" action="<?= base_url() . 'product/search_product'?>" method="post">
+									<div id="search-module" class="input-group">
+										<input popover-placement="top" popover="Escríbe aquí el nombre del producto que deseas!"  popover-trigger="focus" type="text" name="productName" id="productName" ng-change="search( productNameToSearch )" ng-model="productNameToSearch" ng-model="productNameToSearch" class="form-control" placeholder="Busca aquí tus productos" required="required">
+										<span for="productName" class="form-control-feedback"><i class="fa fa-search"></i></span>
 									</div><!-- /input-group -->
 								</form>
 							</div><!-- /.navbar-collapse -->
