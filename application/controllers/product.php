@@ -192,7 +192,9 @@ class Product extends MY_Controller {
 								echo "Creating the JSON of products..";
 								print "\n";
 								
-								$result = $this->products->create_json_of_products( $products );
+								$products_from_db = $this->product_model->get_all();
+								
+								$result = $this->products->create_json_of_products( $products_from_db );
 								
 								switch( $result->code_status ) {
 									case JSON_ERROR_NONE:
@@ -353,7 +355,7 @@ class Product extends MY_Controller {
 	public function search_product( $product_info = NULL, $from_items = 0 ) {
 		
 		
-		$product_info_to_search = $this->input->post();
+		$product_info_to_search = $this->input->post( NULL, TRUE );
 		
 		
 		$data['title'] = "Resultados";
@@ -405,38 +407,67 @@ class Product extends MY_Controller {
 		
 		$categories = $this->get_categories();
 		
-		
 		$data['categories'] = $categories;
 		
-		$validation_response = $this->_validate_search_product_form();
+		if ( !empty($product_info_to_search) ) {
 		
-		if ( $validation_response ) {
+			$validation_response = $this->_validate_search_product_form();
 			
-			$breadcrumb->sub_title = $product_info_to_search['productName'];
-			$products = $this->product_model->get_by_name( $product_info_to_search['productName'] );
-			//echo $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-			
-			if ( isset($products) ) {
+			if ( $validation_response ) {
 				
-				$this->_calculate_product_discount( $products );
-				//if ( !isset($product_info )) {
-					$base_url = $base_url = base_url() . "/product/search_product/";
-				//}
+				$breadcrumb->sub_title = $product_info_to_search['productName'];
 				
-				$uri_segment = 3;
+				$products = $this->product_model->get_by_name( $product_info_to_search['productName'] );
+				//echo $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 				
-				$this->_do_pagination($base_url, $uri_segment, $products, $data, $from_items);
+				if ( isset($products) ) {
+					
+					$this->_calculate_product_discount( $products );
+					
+					$base_url = $base_url = base_url() . "/product/search_product/" . str_replace( ' ', '_', trim($product_info_to_search['productName'])) . '/';
+					$uri_segment = 4;
+					
+					$this->_do_pagination($base_url, $uri_segment, $products, $data, $from_items);
+					
+					$notifications['warning'] = "Productos encontrádos!!";
+					$this->session->set_flashdata('notifications', $notifications );
+					
+					$this->load->view('pages/category', $data);
+				}else {
+					$notifications['warning'] = "No existen resultados para la búsqueda";
+					$this->session->set_flashdata('notifications', $notifications );
+					redirect('/');
+				}
 				
-				$notifications['warning'] = "Productos encontrádos!!";
-				$this->session->set_flashdata('notifications', $notifications );
-				
-				$this->load->view('pages/category', $data);
 			}else {
-				$notifications['warning'] = "No existen productos con esta categoría";
-				$this->session->set_flashdata('notifications', $notifications );
 				redirect('/');
+				
 			}
-			
+		}else {
+			if ( isset( $product_info ) ) {
+				
+				$breadcrumb->sub_title = $product_info;
+				
+				$products = $this->product_model->get_by_name( str_replace('_', ' ', $product_info) );
+				//echo $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+				
+				if ( isset($products) ) {
+						
+					$this->_calculate_product_discount( $products );
+						
+					$base_url = $base_url = base_url() . "/product/search_product/" . str_replace( ' ', '_', trim($product_info)) . '/';
+					$uri_segment = 4;
+						
+					$this->_do_pagination($base_url, $uri_segment, $products, $data, $from_items);
+						
+					$this->load->view('pages/category', $data);
+				}else {
+					$notifications['warning'] = "No existen resultados para la búsqueda";
+					$this->session->set_flashdata('notifications', $notifications );
+					redirect('/');
+				}
+				
+			}
 		}
 		
 		

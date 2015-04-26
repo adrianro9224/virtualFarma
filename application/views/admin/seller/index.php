@@ -26,14 +26,21 @@
 		
 		<section id="content">
 			<div  class="container" id="sales-module">
-				<div class="row">
+				<div class="row" ng-controller="SalesCreatorCtrl">
 					<section id="seller-left-sidebar">
 						<div class="col-md-3">
-							<?php include_once( __ROOT__SELLER__TEMPLATES . 'seller-left-sidebar.php');?>
+							<section  id="shopping-cart-panel">
+								<div class="col-md-12" ng-if="sale.shoppingcart.haveProducts">
+									<?php include_once( __ROOT__SELLER__TEMPLATES . 'sales-shopping-cart.php');?>
+								</div>
+							</section>
+							<div class="col-md-12" >
+								<?php include_once( __ROOT__SELLER__TEMPLATES . 'seller-left-sidebar.php');?>
+							</div>
 						</div>
 					</section>
 					<section id="sales-creator">
-						<div class="col-md-9" ng-controller="SalesCreatorCtrl">
+						<div class="col-md-9" >
 							<?php include_once( __ROOT__SELLER__TEMPLATES . 'sales-creator.php');?>
 						</div>
 					</section>

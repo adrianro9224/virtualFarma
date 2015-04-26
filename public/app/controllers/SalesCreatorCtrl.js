@@ -2,20 +2,21 @@
  * Created by adrian on 25/03/15.
  */
 
-farmapp.controller('SalesCreatorCtrl', ['$scope', '$http', '$filter', '$cookies', 'UtilService', function( $scope, $http, $filter, $cookies, UtilService ){
+farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filter', '$cookies', 'UtilService', 'ConstantsService', '$location', function( $scope, $rootScope, $http, $filter, $cookies, UtilService, ConstantsService, $location ){
 
     'use strict';
 
-
-    $scope.shippingData = true;
-    $scope.productsToSale = false;
+    $scope.productsToSale = true;
+    $scope.shippingData = false;
     $scope.orderSummary = false;
 
-    $scope.shippingDataComplete = false;
     $scope.productsToSaleComplete = false;
+    $scope.shippingDataComplete = false;
     $scope.orderSummaryEnable = false;
 
     $scope.checkoutCurrentStep = "shippingData";
+
+    var limitPayuOrderValue = ConstantsService.LIMIT_PAYU_ORDER_VALUE;
 
     $scope.mouseover = false;
 
@@ -38,18 +39,31 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$http', '$filter', '$cookies'
 
     if ( currentSaleInCookie != undefined ) {
         $scope.sale = currentSaleInCookie;
+        $scope.subtotal = currentSaleInCookie.shoppingcart.subtotal;
+        $scope.shippingCharge = currentSaleInCookie.shoppingcart.shippingCharge;
+        $scope.tax = currentSaleInCookie.shoppingcart.tax;
+        $scope.total = currentSaleInCookie.shoppingcart.total;
+
+        console.info(currentSaleInCookie);
 
         switchCheckoutPanelSection( currentSaleInCookie.currentStep );
     }
 
     function load_products() {
         var json;
+        $scope.productsCharged = false;
         $http.get("http://virtualfarma.com.co/admin/all_products")
             .success(function (data, status, headers, config) {
-                var json = angular.fromJson(data);
 
-                if ( json != undefined )
+              //  console.info(data + ":(");
+
+                if ( json != 'NULL' ){
+                    var json = angular.fromJson(data);
+                    $scope.productsCharged= true;
                     $scope.products = json;
+                }else {
+                    console.info(data + ":(");
+                }
 
             }).
             error(function (data, status, headers, config) {
@@ -125,24 +139,31 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$http', '$filter', '$cookies'
         $cookies.putObject( "sale", sale );
     }
 
+    $scope.doNewOrder = function() {
+        $cookies.remove('sale');
+
+        window.location = "/admin/log_in"
+    }
+
     $scope.stepCompleted = function ( newOrder, sectionName ) {
         switch ( sectionName ) {
-            case "shippingData":
-                newOrder.shippingData.status = true;
-                newOrder.currentStep = "productsToSale";
-                $scope.shippingDataComplete = true;
-
-                updateOrder( newOrder );
-                switchCheckoutPanelSection( newOrder.currentStep );
-                break;
             case "productsToSale":
-                newOrder.productsToSale.status = true;
-                newOrder.currentStep = "orderSummary";
+                newOrder.shoppingcart.products.status = true;
+                newOrder.currentStep = "shippingData";
                 $scope.paymentMethodComplete = true;
 
                 updateOrder( newOrder );
                 switchCheckoutPanelSection( newOrder.currentStep );
                 break;
+            case "shippingData":
+                newOrder.shippingData.status = true;
+                newOrder.currentStep = "orderSummary";
+                $scope.shippingDataComplete = true;
+
+                updateOrder( newOrder );
+                switchCheckoutPanelSection( newOrder.currentStep );
+                break;
+
             case "orderSummary":
                 $scope.sendingOrder = true;
                 var order = newOrder;
@@ -152,11 +173,11 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$http', '$filter', '$cookies'
                         newOrder.sended = true;
                         $scope.sendingOrder = false;
 
-                        $cookies.remove('shoppingcart');
-                        updateOrder( newOrder );
+                        $cookies.remove('sale');
+
                     }).
                     error(function(data, status, headers, config) {
-                        $location.reload();
+
                         console.info(data + ":(");
                     });
 
@@ -173,8 +194,11 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$http', '$filter', '$cookies'
 
             var quantity = parseInt(producToAdd.cant, 10);
 
-            if (($scope.sale.shoppingcart == undefined || !$scope.sale.shoppingcart.haveProducts)) {
+            if (($scope.sale == undefined || !$scope.sale.shoppingcart.haveProducts)) {
 
+                $scope.sale = {};
+                $scope.sale.paymentMethod = {};
+                $scope.sale.paymentMethod.selectedPaymentMethod = 1;
                 $scope.sale.shoppingcart = {};
                 $scope.sale.shoppingcart.products = [{}];
                 $scope.sale.shoppingcart.subtotal = 0;
@@ -222,7 +246,7 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$http', '$filter', '$cookies'
             }
 
             console.info($scope.sale);
-            //$rootScope.$broadcast(ConstantsService.SHOPPINGCART_CHANGED, $scope.shoppingcart);
+            $rootScope.$broadcast(ConstantsService.SALE_CHANGED, $scope.sale);
         }else {
 
         }
@@ -232,8 +256,8 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$http', '$filter', '$cookies'
     function _chargeProductObject( productToAdd ) {
         console.info(productToAdd);
         var priceUnit =  parseFloat( productToAdd.price );
-        var discount = parseInt( productToAdd.discount );
-        var taxUnit = parseFloat( productToAdd.tax );
+        var discount = productToAdd.discount == null ? 0 : parseInt( productToAdd.discount );
+        var taxUnit = productToAdd.tax == null ? 0 : parseFloat( productToAdd.tax );
 
         var currentProduct = new Object();
 
@@ -243,11 +267,154 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$http', '$filter', '$cookies'
         currentProduct.categoryId = productToAdd.category_id;
         currentProduct.presentation = productToAdd.presentation;
         currentProduct.cant = productToAdd.cant;
-        currentProduct.tax = taxUnit == 0 ? 0 : taxUnit;
+         currentProduct.tax = taxUnit == 0 ? 0 : taxUnit;
         currentProduct.price = priceUnit;
         currentProduct.discount = discount == 0 ? 0 : discount;
 
         return currentProduct;
+    }
+
+    $rootScope.$on( ConstantsService.SALE_CHANGED, function(event, data){
+        $scope.sale = data;
+
+        var shoppingCartSubtotals;
+
+        shoppingCartSubtotals = calculateShoppingcartSubtotals( $scope.sale.shoppingcart.products );
+
+        $scope.sale.shoppingcart.subtotal = shoppingCartSubtotals.productsSubtotal;
+        $scope.sale.shoppingcart.tax = shoppingCartSubtotals.productsTaxTotal;
+
+        var shippingCharge = getShippingCharge( $scope.sale.shoppingcart.subtotal );
+
+        $scope.sale.shoppingcart.shippingCharge = shippingCharge;
+
+        if( angular.isString( shippingCharge ) ) {
+            $scope.sale.shoppingcart.total = $scope.sale.shoppingcart.subtotal + $scope.sale.shoppingcart.tax;
+            $scope.sale.shoppingcart.shippingFree = true;
+        }else {
+            $scope.sale.shoppingcart.total = $scope.sale.shoppingcart.subtotal + $scope.sale.shoppingcart.tax + $scope.sale.shoppingcart.shippingCharge;
+            $scope.sale.shoppingcart.shippingFree = false;
+        }
+
+
+        $scope.shippingCharge = $scope.sale.shoppingcart.shippingCharge;
+        $scope.subtotal = $scope.sale.shoppingcart.subtotal;
+
+
+        if( limitPayuOrderValue != undefined ) {
+            if( $scope.sale.shoppingcart.total > limitPayuOrderValue )
+                $scope.sale.shoppingcart.limitOrderValueInvalid = true;
+        }
+
+        $scope.total = $scope.sale.shoppingcart.total;
+
+        $cookies.putObject('sale', $scope.sale, cookiesOptions);
+
+
+    });
+
+
+    function getShippingCharge ( subtotal ) {
+
+        var shippingCharge;
+
+        if ( subtotal > ConstantsService.LIMIT_FOR_FREE_SHIPPING )
+            shippingCharge = "Es gratis";
+        else
+            shippingCharge = ConstantsService.SHIPPING_CHARGE;
+
+        return shippingCharge;
+    }
+
+    function calculateShoppingcartSubtotals( products ) {
+
+        var subtotal = 0;
+        var tax = 0;
+
+        angular.forEach( products, function(value ,key) {
+            subtotal += ( value.price * value.cant );
+            tax += ( value.tax * value.price );
+        });
+
+        var shoppingCartSubtotals = { productsSubtotal : subtotal,  productsTaxTotal : tax };
+
+        return shoppingCartSubtotals;
+    }
+
+    $scope.removeProduct = function ( key ) {
+
+        if ( $scope.sale.shoppingcart.products[key].cant > 1 ) {
+            $scope.sale.shoppingcart.products[key].cant--;
+            $scope.sale.shoppingcart.numOfproductsTotal--;
+        }else {
+            $scope.sale.shoppingcart.products.splice( key, 1 );
+            $scope.sale.shoppingcart.numOfproductsTotal--;
+            $scope.sale.shoppingcart.numOfproductsSubtotal--;
+        }
+
+        if ( $scope.sale.shoppingcart.numOfproductsTotal == 0 ){
+            $scope.sale.shoppingcart.haveProducts = false;
+
+        }
+
+        $rootScope.$broadcast( ConstantsService.SALE_CHANGED, $scope.sale );
+
+    };
+
+    /**
+     *  Update the every shoppingcart values
+     * @param param0 the key of a product to change
+     * @param param1 the type of change ('increase', 'decrease', 'delete') or default
+     */
+    $scope.recalculateTotals = function () {
+        //var regex = /\./;
+
+        if( (arguments != undefined) ) {
+            switch ( arguments[1] ) {
+
+                case 'decrease':
+                    decreaseShoppingCart( arguments[0] );
+                    break;
+                case 'increase':
+                    increaseShoppingCart( arguments[0] );
+                    break;
+                case 'delete':
+                    deleteShoppingCartProduct( arguments[0] );
+                    break;
+                default:
+                    if( !(angular.isNumber( $scope.sale.shoppingcart.products[ arguments[0] ].cant )) || ($scope.sale.shoppingcart.products[ arguments[0] ].cant < 1) )
+                        $scope.sale.shoppingcart.products[ arguments[0] ].cant = 1;
+            }
+
+            if ($scope.sale.shoppingcart.numOfproductsTotal == 0)
+                $scope.sale.shoppingcart.haveProducts = false;
+        }
+
+        $rootScope.$broadcast( ConstantsService.SALE_CHANGED, $scope.sale );
+    };
+
+
+    function decreaseShoppingCart( key ) {
+
+        if ( $scope.sale.shoppingcart.products[key].cant > 1 ) {
+            $scope.sale.shoppingcart.products[key].cant--;
+            $scope.sale.shoppingcart.numOfproductsTotal--;
+        }
+
+    }
+
+    function increaseShoppingCart( key ) {
+
+        $scope.sale.shoppingcart.products[key].cant++;
+        $scope.sale.shoppingcart.numOfproductsTotal++;
+
+    }
+
+    function deleteShoppingCartProduct( key ){
+
+        $scope.sale.shoppingcart.products.splice( key, 1 );
+        $scope.sale.shoppingcart.numOfproductsTotal--;
+        $scope.sale.shoppingcart.numOfproductsSubtotal--;
     }
 
 }]);

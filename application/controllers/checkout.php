@@ -130,9 +130,25 @@ class Checkout extends MY_Controller {
 			$data['account_types'] = $session_data['account_types'];
 		}
 		
-		if ( isset($session_data[$account_types[1] . '_id']) ) 
-			$result = $this->orders->save_order( $order->data, $session_data[$account_types[1]. '_id'] );
-		else 
+		if ( isset($session_data[$account_types[1] . '_id']) || isset($session_data[$account_types[2] . '_id']) ) {
+			
+			$account_id = NULL;
+			
+			if ( isset($session_data[$account_types[1] . '_id']) )
+				$account_id = $session_data[$account_types[1] . '_id'];
+			
+			if ( isset($session_data[$account_types[2] . '_id']) )
+				$account_id = $session_data[$account_types[2] . '_id'];
+			
+			$result = $this->orders->save_order( $order->data, $account_id );
+			
+			if ($result) {
+				echo 'true';
+			}else {
+				echo 'false';
+			}
+			
+		} else 
 			redirect('/account');
 		
 		

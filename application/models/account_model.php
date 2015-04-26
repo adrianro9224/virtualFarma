@@ -115,9 +115,9 @@ class Account_model extends CI_Model {
 		
 	}
 	
-	public function get_admin_account_by_identification_number( $admin_identification_number ) {
+	public function get_admin_account_by_id( $admin_id ) {
 		
-		$this->db->where('identification_number', $admin_identification_number);
+		$this->db->where('id', $admin_id);
 		
 		$query = $this->db->get('account');
 		
@@ -126,5 +126,18 @@ class Account_model extends CI_Model {
 		else 
 			return NULL;
 		
+	}
+	
+	public function get_admin_account_by_identification_number( $admin_id ) {
+	
+		$this->db->where('identification_number', $admin_id);
+	
+		$query = $this->db->get('account');
+	
+		if ( $query->num_rows() == 1 )
+			return $query->row();
+		else
+			return NULL;
+	
 	}
 }

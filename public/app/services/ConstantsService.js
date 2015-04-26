@@ -8,10 +8,11 @@ farmapp.factory( 'ConstantsService', function(){ // no inject $scope dependency,
 
     var constantService = {
         LIMIT_PAYU_ORDER_VALUE : 2800000,
-        LIMIT_FOR_FREE_SHIPPING : 50000,
-        SHIPPING_CHARGE : 700,
+        LIMIT_FOR_FREE_SHIPPING : 30000,
+        SHIPPING_CHARGE : 1000,
         SHOPPINGCART_CHANGED : "SHOPPINGCART_CHANGED",
-        UPDATE_ORDER : "UPDATE_ORDER"
+        UPDATE_ORDER : "UPDATE_ORDER",
+        SALE_CHANGED : "SALE_CHANGED"
     };
 
     return constantService;

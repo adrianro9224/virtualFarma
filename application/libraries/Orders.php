@@ -23,9 +23,11 @@ class Orders {
 			
 		$CI->db->trans_complete();
 
-		if ($CI->db->trans_status() === FALSE) {
-			log_message('error', 'order no created' );
+		if ($CI->db->trans_status() === false) {
+			return false;
 		}
+		
+		return true;
 		
 	}
 }

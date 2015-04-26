@@ -56,7 +56,7 @@ class Admin extends MY_Controller {
 			$admin_id = $this->_search_admin_id_in_session($session_data, $account_types);
 				
 			
-			$admin_account = $this->account_model->get_admin_account_by_identification_number( $admin_id );
+			$admin_account = $this->account_model->get_admin_account_by_id( $admin_id );
 			
 			$this->_choose_admin_account( $admin_account, $account_types, $notifications );
 			
@@ -178,11 +178,22 @@ class Admin extends MY_Controller {
 		
 	}
 	
+	/**
+	 * Delete the account_id of the session for terminate the log_in
+	 */
+	public function log_out() {
+	
+		$this->session->sess_destroy();
+		
+		redirect("/admin");
+	}
+	
+	
 	private function _admin_do_login( $type_of_admin, $admin_account, $account_types, &$data = array()) {
 		//add that delete other session id of other account if, exist just one
 		$this->_delete_others_account_id_in_session( $type_of_admin, $account_types );
 		
-		$this->session->set_userdata( $type_of_admin . '_id' , $admin_account->identification_number);
+		$this->session->set_userdata( $type_of_admin . '_id' , $admin_account->id);
 		
 		$data[ $type_of_admin . '_account' ] = $admin_account;
 		$data[ $type_of_admin . '_logged' ] = true;

@@ -7,6 +7,20 @@ class Product_model extends CI_Model {
 		parent::__construct();
 	}
 	
+	public function get_all() {
+		
+		$this->db->select('id, PLU, barcode, name, category_id, presentation, stock, tax, price, discount' );
+		
+		$query = $this->db->get('product');
+		
+		if( $query->num_rows() > 0 ) {
+			$result = $query->result();
+			return $result;
+		}
+		
+		return NULL;
+	}
+	
 	public function get_by_category_id($category_id) {
 		
 		$this->db->where('category_id', $category_id);
