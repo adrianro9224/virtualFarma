@@ -64,6 +64,7 @@
 	<script type="text/javascript" src="<?= base_url() . '/public/app/controllers/SalesCreatorCtrl.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . '/public/app/controllers/SalesFormCtrl.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . '/public/app/controllers/MainCtrl.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . '/public/app/controllers/HeaderNavCtrl.js'?>"></script>
 	<!-- Angular js controllers over -->
 	
 	<!-- Angular js services start -->

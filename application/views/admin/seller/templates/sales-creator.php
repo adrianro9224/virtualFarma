@@ -154,7 +154,7 @@
 					</div>
 					<!-- tooltip -->
 					<!-- helptext -->
-					<span id="helpBlock" class="help-block">Ej: (571) 6742838 ó puedes también poner tu número de celular</span>
+					<span id="helpBlock" class="help-block">Ej: (571) 6742838 ó puedes también poner su número de celular</span>
 					<!-- helptext -->
 				</div>
 					
@@ -370,13 +370,13 @@
 				<h3>¿Que desear hacer ahora?</h3>
 				<div class="list-group">
 					<!-- Add if isset discount -->
-					<a href="/account/log_in" class="list-group-item">
+					<a ng-click="doNewOrder()" class="list-group-item">
 						<h4 class="list-group-item-heading">Nueva compra</h4>
 						<p class="list-group-item-text">Acá podras iniciar un anueva compra</p>
 					</a>
 				</div>		
 				</div>
-				<a href="#" ng-show="sale.sended" id="go-to-orders-button" class="btn btn-success btn-lg" role="button">Compra completada, iniciar una nueva</a>
+				<a ng-click="doNewOrder()" ng-show="sale.sended" id="go-to-orders-button" class="btn btn-success btn-lg" role="button">Compra completada, iniciar una nueva</a>
 				<a ng-click="stepCompleted( sale, 'orderSummary' )" ng-hide="sale.sended" ng-disabled="!(sale.shippingData.status) || sendingOrder" id="confirm-order-button" class="btn btn-warning btn-lg" role="button">Confirmar Orden</a>
 			</div>
 		</div>

@@ -5,7 +5,7 @@
 <body>
 	<div id="wrapper">
 		<!-- Header start -->
-		<section id="header">
+		<section id="header" ng-controller="HeaderNavCtrl">
 			<section id="header-top" class="container-fluid">
 				<?php include_once( __ROOT__ADMIN__TEMPLATES__ . 'header-top.php');?>
 			</section>

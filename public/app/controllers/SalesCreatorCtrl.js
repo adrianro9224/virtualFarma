@@ -142,7 +142,7 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
     $scope.doNewOrder = function() {
         $cookies.remove('sale');
 
-        window.location = "/admin/log_in"
+        window.location = "admin/admin_login";
     }
 
     $scope.stepCompleted = function ( newOrder, sectionName ) {
