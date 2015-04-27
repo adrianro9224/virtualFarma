@@ -290,8 +290,8 @@
 					<?php endif;?>
 					<div class="row normal-side-padding">
 						<div class="btn-group" role="group" aria-label="...">
-							<button type="button" class="btn btn-default" ng-class="{'active' : receivedActived, 'disabled' : <?= ( isset($messages->received) ) ? 0 : 1?>}" ng-click="activeReceivedMessages()">Recibídos</button>
-							<button type="button" class="btn btn-default" ng-class="{'active' : sentdActived, 'disabled' : <?= ( isset($messages->sent) ) ? 0 : 1?>}" ng-click="activeSentMessages()">Envíados</button>
+							<button type="button" class="btn btn-primary" ng-class="{'active' : receivedActived, 'disabled' : <?= ( isset($messages->received) ) ? 0 : 1?>}" ng-click="activeReceivedMessages()">Recibídos</button>
+							<button type="button" class="btn btn-primary" ng-class="{'active' : sentdActived, 'disabled' : <?= ( isset($messages->sent) ) ? 0 : 1?>}" ng-click="activeSentMessages()">Envíados</button>
 						</div>
 					</div>	
 					<?php if ( isset($messages->received) ):?>

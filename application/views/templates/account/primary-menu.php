@@ -2,19 +2,19 @@
 	<div class="btn-group btn-group-justified" role="group" aria-label="...">
 		<div class="btn-group" role="group">
     		<button type="button" class="btn btn-default" ng-click="openSection('myAccount')" ng-class="{active: myAccountSelected}">
-    			<span class="glyphicon glyphicon-user"></span>
+    			<i class="fa fa-user"></i>
     			Mi cuenta
     		</button>
   		</div>
 	  	<div class="btn-group" role="group">
 	    	<button type="button" class="btn btn-default" ng-click="openSection('myPurchases')" ng-class="{active: myPurchasesSelected}">
-	    		<span class="glyphicon glyphicon-folder-open"></span>
+	    		<i class="fa fa-folder"></i>
 	    		Mis compras
 	    	</button>
 	  	</div>
   		<div class="btn-group" role="group">
 		    <button type="button" class="btn btn-default" ng-click="openSection('myDiagnostic')" ng-class="{active: myDiagnosticSelected}">
-				<span class="glyphicon glyphicon-list-alt"></span>
+				<i class="fa fa-list-alt"></i>
 			    Mi diagnóstico
 		    </button>
 	  	</div>

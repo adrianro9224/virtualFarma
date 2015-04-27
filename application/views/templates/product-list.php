@@ -33,7 +33,7 @@
 			                <?php endif;?>	
 	                	</div>
 						<div class="pull-right">
-	                		<a class="btn btn-danger btn-sm addtocart <?= ( isset($product->stock) ) ? '' : "disabled"?>" ng-click="addToShoppingCart('<?= $product->id?>', '<?= $product->name?>', '<?= $product->PLU ?>', '<?= $product->barcode?>', '<?= $product->category_id?>', '<?= $product->presentation?>', product<?= $product->id?>cant, '<?= ($product->has_discount) ? $product->new_price : $product->price ;?>', '<?= ($product->has_discount) ? $product->discount : 0 ;?>', '<?= ( isset($product->tax) ) ? $product->tax : 0 ;?>')">Add to Cart</a>
+	                		<a class="btn btn-danger btn-sm addtocart <?= ( isset($product->stock) ) ? '' : "disabled"?>" ng-click="addToShoppingCart('<?= $product->id?>', '<?= $product->name?>', '<?= $product->PLU ?>', '<?= $product->barcode?>', '<?= $product->category_id?>', '<?= $product->presentation?>', product<?= $product->id?>cant, '<?= ($product->has_discount) ? $product->new_price : $product->price ;?>', '<?= ($product->has_discount) ? $product->discount : 0 ;?>', '<?= ( isset($product->tax) ) ? $product->tax : 0 ;?>')">Añadir al carrito</a>
 	                    	<a href="productdetail.html" class="btn btn-primary btn-sm hidden-xs">More info</a>
 						</div>
 					</div>

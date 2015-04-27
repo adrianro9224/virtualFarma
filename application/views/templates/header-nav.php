@@ -4,8 +4,8 @@
 		<div class="row">
 			<div class="col-md-4" >
 				<div id="logo" class="pull-left">
-					<img class="hidden-xs hidden-sm" id="normal-logo" src="<?= base_url() . 'assets/images/logo/logo_virtualfarma_small.png'?>" class="img-responsive" alt="Fuck you !">
-					<img class="hidden" id="logo-for-sticky" src="<?= base_url() . 'assets/images/logo/logo_virtualfarma_small_alone.png'?>" class="img-responsive" alt="Fuck you !">
+					<img class="hidden-xs hidden-sm" id="normal-logo" src="<?= base_url() . 'assets/images/logo/logo_virtualfarma_small.png'?>" class="img-responsive" alt="">
+					<!-- <img class="hidden" id="logo-for-sticky" src="<?// base_url() . 'assets/images/logo/logo_virtualfarma_small_alone.png'?>" class="img-responsive" alt="">  -->
 				</div>
 			</div>
 			<div class="col-md-8 no-padding">

@@ -8,13 +8,12 @@
 <!-- 				</div> -->
 <!-- 			</div> -->
 		<div class="pull-left">
-            	<div class="header-item"><i class="fa fa-envelope"></i> info@pixlized.cz</div>
-                <div class="header-item"><i class="fa fa-phone"></i> +420 123 456 789</div>
+			<div class="header-item"><i class="fa fa-phone-square fa-2x"></i><span> +420 123 456 789</span></div>
         </div>
 		<div class="btn-group pull-right">
 			<?php if( $user_logged ):?>
 				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-					Mi cuenta <span class="glyphicon glyphicon-user"></span>
+					Mi cuenta <i class="fa fa-user"></i>
 				</button>
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="/account/log_in">Panel</a></li>
@@ -22,7 +21,7 @@
 					<li><a href="/account/log_out">Cerrar sessión</a></li>
 				</ul>
 			<?php else:?>
-				<a class="btn btn-default" href="/account" role="button">Iniciar sesión <span class="glyphicon glyphicon-user"></span></a>
+				<a class="btn btn-default" href="/account" role="button">Iniciar sesión <i class="fa fa-users"></i></a>
 			<?php endif;?>
 		</div>
 	</div>
