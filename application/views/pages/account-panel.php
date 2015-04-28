@@ -47,15 +47,15 @@
 				</section>
 				
 				<div class="row" id="account-content">
-					<section id="my-account" class="col-md-12 no-padding" ng-if="myAccountSelected">
+					<section id="my-account" class="col-md-12 no-padding" ng-show="myAccountSelected">
 						<?php include_once( __ROOT__TEMPLATES__ . '/account/my-account-section.php');?>
 					</section>
 					
-					<section id="my-purchases" class="col-md-12 no-padding" ng-if="myPurchasesSelected"> 
+					<section id="my-purchases" class="col-md-12 no-padding" ng-show="myPurchasesSelected"> 
 						<?php include_once( __ROOT__TEMPLATES__ . '/account/my-purchases-section.php');?>			
 					</section>
 					
-					<section id="my-diagnostic" class="col-md-12 no-padding" ng-if="myDiagnosticSelected">
+					<section id="my-diagnostic" class="col-md-12 no-padding" ng-show="myDiagnosticSelected">
 						<?php include_once( __ROOT__TEMPLATES__ . '/account/my-diagnostic-section.php');?>
 					</section>
 				</div>

@@ -10,7 +10,7 @@ class Account extends MY_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->helper(array('form', 'url', 'account_helper'));
-		$this->load->library(array('form_validation', 'messages', 'accounts', 'address', 'account_types'));
+		$this->load->library(array('form_validation', 'messages', 'accounts', 'address', 'account_types', 'orders'));
 		$this->load->model('account_model');// add second param for add a "alias" ex: $this->load->model('Account', 'user')
 	}
 	
@@ -276,6 +276,17 @@ class Account extends MY_Controller {
 				
 				if( isset($_COOKIE['shoppingcart']) ) {
 					$data['shoppingcart'] = $_COOKIE['shoppingcart'];
+				}
+				
+				$orders = $this->orders->orders_for_USER_account( $account->id );
+				
+				if ( isset($orders) ) {
+					
+					foreach ( $orders as $key => $order ) {
+						$orders[$key]->products = json_decode( $order->products );
+					}
+					
+					$data['orders'] = $orders;
 				}
 				
 				$data['address'] = $address;

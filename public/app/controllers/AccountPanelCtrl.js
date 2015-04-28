@@ -4,7 +4,7 @@
 
 
 
-farmapp.controller('AccountPanelCtrl', ['$scope', function($scope) {
+farmapp.controller('AccountPanelCtrl', ['$scope', '$http', function( $scope, $http ) {
 
     "use strict";
 
@@ -33,12 +33,11 @@ farmapp.controller('AccountPanelCtrl', ['$scope', function($scope) {
                 if(!$scope.myDiagnosticSelected) {
                     $scope.myDiagnosticSelected = true;
                     $scope.myPurchasesSelected = false;
-                    $scope.myDiagnosticSelected = false;
+                    $scope.myAccountSelected = false;
                 }
             break;
         }
 
     }
-
-
+    
 }]);

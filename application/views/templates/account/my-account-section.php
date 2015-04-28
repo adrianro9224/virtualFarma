@@ -370,12 +370,12 @@
 				<?php endif;?>
 			</div>
 		</accordion-group>
-		<accordion-group is-open="status.open">
-			<accordion-heading>
-				I can have markup, too! 
-				<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': !status.open, 'glyphicon-chevron-right': status.open}"></i>
-			</accordion-heading>
-			This is just some content to illustrate fancy headings.
-		</accordion-group>
+<!-- 		<accordion-group is-open="status.open"> -->
+<!-- 			<accordion-heading> -->
+<!-- 				I can have markup, too!  -->
+<!-- 				<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': !status.open, 'glyphicon-chevron-right': status.open}"></i> -->
+<!-- 			</accordion-heading> -->
+<!-- 			This is just some content to illustrate fancy headings. -->
+<!-- 		</accordion-group> -->
 	</accordion>
 </div>

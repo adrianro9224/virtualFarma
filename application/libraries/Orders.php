@@ -30,4 +30,15 @@ class Orders {
 		return true;
 		
 	}
+	
+	public function orders_for_USER_account( $account_id ) {
+		
+		$CI =& get_instance();
+		
+		$CI->load->model('order_model');
+		
+		$orders_by_id = $CI->order_model->get_by_USER_id( $account_id);
+		
+		return $orders_by_id;
+	}
 }

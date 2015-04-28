@@ -329,6 +329,13 @@ button.btn.btn-default, a.btn.btn-default {
   	border-color: #adadad;
 }
 
+#my-account-options-banner .btn-group i {
+	color: #05A8AA;
+}
+
+p.bg-primary {
+	background-color: #05A8AA;
+}
 
 .header-item i {
 	color: #FFFFFF;
