@@ -1,7 +1,7 @@
 <div class="panel panel-default">
 	<!-- Default panel contents -->	
 	<div class="panel-heading">
-		<h3>Categorias</h3>
+		<h3><i class="fa fa-user-md"></i> Categorias</h3>
 	</div>
 	<div class="panel-body" >
 		<p>...</p>

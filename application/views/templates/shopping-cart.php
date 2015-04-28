@@ -1,4 +1,4 @@
-<a id="button-payment" href="/checkout"class="btn btn-default" role="button">Pagar</a>
+<a id="button-payment" href="/checkout"class="btn btn-primary" role="button" ng-disabled="shoppingcart.minimumOrderValueInvalid">Pagar</a>
 <div class="panel panel-default" >
 	<div id="shopping-cart-panel-content" >
 		<div id="total-products" class="shopping-cart-item">
@@ -33,7 +33,16 @@
 			<div class="shopping-cart-item-content">
 				<span class="pull-right value secondary-emphasis" ng-class="{'text-danger' : limitOrderValueInvalid}" ng-bind="total | currency : '$' : 0"></span>
 			</div>
-			<div class="form-group" ng-if="shoppingcart.limitOrderValueInvalid">
+			<div class="form-group ng-cloak" ng-if="shoppingcart.minimumOrderValueInvalid" ng-cloak>
+				<!-- tooltip -->
+ 				<div class="arrow-up-info"> 
+    			</div>
+	    		<div class="farma-tooltip-info">
+	    			<span ng-bind=" 'El mónto mínimo de tu compra debe ser de ' + (shoppingcart.minimumOrderValue | currency : '$' : 0) + ' pesos :(, solo te faltan ' + ((shoppingcart.minimumOrderValue - shoppingcart.subtotal) | currency : '$' : 0) + ' :D'"></span>
+	    		</div>
+    			<!-- tooltip -->
+	    	</div>			
+			<div class="form-group ng-cloak" ng-if="shoppingcart.limitOrderValueInvalid" ng-cloak>
 				<!-- tooltip -->
  				<div class="arrow-up-info"> 
     			</div>

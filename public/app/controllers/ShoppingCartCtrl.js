@@ -18,6 +18,7 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
     $scope.total = 0;
     $scope.limitOrderValueInvalid = false;
     var limitPayuOrderValue = ConstantsService.LIMIT_PAYU_ORDER_VALUE;
+    var minimumOrderValue = ConstantsService.MINIMUM_ORDER_VALUE;
 
     $rootScope.$on( ConstantsService.SHOPPINGCART_CHANGED, function(event, data){
         $scope.shoppingcart = data;
@@ -46,9 +47,23 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
             $scope.subtotal = $scope.shoppingcart.subtotal;
 
 
+            if ( minimumOrderValue != undefined ) {
+
+                $scope.shoppingcart.minimumOrderValue = minimumOrderValue;
+
+                if ( $scope.shoppingcart.subtotal < minimumOrderValue  )
+                    $scope.shoppingcart.minimumOrderValueInvalid = true;
+                else
+                    $scope.shoppingcart.minimumOrderValueInvalid = false;
+
+            }
+
+
             if( limitPayuOrderValue != undefined ) {
                 if( $scope.shoppingcart.total > limitPayuOrderValue )
                     $scope.shoppingcart.limitOrderValueInvalid = true;
+                else
+                    $scope.shoppingcart.limitOrderValueInvalid = false;
             }
 
             $scope.total = $scope.shoppingcart.total;

@@ -4,7 +4,7 @@
 	</div>
 	<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 		<?php if( isset($shoppingcart) ): ?>
-			<a id="button-payment" class="btn btn-default" href="/checkout" role="button">Ir a pagar</a>
+			<a id="button-payment" class="btn btn-primary" href="/checkout" role="button"><i class="fa fa-credit-card"></i> Ir a pagar</a>
 		<?php endif;?>
 	</div>
 	<div class="col-lg-4 col-md-4 hidden-sm hidden-xs">

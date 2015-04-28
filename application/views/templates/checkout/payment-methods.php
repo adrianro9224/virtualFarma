@@ -1,6 +1,6 @@
 <div class="panel panel-default" id="payment-method-accordion" ng-hide="order.sended">
 	<div class="panel-heading handy" ng-click="openSection('paymentMethod')" ng-class="{'disabled-panel-heading' : !paymentMethod && !order.paymentMethod.status}">
-		<h4>Método de pago <span ng-show="order.paymentMethod.status" class="glyphicon glyphicon-ok" aria-hidden="true"></h4> 
+		<h4><i class="fa fa-money"></i> Método de pago <i ng-show="order.paymentMethod.status" class="fa fa-check" ></i></h4> 
 	</div>
 	<div class="panel-body" ng-if="paymentMethod" >
 		<p>Por favor, seleccione el método de envío preferido para usar en esta orden.

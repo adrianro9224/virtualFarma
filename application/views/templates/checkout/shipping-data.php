@@ -1,6 +1,6 @@
 <div class="panel panel-default" ng-hide="order.sended">
 	<div class="panel-heading handy" ng-click="openSection('shippingData')" ng-class="{'disabled-panel-heading' : !shippingData && !order.shippingData.status}">
-		<h4>Datos de envío <span ng-show="order.shippingData.status" class="glyphicon glyphicon-ok" aria-hidden="true"></span> </h4>
+		<h4><i class="fa fa-truck"></i> Datos de envío <i ng-show="order.shippingData.status" class="fa fa-check"></i> </h4>
 	</div>
 	<div class="panel-body" ng-if="shippingData">
 		<p>Por favor ingresa los datos de la persona a quien se la hará el envío.</p>
@@ -69,20 +69,20 @@
 					<!-- helptext -->
 				</div>
 				
-				<div class="form-group" ng-class="{'has-error': !ShippingDataForm.shippingDataCompany.$valid && ShippingDataForm.shippingDataCompany.$dirty}">
-					<label for="shippingDataCompany">Compañia</label>
-					<input type="text" name="shippingDataCompany" ng-model="order.shippingData.company" class="form-control" id="shippingDataCompany" placeholder="Ingresa el nombre de tu compañia" ng-maxLength="50">
+				<div class="form-group" ng-class="{'has-error': !ShippingDataForm.shippingDataDoctorName.$valid && ShippingDataForm.shippingDataDoctorName.$dirty}">
+					<label for="shippingDataDoctorName">Doctor que le prescribió</label>
+					<input type="text" name="shippingDataDoctorName" ng-model="order.shippingData.doctorName" class="form-control" id="shippingDataDoctorName" placeholder="Ingresa el nombre de tu médico" ng-maxLength="50">
 					<!-- tooltip -->
-					<div ng-if="ShippingDataForm.shippingDataCompany.$invalid">
+					<div ng-if="ShippingDataForm.shippingDataDoctorName.$invalid">
 						<div class="arrow-up-error"> 
 						</div>
 						<div class="farma-tooltip-error">
-							<span ng-if="ShippingDataForm.shippingDataCompany.$error.maxlength">El nombre de tu compañia es muy extenso!</span>
+							<span ng-if="ShippingDataForm.shippingDataDoctorName.$error.maxlength">El nombre de tu médico es muy extenso!</span>
 						</div>
 					</div>
 					<!-- tooltip -->
 					<!-- helptext -->
-					<span id="helpBlock" class="help-block">Ej: Example S.A.S</span>
+					<span id="helpBlock" class="help-block">Ej: Doctor Julio Rodríges</span>
 					<!-- helptext -->
 				</div>
 				<div class="form-group" ng-class="{'has-error': !ShippingDataForm.shippingDataId.$valid && ShippingDataForm.shippingDataId.$dirty}">

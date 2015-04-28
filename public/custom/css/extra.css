@@ -24,6 +24,12 @@ div , body, html{
 /*
 * header-top styles start
 */
+
+/* Buttons */
+a#button-payment.btn-primary {
+	background-color: #ED2F59;
+	border-color: #ED2F59;
+}
 #header-top {
 	background-color: #ED2F59;
 	border-top: 4px solid #05A8AA;
@@ -43,7 +49,7 @@ div , body, html{
 #search-module>input {
 	
 	border-radius: 5px;
-	border:2px solid #FFF;
+	border:none;
 }
 
 #primary-nav #categories-scroll {
@@ -55,7 +61,7 @@ div , body, html{
 	margin: 2px 0 9px 0;
 }
 #left_sidebar #categories_panel #left-sidebar-categories-list {
-	max-height: 740px;
+	max-height: 777px;
 	overflow: auto;
 	
 }
@@ -329,7 +335,7 @@ button.btn.btn-default, a.btn.btn-default {
   	border-color: #adadad;
 }
 
-#my-account-options-banner .btn-group i {
+#my-account-options-banner .btn-group i, #checkout-panel-nav .btn-group i {
 	color: #05A8AA;
 }
 

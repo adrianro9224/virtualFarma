@@ -344,6 +344,17 @@ class Account extends MY_Controller {
 						$user_password = md5( $log_in_form['userPassword'] );
 						
 						if( $account_password_decrypted === $user_password ) {
+							
+							$orders = $this->orders->orders_for_USER_account( $account->id );
+							
+							if ( isset($orders) ) {
+									
+								foreach ( $orders as $key => $order ) {
+									$orders[$key]->products = json_decode( $order->products );
+								}
+									
+								$data['orders'] = $orders;
+							}
 								
 							$this->_do_login( $account, $data, $account_types );
 

@@ -59,10 +59,11 @@ class Order_model extends CI_Model {
 	public function get_by_USER_id( $account_id ) {
 		
 		$this->db->where( 'account_id', $account_id );
+		$this->db->order_by('send_date', 'desc');
 		
 		$query = $this->db->get('order');
 		
-		$this->db->order_by('send_date', 'asc');
+	
 		
 		if ( $query->num_rows() > 0 ) 
 			return $query->result();

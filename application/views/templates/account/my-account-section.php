@@ -3,7 +3,7 @@
 		<accordion-group is-open="status.isFirstOpen">
 			<accordion-heading>
 				Editar mis datos personales 
-				<i class="pull-right glyphicon glyphicon-pencil"></i>
+				<i class="fa fa-pencil-square-o pull-right"></i>
 			</accordion-heading>
 			<p>Aquí podras actualizar tus datos personales:</p>
 			<form id="edit-account-form" name="EditAccountForm" ng-controller="EditAccountForm" action="<?= base_url() . 'account/update_account/' . $user_logged_account->id ?>" method="post" novalidate>
@@ -199,8 +199,8 @@
 		<accordion-group >
 			<div ng-controller="MessageCtrl">
 				<accordion-heading>
-					Mis mensajes 
-					<i class="pull-right glyphicon glyphicon-envelope"></i>
+					Mis mensajes
+					<i class="fa fa-envelope-o pull-right"></i> 
 				</accordion-heading>
 				
 				

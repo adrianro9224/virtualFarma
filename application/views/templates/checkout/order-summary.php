@@ -1,6 +1,6 @@
 <div class="panel panel-default">
 	<div class="panel-heading handy" ng-click="openSection('orderSummary')" ng-class="{ 'disabled-panel-heading' : !order.shippingData.status || !order.paymentMethod.status }">
-		<h4>Resumen de la orden</h4>
+		<h4><i class="fa fa-shopping-cart"></i> Resumen de la orden</h4>
 	</div>
 	<div class="panel-body" ng-if="orderSummary">
 		<div id="order-summary-container" ng-hide="order.sended">
@@ -85,17 +85,13 @@
 		<h3>¿Que desear hacer ahora?</h3>
 		<div class="list-group">
 			<!-- Add if isset discount -->
-			<a href="#" class="list-group-item active">
+			<a href="<?php base_url() . 'product/search_product/nuestros_productos'?>" class="list-group-item active">
 				<h4 class="list-group-item-heading">Hacer otra compra, aprovecha nuestras ofertas!</h4>
 				<p class="list-group-item-text">En esta sección encontraras todos nuestros prodructos con descuentos.</p>
 			</a>
 			<a href="/account/log_in" class="list-group-item">
 				<h4 class="list-group-item-heading">Ir a mi cuenta</h4>
 				<p class="list-group-item-text">Acá podras editar tus datos personales, ver tus mensájes.</p>
-			</a>
-			<a href="#" class="list-group-item">
-				<h4 class="list-group-item-heading">Ir a ver mis compras</h4>
-				<p class="list-group-item-text">Acá podras ver el estado de todas tu ordenes.</p>
 			</a>
 		</div>		
 		</div>
