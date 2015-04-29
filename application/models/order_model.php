@@ -18,6 +18,7 @@ class Order_model extends CI_Model {
 	public function insert_order( $order_data, $recipient_id, $account_id ) {
 		
 		$data = array(
+				'send_date' => $order_data->date,
 				'value' => $order_data->shoppingcart->total,
 				'tax' => $order_data->shoppingcart->tax,
 				'payment_method_id' => $order_data->paymentMethod->selectedPaymentMethod,

@@ -30,7 +30,7 @@
 								<ul class="nav navbar-nav">
 									<li class="active"><a href="/">Inicio<span class="sr-only">(current)</span></a></li>
 									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categorias <span class="caret"></span></a>
+										<a href="#" class="dropdown-toggle" role="button" aria-expanded="false">Categorias <span class="caret"></span></a>
 										<ul class="dropdown-menu" role="menu" id="categories-scroll">
 											<?php foreach ($categories as $category):?>
 												<li>

@@ -18,7 +18,7 @@
 	<div class="panel-body">
 		<p>En esta sección podrás ver todos los detalles de cada una de tus compras.</p>
 	</div>
-
+	<?php if ( isset($orders) ):?>
       <!-- Table -->
 	<div class="table-responsive">
 		<table class="table  table-condensed">
@@ -30,7 +30,7 @@
 				</tr>
 			</thead>
 			<tbody>
-			<?php if ( isset($orders) ):?>
+			
 				<?php foreach ( $orders as $order ):?>
 					<tr>
 						<td><?= $order->send_date?></td>
@@ -42,12 +42,13 @@
 						<td><?= '$' . number_format($order->value)?></td>
 					</tr>
 				<?php endforeach;?>
-			<?php else:?>
-				<p class="bg-warning">No has realizado compras :(</p>			
-			<?php endif;?>
+			
 			</tbody>
 		</table>
 	</div>
+	<?php else:?>
+		<p class="bg-warning">No has realizado compras :(</p>			
+	<?php endif;?>
 </div>
     
     <div class="row">

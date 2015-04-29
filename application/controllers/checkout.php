@@ -116,9 +116,11 @@ class Checkout extends MY_Controller {
 	
 	public function create_order() {
 		//add sleep
-		$data = file_get_contents("php://input");
+		$post = file_get_contents("php://input");
 		
-		$order = json_decode( $data );
+		$order = json_decode( $post );
+		$format = 'Y-m-d H:i:s';
+		$order->data->date = date($format, strtotime($order->data->date));
 		
 		$session_data = $this->session->all_userdata();
 		

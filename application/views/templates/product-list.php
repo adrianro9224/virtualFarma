@@ -12,7 +12,7 @@
 	                	<?php endif;?>
 	                    <span class="label label-danger">New</span>
 					</div>
-	                <h3><a href="#"><?= $product->name ?></a></h3>
+	                <h3><a href="#" ><?= $product->name ?></a></h3>
 	                <p><?= $product->description ?></p>
 	                <div class="clearfix">
 	                	<div class="product-price pull-left">

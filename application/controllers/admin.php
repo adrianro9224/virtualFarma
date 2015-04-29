@@ -125,6 +125,11 @@ class Admin extends MY_Controller {
 				$data['title'] = 'ROOT';
 				$data['type_of_admin'] = $account_types[3];
 				break;
+			case 5:
+				//farmacy
+				$data['title'] = 'Farmacia';
+				$data['type_of_admin'] = $account_types[4];
+				break;
 		}
 	} 
 	

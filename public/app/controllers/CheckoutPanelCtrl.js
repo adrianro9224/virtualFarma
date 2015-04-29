@@ -91,15 +91,27 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
             break;
             case "orderSummary":
                 $scope.sendingOrder = true;
+
                 var order = newOrder;
+
+                var currentDate = new Date();
+
+                order.date = currentDate.getFullYear() + '-' + currentDate.getMonth() + '-' + currentDate.getDate() + ' ' + currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds();
 
                 $http.post("http://virtualfarma.com.co/checkout/create_order" , { data : order} )
                     .success(function(data, status, headers, config) {
-                        newOrder.sended = true;
-                        $scope.sendingOrder = false;
 
-                        $cookies.remove('shoppingcart');
-                        updateOrder( newOrder );
+                        if ( data == "true" ) {
+                            newOrder.sended = true;
+                            $scope.sendingOrder = false;
+                            $cookies.remove('shoppingcart');
+                            updateOrder( newOrder );
+                        }else{
+                            $scope.sendingOrder = false;
+                            console.info(data);
+                        }
+
+
                     }).
                     error(function(data, status, headers, config) {
                         $location.reload();

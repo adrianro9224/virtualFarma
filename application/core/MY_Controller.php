@@ -13,6 +13,10 @@ define("__ROOT__ADMIN-ADMIN__TEMPLATES", dirname(dirname(__FILE__)) . "/views/ad
 define("__ROOT__SELLER__", dirname(dirname(__FILE__)) . "/views/admin/seller/");
 define("__ROOT__SELLER__TEMPLATES", dirname(dirname(__FILE__)) . "/views/admin/seller/templates/");
 
+//farmacy views
+define("__ROOT__FARMACY__", dirname(dirname(__FILE__)) . "/views/admin/farmacy/");
+define("__ROOT__FARMACY__TEMPLATES", dirname(dirname(__FILE__)) . "/views/admin/farmacy/templates/");
+
 
 class MY_Controller extends CI_Controller {
 
