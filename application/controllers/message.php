@@ -90,7 +90,7 @@ class Message extends MY_Controller {
 			$data['account_types'] = $session_data['account_types'];
 		}
 		
-		$acccount_id = $session_data[$acccount_id[1] . '_id'];
+		$acccount_id = $session_data[$account_types[1] . '_id'];
 		
 		$notifications = array();
 		
