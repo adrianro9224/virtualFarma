@@ -26,7 +26,8 @@ class Order_model extends CI_Model {
 				'shipping_charge' => $order_data->shoppingcart->shippingCharge,
 				'recipient_id' => $recipient_id,
 				'account_id' => $account_id,
-				'status' => 'RECEIVED'
+				'status' => 'RECEIVED',
+				'farmacy_id' => 1
 		);
 		
 		$this->db->insert( 'order', $data );
@@ -64,9 +65,27 @@ class Order_model extends CI_Model {
 		
 		$query = $this->db->get('order');
 		
-	
-		
 		if ( $query->num_rows() > 0 ) 
+			return $query->result();
+		
+		return NULL;
+		
+	}
+	
+	public function get_by_FARMACY_id( $account_farmacy_id ) {
+		
+		$this->db->select('*');
+		$this->db->from('order');
+		
+		$this->db->join( 'recipient', 'recipient.id = order.recipient_id' );
+		
+		$this->db->where( 'farmacy_id', $account_farmacy_id );
+		
+		$this->db->order_by('send_date', 'desc');
+		
+		$query = $this->db->get();
+		
+		if ( $query->num_rows() > 0 )
 			return $query->result();
 		
 		return NULL;

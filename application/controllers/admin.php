@@ -11,7 +11,7 @@ class Admin extends MY_Controller {
 		
 		$this->load->model('account_model');
 		$this->load->helper(array('form', 'account_helper'));
-		$this->load->library( array('form_validation', 'account_types', 'products') );
+		$this->load->library( array('form_validation', 'account_types', 'products', 'orders') );
 		
 	}
 	
@@ -129,6 +129,17 @@ class Admin extends MY_Controller {
 				//farmacy
 				$data['title'] = 'Farmacia';
 				$data['type_of_admin'] = $account_types[4];
+				
+				$orders = $this->orders->orders_for_FARMACY_account( $admin_account->farmacy_id );
+				
+				$data['orders'] = NULL;
+				
+				if( isset($orders) ){
+					$data['orders'] = $orders;
+				}
+				
+				$this->_admin_do_login( $account_types[4], $admin_account, $account_types, $data );
+				$this->load->view('admin/farmacy/index', $data);
 				break;
 		}
 	} 
@@ -198,7 +209,7 @@ class Admin extends MY_Controller {
 		//add that delete other session id of other account if, exist just one
 		$this->_delete_others_account_id_in_session( $type_of_admin, $account_types );
 		
-		$this->session->set_userdata( $type_of_admin . '_id' , $admin_account->id);
+		$this->session->set_userdata( $type_of_admin . '_id' , $admin_account->id );
 		
 		$data[ $type_of_admin . '_account' ] = $admin_account;
 		$data[ $type_of_admin . '_logged' ] = true;

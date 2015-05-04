@@ -27,9 +27,12 @@
 		<section id="content">
 			<div  class="container">
 				<div class="row">
-					<section id="admin_log_in">
-						<div class="col-md-offset-3">
-							<?php include_once( __ROOT__FARMACY__TEMPLATES__ . 'order-panel.php');?>
+					<p class="bg-primary"><?= $FARMACY_account->first_name . ' ' . $FARMACY_account->last_name?> </p>
+				</div>
+				<div class="row">
+					<section id="orders-panel">
+						<div class="col-md-12">
+							<?php include_once( __ROOT__FARMACY__TEMPLATES . 'order-panel.php');?>
 						</div>
 					</section>
 				</div>

@@ -41,4 +41,15 @@ class Orders {
 		
 		return $orders_by_id;
 	}
+	
+	public function orders_for_FARMACY_account( $account_farmacy_id ) {
+	
+		$CI =& get_instance();
+	
+		$CI->load->model('order_model');
+	
+		$orders_by_id = $CI->order_model->get_by_FARMACY_id( $account_farmacy_id );
+	
+		return $orders_by_id;
+	}
 }
