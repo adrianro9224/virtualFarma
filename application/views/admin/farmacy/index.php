@@ -27,10 +27,10 @@
 		<section id="content">
 			<div  class="container">
 				<div class="row">
-					<p class="bg-primary"><?= $FARMACY_account->first_name . ' ' . $FARMACY_account->last_name?> </p>
+					<p class="bg-primary"><i class="fa fa-user-md"></i> <?= $FARMACY_account->first_name . ' ' . $FARMACY_account->last_name?> </p>
 				</div>
 				<div class="row">
-					<section id="orders-panel">
+					<section id="orders-panel" ng-controller="FarmacyOrdersCtrl">
 						<div class="col-md-12">
 							<?php include_once( __ROOT__FARMACY__TEMPLATES . 'order-panel.php');?>
 						</div>

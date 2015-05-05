@@ -52,4 +52,15 @@ class Orders {
 	
 		return $orders_by_id;
 	}
+	
+	public function mark_order_like_sended_by_id( $order_id, $new_status, $date ) {
+		
+		$CI =& get_instance();
+		
+		$CI->load->model('order_model');
+		
+		$order_update_completed = $CI->order_model->update_order_status_by_id( $order_id, $new_status, $date );
+		
+		return $order_update_completed;
+	}
 }

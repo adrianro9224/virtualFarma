@@ -194,6 +194,38 @@ class Admin extends MY_Controller {
 		
 	}
 	
+	public function change_order_status() {
+		
+		$post = file_get_contents("php://input");
+		
+		$orderInfo = json_decode( $post );
+		$format = 'Y-m-d H:i:s';
+		$orderInfo->data->date = date($format, strtotime($orderInfo->data->date));
+		
+		$session_data = $this->session->all_userdata();
+		
+		if( !isset($session_data['account_types']) ) {
+			$account_types = $this->account_types->get_account_types();
+			$this->session->set_userdata('account_types', $account_types);
+		}else{
+			$account_types = $session_data['account_types'];
+			$data['account_types'] = $session_data['account_types'];
+		}
+		
+		if ( isset($session_data[$account_types[4] . '_id']) ) {
+			
+			$order_updated = $this->orders->mark_order_like_sended_by_id( $orderInfo->data->orderId, $orderInfo->data->newOrderStatus, $orderInfo->data->date);
+			
+			if ( $order_updated ) {
+				echo 'true';
+			}else {
+				echo 'false';
+			}
+			
+		}
+		
+	}
+	
 	/**
 	 * Delete the account_id of the session for terminate the log_in
 	 */

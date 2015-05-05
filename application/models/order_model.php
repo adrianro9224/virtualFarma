@@ -39,24 +39,6 @@ class Order_model extends CI_Model {
 		
 	}
 	
-	/**
-	 * Update the status of a order
-	 * @param unknown $order_id
-	 * @param unknown $new_status
-	 * @return boolean
-	 */
-	public function update_order_status( $order_id, $new_status ) {
-		
-		$this->db->set( 'status', $new_status );
-		
-		$this->db->where( 'id', $order_id );
-		$this->db->update('order');
-		
-		if( $this->db->affected_rows() == 1 )
-			return true;
-		
-		return false;
-	}
 	
 	public function get_by_USER_id( $account_id ) {
 		
@@ -91,4 +73,26 @@ class Order_model extends CI_Model {
 		return NULL;
 		
 	}
+	
+	/**
+	 * Update the status of a order by id
+	 * @param unknown $order_id
+	 * @param unknown $new_status
+	 * @return boolean
+	 */
+	public function update_order_status_by_id( $order_id, $new_status, $date ) {
+		
+		$this->db->set( 'shipping_date', $date );
+		$this->db->set( 'status', $new_status );
+		
+		$this->db->where( 'id', $order_id );
+		$this->db->update('order');
+		
+		if( $this->db->affected_rows() == 1 )
+			return true;
+		
+		return false;
+		
+	}
+	
 }
