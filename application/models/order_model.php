@@ -27,7 +27,8 @@ class Order_model extends CI_Model {
 				'recipient_id' => $recipient_id,
 				'account_id' => $account_id,
 				'status' => 'RECEIVED',
-				'farmacy_id' => 1
+				'farmacy_id' => 1,
+				'from' => $order_data->from
 		);
 		
 		$this->db->insert( 'order', $data );
@@ -82,7 +83,12 @@ class Order_model extends CI_Model {
 	 */
 	public function update_order_status_by_id( $order_id, $new_status, $date ) {
 		
-		$this->db->set( 'shipping_date', $date );
+		if ( $new_status == 'SENDED' ) 
+			$this->db->set( 'shipping_date', $date );
+		
+		if ( $new_status == 'DECLINED' )
+			$this->db->set( 'declined_date', $date );
+		
 		$this->db->set( 'status', $new_status );
 		
 		$this->db->where( 'id', $order_id );

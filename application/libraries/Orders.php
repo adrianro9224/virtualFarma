@@ -53,7 +53,7 @@ class Orders {
 		return $orders_by_id;
 	}
 	
-	public function mark_order_like_sended_by_id( $order_id, $new_status, $date ) {
+	public function update_order_by_id( $order_id, $new_status, $date ) {
 		
 		$CI =& get_instance();
 		

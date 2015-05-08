@@ -1,7 +1,24 @@
 /**
  * Created by Adrian on 05/05/2015.
  */
-farmapp.controller( 'FarmacyOrdersCtrl', ['$scope', '$http', function( $scope, $http ){
+farmapp.controller( 'FarmacyOrdersCtrl', ['$scope', '$http', '$window', function( $scope, $http, $window ){
+
+    'use strict';
+
+    $scope.identifyOrderPanel = function( orderId ) {
+
+        var el = document.getElementById( "order_" + orderId );
+
+        var iNowIt = angular.element(el).hasClass('identify');
+
+        if ( iNowIt ) {
+            angular.element(el).removeClass("identify");
+        }else {
+            angular.element(el).addClass("identify");
+        }
+
+    };
+
 
     $scope.openOrderDetails = function ( orderId ) {
 
@@ -28,6 +45,38 @@ farmapp.controller( 'FarmacyOrdersCtrl', ['$scope', '$http', function( $scope, $
 
     }
 
+    $scope.markOrderLikeDeclined = function( orderId ) {
+
+        var orderInfo = {};
+
+        orderInfo.orderId = orderId;
+        orderInfo.newOrderStatus = 'DECLINED';
+
+        var currentDate = new Date();
+
+        orderInfo.date = currentDate.getFullYear() + '-' + currentDate.getMonth() + '-' + currentDate.getDate() + ' ' + currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds();
+        $scope.UpdatingOrderToSended = true;
+
+        $http.post("http://virtualfarma.com.co/admin/change_order_status" , { data : orderInfo } )
+            .success(function(data, status, headers, config) {
+                console.info(data);
+
+                if ( data == 'true' ) {
+                    $scope.UpdatingOrderToSended = false;
+                    $window.location.reload();
+                }else {
+                    $scope.UpdatingOrderToSended = false;
+                }
+
+
+            }).
+            error(function(data, status, headers, config) {
+
+                console.info(data + ":(");
+            });
+
+    };
+
     $scope.markOrderLikeSended = function( orderId ) {
 
         var orderInfo = {};
@@ -38,16 +87,17 @@ farmapp.controller( 'FarmacyOrdersCtrl', ['$scope', '$http', function( $scope, $
         var currentDate = new Date();
 
         orderInfo.date = currentDate.getFullYear() + '-' + currentDate.getMonth() + '-' + currentDate.getDate() + ' ' + currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds();
-        $scope.orderMarkedLikeSended = false;
+        $scope.UpdatingOrderToSended = true;
 
         $http.post("http://virtualfarma.com.co/admin/change_order_status" , { data : orderInfo } )
             .success(function(data, status, headers, config) {
                 console.info(data);
 
                 if ( data == 'true' ) {
-                    $scope.orderMarkedLikeSended = true;
+                    $scope.UpdatingOrderToSended = false;
+                    $window.location.reload();
                 }else {
-                    $scope.orderMarkedLikeSended = false;
+                    $scope.UpdatingOrderToSended = false;
                 }
 
 

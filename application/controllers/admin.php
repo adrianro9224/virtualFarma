@@ -214,7 +214,7 @@ class Admin extends MY_Controller {
 		
 		if ( isset($session_data[$account_types[4] . '_id']) ) {
 			
-			$order_updated = $this->orders->mark_order_like_sended_by_id( $orderInfo->data->orderId, $orderInfo->data->newOrderStatus, $orderInfo->data->date);
+			$order_updated = $this->orders->update_order_by_id( $orderInfo->data->orderId, $orderInfo->data->newOrderStatus, $orderInfo->data->date);
 			
 			if ( $order_updated ) {
 				echo 'true';

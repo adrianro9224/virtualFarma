@@ -281,7 +281,7 @@
 					</table>				
 				</div>
 			</div>
-			<button class="btn btn-default pull-right" ng-click="stepCompleted( sale, 'productsToSale' )" ng-disabled="!sale.shoppingcart.haveProducts">Siquiente</button>
+			<button class="btn btn-warning pull-right" ng-click="stepCompleted( sale, 'productsToSale' )" ng-disabled="!sale.shoppingcart.haveProducts">Siquiente</button>
 		</div>
 	</section>
 	

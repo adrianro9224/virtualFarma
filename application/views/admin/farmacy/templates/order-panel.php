@@ -49,7 +49,7 @@
 		<thead>
 			<tr>
 				<th>Id</th>
-				<th>Enviado a las</th>
+				<th>Recibido a las</th>
 				<th>Valor</th>
 				<th>Costo de envío</th>
 				<th>Dirección de destino</th>
@@ -61,7 +61,7 @@
 		</thead>
 		<tbody>
 			<?php foreach ( $orders as $key=>$order ):?>
-			<tr ng-click="openOrderDetails( '<?= $order->id?>' )" class="handy" ng-class="{'success' : '<?= $order->status?>' == 'RECEIVED', 'info' : '<?= $order->status?>' == 'SENDED', 'danger' : '<?= $order->status?>' == 'DECLINED'}" >
+			<tr ng-click="openOrderDetails( '<?= $order->id?>' )"  ng-mouseover="identifyOrderPanel( '<?= $order->id?>' )"  ng-mouseleave="identifyOrderPanel( '<?= $order->id?>' )" class="handy" ng-class="{'success' : '<?= $order->status?>' == 'RECEIVED', 'info' : '<?= $order->status?>' == 'SENDED', 'danger' : '<?= $order->status?>' == 'DECLINED'}" >
 				<td><?= $order->id?></td>
 				<td><?= $order->send_date?></td>
 				<td><?= $order->value?></td>
@@ -87,10 +87,10 @@
 					<?php endif;?>
 				</td>
 				<td>
-					<a class="btn btn-warning btn-xs" ng-click="markOrderLikeSended( '<?= $order->id?>' )" ng-disabled="!orderMarkedLikeSended || ('<?= $order->status?>' == 'SENDED') ">
+					<a class="btn btn-warning btn-xs" ng-click="markOrderLikeSended( '<?= $order->id?>' )" ng-disabled="UpdatingOrderToSended || ('<?= $order->status?>' == 'SENDED') || ('<?= $order->status?>' == 'DECLINED')">
 						Enviado <i class="fa fa-paper-plane-o"></i>
 					</a>
-					<a class="btn btn-danger btn-xs" ng-disabled="orderMarkedLikeSended">
+					<a class="btn btn-danger btn-xs" ng-click="markOrderLikeDeclined( '<?= $order->id?>' )" ng-disabled="UpdatingOrderToSended || ('<?= $order->status?>' == 'DECLINED')">
 						Rechazado <i class="fa fa-recycle"></i>
 					</a>
 				</td>
