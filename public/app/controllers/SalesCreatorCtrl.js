@@ -172,6 +172,8 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
 
                 order.date = currentDate.getFullYear() + '-' + currentDate.getMonth() + '-' + currentDate.getDate() + ' ' + currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds();
 
+                order.from = 'CALL_CENTER';
+
                 $http.post("http://virtualfarma.com.co/checkout/create_order" , { data : order} )
                     .success(function(data, status, headers, config) {
 

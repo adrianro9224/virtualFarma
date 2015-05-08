@@ -98,6 +98,8 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
 
                 order.date = currentDate.getFullYear() + '-' + currentDate.getMonth() + '-' + currentDate.getDate() + ' ' + currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds();
 
+                order.from = 'WEB';
+
                 $http.post("http://virtualfarma.com.co/checkout/create_order" , { data : order} )
                     .success(function(data, status, headers, config) {
 
