@@ -998,3 +998,474 @@ DEBUG - 2015-05-12 23:11:45 --> Security Class Initialized
 DEBUG - 2015-05-12 23:11:45 --> Input Class Initialized
 DEBUG - 2015-05-12 23:11:45 --> Global POST and COOKIE data sanitized
 DEBUG - 2015-05-12 23:11:45 --> Language Class Initialized
+DEBUG - 2015-05-12 23:20:04 --> Config Class Initialized
+DEBUG - 2015-05-12 23:20:04 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:20:04 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:20:04 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:20:04 --> URI Class Initialized
+DEBUG - 2015-05-12 23:20:04 --> Router Class Initialized
+DEBUG - 2015-05-12 23:20:04 --> Output Class Initialized
+DEBUG - 2015-05-12 23:20:04 --> Security Class Initialized
+DEBUG - 2015-05-12 23:20:04 --> Input Class Initialized
+DEBUG - 2015-05-12 23:20:04 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:20:04 --> Language Class Initialized
+DEBUG - 2015-05-12 23:20:04 --> Loader Class Initialized
+DEBUG - 2015-05-12 23:20:04 --> Helper loaded: url_helper
+DEBUG - 2015-05-12 23:20:04 --> Database Driver Class Initialized
+ERROR - 2015-05-12 23:20:04 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead C:\Users\Adrian\Dropbox\virtualfarma.com.co\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2015-05-12 23:20:04 --> Session Class Initialized
+DEBUG - 2015-05-12 23:20:04 --> Helper loaded: string_helper
+DEBUG - 2015-05-12 23:20:04 --> Encrypt Class Initialized
+DEBUG - 2015-05-12 23:20:05 --> Session routines successfully run
+DEBUG - 2015-05-12 23:20:05 --> Pagination Class Initialized
+DEBUG - 2015-05-12 23:20:05 --> Model Class Initialized
+DEBUG - 2015-05-12 23:20:05 --> Model Class Initialized
+DEBUG - 2015-05-12 23:20:05 --> Controller Class Initialized
+DEBUG - 2015-05-12 23:20:05 --> Model Class Initialized
+DEBUG - 2015-05-12 23:20:05 --> Helper loaded: form_helper
+DEBUG - 2015-05-12 23:20:05 --> Helper loaded: account_helper
+DEBUG - 2015-05-12 23:20:05 --> Form Validation Class Initialized
+DEBUG - 2015-05-12 23:20:05 --> File loaded: application/views/pages/account.php
+DEBUG - 2015-05-12 23:20:05 --> Final output sent to browser
+DEBUG - 2015-05-12 23:20:05 --> Total execution time: 0.9338
+DEBUG - 2015-05-12 23:20:07 --> Config Class Initialized
+DEBUG - 2015-05-12 23:20:07 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:20:07 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:20:07 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:20:07 --> URI Class Initialized
+DEBUG - 2015-05-12 23:20:07 --> Router Class Initialized
+DEBUG - 2015-05-12 23:20:07 --> Output Class Initialized
+DEBUG - 2015-05-12 23:20:07 --> Security Class Initialized
+DEBUG - 2015-05-12 23:20:07 --> Input Class Initialized
+DEBUG - 2015-05-12 23:20:07 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:20:07 --> Language Class Initialized
+DEBUG - 2015-05-12 23:20:07 --> Config Class Initialized
+DEBUG - 2015-05-12 23:20:07 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:20:07 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:20:07 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:20:07 --> URI Class Initialized
+DEBUG - 2015-05-12 23:20:07 --> Router Class Initialized
+DEBUG - 2015-05-12 23:20:07 --> Output Class Initialized
+DEBUG - 2015-05-12 23:20:08 --> Security Class Initialized
+DEBUG - 2015-05-12 23:20:08 --> Input Class Initialized
+DEBUG - 2015-05-12 23:20:08 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:20:08 --> Language Class Initialized
+DEBUG - 2015-05-12 23:20:08 --> Config Class Initialized
+DEBUG - 2015-05-12 23:20:08 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:20:08 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:20:08 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:20:08 --> URI Class Initialized
+DEBUG - 2015-05-12 23:20:08 --> Router Class Initialized
+DEBUG - 2015-05-12 23:20:08 --> Output Class Initialized
+DEBUG - 2015-05-12 23:20:08 --> Security Class Initialized
+DEBUG - 2015-05-12 23:20:08 --> Input Class Initialized
+DEBUG - 2015-05-12 23:20:08 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:20:08 --> Language Class Initialized
+DEBUG - 2015-05-12 23:20:08 --> Config Class Initialized
+DEBUG - 2015-05-12 23:20:09 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:20:09 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:20:09 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:20:09 --> URI Class Initialized
+DEBUG - 2015-05-12 23:20:09 --> Router Class Initialized
+DEBUG - 2015-05-12 23:20:09 --> Output Class Initialized
+DEBUG - 2015-05-12 23:20:09 --> Security Class Initialized
+DEBUG - 2015-05-12 23:20:09 --> Input Class Initialized
+DEBUG - 2015-05-12 23:20:09 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:20:09 --> Language Class Initialized
+DEBUG - 2015-05-12 23:22:01 --> Config Class Initialized
+DEBUG - 2015-05-12 23:22:01 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:22:01 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:22:01 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:22:01 --> URI Class Initialized
+DEBUG - 2015-05-12 23:22:01 --> Router Class Initialized
+DEBUG - 2015-05-12 23:22:01 --> Output Class Initialized
+DEBUG - 2015-05-12 23:22:01 --> Security Class Initialized
+DEBUG - 2015-05-12 23:22:01 --> Input Class Initialized
+DEBUG - 2015-05-12 23:22:01 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:22:01 --> Language Class Initialized
+DEBUG - 2015-05-12 23:22:01 --> Loader Class Initialized
+DEBUG - 2015-05-12 23:22:01 --> Helper loaded: url_helper
+DEBUG - 2015-05-12 23:22:01 --> Database Driver Class Initialized
+ERROR - 2015-05-12 23:22:01 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead C:\Users\Adrian\Dropbox\virtualfarma.com.co\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2015-05-12 23:22:01 --> Session Class Initialized
+DEBUG - 2015-05-12 23:22:01 --> Helper loaded: string_helper
+DEBUG - 2015-05-12 23:22:01 --> Encrypt Class Initialized
+DEBUG - 2015-05-12 23:22:01 --> Session routines successfully run
+DEBUG - 2015-05-12 23:22:01 --> Pagination Class Initialized
+DEBUG - 2015-05-12 23:22:02 --> Model Class Initialized
+DEBUG - 2015-05-12 23:22:02 --> Model Class Initialized
+DEBUG - 2015-05-12 23:22:02 --> Controller Class Initialized
+DEBUG - 2015-05-12 23:22:02 --> Model Class Initialized
+DEBUG - 2015-05-12 23:22:02 --> Helper loaded: form_helper
+DEBUG - 2015-05-12 23:22:02 --> Helper loaded: account_helper
+DEBUG - 2015-05-12 23:22:02 --> Form Validation Class Initialized
+DEBUG - 2015-05-12 23:22:02 --> File loaded: application/views/pages/account.php
+DEBUG - 2015-05-12 23:22:02 --> Final output sent to browser
+DEBUG - 2015-05-12 23:22:02 --> Total execution time: 0.2976
+DEBUG - 2015-05-12 23:22:03 --> Config Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:22:03 --> URI Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Router Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Output Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Security Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Input Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:22:03 --> Language Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Config Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:22:03 --> URI Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Router Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Output Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Security Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Input Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:22:03 --> Language Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Config Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:22:03 --> URI Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Router Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Output Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Security Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Input Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:22:03 --> Language Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Config Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:22:03 --> URI Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Router Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Output Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Security Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Input Class Initialized
+DEBUG - 2015-05-12 23:22:03 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:22:03 --> Language Class Initialized
+DEBUG - 2015-05-12 23:52:46 --> Config Class Initialized
+DEBUG - 2015-05-12 23:52:46 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:52:46 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:52:46 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:52:46 --> URI Class Initialized
+DEBUG - 2015-05-12 23:52:46 --> Router Class Initialized
+DEBUG - 2015-05-12 23:52:46 --> Output Class Initialized
+DEBUG - 2015-05-12 23:52:46 --> Security Class Initialized
+DEBUG - 2015-05-12 23:52:46 --> Input Class Initialized
+DEBUG - 2015-05-12 23:52:46 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:52:46 --> Language Class Initialized
+DEBUG - 2015-05-12 23:52:46 --> Loader Class Initialized
+DEBUG - 2015-05-12 23:52:46 --> Helper loaded: url_helper
+DEBUG - 2015-05-12 23:52:46 --> Database Driver Class Initialized
+ERROR - 2015-05-12 23:52:46 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead C:\Users\Adrian\Dropbox\virtualfarma.com.co\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2015-05-12 23:52:46 --> Session Class Initialized
+DEBUG - 2015-05-12 23:52:46 --> Helper loaded: string_helper
+DEBUG - 2015-05-12 23:52:46 --> Encrypt Class Initialized
+DEBUG - 2015-05-12 23:52:46 --> A session cookie was not found.
+DEBUG - 2015-05-12 23:52:46 --> Session routines successfully run
+DEBUG - 2015-05-12 23:52:46 --> Pagination Class Initialized
+DEBUG - 2015-05-12 23:52:46 --> Model Class Initialized
+DEBUG - 2015-05-12 23:52:46 --> Model Class Initialized
+DEBUG - 2015-05-12 23:52:46 --> Controller Class Initialized
+DEBUG - 2015-05-12 23:52:46 --> Model Class Initialized
+DEBUG - 2015-05-12 23:52:46 --> Helper loaded: form_helper
+DEBUG - 2015-05-12 23:52:46 --> Helper loaded: account_helper
+DEBUG - 2015-05-12 23:52:46 --> Form Validation Class Initialized
+DEBUG - 2015-05-12 23:52:46 --> Model Class Initialized
+DEBUG - 2015-05-12 23:52:46 --> File loaded: application/views/pages/account.php
+DEBUG - 2015-05-12 23:52:46 --> Final output sent to browser
+DEBUG - 2015-05-12 23:52:46 --> Total execution time: 0.8657
+DEBUG - 2015-05-12 23:52:48 --> Config Class Initialized
+DEBUG - 2015-05-12 23:52:48 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:52:48 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:52:48 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:52:48 --> URI Class Initialized
+DEBUG - 2015-05-12 23:52:48 --> Router Class Initialized
+DEBUG - 2015-05-12 23:52:48 --> Output Class Initialized
+DEBUG - 2015-05-12 23:52:48 --> Security Class Initialized
+DEBUG - 2015-05-12 23:52:48 --> Input Class Initialized
+DEBUG - 2015-05-12 23:52:48 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:52:48 --> Language Class Initialized
+DEBUG - 2015-05-12 23:53:09 --> Config Class Initialized
+DEBUG - 2015-05-12 23:53:09 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:53:09 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:53:09 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:53:09 --> URI Class Initialized
+DEBUG - 2015-05-12 23:53:09 --> Router Class Initialized
+DEBUG - 2015-05-12 23:53:09 --> Output Class Initialized
+DEBUG - 2015-05-12 23:53:09 --> Security Class Initialized
+DEBUG - 2015-05-12 23:53:09 --> Input Class Initialized
+DEBUG - 2015-05-12 23:53:09 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:53:09 --> Language Class Initialized
+DEBUG - 2015-05-12 23:53:09 --> Loader Class Initialized
+DEBUG - 2015-05-12 23:53:09 --> Helper loaded: url_helper
+DEBUG - 2015-05-12 23:53:09 --> Database Driver Class Initialized
+ERROR - 2015-05-12 23:53:09 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead C:\Users\Adrian\Dropbox\virtualfarma.com.co\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2015-05-12 23:53:09 --> Session Class Initialized
+DEBUG - 2015-05-12 23:53:09 --> Helper loaded: string_helper
+DEBUG - 2015-05-12 23:53:09 --> Encrypt Class Initialized
+DEBUG - 2015-05-12 23:53:09 --> Session routines successfully run
+DEBUG - 2015-05-12 23:53:09 --> Pagination Class Initialized
+DEBUG - 2015-05-12 23:53:09 --> Model Class Initialized
+DEBUG - 2015-05-12 23:53:09 --> Model Class Initialized
+DEBUG - 2015-05-12 23:53:09 --> Controller Class Initialized
+DEBUG - 2015-05-12 23:53:09 --> Model Class Initialized
+DEBUG - 2015-05-12 23:53:09 --> Helper loaded: form_helper
+DEBUG - 2015-05-12 23:53:09 --> Helper loaded: account_helper
+DEBUG - 2015-05-12 23:53:09 --> Form Validation Class Initialized
+DEBUG - 2015-05-12 23:53:09 --> File loaded: application/views/pages/account.php
+DEBUG - 2015-05-12 23:53:10 --> Final output sent to browser
+DEBUG - 2015-05-12 23:53:10 --> Total execution time: 0.2709
+DEBUG - 2015-05-12 23:53:10 --> Config Class Initialized
+DEBUG - 2015-05-12 23:53:10 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:53:10 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:53:10 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:53:10 --> URI Class Initialized
+DEBUG - 2015-05-12 23:53:10 --> Router Class Initialized
+DEBUG - 2015-05-12 23:53:10 --> Output Class Initialized
+DEBUG - 2015-05-12 23:53:10 --> Security Class Initialized
+DEBUG - 2015-05-12 23:53:10 --> Input Class Initialized
+DEBUG - 2015-05-12 23:53:10 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:53:10 --> Language Class Initialized
+DEBUG - 2015-05-12 23:53:10 --> Loader Class Initialized
+DEBUG - 2015-05-12 23:53:10 --> Helper loaded: url_helper
+DEBUG - 2015-05-12 23:53:10 --> Database Driver Class Initialized
+ERROR - 2015-05-12 23:53:10 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead C:\Users\Adrian\Dropbox\virtualfarma.com.co\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2015-05-12 23:53:10 --> Session Class Initialized
+DEBUG - 2015-05-12 23:53:10 --> Helper loaded: string_helper
+DEBUG - 2015-05-12 23:53:10 --> Encrypt Class Initialized
+DEBUG - 2015-05-12 23:53:10 --> Session routines successfully run
+DEBUG - 2015-05-12 23:53:10 --> Pagination Class Initialized
+DEBUG - 2015-05-12 23:53:10 --> Model Class Initialized
+DEBUG - 2015-05-12 23:53:10 --> Model Class Initialized
+DEBUG - 2015-05-12 23:53:10 --> Controller Class Initialized
+DEBUG - 2015-05-12 23:53:10 --> Model Class Initialized
+DEBUG - 2015-05-12 23:53:10 --> Helper loaded: form_helper
+DEBUG - 2015-05-12 23:53:10 --> Helper loaded: account_helper
+DEBUG - 2015-05-12 23:53:10 --> Form Validation Class Initialized
+DEBUG - 2015-05-12 23:53:10 --> File loaded: application/views/pages/account.php
+DEBUG - 2015-05-12 23:53:10 --> Final output sent to browser
+DEBUG - 2015-05-12 23:53:10 --> Total execution time: 0.4262
+DEBUG - 2015-05-12 23:53:11 --> Config Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:53:11 --> URI Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> Config Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> Router Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:53:11 --> URI Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> Router Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> Output Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> Security Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> Input Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:53:11 --> Output Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> Language Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> Security Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> Input Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:53:11 --> Language Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> Loader Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> Helper loaded: url_helper
+DEBUG - 2015-05-12 23:53:11 --> Database Driver Class Initialized
+ERROR - 2015-05-12 23:53:11 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead C:\Users\Adrian\Dropbox\virtualfarma.com.co\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2015-05-12 23:53:11 --> Session Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> Helper loaded: string_helper
+DEBUG - 2015-05-12 23:53:11 --> Encrypt Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> Session routines successfully run
+DEBUG - 2015-05-12 23:53:11 --> Pagination Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> Model Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> Model Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> Controller Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> Model Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> Helper loaded: form_helper
+DEBUG - 2015-05-12 23:53:11 --> Helper loaded: account_helper
+DEBUG - 2015-05-12 23:53:11 --> Form Validation Class Initialized
+DEBUG - 2015-05-12 23:53:11 --> File loaded: application/views/pages/account.php
+DEBUG - 2015-05-12 23:53:11 --> Final output sent to browser
+DEBUG - 2015-05-12 23:53:11 --> Total execution time: 0.5420
+DEBUG - 2015-05-12 23:53:12 --> Config Class Initialized
+DEBUG - 2015-05-12 23:53:12 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:53:12 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:53:12 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:53:12 --> URI Class Initialized
+DEBUG - 2015-05-12 23:53:12 --> Router Class Initialized
+DEBUG - 2015-05-12 23:53:12 --> Output Class Initialized
+DEBUG - 2015-05-12 23:53:12 --> Security Class Initialized
+DEBUG - 2015-05-12 23:53:12 --> Input Class Initialized
+DEBUG - 2015-05-12 23:53:12 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:53:12 --> Language Class Initialized
+DEBUG - 2015-05-12 23:54:57 --> Config Class Initialized
+DEBUG - 2015-05-12 23:54:57 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:54:57 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:54:57 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:54:57 --> URI Class Initialized
+DEBUG - 2015-05-12 23:54:57 --> Router Class Initialized
+DEBUG - 2015-05-12 23:54:57 --> Output Class Initialized
+DEBUG - 2015-05-12 23:54:57 --> Security Class Initialized
+DEBUG - 2015-05-12 23:54:57 --> Input Class Initialized
+DEBUG - 2015-05-12 23:54:57 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:54:57 --> Language Class Initialized
+ERROR - 2015-05-12 23:54:57 --> Severity: Warning  --> require(C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\coreC:\Users\Adrian\Dropbox\virtualfarma.com.co\application../public/facebook-sdk/facebook-php-sdk-v4-4.0-dev/autoload.php): failed to open stream: Invalid argument C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\core\MY_Controller.php 23
+DEBUG - 2015-05-12 23:54:58 --> Config Class Initialized
+DEBUG - 2015-05-12 23:54:58 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:54:58 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:54:58 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:54:58 --> URI Class Initialized
+DEBUG - 2015-05-12 23:54:58 --> Router Class Initialized
+DEBUG - 2015-05-12 23:54:58 --> Output Class Initialized
+DEBUG - 2015-05-12 23:54:58 --> Security Class Initialized
+DEBUG - 2015-05-12 23:54:58 --> Input Class Initialized
+DEBUG - 2015-05-12 23:54:58 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:54:58 --> Language Class Initialized
+ERROR - 2015-05-12 23:54:59 --> Severity: Warning  --> require(C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\coreC:\Users\Adrian\Dropbox\virtualfarma.com.co\application../public/facebook-sdk/facebook-php-sdk-v4-4.0-dev/autoload.php): failed to open stream: Invalid argument C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\core\MY_Controller.php 23
+DEBUG - 2015-05-12 23:55:26 --> Config Class Initialized
+DEBUG - 2015-05-12 23:55:26 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:55:26 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:55:26 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:55:26 --> URI Class Initialized
+DEBUG - 2015-05-12 23:55:26 --> Router Class Initialized
+DEBUG - 2015-05-12 23:55:26 --> Output Class Initialized
+DEBUG - 2015-05-12 23:55:26 --> Security Class Initialized
+DEBUG - 2015-05-12 23:55:26 --> Input Class Initialized
+DEBUG - 2015-05-12 23:55:26 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:55:26 --> Language Class Initialized
+ERROR - 2015-05-12 23:55:26 --> Severity: Warning  --> require(C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\coreC:\Users\Adrian\Dropbox\virtualfarma.com.co\application../../public/facebook-sdk/facebook-php-sdk-v4-4.0-dev/autoload.php): failed to open stream: Invalid argument C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\core\MY_Controller.php 23
+DEBUG - 2015-05-12 23:55:26 --> Config Class Initialized
+DEBUG - 2015-05-12 23:55:26 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:55:26 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:55:26 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:55:26 --> URI Class Initialized
+DEBUG - 2015-05-12 23:55:26 --> Router Class Initialized
+DEBUG - 2015-05-12 23:55:26 --> Output Class Initialized
+DEBUG - 2015-05-12 23:55:26 --> Security Class Initialized
+DEBUG - 2015-05-12 23:55:26 --> Input Class Initialized
+DEBUG - 2015-05-12 23:55:26 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:55:26 --> Language Class Initialized
+ERROR - 2015-05-12 23:55:26 --> Severity: Warning  --> require(C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\coreC:\Users\Adrian\Dropbox\virtualfarma.com.co\application../../public/facebook-sdk/facebook-php-sdk-v4-4.0-dev/autoload.php): failed to open stream: Invalid argument C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\core\MY_Controller.php 23
+DEBUG - 2015-05-12 23:55:34 --> Config Class Initialized
+DEBUG - 2015-05-12 23:55:35 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:55:35 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:55:35 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:55:35 --> URI Class Initialized
+DEBUG - 2015-05-12 23:55:35 --> Router Class Initialized
+DEBUG - 2015-05-12 23:55:35 --> Output Class Initialized
+DEBUG - 2015-05-12 23:55:35 --> Security Class Initialized
+DEBUG - 2015-05-12 23:55:35 --> Input Class Initialized
+DEBUG - 2015-05-12 23:55:35 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:55:35 --> Language Class Initialized
+ERROR - 2015-05-12 23:55:35 --> Severity: Warning  --> require(C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\coreC:\Users\Adrian\Dropbox\virtualfarma.com.co\application../../../public/facebook-sdk/facebook-php-sdk-v4-4.0-dev/autoload.php): failed to open stream: Invalid argument C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\core\MY_Controller.php 23
+DEBUG - 2015-05-12 23:55:35 --> Config Class Initialized
+DEBUG - 2015-05-12 23:55:35 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:55:35 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:55:35 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:55:35 --> URI Class Initialized
+DEBUG - 2015-05-12 23:55:35 --> Router Class Initialized
+DEBUG - 2015-05-12 23:55:35 --> Output Class Initialized
+DEBUG - 2015-05-12 23:55:35 --> Security Class Initialized
+DEBUG - 2015-05-12 23:55:35 --> Input Class Initialized
+DEBUG - 2015-05-12 23:55:35 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:55:35 --> Language Class Initialized
+ERROR - 2015-05-12 23:55:35 --> Severity: Warning  --> require(C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\coreC:\Users\Adrian\Dropbox\virtualfarma.com.co\application../../../public/facebook-sdk/facebook-php-sdk-v4-4.0-dev/autoload.php): failed to open stream: Invalid argument C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\core\MY_Controller.php 23
+DEBUG - 2015-05-12 23:55:41 --> Config Class Initialized
+DEBUG - 2015-05-12 23:55:41 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:55:41 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:55:41 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:55:41 --> URI Class Initialized
+DEBUG - 2015-05-12 23:55:41 --> Router Class Initialized
+DEBUG - 2015-05-12 23:55:41 --> Output Class Initialized
+DEBUG - 2015-05-12 23:55:41 --> Security Class Initialized
+DEBUG - 2015-05-12 23:55:41 --> Input Class Initialized
+DEBUG - 2015-05-12 23:55:41 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:55:41 --> Language Class Initialized
+ERROR - 2015-05-12 23:55:41 --> Severity: Warning  --> require(C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\coreC:\Users\Adrian\Dropbox\virtualfarma.com.co\application../../public/facebook-sdk/facebook-php-sdk-v4-4.0-dev/autoload.php): failed to open stream: Invalid argument C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\core\MY_Controller.php 23
+DEBUG - 2015-05-12 23:55:42 --> Config Class Initialized
+DEBUG - 2015-05-12 23:55:42 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:55:42 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:55:42 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:55:42 --> URI Class Initialized
+DEBUG - 2015-05-12 23:55:42 --> Router Class Initialized
+DEBUG - 2015-05-12 23:55:42 --> Output Class Initialized
+DEBUG - 2015-05-12 23:55:42 --> Security Class Initialized
+DEBUG - 2015-05-12 23:55:42 --> Input Class Initialized
+DEBUG - 2015-05-12 23:55:42 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:55:42 --> Language Class Initialized
+ERROR - 2015-05-12 23:55:42 --> Severity: Warning  --> require(C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\coreC:\Users\Adrian\Dropbox\virtualfarma.com.co\application../../public/facebook-sdk/facebook-php-sdk-v4-4.0-dev/autoload.php): failed to open stream: Invalid argument C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\core\MY_Controller.php 23
+DEBUG - 2015-05-12 23:55:43 --> Config Class Initialized
+DEBUG - 2015-05-12 23:55:43 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:55:43 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:55:43 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:55:43 --> URI Class Initialized
+DEBUG - 2015-05-12 23:55:43 --> Router Class Initialized
+DEBUG - 2015-05-12 23:55:43 --> Output Class Initialized
+DEBUG - 2015-05-12 23:55:43 --> Security Class Initialized
+DEBUG - 2015-05-12 23:55:43 --> Input Class Initialized
+DEBUG - 2015-05-12 23:55:43 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:55:43 --> Language Class Initialized
+ERROR - 2015-05-12 23:55:43 --> Severity: Warning  --> require(C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\coreC:\Users\Adrian\Dropbox\virtualfarma.com.co\application../../public/facebook-sdk/facebook-php-sdk-v4-4.0-dev/autoload.php): failed to open stream: Invalid argument C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\core\MY_Controller.php 23
+DEBUG - 2015-05-12 23:55:44 --> Config Class Initialized
+DEBUG - 2015-05-12 23:55:44 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:55:44 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:55:44 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:55:44 --> URI Class Initialized
+DEBUG - 2015-05-12 23:55:44 --> Router Class Initialized
+DEBUG - 2015-05-12 23:55:44 --> Output Class Initialized
+DEBUG - 2015-05-12 23:55:44 --> Security Class Initialized
+DEBUG - 2015-05-12 23:55:44 --> Input Class Initialized
+DEBUG - 2015-05-12 23:55:44 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:55:44 --> Language Class Initialized
+ERROR - 2015-05-12 23:55:44 --> Severity: Warning  --> require(C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\coreC:\Users\Adrian\Dropbox\virtualfarma.com.co\application../../public/facebook-sdk/facebook-php-sdk-v4-4.0-dev/autoload.php): failed to open stream: Invalid argument C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\core\MY_Controller.php 23
+DEBUG - 2015-05-12 23:56:12 --> Config Class Initialized
+DEBUG - 2015-05-12 23:56:12 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:56:12 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:56:12 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:56:12 --> URI Class Initialized
+DEBUG - 2015-05-12 23:56:12 --> Router Class Initialized
+DEBUG - 2015-05-12 23:56:12 --> Output Class Initialized
+DEBUG - 2015-05-12 23:56:12 --> Security Class Initialized
+DEBUG - 2015-05-12 23:56:12 --> Input Class Initialized
+DEBUG - 2015-05-12 23:56:12 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:56:12 --> Language Class Initialized
+ERROR - 2015-05-12 23:56:12 --> Severity: Warning  --> require(C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\core/public/facebook-sdk/facebook-php-sdk-v4-4.0-dev/autoload.php): failed to open stream: No such file or directory C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\core\MY_Controller.php 23
+DEBUG - 2015-05-12 23:56:12 --> Config Class Initialized
+DEBUG - 2015-05-12 23:56:12 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:56:12 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:56:12 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:56:12 --> URI Class Initialized
+DEBUG - 2015-05-12 23:56:12 --> Router Class Initialized
+DEBUG - 2015-05-12 23:56:12 --> Output Class Initialized
+DEBUG - 2015-05-12 23:56:12 --> Security Class Initialized
+DEBUG - 2015-05-12 23:56:12 --> Input Class Initialized
+DEBUG - 2015-05-12 23:56:12 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:56:12 --> Language Class Initialized
+ERROR - 2015-05-12 23:56:12 --> Severity: Warning  --> require(C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\core/public/facebook-sdk/facebook-php-sdk-v4-4.0-dev/autoload.php): failed to open stream: No such file or directory C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\core\MY_Controller.php 23
+DEBUG - 2015-05-12 23:56:33 --> Config Class Initialized
+DEBUG - 2015-05-12 23:56:33 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:56:33 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:56:33 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:56:33 --> URI Class Initialized
+DEBUG - 2015-05-12 23:56:33 --> Router Class Initialized
+DEBUG - 2015-05-12 23:56:33 --> Output Class Initialized
+DEBUG - 2015-05-12 23:56:33 --> Security Class Initialized
+DEBUG - 2015-05-12 23:56:33 --> Input Class Initialized
+DEBUG - 2015-05-12 23:56:33 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:56:33 --> Language Class Initialized
+ERROR - 2015-05-12 23:56:33 --> Severity: Warning  --> require(C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\core../public/facebook-sdk/facebook-php-sdk-v4-4.0-dev/autoload.php): failed to open stream: No such file or directory C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\core\MY_Controller.php 23
+DEBUG - 2015-05-12 23:56:34 --> Config Class Initialized
+DEBUG - 2015-05-12 23:56:34 --> Hooks Class Initialized
+DEBUG - 2015-05-12 23:56:34 --> Utf8 Class Initialized
+DEBUG - 2015-05-12 23:56:34 --> UTF-8 Support Enabled
+DEBUG - 2015-05-12 23:56:34 --> URI Class Initialized
+DEBUG - 2015-05-12 23:56:34 --> Router Class Initialized
+DEBUG - 2015-05-12 23:56:34 --> Output Class Initialized
+DEBUG - 2015-05-12 23:56:34 --> Security Class Initialized
+DEBUG - 2015-05-12 23:56:34 --> Input Class Initialized
+DEBUG - 2015-05-12 23:56:34 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-12 23:56:34 --> Language Class Initialized
+ERROR - 2015-05-12 23:56:34 --> Severity: Warning  --> require(C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\core../public/facebook-sdk/facebook-php-sdk-v4-4.0-dev/autoload.php): failed to open stream: No such file or directory C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\core\MY_Controller.php 23

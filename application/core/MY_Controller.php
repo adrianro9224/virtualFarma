@@ -17,6 +17,9 @@ define("__ROOT__SELLER__TEMPLATES", dirname(dirname(__FILE__)) . "/views/admin/s
 define("__ROOT__FARMACY__", dirname(dirname(__FILE__)) . "/views/admin/farmacy/");
 define("__ROOT__FARMACY__TEMPLATES", dirname(dirname(__FILE__)) . "/views/admin/farmacy/templates/");
 
+//Facebook SDK
+//define('FACEBOOK_SDK_V4_SRC_DIR', '/public/facebook-sdk/facebook-php-sdk-v4-4.0-dev/src/Facebook/');
+
 
 class MY_Controller extends CI_Controller {
 
