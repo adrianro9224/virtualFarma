@@ -10,7 +10,8 @@ class Account extends MY_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->helper(array('form', 'url', 'account_helper'));
-		$this->load->library(array('form_validation', 'messages', 'accounts', 'address', 'account_types', 'orders'));
+		
+		$this->load->library(array('form_validation', 'messages', 'accounts', 'address', 'account_types', 'orders', 'mailchimp'));
 		$this->load->model('account_model');// add second param for add a "alias" ex: $this->load->model('Account', 'user')
 	}
 	
@@ -144,7 +145,10 @@ class Account extends MY_Controller {
 			
 			if( isset($insert_id) ){
 				// do _log_in
+				
 				$account = $this->account_model->get_account_by_id($insert_id);
+				
+				$this->mailchimp->send_register_email( $account );
 				
 				$this->_do_login( $account , $data, $account_types);
 				
@@ -165,7 +169,7 @@ class Account extends MY_Controller {
 				// level('error', 'debug')
 				log_message('error', 'insert account not working');
 				
-				$notifications['danger'] = "Un evento inesperádo, el administrador de la página será notificádo";
+				$notifications['danger'] = "Un evento inesperádo, el administrador de la página será notificádo :(";
 				
 				$this->session->set_flashdata('notifications', $notifications );
 				
