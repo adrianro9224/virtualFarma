@@ -194,6 +194,11 @@
 	    								</div>
 	    								<!-- tooltip -->
 	    							</div>
+	    							
+	    							<h3>Ò inicia sessión con Facebook</h3>
+									<div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true" data-scope="public_profile, email, user_friends"></div>
+									<div id="status">
+									</div>
 		    					</form>
 		  					</div>
 						</div>

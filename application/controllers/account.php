@@ -477,9 +477,16 @@ class Account extends MY_Controller {
 	}
 	
 	
+	public function facebook_login() {
+		$post = file_get_contents("php://input");
+		
+		$user = $post->user;
+
+	}
+	
 	/**
 	 * Custom form log_in valilation
-	 * @return result of form validation
+	 * @return result true if the validation is clean, false in a other case
 	 */
 	private function _validate_log_in_form() {
 	
@@ -495,7 +502,7 @@ class Account extends MY_Controller {
 	
 	/**
 	 * Custom form sing_up valilation
-	 * @return result of form validation
+	 * @return result true if the validation is clean, false in a other case
 	 */
 	private function _validate_sing_up_form() {
 		

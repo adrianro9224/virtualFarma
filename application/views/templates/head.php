@@ -66,6 +66,7 @@
 	<script type="text/javascript" src="<?= base_url() . '/public/app/controllers/MainCtrl.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . '/public/app/controllers/HeaderNavCtrl.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . '/public/app/controllers/FarmacyOrdersCtrl.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . '/public/app/controllers/FacebookCtrl.js'?>"></script>
 	<!-- Angular js controllers over -->
 	
 	<!-- Angular js services start -->
@@ -98,5 +99,5 @@
 	<!-- ngCookies dependencie over -->
 	
 	<!-- Facebook SDK -->
-	<!-- <script type="text/javascript" src="base_url() . '/public/facebook-sdk/facebook_sdk.js'?>"></script> -->
+	<script type="text/javascript" src="<?= base_url() . '/public/facebook-sdk/facebook_sdk.js'?>"></script> 
 </head>
