@@ -5,7 +5,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Account extends MY_Controller {
 	
 	/**
-	 * Controller constructor 
+	 * Account controller constructor 
 	 */
 	function __construct() {
 		parent::__construct();
@@ -16,7 +16,7 @@ class Account extends MY_Controller {
 	}
 	
 	/**
-	 * show the account home view
+	 * Show the account home view
 	 * @param string $page
 	 */
 	public function index($page = 'account') {
@@ -79,7 +79,7 @@ class Account extends MY_Controller {
 	}
 	
 	/**
-	 * Create  a Account if the data are accepted or redirect to account View for the reintent
+	 * Create  a Account if the data are accepted or redirect to account View 
 	 */
 	public function sing_up() {
 		
