@@ -482,6 +482,7 @@ class Account extends MY_Controller {
 		
 		$user = $post->user;
 
+		//create funtion for "sing_up facebook", add to the 'account' schema the property "sing_in acroos facebook flag" 
 	}
 	
 	/**

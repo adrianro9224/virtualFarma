@@ -3318,3 +3318,673 @@ DEBUG - 2015-05-14 22:33:21 --> Security Class Initialized
 DEBUG - 2015-05-14 22:33:21 --> Input Class Initialized
 DEBUG - 2015-05-14 22:33:21 --> Global POST and COOKIE data sanitized
 DEBUG - 2015-05-14 22:33:21 --> Language Class Initialized
+DEBUG - 2015-05-14 22:39:22 --> Config Class Initialized
+DEBUG - 2015-05-14 22:39:22 --> Hooks Class Initialized
+DEBUG - 2015-05-14 22:39:22 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 22:39:22 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 22:39:22 --> URI Class Initialized
+DEBUG - 2015-05-14 22:39:22 --> Router Class Initialized
+DEBUG - 2015-05-14 22:39:22 --> Output Class Initialized
+DEBUG - 2015-05-14 22:39:22 --> Security Class Initialized
+DEBUG - 2015-05-14 22:39:22 --> Input Class Initialized
+DEBUG - 2015-05-14 22:39:22 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 22:39:22 --> Language Class Initialized
+DEBUG - 2015-05-14 22:39:22 --> Loader Class Initialized
+DEBUG - 2015-05-14 22:39:22 --> Helper loaded: url_helper
+DEBUG - 2015-05-14 22:39:22 --> Database Driver Class Initialized
+ERROR - 2015-05-14 22:39:22 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead C:\Users\Adrian\Dropbox\virtualfarma.com.co\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2015-05-14 22:39:22 --> Session Class Initialized
+DEBUG - 2015-05-14 22:39:22 --> Helper loaded: string_helper
+DEBUG - 2015-05-14 22:39:22 --> Encrypt Class Initialized
+DEBUG - 2015-05-14 22:39:23 --> Session routines successfully run
+DEBUG - 2015-05-14 22:39:23 --> Pagination Class Initialized
+DEBUG - 2015-05-14 22:39:23 --> Model Class Initialized
+DEBUG - 2015-05-14 22:39:23 --> Model Class Initialized
+DEBUG - 2015-05-14 22:39:23 --> Controller Class Initialized
+DEBUG - 2015-05-14 22:39:23 --> Model Class Initialized
+DEBUG - 2015-05-14 22:39:23 --> Helper loaded: form_helper
+DEBUG - 2015-05-14 22:39:23 --> Helper loaded: account_helper
+DEBUG - 2015-05-14 22:39:23 --> Form Validation Class Initialized
+DEBUG - 2015-05-14 22:39:23 --> File loaded: application/views/pages/account.php
+DEBUG - 2015-05-14 22:39:23 --> Final output sent to browser
+DEBUG - 2015-05-14 22:39:23 --> Total execution time: 0.8355
+DEBUG - 2015-05-14 22:39:24 --> Config Class Initialized
+DEBUG - 2015-05-14 22:39:24 --> Hooks Class Initialized
+DEBUG - 2015-05-14 22:39:24 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 22:39:24 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 22:39:24 --> URI Class Initialized
+DEBUG - 2015-05-14 22:39:24 --> Router Class Initialized
+DEBUG - 2015-05-14 22:39:24 --> Output Class Initialized
+DEBUG - 2015-05-14 22:39:24 --> Security Class Initialized
+DEBUG - 2015-05-14 22:39:24 --> Input Class Initialized
+DEBUG - 2015-05-14 22:39:24 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 22:39:24 --> Language Class Initialized
+DEBUG - 2015-05-14 22:39:24 --> Config Class Initialized
+DEBUG - 2015-05-14 22:39:24 --> Hooks Class Initialized
+DEBUG - 2015-05-14 22:39:24 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 22:39:24 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 22:39:24 --> URI Class Initialized
+DEBUG - 2015-05-14 22:39:24 --> Router Class Initialized
+DEBUG - 2015-05-14 22:39:24 --> Output Class Initialized
+DEBUG - 2015-05-14 22:39:24 --> Security Class Initialized
+DEBUG - 2015-05-14 22:39:24 --> Input Class Initialized
+DEBUG - 2015-05-14 22:39:24 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 22:39:24 --> Language Class Initialized
+DEBUG - 2015-05-14 22:39:24 --> Config Class Initialized
+DEBUG - 2015-05-14 22:39:24 --> Hooks Class Initialized
+DEBUG - 2015-05-14 22:39:24 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 22:39:25 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 22:39:25 --> URI Class Initialized
+DEBUG - 2015-05-14 22:39:25 --> Router Class Initialized
+DEBUG - 2015-05-14 22:39:25 --> Output Class Initialized
+DEBUG - 2015-05-14 22:39:25 --> Security Class Initialized
+DEBUG - 2015-05-14 22:39:25 --> Input Class Initialized
+DEBUG - 2015-05-14 22:39:25 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 22:39:25 --> Language Class Initialized
+DEBUG - 2015-05-14 22:39:25 --> Config Class Initialized
+DEBUG - 2015-05-14 22:39:25 --> Hooks Class Initialized
+DEBUG - 2015-05-14 22:39:25 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 22:39:25 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 22:39:25 --> URI Class Initialized
+DEBUG - 2015-05-14 22:39:25 --> Router Class Initialized
+DEBUG - 2015-05-14 22:39:25 --> Output Class Initialized
+DEBUG - 2015-05-14 22:39:25 --> Security Class Initialized
+DEBUG - 2015-05-14 22:39:25 --> Input Class Initialized
+DEBUG - 2015-05-14 22:39:25 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 22:39:25 --> Language Class Initialized
+DEBUG - 2015-05-14 22:39:25 --> Config Class Initialized
+DEBUG - 2015-05-14 22:39:25 --> Hooks Class Initialized
+DEBUG - 2015-05-14 22:39:25 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 22:39:25 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 22:39:25 --> URI Class Initialized
+DEBUG - 2015-05-14 22:39:25 --> Router Class Initialized
+DEBUG - 2015-05-14 22:39:25 --> Output Class Initialized
+DEBUG - 2015-05-14 22:39:25 --> Security Class Initialized
+DEBUG - 2015-05-14 22:39:25 --> Input Class Initialized
+DEBUG - 2015-05-14 22:39:25 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 22:39:25 --> Language Class Initialized
+DEBUG - 2015-05-14 22:40:30 --> Config Class Initialized
+DEBUG - 2015-05-14 22:40:30 --> Hooks Class Initialized
+DEBUG - 2015-05-14 22:40:30 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 22:40:30 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 22:40:31 --> URI Class Initialized
+DEBUG - 2015-05-14 22:40:31 --> Router Class Initialized
+DEBUG - 2015-05-14 22:40:31 --> Output Class Initialized
+DEBUG - 2015-05-14 22:40:31 --> Security Class Initialized
+DEBUG - 2015-05-14 22:40:31 --> Input Class Initialized
+DEBUG - 2015-05-14 22:40:31 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 22:40:31 --> Language Class Initialized
+DEBUG - 2015-05-14 22:40:31 --> Loader Class Initialized
+DEBUG - 2015-05-14 22:40:31 --> Helper loaded: url_helper
+DEBUG - 2015-05-14 22:40:31 --> Database Driver Class Initialized
+ERROR - 2015-05-14 22:40:31 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead C:\Users\Adrian\Dropbox\virtualfarma.com.co\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2015-05-14 22:40:31 --> Session Class Initialized
+DEBUG - 2015-05-14 22:40:31 --> Helper loaded: string_helper
+DEBUG - 2015-05-14 22:40:31 --> Encrypt Class Initialized
+DEBUG - 2015-05-14 22:40:31 --> Session routines successfully run
+DEBUG - 2015-05-14 22:40:31 --> Pagination Class Initialized
+DEBUG - 2015-05-14 22:40:31 --> Model Class Initialized
+DEBUG - 2015-05-14 22:40:31 --> Model Class Initialized
+DEBUG - 2015-05-14 22:40:31 --> Controller Class Initialized
+DEBUG - 2015-05-14 22:40:31 --> Model Class Initialized
+DEBUG - 2015-05-14 22:40:31 --> Helper loaded: form_helper
+DEBUG - 2015-05-14 22:40:31 --> Helper loaded: account_helper
+DEBUG - 2015-05-14 22:40:31 --> Form Validation Class Initialized
+DEBUG - 2015-05-14 22:40:31 --> File loaded: application/views/pages/account.php
+DEBUG - 2015-05-14 22:40:31 --> Final output sent to browser
+DEBUG - 2015-05-14 22:40:31 --> Total execution time: 0.4839
+DEBUG - 2015-05-14 22:40:32 --> Config Class Initialized
+DEBUG - 2015-05-14 22:40:32 --> Hooks Class Initialized
+DEBUG - 2015-05-14 22:40:32 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 22:40:32 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 22:40:32 --> URI Class Initialized
+DEBUG - 2015-05-14 22:40:33 --> Router Class Initialized
+DEBUG - 2015-05-14 22:40:33 --> Output Class Initialized
+DEBUG - 2015-05-14 22:40:33 --> Security Class Initialized
+DEBUG - 2015-05-14 22:40:33 --> Input Class Initialized
+DEBUG - 2015-05-14 22:40:33 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 22:40:33 --> Language Class Initialized
+DEBUG - 2015-05-14 22:40:33 --> Loader Class Initialized
+DEBUG - 2015-05-14 22:40:33 --> Helper loaded: url_helper
+DEBUG - 2015-05-14 22:40:33 --> Database Driver Class Initialized
+ERROR - 2015-05-14 22:40:33 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead C:\Users\Adrian\Dropbox\virtualfarma.com.co\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2015-05-14 22:40:33 --> Session Class Initialized
+DEBUG - 2015-05-14 22:40:33 --> Config Class Initialized
+DEBUG - 2015-05-14 22:40:33 --> Helper loaded: string_helper
+DEBUG - 2015-05-14 22:40:33 --> Hooks Class Initialized
+DEBUG - 2015-05-14 22:40:33 --> Encrypt Class Initialized
+DEBUG - 2015-05-14 22:40:33 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 22:40:33 --> Session routines successfully run
+DEBUG - 2015-05-14 22:40:33 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 22:40:33 --> Pagination Class Initialized
+DEBUG - 2015-05-14 22:40:33 --> URI Class Initialized
+DEBUG - 2015-05-14 22:40:33 --> Model Class Initialized
+DEBUG - 2015-05-14 22:40:33 --> Router Class Initialized
+DEBUG - 2015-05-14 22:40:33 --> Model Class Initialized
+DEBUG - 2015-05-14 22:40:33 --> Output Class Initialized
+DEBUG - 2015-05-14 22:40:33 --> Controller Class Initialized
+DEBUG - 2015-05-14 22:40:33 --> Security Class Initialized
+DEBUG - 2015-05-14 22:40:33 --> Model Class Initialized
+DEBUG - 2015-05-14 22:40:33 --> Input Class Initialized
+DEBUG - 2015-05-14 22:40:33 --> Helper loaded: form_helper
+DEBUG - 2015-05-14 22:40:33 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 22:40:33 --> Helper loaded: account_helper
+DEBUG - 2015-05-14 22:40:33 --> Language Class Initialized
+DEBUG - 2015-05-14 22:40:33 --> Form Validation Class Initialized
+ERROR - 2015-05-14 22:40:33 --> Severity: Notice  --> Trying to get property of non-object C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\controllers\account.php 483
+DEBUG - 2015-05-14 22:40:33 --> Final output sent to browser
+DEBUG - 2015-05-14 22:40:33 --> Total execution time: 0.5276
+DEBUG - 2015-05-14 22:42:17 --> Config Class Initialized
+DEBUG - 2015-05-14 22:42:17 --> Hooks Class Initialized
+DEBUG - 2015-05-14 22:42:17 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 22:42:17 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 22:42:17 --> URI Class Initialized
+DEBUG - 2015-05-14 22:42:17 --> Router Class Initialized
+DEBUG - 2015-05-14 22:42:17 --> Output Class Initialized
+DEBUG - 2015-05-14 22:42:17 --> Security Class Initialized
+DEBUG - 2015-05-14 22:42:17 --> Input Class Initialized
+DEBUG - 2015-05-14 22:42:17 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 22:42:17 --> Language Class Initialized
+DEBUG - 2015-05-14 22:42:17 --> Loader Class Initialized
+DEBUG - 2015-05-14 22:42:17 --> Helper loaded: url_helper
+DEBUG - 2015-05-14 22:42:17 --> Database Driver Class Initialized
+ERROR - 2015-05-14 22:42:17 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead C:\Users\Adrian\Dropbox\virtualfarma.com.co\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2015-05-14 22:42:17 --> Session Class Initialized
+DEBUG - 2015-05-14 22:42:17 --> Helper loaded: string_helper
+DEBUG - 2015-05-14 22:42:17 --> Encrypt Class Initialized
+DEBUG - 2015-05-14 22:42:17 --> Session routines successfully run
+DEBUG - 2015-05-14 22:42:18 --> Pagination Class Initialized
+DEBUG - 2015-05-14 22:42:18 --> Model Class Initialized
+DEBUG - 2015-05-14 22:42:18 --> Model Class Initialized
+DEBUG - 2015-05-14 22:42:18 --> Controller Class Initialized
+DEBUG - 2015-05-14 22:42:18 --> Model Class Initialized
+DEBUG - 2015-05-14 22:42:18 --> Helper loaded: form_helper
+DEBUG - 2015-05-14 22:42:18 --> Helper loaded: account_helper
+DEBUG - 2015-05-14 22:42:18 --> Form Validation Class Initialized
+DEBUG - 2015-05-14 22:42:18 --> File loaded: application/views/pages/account.php
+DEBUG - 2015-05-14 22:42:18 --> Final output sent to browser
+DEBUG - 2015-05-14 22:42:18 --> Total execution time: 0.3604
+DEBUG - 2015-05-14 22:42:19 --> Config Class Initialized
+DEBUG - 2015-05-14 22:42:19 --> Hooks Class Initialized
+DEBUG - 2015-05-14 22:42:19 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 22:42:19 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 22:42:19 --> URI Class Initialized
+DEBUG - 2015-05-14 22:42:19 --> Router Class Initialized
+DEBUG - 2015-05-14 22:42:19 --> Output Class Initialized
+DEBUG - 2015-05-14 22:42:19 --> Security Class Initialized
+DEBUG - 2015-05-14 22:42:19 --> Input Class Initialized
+DEBUG - 2015-05-14 22:42:19 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 22:42:19 --> Language Class Initialized
+DEBUG - 2015-05-14 22:42:19 --> Loader Class Initialized
+DEBUG - 2015-05-14 22:42:19 --> Helper loaded: url_helper
+DEBUG - 2015-05-14 22:42:19 --> Database Driver Class Initialized
+ERROR - 2015-05-14 22:42:19 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead C:\Users\Adrian\Dropbox\virtualfarma.com.co\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2015-05-14 22:42:19 --> Session Class Initialized
+DEBUG - 2015-05-14 22:42:19 --> Helper loaded: string_helper
+DEBUG - 2015-05-14 22:42:19 --> Encrypt Class Initialized
+DEBUG - 2015-05-14 22:42:19 --> Session routines successfully run
+DEBUG - 2015-05-14 22:42:19 --> Pagination Class Initialized
+DEBUG - 2015-05-14 22:42:19 --> Config Class Initialized
+DEBUG - 2015-05-14 22:42:19 --> Model Class Initialized
+DEBUG - 2015-05-14 22:42:19 --> Hooks Class Initialized
+DEBUG - 2015-05-14 22:42:19 --> Model Class Initialized
+DEBUG - 2015-05-14 22:42:19 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 22:42:19 --> Controller Class Initialized
+DEBUG - 2015-05-14 22:42:19 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 22:42:19 --> Model Class Initialized
+DEBUG - 2015-05-14 22:42:20 --> URI Class Initialized
+DEBUG - 2015-05-14 22:42:20 --> Helper loaded: form_helper
+DEBUG - 2015-05-14 22:42:20 --> Helper loaded: account_helper
+DEBUG - 2015-05-14 22:42:20 --> Router Class Initialized
+DEBUG - 2015-05-14 22:42:20 --> Form Validation Class Initialized
+DEBUG - 2015-05-14 22:42:20 --> Output Class Initialized
+ERROR - 2015-05-14 22:42:20 --> Severity: Notice  --> Trying to get property of non-object C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\controllers\account.php 483
+DEBUG - 2015-05-14 22:42:20 --> Security Class Initialized
+DEBUG - 2015-05-14 22:42:20 --> Final output sent to browser
+DEBUG - 2015-05-14 22:42:20 --> Input Class Initialized
+DEBUG - 2015-05-14 22:42:20 --> Total execution time: 0.4190
+DEBUG - 2015-05-14 22:42:20 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 22:42:20 --> Language Class Initialized
+DEBUG - 2015-05-14 22:46:02 --> Config Class Initialized
+DEBUG - 2015-05-14 22:46:02 --> Hooks Class Initialized
+DEBUG - 2015-05-14 22:46:02 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 22:46:02 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 22:46:02 --> URI Class Initialized
+DEBUG - 2015-05-14 22:46:02 --> Router Class Initialized
+DEBUG - 2015-05-14 22:46:02 --> Output Class Initialized
+DEBUG - 2015-05-14 22:46:02 --> Security Class Initialized
+DEBUG - 2015-05-14 22:46:02 --> Input Class Initialized
+DEBUG - 2015-05-14 22:46:02 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 22:46:02 --> Language Class Initialized
+DEBUG - 2015-05-14 22:46:02 --> Loader Class Initialized
+DEBUG - 2015-05-14 22:46:02 --> Helper loaded: url_helper
+DEBUG - 2015-05-14 22:46:02 --> Database Driver Class Initialized
+ERROR - 2015-05-14 22:46:02 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead C:\Users\Adrian\Dropbox\virtualfarma.com.co\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2015-05-14 22:46:02 --> Session Class Initialized
+DEBUG - 2015-05-14 22:46:02 --> Helper loaded: string_helper
+DEBUG - 2015-05-14 22:46:02 --> Encrypt Class Initialized
+DEBUG - 2015-05-14 22:46:03 --> Session routines successfully run
+DEBUG - 2015-05-14 22:46:03 --> Pagination Class Initialized
+DEBUG - 2015-05-14 22:46:03 --> Model Class Initialized
+DEBUG - 2015-05-14 22:46:03 --> Model Class Initialized
+DEBUG - 2015-05-14 22:46:03 --> Controller Class Initialized
+DEBUG - 2015-05-14 22:46:03 --> Model Class Initialized
+DEBUG - 2015-05-14 22:46:03 --> Helper loaded: form_helper
+DEBUG - 2015-05-14 22:46:03 --> Helper loaded: account_helper
+DEBUG - 2015-05-14 22:46:03 --> Form Validation Class Initialized
+DEBUG - 2015-05-14 22:46:03 --> File loaded: application/views/pages/account.php
+DEBUG - 2015-05-14 22:46:03 --> Final output sent to browser
+DEBUG - 2015-05-14 22:46:03 --> Total execution time: 0.6667
+DEBUG - 2015-05-14 22:46:06 --> Config Class Initialized
+DEBUG - 2015-05-14 22:46:06 --> Hooks Class Initialized
+DEBUG - 2015-05-14 22:46:06 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 22:46:06 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 22:46:06 --> URI Class Initialized
+DEBUG - 2015-05-14 22:46:06 --> Router Class Initialized
+DEBUG - 2015-05-14 22:46:06 --> Output Class Initialized
+DEBUG - 2015-05-14 22:46:06 --> Security Class Initialized
+DEBUG - 2015-05-14 22:46:06 --> Input Class Initialized
+DEBUG - 2015-05-14 22:46:06 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 22:46:06 --> Language Class Initialized
+DEBUG - 2015-05-14 22:46:06 --> Config Class Initialized
+DEBUG - 2015-05-14 22:46:06 --> Hooks Class Initialized
+DEBUG - 2015-05-14 22:46:06 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 22:46:06 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 22:46:07 --> URI Class Initialized
+DEBUG - 2015-05-14 22:46:07 --> Router Class Initialized
+DEBUG - 2015-05-14 22:46:07 --> Output Class Initialized
+DEBUG - 2015-05-14 22:46:07 --> Security Class Initialized
+DEBUG - 2015-05-14 22:46:07 --> Input Class Initialized
+DEBUG - 2015-05-14 22:46:07 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 22:46:07 --> Language Class Initialized
+DEBUG - 2015-05-14 22:46:07 --> Loader Class Initialized
+DEBUG - 2015-05-14 22:46:07 --> Helper loaded: url_helper
+DEBUG - 2015-05-14 22:46:07 --> Database Driver Class Initialized
+ERROR - 2015-05-14 22:46:07 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead C:\Users\Adrian\Dropbox\virtualfarma.com.co\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2015-05-14 22:46:07 --> Session Class Initialized
+DEBUG - 2015-05-14 22:46:07 --> Helper loaded: string_helper
+DEBUG - 2015-05-14 22:46:07 --> Encrypt Class Initialized
+DEBUG - 2015-05-14 22:46:07 --> Session routines successfully run
+DEBUG - 2015-05-14 22:46:07 --> Pagination Class Initialized
+DEBUG - 2015-05-14 22:46:07 --> Model Class Initialized
+DEBUG - 2015-05-14 22:46:07 --> Model Class Initialized
+DEBUG - 2015-05-14 22:46:07 --> Controller Class Initialized
+DEBUG - 2015-05-14 22:46:07 --> Model Class Initialized
+DEBUG - 2015-05-14 22:46:07 --> Helper loaded: form_helper
+DEBUG - 2015-05-14 22:46:07 --> Helper loaded: account_helper
+DEBUG - 2015-05-14 22:46:07 --> Form Validation Class Initialized
+ERROR - 2015-05-14 22:46:07 --> Severity: Notice  --> Trying to get property of non-object C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\controllers\account.php 483
+DEBUG - 2015-05-14 22:46:07 --> Final output sent to browser
+DEBUG - 2015-05-14 22:46:07 --> Total execution time: 0.5081
+DEBUG - 2015-05-14 22:46:43 --> Config Class Initialized
+DEBUG - 2015-05-14 22:46:43 --> Hooks Class Initialized
+DEBUG - 2015-05-14 22:46:43 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 22:46:43 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 22:46:43 --> URI Class Initialized
+DEBUG - 2015-05-14 22:46:43 --> Router Class Initialized
+DEBUG - 2015-05-14 22:46:43 --> Output Class Initialized
+DEBUG - 2015-05-14 22:46:43 --> Security Class Initialized
+DEBUG - 2015-05-14 22:46:43 --> Input Class Initialized
+DEBUG - 2015-05-14 22:46:43 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 22:46:43 --> Language Class Initialized
+DEBUG - 2015-05-14 22:46:43 --> Loader Class Initialized
+DEBUG - 2015-05-14 22:46:43 --> Helper loaded: url_helper
+DEBUG - 2015-05-14 22:46:43 --> Database Driver Class Initialized
+ERROR - 2015-05-14 22:46:43 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead C:\Users\Adrian\Dropbox\virtualfarma.com.co\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2015-05-14 22:46:43 --> Session Class Initialized
+DEBUG - 2015-05-14 22:46:43 --> Helper loaded: string_helper
+DEBUG - 2015-05-14 22:46:43 --> Encrypt Class Initialized
+DEBUG - 2015-05-14 22:46:43 --> Session routines successfully run
+DEBUG - 2015-05-14 22:46:43 --> Pagination Class Initialized
+DEBUG - 2015-05-14 22:46:43 --> Model Class Initialized
+DEBUG - 2015-05-14 22:46:43 --> Model Class Initialized
+DEBUG - 2015-05-14 22:46:43 --> Controller Class Initialized
+DEBUG - 2015-05-14 22:46:43 --> Model Class Initialized
+DEBUG - 2015-05-14 22:46:43 --> Helper loaded: form_helper
+DEBUG - 2015-05-14 22:46:43 --> Helper loaded: account_helper
+DEBUG - 2015-05-14 22:46:43 --> Form Validation Class Initialized
+DEBUG - 2015-05-14 22:46:43 --> File loaded: application/views/pages/account.php
+DEBUG - 2015-05-14 22:46:43 --> Final output sent to browser
+DEBUG - 2015-05-14 22:46:43 --> Total execution time: 0.5410
+DEBUG - 2015-05-14 22:46:46 --> Config Class Initialized
+DEBUG - 2015-05-14 22:46:46 --> Hooks Class Initialized
+DEBUG - 2015-05-14 22:46:46 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 22:46:46 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 22:46:46 --> URI Class Initialized
+DEBUG - 2015-05-14 22:46:46 --> Router Class Initialized
+DEBUG - 2015-05-14 22:46:46 --> Output Class Initialized
+DEBUG - 2015-05-14 22:46:46 --> Security Class Initialized
+DEBUG - 2015-05-14 22:46:46 --> Input Class Initialized
+DEBUG - 2015-05-14 22:46:46 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 22:46:46 --> Language Class Initialized
+DEBUG - 2015-05-14 22:46:47 --> Loader Class Initialized
+DEBUG - 2015-05-14 22:46:47 --> Helper loaded: url_helper
+DEBUG - 2015-05-14 22:46:47 --> Database Driver Class Initialized
+DEBUG - 2015-05-14 22:46:47 --> Config Class Initialized
+ERROR - 2015-05-14 22:46:47 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead C:\Users\Adrian\Dropbox\virtualfarma.com.co\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2015-05-14 22:46:47 --> Hooks Class Initialized
+DEBUG - 2015-05-14 22:46:47 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 22:46:47 --> Session Class Initialized
+DEBUG - 2015-05-14 22:46:47 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 22:46:47 --> Helper loaded: string_helper
+DEBUG - 2015-05-14 22:46:47 --> URI Class Initialized
+DEBUG - 2015-05-14 22:46:47 --> Encrypt Class Initialized
+DEBUG - 2015-05-14 22:46:47 --> Router Class Initialized
+DEBUG - 2015-05-14 22:46:47 --> Session routines successfully run
+DEBUG - 2015-05-14 22:46:47 --> Pagination Class Initialized
+DEBUG - 2015-05-14 22:46:47 --> Output Class Initialized
+DEBUG - 2015-05-14 22:46:47 --> Model Class Initialized
+DEBUG - 2015-05-14 22:46:47 --> Model Class Initialized
+DEBUG - 2015-05-14 22:46:47 --> Controller Class Initialized
+DEBUG - 2015-05-14 22:46:47 --> Model Class Initialized
+DEBUG - 2015-05-14 22:46:47 --> Helper loaded: form_helper
+DEBUG - 2015-05-14 22:46:47 --> Security Class Initialized
+DEBUG - 2015-05-14 22:46:47 --> Input Class Initialized
+DEBUG - 2015-05-14 22:46:47 --> Helper loaded: account_helper
+DEBUG - 2015-05-14 22:46:47 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 22:46:47 --> Form Validation Class Initialized
+DEBUG - 2015-05-14 22:46:47 --> Language Class Initialized
+ERROR - 2015-05-14 22:46:47 --> Severity: Notice  --> Trying to get property of non-object C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\controllers\account.php 483
+DEBUG - 2015-05-14 22:46:47 --> Final output sent to browser
+DEBUG - 2015-05-14 22:46:47 --> Total execution time: 0.6660
+DEBUG - 2015-05-14 23:00:58 --> Config Class Initialized
+DEBUG - 2015-05-14 23:00:58 --> Hooks Class Initialized
+DEBUG - 2015-05-14 23:00:58 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 23:00:58 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 23:00:58 --> URI Class Initialized
+DEBUG - 2015-05-14 23:00:58 --> Router Class Initialized
+DEBUG - 2015-05-14 23:00:58 --> Output Class Initialized
+DEBUG - 2015-05-14 23:00:58 --> Security Class Initialized
+DEBUG - 2015-05-14 23:00:58 --> Input Class Initialized
+DEBUG - 2015-05-14 23:00:58 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 23:00:58 --> Language Class Initialized
+DEBUG - 2015-05-14 23:00:58 --> Loader Class Initialized
+DEBUG - 2015-05-14 23:00:58 --> Helper loaded: url_helper
+DEBUG - 2015-05-14 23:00:58 --> Database Driver Class Initialized
+ERROR - 2015-05-14 23:00:58 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead C:\Users\Adrian\Dropbox\virtualfarma.com.co\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2015-05-14 23:00:58 --> Session Class Initialized
+DEBUG - 2015-05-14 23:00:58 --> Helper loaded: string_helper
+DEBUG - 2015-05-14 23:00:58 --> Encrypt Class Initialized
+DEBUG - 2015-05-14 23:00:58 --> Session routines successfully run
+DEBUG - 2015-05-14 23:00:58 --> Pagination Class Initialized
+DEBUG - 2015-05-14 23:00:58 --> Model Class Initialized
+DEBUG - 2015-05-14 23:00:58 --> Model Class Initialized
+DEBUG - 2015-05-14 23:00:58 --> Controller Class Initialized
+DEBUG - 2015-05-14 23:00:58 --> Model Class Initialized
+DEBUG - 2015-05-14 23:00:58 --> Helper loaded: form_helper
+DEBUG - 2015-05-14 23:00:58 --> Helper loaded: account_helper
+DEBUG - 2015-05-14 23:00:59 --> Form Validation Class Initialized
+DEBUG - 2015-05-14 23:00:59 --> File loaded: application/views/pages/account.php
+DEBUG - 2015-05-14 23:00:59 --> Final output sent to browser
+DEBUG - 2015-05-14 23:00:59 --> Total execution time: 0.6090
+DEBUG - 2015-05-14 23:01:00 --> Config Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> Hooks Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 23:01:01 --> URI Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> Router Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> Output Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> Security Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> Input Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 23:01:01 --> Language Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> Config Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> Hooks Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 23:01:01 --> URI Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> Router Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> Output Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> Security Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> Input Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 23:01:01 --> Language Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> Config Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> Hooks Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 23:01:01 --> URI Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> Router Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> Output Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> Security Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> Input Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 23:01:01 --> Language Class Initialized
+DEBUG - 2015-05-14 23:01:01 --> Config Class Initialized
+DEBUG - 2015-05-14 23:01:02 --> Hooks Class Initialized
+DEBUG - 2015-05-14 23:01:02 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 23:01:02 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 23:01:02 --> URI Class Initialized
+DEBUG - 2015-05-14 23:01:02 --> Router Class Initialized
+DEBUG - 2015-05-14 23:01:02 --> Output Class Initialized
+DEBUG - 2015-05-14 23:01:02 --> Security Class Initialized
+DEBUG - 2015-05-14 23:01:02 --> Input Class Initialized
+DEBUG - 2015-05-14 23:01:02 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 23:01:02 --> Language Class Initialized
+DEBUG - 2015-05-14 23:01:02 --> Config Class Initialized
+DEBUG - 2015-05-14 23:01:02 --> Hooks Class Initialized
+DEBUG - 2015-05-14 23:01:02 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 23:01:02 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 23:01:02 --> URI Class Initialized
+DEBUG - 2015-05-14 23:01:02 --> Router Class Initialized
+DEBUG - 2015-05-14 23:01:02 --> Output Class Initialized
+DEBUG - 2015-05-14 23:01:02 --> Security Class Initialized
+DEBUG - 2015-05-14 23:01:02 --> Input Class Initialized
+DEBUG - 2015-05-14 23:01:02 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 23:01:02 --> Language Class Initialized
+DEBUG - 2015-05-14 23:01:02 --> Config Class Initialized
+DEBUG - 2015-05-14 23:01:02 --> Hooks Class Initialized
+DEBUG - 2015-05-14 23:01:02 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 23:01:02 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 23:01:02 --> URI Class Initialized
+DEBUG - 2015-05-14 23:01:03 --> Router Class Initialized
+DEBUG - 2015-05-14 23:01:03 --> Output Class Initialized
+DEBUG - 2015-05-14 23:01:03 --> Security Class Initialized
+DEBUG - 2015-05-14 23:01:03 --> Input Class Initialized
+DEBUG - 2015-05-14 23:01:03 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 23:01:03 --> Language Class Initialized
+DEBUG - 2015-05-14 23:01:03 --> Loader Class Initialized
+DEBUG - 2015-05-14 23:01:03 --> Helper loaded: url_helper
+DEBUG - 2015-05-14 23:01:03 --> Database Driver Class Initialized
+ERROR - 2015-05-14 23:01:03 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead C:\Users\Adrian\Dropbox\virtualfarma.com.co\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2015-05-14 23:01:03 --> Session Class Initialized
+DEBUG - 2015-05-14 23:01:03 --> Helper loaded: string_helper
+DEBUG - 2015-05-14 23:01:03 --> Encrypt Class Initialized
+DEBUG - 2015-05-14 23:01:03 --> Session routines successfully run
+DEBUG - 2015-05-14 23:01:03 --> Pagination Class Initialized
+DEBUG - 2015-05-14 23:01:03 --> Model Class Initialized
+DEBUG - 2015-05-14 23:01:03 --> Model Class Initialized
+DEBUG - 2015-05-14 23:01:03 --> Controller Class Initialized
+DEBUG - 2015-05-14 23:01:03 --> Model Class Initialized
+DEBUG - 2015-05-14 23:01:03 --> Helper loaded: form_helper
+DEBUG - 2015-05-14 23:01:03 --> Helper loaded: account_helper
+DEBUG - 2015-05-14 23:01:03 --> Form Validation Class Initialized
+ERROR - 2015-05-14 23:01:03 --> Severity: Notice  --> Trying to get property of non-object C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\controllers\account.php 483
+DEBUG - 2015-05-14 23:01:03 --> Final output sent to browser
+DEBUG - 2015-05-14 23:01:03 --> Total execution time: 0.4212
+DEBUG - 2015-05-14 23:02:54 --> Config Class Initialized
+DEBUG - 2015-05-14 23:02:54 --> Hooks Class Initialized
+DEBUG - 2015-05-14 23:02:54 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 23:02:54 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 23:02:54 --> URI Class Initialized
+DEBUG - 2015-05-14 23:02:54 --> Router Class Initialized
+DEBUG - 2015-05-14 23:02:54 --> Output Class Initialized
+DEBUG - 2015-05-14 23:02:54 --> Security Class Initialized
+DEBUG - 2015-05-14 23:02:54 --> Input Class Initialized
+DEBUG - 2015-05-14 23:02:54 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 23:02:55 --> Language Class Initialized
+DEBUG - 2015-05-14 23:02:55 --> Loader Class Initialized
+DEBUG - 2015-05-14 23:02:55 --> Helper loaded: url_helper
+DEBUG - 2015-05-14 23:02:55 --> Database Driver Class Initialized
+ERROR - 2015-05-14 23:02:55 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead C:\Users\Adrian\Dropbox\virtualfarma.com.co\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2015-05-14 23:02:55 --> Session Class Initialized
+DEBUG - 2015-05-14 23:02:55 --> Helper loaded: string_helper
+DEBUG - 2015-05-14 23:02:55 --> Encrypt Class Initialized
+DEBUG - 2015-05-14 23:02:55 --> Session routines successfully run
+DEBUG - 2015-05-14 23:02:55 --> Pagination Class Initialized
+DEBUG - 2015-05-14 23:02:55 --> Model Class Initialized
+DEBUG - 2015-05-14 23:02:55 --> Model Class Initialized
+DEBUG - 2015-05-14 23:02:55 --> Controller Class Initialized
+DEBUG - 2015-05-14 23:02:55 --> Model Class Initialized
+DEBUG - 2015-05-14 23:02:55 --> Helper loaded: form_helper
+DEBUG - 2015-05-14 23:02:55 --> Helper loaded: account_helper
+DEBUG - 2015-05-14 23:02:55 --> Form Validation Class Initialized
+DEBUG - 2015-05-14 23:02:55 --> File loaded: application/views/pages/account.php
+DEBUG - 2015-05-14 23:02:55 --> Final output sent to browser
+DEBUG - 2015-05-14 23:02:55 --> Total execution time: 0.3995
+DEBUG - 2015-05-14 23:02:58 --> Config Class Initialized
+DEBUG - 2015-05-14 23:02:58 --> Hooks Class Initialized
+DEBUG - 2015-05-14 23:02:58 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 23:02:58 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 23:02:58 --> URI Class Initialized
+DEBUG - 2015-05-14 23:02:58 --> Router Class Initialized
+DEBUG - 2015-05-14 23:02:58 --> Output Class Initialized
+DEBUG - 2015-05-14 23:02:58 --> Security Class Initialized
+DEBUG - 2015-05-14 23:02:58 --> Input Class Initialized
+DEBUG - 2015-05-14 23:02:58 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 23:02:58 --> Language Class Initialized
+DEBUG - 2015-05-14 23:02:58 --> Config Class Initialized
+DEBUG - 2015-05-14 23:02:58 --> Hooks Class Initialized
+DEBUG - 2015-05-14 23:02:58 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 23:02:58 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 23:02:58 --> URI Class Initialized
+DEBUG - 2015-05-14 23:02:58 --> Router Class Initialized
+DEBUG - 2015-05-14 23:02:58 --> Output Class Initialized
+DEBUG - 2015-05-14 23:02:58 --> Security Class Initialized
+DEBUG - 2015-05-14 23:02:58 --> Input Class Initialized
+DEBUG - 2015-05-14 23:02:58 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 23:02:58 --> Language Class Initialized
+DEBUG - 2015-05-14 23:02:58 --> Loader Class Initialized
+DEBUG - 2015-05-14 23:02:58 --> Helper loaded: url_helper
+DEBUG - 2015-05-14 23:02:58 --> Database Driver Class Initialized
+ERROR - 2015-05-14 23:02:58 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead C:\Users\Adrian\Dropbox\virtualfarma.com.co\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2015-05-14 23:02:58 --> Session Class Initialized
+DEBUG - 2015-05-14 23:02:58 --> Helper loaded: string_helper
+DEBUG - 2015-05-14 23:02:58 --> Encrypt Class Initialized
+DEBUG - 2015-05-14 23:02:58 --> Session routines successfully run
+DEBUG - 2015-05-14 23:02:58 --> Pagination Class Initialized
+DEBUG - 2015-05-14 23:02:58 --> Model Class Initialized
+DEBUG - 2015-05-14 23:02:58 --> Model Class Initialized
+DEBUG - 2015-05-14 23:02:58 --> Controller Class Initialized
+DEBUG - 2015-05-14 23:02:58 --> Model Class Initialized
+DEBUG - 2015-05-14 23:02:59 --> Helper loaded: form_helper
+DEBUG - 2015-05-14 23:02:59 --> Helper loaded: account_helper
+DEBUG - 2015-05-14 23:02:59 --> Form Validation Class Initialized
+ERROR - 2015-05-14 23:02:59 --> Severity: Notice  --> Trying to get property of non-object C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\controllers\account.php 483
+DEBUG - 2015-05-14 23:02:59 --> Final output sent to browser
+DEBUG - 2015-05-14 23:02:59 --> Total execution time: 0.4589
+DEBUG - 2015-05-14 23:04:16 --> Config Class Initialized
+DEBUG - 2015-05-14 23:04:16 --> Hooks Class Initialized
+DEBUG - 2015-05-14 23:04:16 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 23:04:16 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 23:04:16 --> URI Class Initialized
+DEBUG - 2015-05-14 23:04:16 --> Router Class Initialized
+DEBUG - 2015-05-14 23:04:16 --> Output Class Initialized
+DEBUG - 2015-05-14 23:04:16 --> Security Class Initialized
+DEBUG - 2015-05-14 23:04:16 --> Input Class Initialized
+DEBUG - 2015-05-14 23:04:16 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 23:04:16 --> Language Class Initialized
+DEBUG - 2015-05-14 23:04:16 --> Loader Class Initialized
+DEBUG - 2015-05-14 23:04:16 --> Helper loaded: url_helper
+DEBUG - 2015-05-14 23:04:16 --> Database Driver Class Initialized
+ERROR - 2015-05-14 23:04:16 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead C:\Users\Adrian\Dropbox\virtualfarma.com.co\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2015-05-14 23:04:16 --> Session Class Initialized
+DEBUG - 2015-05-14 23:04:16 --> Helper loaded: string_helper
+DEBUG - 2015-05-14 23:04:16 --> Encrypt Class Initialized
+DEBUG - 2015-05-14 23:04:16 --> Session routines successfully run
+DEBUG - 2015-05-14 23:04:16 --> Pagination Class Initialized
+DEBUG - 2015-05-14 23:04:16 --> Model Class Initialized
+DEBUG - 2015-05-14 23:04:16 --> Model Class Initialized
+DEBUG - 2015-05-14 23:04:16 --> Controller Class Initialized
+DEBUG - 2015-05-14 23:04:16 --> Model Class Initialized
+DEBUG - 2015-05-14 23:04:16 --> Helper loaded: form_helper
+DEBUG - 2015-05-14 23:04:16 --> Helper loaded: account_helper
+DEBUG - 2015-05-14 23:04:16 --> Form Validation Class Initialized
+DEBUG - 2015-05-14 23:04:16 --> File loaded: application/views/pages/account.php
+DEBUG - 2015-05-14 23:04:16 --> Final output sent to browser
+DEBUG - 2015-05-14 23:04:16 --> Total execution time: 0.3472
+DEBUG - 2015-05-14 23:04:19 --> Config Class Initialized
+DEBUG - 2015-05-14 23:04:19 --> Hooks Class Initialized
+DEBUG - 2015-05-14 23:04:19 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 23:04:19 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 23:04:19 --> URI Class Initialized
+DEBUG - 2015-05-14 23:04:19 --> Router Class Initialized
+DEBUG - 2015-05-14 23:04:19 --> Output Class Initialized
+DEBUG - 2015-05-14 23:04:19 --> Security Class Initialized
+DEBUG - 2015-05-14 23:04:19 --> Input Class Initialized
+DEBUG - 2015-05-14 23:04:19 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 23:04:19 --> Language Class Initialized
+DEBUG - 2015-05-14 23:04:19 --> Loader Class Initialized
+DEBUG - 2015-05-14 23:04:19 --> Helper loaded: url_helper
+DEBUG - 2015-05-14 23:04:19 --> Database Driver Class Initialized
+ERROR - 2015-05-14 23:04:19 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead C:\Users\Adrian\Dropbox\virtualfarma.com.co\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2015-05-14 23:04:19 --> Session Class Initialized
+DEBUG - 2015-05-14 23:04:19 --> Helper loaded: string_helper
+DEBUG - 2015-05-14 23:04:19 --> Encrypt Class Initialized
+DEBUG - 2015-05-14 23:04:19 --> Config Class Initialized
+DEBUG - 2015-05-14 23:04:19 --> Session routines successfully run
+DEBUG - 2015-05-14 23:04:19 --> Hooks Class Initialized
+DEBUG - 2015-05-14 23:04:19 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 23:04:19 --> Pagination Class Initialized
+DEBUG - 2015-05-14 23:04:19 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 23:04:19 --> Model Class Initialized
+DEBUG - 2015-05-14 23:04:19 --> URI Class Initialized
+DEBUG - 2015-05-14 23:04:19 --> Model Class Initialized
+DEBUG - 2015-05-14 23:04:19 --> Router Class Initialized
+DEBUG - 2015-05-14 23:04:19 --> Controller Class Initialized
+DEBUG - 2015-05-14 23:04:19 --> Output Class Initialized
+DEBUG - 2015-05-14 23:04:19 --> Model Class Initialized
+DEBUG - 2015-05-14 23:04:19 --> Security Class Initialized
+DEBUG - 2015-05-14 23:04:19 --> Helper loaded: form_helper
+DEBUG - 2015-05-14 23:04:19 --> Input Class Initialized
+DEBUG - 2015-05-14 23:04:19 --> Helper loaded: account_helper
+DEBUG - 2015-05-14 23:04:19 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 23:04:19 --> Form Validation Class Initialized
+DEBUG - 2015-05-14 23:04:19 --> Language Class Initialized
+ERROR - 2015-05-14 23:04:19 --> Severity: Notice  --> Trying to get property of non-object C:\Users\Adrian\Dropbox\virtualfarma.com.co\application\controllers\account.php 483
+DEBUG - 2015-05-14 23:04:19 --> Final output sent to browser
+DEBUG - 2015-05-14 23:04:19 --> Total execution time: 0.4977
+DEBUG - 2015-05-14 23:24:18 --> Config Class Initialized
+DEBUG - 2015-05-14 23:24:18 --> Hooks Class Initialized
+DEBUG - 2015-05-14 23:24:18 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 23:24:18 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 23:24:18 --> URI Class Initialized
+DEBUG - 2015-05-14 23:24:18 --> Router Class Initialized
+DEBUG - 2015-05-14 23:24:18 --> Output Class Initialized
+DEBUG - 2015-05-14 23:24:18 --> Security Class Initialized
+DEBUG - 2015-05-14 23:24:18 --> Input Class Initialized
+DEBUG - 2015-05-14 23:24:18 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 23:24:18 --> Language Class Initialized
+DEBUG - 2015-05-14 23:24:19 --> Config Class Initialized
+DEBUG - 2015-05-14 23:24:19 --> Hooks Class Initialized
+DEBUG - 2015-05-14 23:24:19 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 23:24:19 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 23:24:19 --> URI Class Initialized
+DEBUG - 2015-05-14 23:24:19 --> Router Class Initialized
+DEBUG - 2015-05-14 23:24:19 --> Output Class Initialized
+DEBUG - 2015-05-14 23:24:19 --> Security Class Initialized
+DEBUG - 2015-05-14 23:24:19 --> Input Class Initialized
+DEBUG - 2015-05-14 23:24:19 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 23:24:19 --> Language Class Initialized
+DEBUG - 2015-05-14 23:44:20 --> Config Class Initialized
+DEBUG - 2015-05-14 23:44:20 --> Hooks Class Initialized
+DEBUG - 2015-05-14 23:44:21 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 23:44:21 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 23:44:21 --> URI Class Initialized
+DEBUG - 2015-05-14 23:44:21 --> Router Class Initialized
+DEBUG - 2015-05-14 23:44:21 --> Output Class Initialized
+DEBUG - 2015-05-14 23:44:22 --> Security Class Initialized
+DEBUG - 2015-05-14 23:44:22 --> Input Class Initialized
+DEBUG - 2015-05-14 23:44:22 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 23:44:22 --> Language Class Initialized
+DEBUG - 2015-05-14 23:44:22 --> Config Class Initialized
+DEBUG - 2015-05-14 23:44:22 --> Hooks Class Initialized
+DEBUG - 2015-05-14 23:44:22 --> Utf8 Class Initialized
+DEBUG - 2015-05-14 23:44:22 --> UTF-8 Support Enabled
+DEBUG - 2015-05-14 23:44:22 --> URI Class Initialized
+DEBUG - 2015-05-14 23:44:22 --> Router Class Initialized
+DEBUG - 2015-05-14 23:44:22 --> Output Class Initialized
+DEBUG - 2015-05-14 23:44:22 --> Security Class Initialized
+DEBUG - 2015-05-14 23:44:22 --> Input Class Initialized
+DEBUG - 2015-05-14 23:44:22 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-05-14 23:44:22 --> Language Class Initialized

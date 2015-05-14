@@ -14,6 +14,7 @@
 						<div class="container-fluid">
 							<!-- Brand and toggle get grouped for better mobile display -->
 							<div class="navbar-header">
+							<img class="hidden-md hidden-lg pull-left" id="normal-logo" src="<?= base_url() . 'assets/images/logo/logo_virtualfarma_solo_small_devices.png'?>" class="img-responsive" alt="">
 								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 									<span class="sr-only">Toggle navigation</span>
 									<span class="icon-bar"></span>
@@ -40,7 +41,7 @@
 											<?php endforeach;?>	
 										</ul>
 									</li>
-									<li><a href="#" title="Próximamente" >Ofertas</a></li>
+									<li><a href="#" title="Próximamente" >Sex shop</a></li>
 								</ul>
 								<form name="searchProductForm" class="navbar-form navbar-right search-form" role="search" action="<?= base_url() . 'product/search_product'?>" method="post">
 									<div id="search-module" class="input-group">
