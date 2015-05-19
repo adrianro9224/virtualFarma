@@ -1,5 +1,5 @@
 <?php
-class MailChimp {
+class Mail_chimp {
 	
 	protected  $config = array(
 			'apikey' => '25cf24ce4b8a6c383ef627f271fcd4d8-us10', // Insert your api key
