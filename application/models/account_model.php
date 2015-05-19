@@ -64,7 +64,7 @@ class Account_model extends CI_Model {
 		
 	}
 	
-	public function get_account_by_email($userEmail) {
+	public function get_account_by_email( $userEmail ) {
 		
 		$this->db->where('email', $userEmail);
 		
@@ -139,5 +139,54 @@ class Account_model extends CI_Model {
 		else
 			return NULL;
 	
+	}
+	
+	public function update_fb_id( $account_id, $fb_id ) {
+		
+		$this->db->set('fb_id', $fb_id);
+		
+		$this->db->where('id', $account_id);
+		
+		$this->db->update('account');
+		
+		if($this->db->affected_rows() > 0)
+			return true;
+		
+		return false;
+		
+	}
+	
+	public function insert_fb_account( $fb_public_profile ) {
+		
+		$date_format = 'Y-m-d H:i:s'; //(the MySQL DATETIME format)
+		
+		$gender = NULL;
+		
+		if ($fb_public_profile->gender == 'female' )
+			$gender = 'F';
+		
+		if ($fb_public_profile->gender == 'male' )
+			$gender = 'M';
+		
+		$data = array(
+				'first_name' => $fb_public_profile->first_name,
+				'last_name' => $fb_public_profile->last_name,
+				'email' => $fb_public_profile->email,
+				'gender' => $gender,
+				'terms_and_conditions' => 1,
+				'registration_date' => date($date_format),
+				'email' => $fb_public_profile->email,
+				'fb_id' => $fb_public_profile->id,
+		);
+		
+		$this->db->insert('account', $data);
+		
+		
+		if($this->db->affected_rows() > 0) {
+			return $this->db->insert_id();
+		}
+		
+		return NULL;
+		
 	}
 }

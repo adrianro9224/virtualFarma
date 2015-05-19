@@ -99,5 +99,5 @@
 	<!-- ngCookies dependencie over -->
 	
 	<!-- Facebook SDK -->
-	<script type="text/javascript" src="<?= base_url() . '/public/facebook-sdk/facebook_sdk.js'?>"></script> 
+	<!-- <script type="text/javascript" src="base_url() . '/public/facebook-sdk/facebook_sdk.js'?>"></script>  --> 
 </head>

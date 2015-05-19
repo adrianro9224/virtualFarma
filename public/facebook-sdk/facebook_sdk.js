@@ -89,12 +89,19 @@
 
         user.friends = friends;
       });
-
+console.info(user);
+        console.info(JSON.stringify(user));
       document.getElementById('status').innerHTML = 'Gracias por iniciar sesión , ' + response.name + '!';
 
-      $.post("http://virtualfarma.com.co/account/facebook_login", user,
+      $.post("http://virtualfarma.com.co/account/facebook_login", '\'' + JSON.stringify(user) + '\'',
           function(data, status){
-            console.log("Data: " + data + "\nStatus: " + status);
+              console.info("Data: " + data + "\nStatus: " + status);
+
+              //if ( data == 'just_logued')
+                //window.location = '/account/log_in';
+
+
+
           });
     });
 

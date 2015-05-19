@@ -11,7 +11,7 @@ class Account extends MY_Controller {
 		parent::__construct();
 		$this->load->helper(array('form', 'url', 'account_helper'));
 		
-		$this->load->library(array('form_validation', 'messages', 'accounts', 'address', 'account_types', 'orders', 'mailchimp'));
+		$this->load->library(array('form_validation', 'messages', 'accounts', 'address', 'account_types', 'orders', 'mail_chimp'));
 		$this->load->model('account_model');// add second param for add a "alias" ex: $this->load->model('Account', 'user')
 	}
 	
@@ -133,7 +133,13 @@ class Account extends MY_Controller {
 			$account = $this->account_model->get_account_by_email($userEmail);
 			
 			if( isset($account) ){
-				$notifications['warning'] = "Ya existe una cuenta registrada con este email.";
+				
+				$message = "Ya existe una cuenta registrada con este email.";
+				
+				if ( isset($account->fb_id) )
+					$message = "Ya existe una cuenta registrada con Facebook, inicia sesión con este.";
+					
+				$notifications['warning'] = $message;
 				$this->session->set_flashdata('notifications', $notifications);
 				redirect('/account');
 			}
@@ -480,9 +486,51 @@ class Account extends MY_Controller {
 	public function facebook_login() {
 		$post = file_get_contents("php://input");
 		
-		$user = $post->user;
+		$user = json_decode($post)->data;
 
-		//create funtion for "sing_up facebook", add to the 'account' schema the property "sing_in acroos facebook flag" 
+		$data = array();
+		
+		//create funtion for "sing_up facebook", add to the 'account' schema the property "sing_in acroos facebook flag"
+		if ( isset($user->public_profile->email) ) {
+			
+			$session_data = $this->session->all_userdata();
+			
+			if( !isset($session_data['account_types']) ) {
+				$account_types = $this->account_types->get_account_types();
+				$this->session->set_userdata('account_types', $account_types);
+			}else{
+				$account_types = $session_data['account_types'];
+				$data['account_types'] = $session_data['account_types'];
+			}
+			
+			$account = $this->account_model->get_account_by_email( $user->public_profile->email );
+			
+			if ( isset($account) ) {
+				
+				if ( !isset($account->fb_id) ) {
+					$updated =  $this->account_model->update_fb_id( $account->id, $user->id );
+
+					if ( $updated ) {
+						$this->_do_login($account, $data, $account_types);
+						echo 'just_logued';
+					}
+					
+				}
+			}else {
+				
+				$insert_id = $this->account_model->insert_fb_account( $user->public_profile );
+				
+				if ( isset($insert_id) ) {
+					$account = $this->account_model->get_account_by_id( $insert_id );
+					if ( isset($account) )
+						$this->_do_login($account, $data, $account_types);
+					
+					echo 'sing_up'; 
+				}
+				
+			} 
+			
+		} 
 	}
 	
 	/**

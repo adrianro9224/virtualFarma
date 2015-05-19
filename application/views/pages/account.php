@@ -142,7 +142,7 @@
 					</div>
 					
 					<div class="col-md-5" ng-controller="LogInForm">
-						<div class="panel panel-default">
+						<div class="panel panel-default" ng-controller="FacebookCtrl">
 		  					<div class="panel-heading">
 		  						<h3>Usuario registrado</h3>
 		  					</div>
