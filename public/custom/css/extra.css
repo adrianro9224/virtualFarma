@@ -191,7 +191,7 @@ a#button-payment.btn-primary {
 	padding-right: 15px;
     position: fixed;
     top: 0;
-    z-index: 10000;
+    z-index: 1000;
     background-color: #ED2F59;
     max-height: 50px;
 	border-bottom: 2px solid transparent;
@@ -1241,4 +1241,11 @@ ICONS START
 
 .identify {
 	  box-shadow: 0 4px 15px rgba(29, 153, 229, 0.7);
+}
+/*
+* Terms and conditions Modal
+*/
+.add-scroll {
+    max-height: 400px;
+    overflow-y: auto;
 }

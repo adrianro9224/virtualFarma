@@ -105,9 +105,10 @@
     									<!-- tooltip -->
   									</div>
   									<div class="form-group">
-  										<div class="checkbox">
+  										<div class="checkbox" ng-controller="TermsAndCondCtrl">
 	      									<label>
-	        									<input type="checkbox" ng-model="termsAndConditions" name="termsAndConditions" value="1" required> Acepto términos y condiciones
+                                                <?php include_once( __ROOT__TEMPLATES__ . 'terms_and_conditions_modal.php' )?>
+	        									<input type="checkbox" ng-click="open('lg')" ng-model="termsAndConditions" name="termsAndConditions" value="1" required> Acepto términos y condiciones
 	      									</label>
     									</div>
 	    								<!-- tooltip -->

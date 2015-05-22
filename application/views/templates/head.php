@@ -72,6 +72,9 @@
 	<script type="text/javascript" src="<?= base_url() . '/public/app/controllers/HeaderNavCtrl.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . '/public/app/controllers/FarmacyOrdersCtrl.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . '/public/app/controllers/FacebookCtrl.js'?>"></script>
+    <script type="text/javascript" src="<?= base_url() . '/public/app/controllers/TermsAndCondCtrl.js'?>"></script>
+    <script type="text/javascript" src="<?= base_url() . '/public/app/controllers/ModalInstanceCtrl.js'?>"></script>
+
 	<!-- Angular js controllers over -->
 	
 	<!-- Angular js services start -->
