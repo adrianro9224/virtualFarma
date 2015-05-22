@@ -122,4 +122,14 @@ Class Products {
 		return $result;
 	}
 	
+	public function search_products_in_vademecum() {
+		//load all products in DB
+		
+		//read vademecum 'general' and compare
+		//read vademecum 'cronicos' and compare
+		//read vademecum 'solidario' and compare
+		
+		
+	}
+	
 }

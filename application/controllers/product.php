@@ -126,7 +126,7 @@ class Product extends MY_Controller {
 			$access_permited = $this->roots->validate_root_identity( $identification_number, $password );
 				
 			//call funtion for read from csv the categories and save this
-			if ($access_permited) {
+			if ( $access_permited ) {
 				
 				echo "reading categories...";
 				print "\n";
