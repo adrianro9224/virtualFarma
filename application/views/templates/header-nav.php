@@ -1,6 +1,6 @@
 <header ng-controller="DevicesMenuAccordionCtrl">
 	<div id="sticky-anchor"></div>
-	<div class="" id="sticky">
+	<div class="container-fluid" id="sticky">
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4 no-padding">
 				<div id="primary-nav">

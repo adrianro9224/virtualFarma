@@ -42,7 +42,7 @@
 		  					</div>
 		  					<div class="panel-body">
 		  						<p>Complete el siguiente formulario:</p>
-		    					<form id="sign-up-form" name="SignUpForm" action="<?= base_url() . 'account/sing_up' ?>" method="post" novalidate autocomplete="off">
+		    					<form id="sign-up-form" name="SignUpForm" action="<?= base_url() . 'account/sign_up' ?>" method="post" novalidate autocomplete="off">
 		    						<div class="form-group" ng-class="{'has-error': !SignUpForm.userFirstName.$valid && SignUpForm.userFirstName.$dirty}">
     									<label for="userFirstName">Primer Nombre<span class="primary-emphasis">*</span></label>
     									<input type="text" name="userFirstName" ng-model="userFirstName" class="form-control" id="userFirstName" placeholder="Ingrese su nombre" ng-maxLength="50" required>

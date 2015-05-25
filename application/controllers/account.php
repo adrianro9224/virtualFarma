@@ -76,9 +76,9 @@ class Account extends MY_Controller {
 	/**
 	 * Create  a Account if the data are accepted or redirect to account View 
 	 */
-	public function sing_up() {
+	public function sign_up() {
 		
-		$sing_up_form = $this->input->post();
+		$sign_up_form = $this->input->post();
 		
 		$notifications = array();
 		
@@ -96,7 +96,7 @@ class Account extends MY_Controller {
 			redirect("account/log_in", "refresh");
 		}
 		
-		$validation_response = $this->_validate_sing_up_form();
+		$validation_response = $this->_validate_sign_up_form();
 		
 		$data['title'] = "Mi cuenta";
 		$data['user_logged'] = false;
@@ -122,7 +122,7 @@ class Account extends MY_Controller {
 		
 		if ($validation_response) {
 			
-			$userEmail = $sing_up_form['userEmail'];
+			$userEmail = $sign_up_form['userEmail'];
 
 			//check if exist a account registered with this email
 			$account = $this->account_model->get_account_by_email($userEmail);
@@ -139,10 +139,10 @@ class Account extends MY_Controller {
 				redirect('/account');
 			}
 			
-			$user_password_encrypted = _password_account_sal( md5( $sing_up_form['userPassword'] ), $userEmail);
-			$sing_up_form['userPassword'] = $user_password_encrypted;
+			$user_password_encrypted = _password_account_sal( md5( $sign_up_form['userPassword'] ), $userEmail);
+			$sign_up_form['userPassword'] = $user_password_encrypted;
 			
-			$insert_id = $this->account_model->insert_account($sing_up_form);// successfully applied your rules without any of them failing.
+			$insert_id = $this->account_model->insert_account($sign_up_form);// successfully applied your rules without any of them failing.
 			
 			if( isset($insert_id) ){
 				// do _log_in
@@ -280,7 +280,7 @@ class Account extends MY_Controller {
 				$address = $this->address->get_all_address( $account->id );
 				
 				if( isset($_COOKIE['shoppingcart']) ) {
-					$data['shoppingcart'] = $_COOKIE['shoppingcart'];
+					$data['shoppingcart'] = json_decode($_COOKIE['shoppingcart']);
 				}
 				
 				$orders = $this->orders->orders_for_USER_account( $account->id );
@@ -364,11 +364,24 @@ class Account extends MY_Controller {
 							$this->_do_login( $account, $data, $account_types );
 
 							if( isset($_COOKIE['shoppingcart']) ) {
-									
+
+                                $shoppingcart = json_decode(isset($_COOKIE['shoppingcart']));
 								$notifications['success'][] = "Los productos en tu carrito de compras están seguros :)!";
 								$this->session->set_flashdata("notifications" ,$notifications);
-									
-								redirect("/checkout");
+								if ( $shoppingcart->subtotal < $shoppingcart->minimumOrderValue ) {
+
+                                    $notifications['info'] = "Continua con tus compras, estos son nuestros productos!";
+                                    $this->session->set_flashdata('notifications', $notifications );
+
+                                    redirect("/product/show_product_by_category/nuestros_productos");
+
+                                }else {
+
+                                    $notifications['info'] = "Puedes finalizar tu compra!";
+                                    $this->session->set_flashdata('notifications', $notifications );
+
+                                    redirect("/checkout");
+                                }
 							}
 							
 							$this->load->view('pages/account-panel', $data);
@@ -443,9 +456,9 @@ class Account extends MY_Controller {
 					
 					$address->line1 = $update_account_form['userAddressLine1'];
 					$address->neighborhood = $update_account_form['userNeighborhood'];
-					$address->from = "ACCOUNT_SING_UP";
+					$address->from = "ACCOUNT_sign_up";
 					
-					$address_registered_status = $this->address->write_account_sing_up_address( $address, $account_id );
+					$address_registered_status = $this->address->write_account_sign_up_address( $address, $account_id );
 					
 					$result = $this->account_model->update_account($update_account_form, $account_id);
 					
@@ -485,7 +498,7 @@ class Account extends MY_Controller {
 
 		$data = array();
 		
-		//create funtion for "sing_up facebook", add to the 'account' schema the property "sing_in acroos facebook flag"
+		//create funtion for "sign_up facebook", add to the 'account' schema the property "sing_in acroos facebook flag"
 		if ( isset($user->public_profile->email) ) {
 			
 			$session_data = $this->session->all_userdata();
@@ -520,7 +533,7 @@ class Account extends MY_Controller {
 					if ( isset($account) )
 						$this->_do_login($account, $data, $account_types);
 					
-					echo 'sing_up'; 
+					echo 'sign_up'; 
 				}
 				
 			} 
@@ -545,10 +558,10 @@ class Account extends MY_Controller {
 	}
 	
 	/**
-	 * Custom form sing_up valilation
+	 * Custom form sign_up valilation
 	 * @return result true if the validation is clean, false in a other case
 	 */
-	private function _validate_sing_up_form() {
+	private function _validate_sign_up_form() {
 		
 		$this->form_validation->set_rules('userFirstName', 'UserFirstName', 'required|max_length[64]|xss_clean');
 		$this->form_validation->set_rules('userLastName', 'UserLastName', 'required|max_length[64]|xss_clean');
