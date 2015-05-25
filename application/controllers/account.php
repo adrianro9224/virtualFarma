@@ -11,7 +11,7 @@ class Account extends MY_Controller {
 		parent::__construct();
 		$this->load->helper(array('form', 'url', 'account_helper'));
 		
-		$this->load->library(array('form_validation', 'messages', 'accounts', 'address', 'account_types', 'orders', 'mail_chimp'));
+		$this->load->library(array('form_validation', 'messages', 'accounts', 'address', 'account_types', 'orders', 'mail_chimp', 'pathologies'));
 		$this->load->model('account_model');// add second param for add a "alias" ex: $this->load->model('Account', 'user')
 	}
 	
@@ -205,8 +205,6 @@ class Account extends MY_Controller {
 		
 		$notifications = array();
 		
-		$session_data = array();
-		
 		$data['messages'] = null;
 		$data['pathologies'] = null;
 		
@@ -259,7 +257,9 @@ class Account extends MY_Controller {
 				
 				$messages = $this->messages->get_every_messages($account->email);
 				$account_pathologies = $this->accounts->get_pathologies( $session_data[$account_types[1] . '_id'] );
-				
+
+                $pathologies_DB = $this->pathologies->get_all_pathologies();
+
 				$account_pathologies_dropdown_items_ids = $this->accounts->generate_pathologies_dropdown_items_ids( $categories );
 				$pathologies->dropdown_items_ids = $account_pathologies_dropdown_items_ids;
 				 
@@ -399,7 +399,7 @@ class Account extends MY_Controller {
 	/**
 	 * Delete the account_id of the session for terminate the log_in
 	 */
-	public function log_out( $account_types ) {
+	public function log_out() {
 		
 		if( !isset($session_data['account_types']) ) {
 			$account_types = $this->account_types->get_account_types();

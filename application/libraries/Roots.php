@@ -12,6 +12,8 @@ Class Roots {
 		
 		$admin_account = $CI->account_model->get_admin_account_by_identification_number( $identification_number );
 		$account_types = $CI->account_type_model->get_all_account_types();
+
+
 		
 		if ( isset($admin_account) ){
 			
@@ -20,7 +22,7 @@ Class Roots {
 			$password_from_user_encrypted = _password_account_sal( md5($password), $admin_account->email );
 			
 			if ( $password_from_user_encrypted == $admin_account->password ){
-				if ( $admin_account->account_type_id == 4 )
+				if ( $account_types[$admin_account->account_type_id - 1] == $account_types[3] )
 					return true;
 			}
 			
