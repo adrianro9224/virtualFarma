@@ -32,6 +32,18 @@ class Product_model extends CI_Model {
 		
 		return null;
 	}
+
+    public function get_by_subcategory_id( $subcategory_id ) {
+
+        $this->db->where('sub_category_id', $subcategory_id);
+        $query = $this->db->get('product');
+
+        if( $query->num_rows() > 0 ) {
+            return $query->result();
+        }
+
+        return null;
+    }
 	
 	public function create_products_from_csv( $list_products ) {
 		$product_ids = array();

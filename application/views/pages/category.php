@@ -59,6 +59,13 @@
 									<?php include( __ROOT__TEMPLATES__ . 'product-pagination.php');?>
 								</div>
 							</section>
+                            <?php if ( isset($subcategories) ):?>
+                                <section id="sub-categories">
+                                    <div class="col-md-12">
+                                        <?php include( __ROOT__TEMPLATES__ . 'sub-categories.php');?>
+                                    </div>
+                                </section>
+                            <?php endif;?>
 							<section id="product_listing">
 								<div class="col-md-12" >
 									<?php include_once( __ROOT__TEMPLATES__ . 'product-list.php');?>

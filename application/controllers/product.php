@@ -10,7 +10,7 @@ class Product extends MY_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model( array('product_model', 'account_model') );// add second param for add a "alias" ex: $this->load->model('Account', 'user')
- 		$this->load->library( array('products', 'account_types', 'roots', 'categories' , 'form_validation') );
+ 		$this->load->library( array('products', 'account_types', 'roots', 'categories' , 'form_validation', 'subcategories') );
 	}
 	
 	public function show_products_by_category( $category_name, $from_items = 0 ){
@@ -47,7 +47,7 @@ class Product extends MY_Controller {
 		$breadcrumb_item = new stdClass();
 		
 		$breadcrumb_item->name = "productos";
-		$breadcrumb_item->url = "/product/show_products_by_category/category_1";
+		$breadcrumb_item->url = "/product/show_products_by_category/nuestros_productos";
 		$breadcrumb_item->active = true;
 		
 		$breadcrumb_list['register'] = $breadcrumb_item;
@@ -66,30 +66,37 @@ class Product extends MY_Controller {
 		$data['categories'] = $categories;
 		
 		if( isset($category_name) && !empty($category_name) ) {
-			
+
 			$breadcrumb->sub_title = ucfirst(str_replace('-', ' ', str_replace('_', ' ', $category_name)));
-			
-			foreach ( $categories as $category ) {
-					
-				if( $category->name == ucfirst( str_replace('_', ' ', $category_name ) ) )
-					$category_id = $category->id;
-			}
-			
-			
+
+
+            foreach ( $categories as $category ) {
+
+                if( $category->name == ucfirst( str_replace('_', ' ', $category_name ) ) )
+                    $category_id = $category->id;
+            }
+
 			//get products by categories
 			if( isset($category_id) ) {
 					
 				$data['category_name'] = $category_name;
 				$data['title'] = 'Categoria ' . str_replace('_', ' ', $category_name);
-				
-				$products_by_category_id = $this->product_model->get_by_category_id($category_id);
-				
+
+                if ( $category_name == "sex_shop" ) {
+                    $subcategories = $this->subcategories->get_subcategories_by_category_id($category_id);
+                    $data['subcategories'] = $subcategories;
+                }
+
+
+                $products_by_category_id = $this->product_model->get_by_category_id($category_id);
+
 				if( isset($products_by_category_id) ) {
 					//calculate product discounts
 					$products_with_discount = $this->_calculate_product_discount($products_by_category_id);
 					
 					$base_url = base_url() . "/product/show_products_by_category/" . $category_name . '/';
 					$uri_segment = 4;
+
 					/*$products_encoded = str_replace(":", "dPoS", 
 							str_replace("]", "cEnd", 
 							str_replace(",", "coInit", 
@@ -117,6 +124,109 @@ class Product extends MY_Controller {
 		} 
 		$this->load->view('pages/category', $data);
 	}
+
+
+    public function show_products_by_sub_category_id( $category_name, $subcategory_id, $from_items = 0 ){
+
+        $data['user_logged'] = false;
+
+        $session_data = $this->session->all_userdata();
+
+        if( !isset($session_data['account_types']) ) {
+            $account_types = $this->account_types->get_account_types();
+            $this->session->set_userdata('account_types', $account_types);
+        }else{
+            $account_types = $session_data['account_types'];
+            $data['account_types'] = $account_types;
+        }
+
+        if( isset($session_data[$account_types[1] . '_id']) ){
+
+            $account = $this->account_model->get_account_by_id($session_data[$account_types[1] . '_id']);
+
+            if( isset($account) ) {
+                $data['account_id'] = $session_data[$account_types[1] . '_id'];
+                $data['user_logged'] = true;
+            }
+        }
+
+
+        $breadcrumb = new stdClass();
+
+        $breadcrumb->title = "Productos";
+
+        $breadcrumb_item = new stdClass();
+
+        $breadcrumb_item->name = "productos";
+        $breadcrumb_item->url = "/product/show_products_by_category/sex_shop";
+        $breadcrumb_item->active = true;
+
+        $breadcrumb_list['register'] = $breadcrumb_item;
+
+        $breadcrumb->items = $breadcrumb_list;
+
+        $data['breadcrumb'] = $breadcrumb;
+
+        $category_id = NULL;
+        $products_by_category_id = NULL;
+        $notifications = array();
+
+        $categories = $this->get_categories();
+
+
+        $data['categories'] = $categories;
+
+        if( isset($category_name) && !empty($category_name) ) {
+
+            $breadcrumb->sub_title = ucfirst(str_replace('-', ' ', str_replace('_', ' ', $category_name)));
+            $category_id = 290;
+
+            //get products by categories
+            if( isset($subcategory_id) ) {
+
+                $data['category_name'] = $category_name;
+                $data['title'] = 'Categoria ' . str_replace('_', ' ', $category_name);
+
+
+                $subcategories = $this->subcategories->get_subcategories_by_category_id($category_id);
+                $data['subcategories'] = $subcategories;
+
+                $products_by_category_id = $this->product_model->get_by_subcategory_id( $subcategory_id );
+
+                if( isset($products_by_category_id) ) {
+                    //calculate product discounts
+                    $products_with_discount = $this->_calculate_product_discount($products_by_category_id);
+
+                    $base_url = base_url() . "/product/show_products_by_sub_category_id/" . $category_name . '/' . $subcategory_id;
+                    $uri_segment = 5;
+
+                    /*$products_encoded = str_replace(":", "dPoS",
+                            str_replace("]", "cEnd",
+                            str_replace(",", "coInit",
+                            str_replace("\"", "cDInit",
+                            str_replace("}", "llEnd",
+                            str_replace("{", "llInit",
+                                    str_replace("[", "cInit",
+                                            json_encode($products_with_discount))))))));*/
+                    $this->_do_pagination( $base_url, $uri_segment, $products_with_discount, $data, $from_items );
+
+                    //$data['products_encoded'] = $products_encoded;
+                }else {
+                    $notifications['warning'] = "No existen productos con esta categoría";
+                    $this->session->set_flashdata('notifications', $notifications );
+                    redirect('/');
+                }
+            }else {
+                $notifications['warning'][] = "No existe esta categoría " . $category_name;
+                $this->session->set_flashdata('notifications', $notifications );
+                redirect('/');
+            }
+
+        }else {
+            redirect('/');
+        }
+        $this->load->view('pages/category', $data);
+    }
 	
 	public function convert_csv_files_to_products( $identification_number = NULL, $password = NULL ) {
 		if ( $this->input->is_cli_request() ) {
