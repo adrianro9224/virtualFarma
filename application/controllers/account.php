@@ -27,6 +27,13 @@ class Account extends MY_Controller {
 		
 		$data['title'] = ucfirst($page); // Capitalize the first letter
 		$data['user_logged'] = false;
+
+        if ( isset($_COOKIE['shoppingcart']) ){
+
+            $shoppingcart = json_decode($_COOKIE['shoppingcart']);
+            $data['shoppingcart'] = $shoppingcart;
+
+        }
 		
 		$session_data = $this->session->all_userdata();
 		
@@ -83,6 +90,7 @@ class Account extends MY_Controller {
 		$notifications = array();
 		
 		$session_data = $this->session->all_userdata();
+        $categories = $this->get_categories();
 		
 		if( !isset($session_data['account_types']) ) {
 			$account_types = $this->account_types->get_account_types();
@@ -100,6 +108,7 @@ class Account extends MY_Controller {
 		
 		$data['title'] = "Mi cuenta";
 		$data['user_logged'] = false;
+        $data['categories'] = $categories;
 		
 		// breadcrumb start
 		$breadcrumb = new stdClass();
@@ -148,8 +157,33 @@ class Account extends MY_Controller {
 				// do _log_in
 				
 				$account = $this->account_model->get_account_by_id($insert_id);
+
+
+                $pathologies = new stdClass();
+
+                $messages = $this->messages->get_every_messages($account->email);
+                $account_pathologies = $this->accounts->get_pathologies( $insert_id );
+
+                $pathologies_DB = $this->pathologies->get_all_pathologies();
+
+                $account_pathologies_dropdown_items_ids = $this->accounts->generate_pathologies_dropdown_items_ids( $categories );
+                $pathologies->dropdown_items_ids = $account_pathologies_dropdown_items_ids;
+
+                if( isset($messages) ) {
+                    $messages_sorted = $this->messages->sort_messages($messages, $account->email);
+                    $data['messages'] = $messages_sorted;
+                }
+
+                if( isset($account_pathologies) ) {
+                    $pathologies->account_pathologies = $account_pathologies;
+
+                }else {
+                    $pathologies->account_pathologies = null;
+                }
+
+                $data['pathologies'] = $pathologies;
 				
-				$this->mailchimp->send_register_email( $account );
+				$this->mail_chimp->send_register_email( $account );
 				
 				$this->_do_login( $account , $data, $account_types);
 				
@@ -366,6 +400,9 @@ class Account extends MY_Controller {
 							if( isset($_COOKIE['shoppingcart']) ) {
 
                                 $shoppingcart = json_decode(isset($_COOKIE['shoppingcart']));
+
+                                $data['shoppingcart'] = $shoppingcart;
+
 								$notifications['success'][] = "Los productos en tu carrito de compras están seguros :)!";
 								$this->session->set_flashdata("notifications" ,$notifications);
 								if ( $shoppingcart->subtotal < $shoppingcart->minimumOrderValue ) {
@@ -540,7 +577,7 @@ class Account extends MY_Controller {
 			
 		} 
 	}
-	
+
 	/**
 	 * Custom form log_in valilation
 	 * @return result true if the validation is clean, false in a other case

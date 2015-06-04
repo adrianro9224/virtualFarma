@@ -20,6 +20,21 @@ class Product_model extends CI_Model {
 		
 		return NULL;
 	}
+
+    public function get_without_active_ingredient() {
+
+        $this->db->where('active_ingredient');
+
+        $query = $this->db->get('product');
+
+        if( $query->num_rows() > 0 ) {
+            $result = $query->result();
+            return $result;
+        }
+
+        return NULL;
+
+    }
 	
 	public function get_by_category_id($category_id) {
 		
@@ -88,4 +103,44 @@ class Product_model extends CI_Model {
 		return NULL;
 		
 	}
+
+    public function update_active_ingredients( $products_to_update ) {
+
+        $counter = 0;
+
+        foreach ( $products_to_update as $product ) {
+
+            if ( $product->category_id != 290 ) {
+
+                $this->db->set('active_ingredient', $product->active_ingredient);
+                $this->db->where('id', $product->id);
+
+                $this->db->update('product');
+            }else
+                $counter++;
+
+        }
+
+        if ( $this->db->affected_rows() == (count($products_to_update) - $counter) )
+            return true;
+
+        return false;
+
+    }
+
+    public function get_by_active_ingredient ( $active_ingredient ) {
+
+        $this->db->select('id, PLU, barcode, name, active_ingredient, category_id, presentation, stock, tax, price, discount' );
+
+        $this->db->where('active_ingredient', $active_ingredient);
+
+        $query = $this->db->get('product');
+
+        if( $query->num_rows() > 0 )
+            return $query->result();
+
+        return NULL;
+
+
+    }
 }

@@ -71,6 +71,13 @@
 									<?php include_once( __ROOT__TEMPLATES__ . 'product-list.php');?>
 								</div>
 							</section>
+                            <?php if ( isset($related_products) ):?>
+                                <section id="slick_slider">
+                                    <div id="slick_slider_container" class="col-md-12">
+                                        <?php include( __ROOT__TEMPLATES__ . 'suggested_products_carousel.php');?>
+                                    </div>
+                                </section>
+                            <?php endif;?>
 							<section id="product_pagination_bottom">
 								<div class="col-md-12">
 									<?php include( __ROOT__TEMPLATES__ . 'product-pagination.php');?>

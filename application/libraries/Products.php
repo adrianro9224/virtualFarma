@@ -3,7 +3,22 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 Class Products {
 	
-	
+
+    public function save_product_request( $product_request_to_save ) {
+
+        $CI =& get_instance();
+
+        $CI->load->model( 'product_request_model' );
+
+        $insert_id = $CI->product_request_model->insert( $product_request_to_save );
+
+        if ( isset($insert_id) )
+            return true;
+
+        return false;
+
+    }
+
 	public function read_products() {
 		$CI =& get_instance();
 		//ini_set( 'open_basedir' , '/var/www/html/Projects/virtualFarma.com.co/' );

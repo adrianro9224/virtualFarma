@@ -19,5 +19,6 @@ farmapp.controller('CarouselCtrl', ['$scope', function($scope) {
     for (var i=0; i<=4; i++) {
         $scope.addSlide(i);
     }
+
 }]);
 

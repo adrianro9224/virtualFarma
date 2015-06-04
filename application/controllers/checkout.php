@@ -75,7 +75,7 @@ class Checkout extends MY_Controller {
 			}//create else with info for complete the account info
 			
 		}else {
-			$notifications['warning'][] = "Por favor regístrate ó inicia sesión para continuar con tu compra";
+			$notifications['info'][] = "Por favor regístrate ó inicia sesión para continuar con tu compra";
 			$this->session->set_flashdata('notifications', $notifications);
 			redirect("/account");
 		}

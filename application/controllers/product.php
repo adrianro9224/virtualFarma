@@ -83,6 +83,7 @@ class Product extends MY_Controller {
 				$data['title'] = 'Categoria ' . str_replace('_', ' ', $category_name);
 
                 if ( $category_name == "sex_shop" ) {
+
                     $subcategories = $this->subcategories->get_subcategories_by_category_id($category_id);
                     $data['subcategories'] = $subcategories;
                 }
@@ -393,8 +394,8 @@ class Product extends MY_Controller {
 				
 			}
 		}
-		
-		return $products;
+
+        return $products;
 	}
 	
 	private function _do_pagination( $base_url, $uri_segment , $products_with_discount, &$data, $from_items ) {
@@ -403,7 +404,7 @@ class Product extends MY_Controller {
 		
 		$config['base_url'] = $base_url;
 		$config['total_rows'] = $num_of_products;
-		$config['per_page'] = 8;
+		$config['per_page'] = 5;
 		$config['uri_segment'] = $uri_segment;
 		$config['num_links'] = 5;
 		
@@ -470,8 +471,6 @@ class Product extends MY_Controller {
 		
 		$data['title'] = "Resultados";
 		
-		$breadcrumb = new stdClass();
-		
 		$data['user_logged'] = false;
 		
 		$session_data = $this->session->all_userdata();
@@ -497,7 +496,7 @@ class Product extends MY_Controller {
 		
 		$breadcrumb = new stdClass();
 		
-		$breadcrumb->title = "Resultados de búsqueda para";
+		$breadcrumb->title = "Resultados para";
 		
 		$breadcrumb_item = new stdClass();
 		
@@ -528,10 +527,16 @@ class Product extends MY_Controller {
 				$breadcrumb->sub_title = $product_info_to_search['productName'];
 				
 				$products = $this->product_model->get_by_name( $product_info_to_search['productName'] );
+
 				//echo $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 				
 				if ( isset($products) ) {
-					
+
+                    $related_products_by_active_ingredient = $this->product_model->get_by_active_ingredient( $products[0]->active_ingredient );
+
+                    if ( $related_products_by_active_ingredient )
+                        $data['related_products'] = $related_products_by_active_ingredient;
+
 					$this->_calculate_product_discount( $products );
 					
 					$base_url = $base_url = base_url() . "/product/search_product/" . str_replace( ' ', '_', trim($product_info_to_search['productName'])) . '/';
@@ -544,9 +549,7 @@ class Product extends MY_Controller {
 					
 					$this->load->view('pages/category', $data);
 				}else {
-					$notifications['warning'] = "No existen resultados para la búsqueda";
-					$this->session->set_flashdata('notifications', $notifications );
-					redirect('/');
+                    $this->_show_products_page_not_found( $notifications, $data );
 				}
 				
 			}else {
@@ -572,9 +575,7 @@ class Product extends MY_Controller {
 						
 					$this->load->view('pages/category', $data);
 				}else {
-					$notifications['warning'] = "No existen resultados para la búsqueda";
-					$this->session->set_flashdata('notifications', $notifications );
-					redirect('/');
+					$this->_show_products_page_not_found( $notifications, $data );
 				}
 				
 			}
@@ -583,8 +584,185 @@ class Product extends MY_Controller {
 		
 		
 	}
-	
-	/**
+
+    public function request_product() {
+
+        //$product_info_to_request = $this->input->post( NULL, TRUE ); // the two parameters returns all POST items with XSS filter
+
+        $data['title'] = "Solicitar producto";
+
+        $data['user_logged'] = false;
+
+        $session_data = $this->session->all_userdata();
+
+        if( !isset($session_data['account_types']) ) {
+            $account_types = $this->account_types->get_account_types();
+            $this->session->set_userdata('account_types', $account_types);
+        }else{
+            $account_types = $session_data['account_types'];
+            $data['account_types'] = $account_types;
+        }
+
+        if( isset($session_data[$account_types[1] . '_id']) ){
+
+            $account = $this->account_model->get_account_by_id($session_data[$account_types[1] . '_id']);
+
+            if( isset($account) ) {
+                $data['account'] = $account;
+                $data['account_id'] = $session_data[$account_types[1] . '_id'];
+                $data['user_logged'] = true;
+            }
+        }
+
+
+        $breadcrumb = new stdClass();
+
+        $breadcrumb->title = "Solicitud de producto";
+
+        $breadcrumb_item = new stdClass();
+
+        $breadcrumb_item->name = "productos";
+        $breadcrumb_item->url = "/product/show_products_by_category/nuestros_productos";
+        $breadcrumb_item->active = true;
+
+        $breadcrumb_list['register'] = $breadcrumb_item;
+
+        $breadcrumb->items = $breadcrumb_list;
+
+        $data['breadcrumb'] = $breadcrumb;
+
+        $category_id = NULL;
+        $products_by_category_id = NULL;
+        $notifications = array();
+
+        $categories = $this->get_categories();
+
+        $data['categories'] = $categories;
+
+        if ( $data['user_logged'] )
+            $notifications['info'] = "Como has iniciado sesión puedes disfrutar de este, uno de nuestros servicios especialmente creados para tí";
+        else
+            $notifications['danger'] = "Para poder solicitar productos debes estar registrádo y haber iniciado sesión, hazlo dando click <a href='/account'>aquí</a>";
+
+        //$this->session->set_flashdata('notifications', $notifications );
+        $data['notifications'] = $notifications;
+
+        $this->load->view('pages/request_products', $data);
+    }
+
+    public function send_product_request(){
+
+        $product_request_info = $this->input->post( NULL, TRUE );
+
+        if( $product_request_info ){
+
+            $validation_response = $this->_validate_product_request_form();
+
+            if ( $validation_response ) {
+
+                echo 'validated';
+
+                $product_request_saved = $this->products->save_product_request( $product_request_info );
+
+                if( $product_request_saved ) {
+
+                    $notifications['primary'] = "La información de tu producto a sido recibída, pronto estaremos comunicandonos contigo para confirmar tu solícitud :)";
+
+                }else{
+                    $notifications['error'] = "Ocurrio un problema con tu solicitud, por favor intentalo de nuevo :,(";
+                }
+
+                $this->session->set_flashdata('notifications', $notifications);
+                redirect('/product/request_product');
+
+            }
+
+        }
+
+    }
+
+    private function _show_products_page_not_found( &$notifications, &$data ) {
+
+        $notifications['info'] = "No existen resultados para la búsqueda. Si no encontraste el medicamento que estabas buscando puedes enviarnos los datos de este y te llamarémos para confirmarte el envío al siguiente día";
+        $this->session->set_flashdata('notifications', $notifications );
+        redirect('/product/request_product');
+    }
+
+/*
+    public function associate_active_ingredient() {
+
+        $general_drugs = $this->read_vademecum();
+
+        $products_db = $this->product_model->get_without_active_ingredient();
+       // $products_db = $this->product_model->get_all();
+
+        $products_with_out_active_ingredient = array();
+        $products_with_active_ingredient = array();
+
+        foreach ( $general_drugs as $general ) {
+
+            foreach ( $products_db as $key => $product ) {
+
+                    if ( !isset($product->active_ingredient) ) {
+
+                    $pos = strpos( str_replace(' ', '', strtolower($product->name)), str_replace(' ', '', $general->name ));
+                    $pos1 = strpos( strtolower($product->name), $general->active_ingredient );
+
+                    if ( $pos1 === false && $pos === false )
+                        $products_with_out_active_ingredient[$key]  = $product;
+
+                    else {
+                        $product->active_ingredient = ucfirst($general->active_ingredient);
+                        $products_with_active_ingredient[$key] = $product;
+                    }
+                }
+            }
+        }
+
+
+        echo count($products_with_active_ingredient);
+        echo count( $products_db );
+
+        //var_dump($products_with_active_ingredient);
+
+        $updated = $this->product_model->update_active_ingredients( $products_with_active_ingredient );
+
+        if ( $updated )
+            echo ':D';
+        else
+            echo ':\'(';
+
+    }
+
+    private function read_vademecum() {
+        //$handle = fopen(__ROOT__FILES__ . "csv/vademecum_General_(01-05-15).csv", 'r'); // ok
+        //$handle = fopen(__ROOT__FILES__ . "csv/vademecum_cronicos_(10-02-15).csv", 'r'); //ok
+        $handle = fopen(__ROOT__FILES__ . "csv/vademecum-solidario-01-03-2015.csv", 'r');
+
+        if( $handle !== FALSE ) {
+            $general_drugs = array();
+
+            while ( ($data = fgetcsv($handle, 200, ',')) !== FALSE ){
+                $current_row = new stdClass();
+
+                //var_dump(count($data));
+
+
+                $current_row->name = strtolower(utf8_encode(trim($data[1])));
+                $current_row->active_ingredient = strtolower(utf8_encode(trim($data[5])));
+                $general_drugs[] = $current_row;
+
+
+            }
+        }
+
+        fclose( $handle );
+
+        return $general_drugs;
+    }
+*/
+
+    /**
 	 * Custom form sing_up valilation
 	 * @return result of form validation
 	 */
@@ -598,4 +776,17 @@ class Product extends MY_Controller {
 		return true;
 	
 	}
+
+    private function _validate_product_request_form() {
+
+        $this->form_validation->set_rules('product_name', 'productName', 'required|max_length[64]|xss_clean');
+        $this->form_validation->set_rules('product_lab', 'productLab', 'required|max_length[64]|xss_clean');
+        $this->form_validation->set_rules('product_presentation', 'productPresentation', 'required|max_length[64]|xss_clean');
+
+        if ($this->form_validation->run() == FALSE)
+            return false;
+
+        return true;
+
+    }
 }

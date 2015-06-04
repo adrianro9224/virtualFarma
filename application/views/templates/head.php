@@ -23,6 +23,14 @@
 	
 	<!-- Jquery start -->
 	<script type="text/javascript" src="<?= base_url() . '/public/jquery/jquery-1.11.1.min.js'?>"></script>
+
+    <!-- Jquery slick-->
+    <script type="text/javascript" src="<?= base_url() . '/public/jquery/slick-master/slick/slick.min.js'?>"></script>
+    <script type="text/javascript" src="<?= base_url() . '/public/jquery/slick-master/slick/slick-ctrl.js'?>"></script>
+    <link rel="stylesheet" type="text/css" href="<?= base_url() . '/public/jquery/slick-master/slick/slick-theme.css'?>">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() . '/public/jquery/slick-master/slick/slick.css'?>">
+    <!-- Jquery slick-->
+
 	<!-- Jquery over -->
 	
 	<!-- Bootstrap js start -->
@@ -30,7 +38,7 @@
 	<!-- Bootstrap js over -->
 	
 	<!-- Angular js start -->
-	
+    <link rel="stylesheet" type="text/css" href="<?= base_url() . '/public/custom/css/animations.css'?>">
 	<!-- Angular 1.3.2 start -->
 <!-- 	<script type="text/javascript" src="../../public/app/1.3.14/angular.min.js"></script> -->
 <!-- 	<script type="text/javascript" src="../../public/app/1.3.14/angular.min.js.map"></script> -->
@@ -74,6 +82,7 @@
 	<script type="text/javascript" src="<?= base_url() . '/public/app/controllers/FacebookCtrl.js'?>"></script>
     <script type="text/javascript" src="<?= base_url() . '/public/app/controllers/TermsAndCondCtrl.js'?>"></script>
     <script type="text/javascript" src="<?= base_url() . '/public/app/controllers/ModalInstanceCtrl.js'?>"></script>
+    <script type="text/javascript" src="<?= base_url() . '/public/app/controllers/ShoppingCartAxuCtrl.js'?>"></script>
 
 	<!-- Angular js controllers over -->
 	

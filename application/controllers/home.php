@@ -23,6 +23,13 @@ class Home extends MY_Controller {
 		$data['notifications'] = $this->session->flashdata('notifications');
 		
 		$data['user_logged'] = false;
+
+        if ( isset($_COOKIE['shoppingcart']) ){
+
+            $shoppingcart = json_decode($_COOKIE['shoppingcart']);
+            $data['shoppingcart'] = $shoppingcart;
+
+        }
 		
 		$session_data = $this->session->all_userdata();
 		
