@@ -11,8 +11,9 @@ Class Product_request_model extends CI_Model{
 
 
     public function insert( $product_request_info ) {
+        var_dump(setlocale(LC_ALL, 'es_ES'));
 
-        $format = "d-m-Y H:i:s";
+        $format = "Y-m-d H:i:s";
 
         $data = array(
             'name' => $product_request_info['product_name'],
@@ -20,6 +21,7 @@ Class Product_request_model extends CI_Model{
             'presentation' => $product_request_info['product_presentation'],
             'date' =>  date($format)
         );
+
 
         $this->db->insert('product_request', $data);
 

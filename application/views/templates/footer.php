@@ -2,7 +2,7 @@
 	<!-- copyright , scrollTo Top -->
 	<div class="footer-bar">
 		<div class="container">
-			<span class="copyright">Copyright © Your Company, LLC . All Rights Reserved.</span>
+			<span class="copyright">Copyright © virtualfarma.com.co .All Rights Reserved.</span>
 			<a class="toTop" href="#header-top">BACK TO TOP <i class="glyphicon glyphicon-circle-arrow-up"></i></a>
 		</div>
 	</div>
@@ -14,30 +14,7 @@
 		<div class="container">
 			<div class="row">
 				<!-- FOOTER CONTACT INFO -->
-				<div class="col-md-4">
-					<h3>CONTACT</h3>
-					<p class="contact-desc">
-						Atropos is a very powerful HTML5 template, you will be able to create an awesome website in a very simple way.										
-					</p>
-				</div>
-				<div class="col-md-4">
-					<address class="font-opensans">
-						<ul>
-							<li class="footer-sprite address">
-								PO Box 21132<br>
-								Here Weare St, Melbourne<br>
-								Vivas 2355 Australia<br>
-							</li>
-							<li class="footer-sprite phone">
-								Phone: 1-800-565-2390
-							</li>
-							<li class="footer-sprite email">
-								<a href="mailto:support@yourname.com">support@yourname.com</a>
-							</li>
-						</ul>
-					</address>
-				</div>
-				<div class="col-md-4">
+				<div class="col-md-6 col-md-offset-4">
 					<ul class="brands brands-circle brands-inline">
 						<li><a href="#" class="brands-facebook"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#" class="brands-twitter"><i class="fa fa-twitter"></i></a></li>

@@ -23,21 +23,27 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
     $rootScope.$on( ConstantsService.SHOPPINGCART_CHANGED, function(event, data){
         $scope.shoppingcart = data;
 
-        var shoppingCartSubtotals;
+        if ( !$scope.shoppingcart.haveProducts ) {
 
-            shoppingCartSubtotals = calculateShoppingcartSubtotals( $scope.shoppingcart.products );
+            $cookies.remove('shoppingcart', cookiesOptions);
+
+        }else {
+
+            var shoppingCartSubtotals;
+
+            shoppingCartSubtotals = calculateShoppingcartSubtotals($scope.shoppingcart.products);
 
             $scope.shoppingcart.subtotal = shoppingCartSubtotals.productsSubtotal;
             $scope.shoppingcart.tax = shoppingCartSubtotals.productsTaxTotal;
 
-            var shippingCharge = getShippingCharge( $scope.shoppingcart.subtotal );
+            var shippingCharge = getShippingCharge($scope.shoppingcart.subtotal);
 
             $scope.shoppingcart.shippingCharge = shippingCharge;
 
-            if( angular.isString( shippingCharge ) ) {
+            if (angular.isString(shippingCharge)) {
                 $scope.shoppingcart.total = $scope.shoppingcart.subtotal + $scope.shoppingcart.tax;
                 $scope.shoppingcart.shippingFree = true;
-            }else {
+            } else {
                 $scope.shoppingcart.total = $scope.shoppingcart.subtotal + $scope.shoppingcart.tax + $scope.shoppingcart.shippingCharge;
                 $scope.shoppingcart.shippingFree = false;
             }
@@ -47,11 +53,11 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
             $scope.subtotal = $scope.shoppingcart.subtotal;
 
 
-            if ( minimumOrderValue != undefined ) {
+            if (minimumOrderValue != undefined) {
 
                 $scope.shoppingcart.minimumOrderValue = minimumOrderValue;
 
-                if ( $scope.shoppingcart.subtotal < minimumOrderValue  )
+                if ($scope.shoppingcart.subtotal < minimumOrderValue)
                     $scope.shoppingcart.minimumOrderValueInvalid = true;
                 else
                     $scope.shoppingcart.minimumOrderValueInvalid = false;
@@ -59,8 +65,8 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
             }
 
 
-            if( limitPayuOrderValue != undefined ) {
-                if( $scope.shoppingcart.total > limitPayuOrderValue )
+            if (limitPayuOrderValue != undefined) {
+                if ($scope.shoppingcart.total > limitPayuOrderValue)
                     $scope.shoppingcart.limitOrderValueInvalid = true;
                 else
                     $scope.shoppingcart.limitOrderValueInvalid = false;
@@ -69,6 +75,7 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
             $scope.total = $scope.shoppingcart.total;
 
             $cookies.putObject('shoppingcart', $scope.shoppingcart, cookiesOptions);
+        }
 
 
     });

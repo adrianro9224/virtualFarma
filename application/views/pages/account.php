@@ -108,7 +108,7 @@
   										<div class="checkbox" ng-controller="TermsAndCondCtrl">
 	      									<label>
                                                 <?php include_once( __ROOT__TEMPLATES__ . 'terms_and_conditions_modal.php' )?>
-	        									<input type="checkbox" ng-click="open('lg')" ng-model="termsAndConditions" name="termsAndConditions" value="1" required> Acepto términos y condiciones
+	        									<input type="checkbox" name="termsAndConditions" value="1" required> Acepto <a ng-click="open('lg')" ng-model="termsAndConditions" id="terms-and-conditions" >Términos y Condiciones</a>
 	      									</label>
     									</div>
 	    								<!-- tooltip -->
@@ -116,7 +116,7 @@
 	    									<div class="arrow-up-error"> 
 	    									</div>
 		    								<div class="farma-tooltip-error">
-		    									<span ng-if="SignUpForm.termsAndConditions.$error.required && SignUpForm.termsAndConditions.$dirty">Por favor acepta los términos y condiciones!</span>
+		    									<span ng-if="SignUpForm.termsAndConditions.$error.required && SignUpForm.termsAndConditions.$dirty">Por favor acepta los Términos y Condiciones!</span>
 		    								</div>
 	    								</div>
 	    								<!-- tooltip -->

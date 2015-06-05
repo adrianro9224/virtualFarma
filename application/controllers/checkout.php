@@ -63,8 +63,8 @@ class Checkout extends MY_Controller {
 			if ( isset($payment_methods) )
 				$data['payment_methods'] = $payment_methods;
 			
-			if ( isset($address->account_sing_up) && isset($account_data)){
-				$shipping_data = $this->_check_if_shipping_data_completed($account_data, $address->account_sing_up);
+			if ( isset($address) && isset($account_data)){
+				$shipping_data = $this->_check_if_shipping_data_completed($account_data, $address);
 				
 				$data['shipping_data'] = null;
 				

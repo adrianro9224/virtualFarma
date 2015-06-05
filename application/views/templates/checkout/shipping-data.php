@@ -216,7 +216,7 @@
 				<label for="ShippingDataNotes" >Notas</label>
 				<textarea name="ShippingDataNotes" class="form-control" ng-model="order.shippingData.notes" rows="3"></textarea>
 				<!-- helptext -->
-					<span id="helpBlock" class="help-block">Acá nos puedes indicar si quieres que te entreguemos tu pedido a una hora específica.</span>
+					<span id="helpBlock" class="help-block">Instrucciones especiales</span>
 				<!-- helptext -->
 			</div>
 			<div class="col-md-12" ng-mouseover="showSubmitButtonTooltip()" ng-mouseleave="hideSubmitButtonTooltip()" >

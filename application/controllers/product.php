@@ -654,23 +654,41 @@ class Product extends MY_Controller {
 
         $product_request_info = $this->input->post( NULL, TRUE );
 
+        $session_data = $this->session->all_userdata();
+
+        if( !isset($session_data['account_types']) ) {
+            $account_types = $this->account_types->get_account_types();
+            $this->session->set_userdata('account_types', $account_types);
+        }else{
+            $account_types = $session_data['account_types'];
+            $data['account_types'] = $account_types;
+        }
+
         if( $product_request_info ){
 
-            $validation_response = $this->_validate_product_request_form();
+            if( isset($session_data[$account_types[1] . '_id']) ){
 
-            if ( $validation_response ) {
+                $validation_response = $this->_validate_product_request_form();
 
-                echo 'validated';
+                if ( $validation_response ) {
 
-                $product_request_saved = $this->products->save_product_request( $product_request_info );
+                    $product_request_saved = $this->products->save_product_request( $product_request_info );
 
-                if( $product_request_saved ) {
+                    if( $product_request_saved ) {
 
-                    $notifications['primary'] = "La información de tu producto a sido recibída, pronto estaremos comunicandonos contigo para confirmar tu solícitud :)";
+                        $notifications['primary'] = "La información de tu producto a sido recibída, pronto estaremos comunicandonos contigo para confirmar tu solícitud :)";
 
-                }else{
-                    $notifications['error'] = "Ocurrio un problema con tu solicitud, por favor intentalo de nuevo :,(";
+                    }else{
+                        $notifications['error'] = "Ocurrio un problema con tu solicitud, por favor intentalo de nuevo :,(";
+                    }
+
+                    $this->session->set_flashdata('notifications', $notifications);
+                    redirect('/product/request_product');
+
                 }
+            }else {
+
+                $notifications['error'] = "Tu Session a expirado :,(";
 
                 $this->session->set_flashdata('notifications', $notifications);
                 redirect('/product/request_product');

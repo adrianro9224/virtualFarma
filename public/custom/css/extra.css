@@ -646,6 +646,12 @@ section #my-account .panel.panel-default {
 	margin-bottom: 5px;
 }
 
+#button-payment-bottom {
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px 10px;
+}
+
 #mini-shopping-cart-details.table-emphasis {
 	border-top: 2px solid #16A085;
 	border-bottom: 2px solid #16A085;
@@ -1300,6 +1306,10 @@ ICONS START
 .add-scroll {
     max-height: 400px;
     overflow-y: auto;
+}
+
+#terms-and-conditions {
+    color: #05A8AA;
 }
 
 /*

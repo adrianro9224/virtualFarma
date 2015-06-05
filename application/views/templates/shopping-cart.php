@@ -1,4 +1,4 @@
-<a id="button-payment" href="/checkout"class="btn btn-primary" role="button" ng-disabled="shoppingcart.minimumOrderValueInvalid">Pagar</a>
+<a id="button-payment" href="/checkout" class="btn btn-primary" role="button" ng-disabled="shoppingcart.minimumOrderValueInvalid">Pagar</a>
 <div class="panel panel-default" >
 	<div id="shopping-cart-panel-content" >
 		<div id="total-products" class="shopping-cart-item">
@@ -71,4 +71,6 @@
 			</tbody>
 		</table>
 	</div>
+    <a href="/checkout" id="button-payment-bottom" class="btn btn-danger btn-sm addtocart" >Pagar</a>
 </div>
+

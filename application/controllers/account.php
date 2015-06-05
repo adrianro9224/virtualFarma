@@ -467,7 +467,7 @@ class Account extends MY_Controller {
 	 * update the account with the new data
 	 * @param String $account_id
 	 */
-	public function update_account($account_id) {
+	public function update_account( $account_id ) {
 		
 		$notifications = array();
 		
@@ -499,7 +499,7 @@ class Account extends MY_Controller {
 					
 					$result = $this->account_model->update_account($update_account_form, $account_id);
 					
-					if( isset($result) && isset($address_registered_status)) {
+					if( isset($result) || isset($address_registered_status) ) {
 						$notifications['success'] = "Tu cuenta a sido actualizada con exito!";
 					}else{
 						$notifications['warning'] = "No se realizaron los cambios!";

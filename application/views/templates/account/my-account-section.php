@@ -64,7 +64,7 @@
 					</div>
 					<div class="form-group" ng-class="{'has-error': !EditAccountForm.userAddressLine1.$valid && EditAccountForm.userAddressLine1.$dirty}">
 						<label for="userAddressLine1">Dirección<span class="primary-emphasis">*</span></label>
-						<input type="text" name="userAddressLine1" ng-model="userAddressLine1" class="form-control" id="userAddressLine1" placeholder="Ingresa tu dirección" ng-init="userAddressLine1='<?= ( isset($address->account_sing_up) ) ? $address->account_sing_up->address_line : null?>'" ng-maxLength="50" required>
+						<input type="text" name="userAddressLine1" ng-model="userAddressLine1" class="form-control" id="userAddressLine1" placeholder="Ingresa tu dirección" ng-init="userAddressLine1='<?= ( isset($address) ) ? $address->address_line : null?>'" ng-maxLength="50" required>
 						<!-- tooltip -->
 						<div ng-if="EditAccountForm.userAddressLine1.$invalid && EditAccountForm.userAddressLine1.$dirty">
 							<div class="arrow-up-error"> 
@@ -89,7 +89,7 @@
 				<div class="col-md-6">
 					<div class="form-group" ng-class="{'has-error': !EditAccountForm.userNeighborhood.$valid && EditAccountForm.userNeighborhood.$dirty}">
 						<label for="userNeighborhood">Barrio<span class="primary-emphasis">*</span></label>
-						<input type="text" name="userNeighborhood" ng-model="userNeighborhood" class="form-control" id="userNeighborhood" placeholder="Ingresa el nombre de tu Barrio" ng-init="userNeighborhood='<?= ( isset($address->account_sing_up) ) ? $address->account_sing_up->neighborhood : null?>'" ng-maxLength="50" required>
+						<input type="text" name="userNeighborhood" ng-model="userNeighborhood" class="form-control" id="userNeighborhood" placeholder="Ingresa el nombre de tu Barrio" ng-init="userNeighborhood='<?= ( isset($address) ) ? $address->neighborhood : null?>'" ng-maxLength="50" required>
 						<!-- tooltip -->
 						<div ng-if="EditAccountForm.userNeighborhood.$invalid && EditAccountForm.userNeighborhood.$dirty">
 							<div class="arrow-up-error"> 

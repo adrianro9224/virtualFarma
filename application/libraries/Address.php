@@ -3,7 +3,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Address {
 
-	public function write_account_sing_up_address( $new_address, $account_id ) {
+	public function write_account_sign_up_address( $new_address, $account_id ) {
 		$CI =& get_instance();
 
 		$CI->load->model("address_model");
@@ -20,13 +20,15 @@ class Address {
 		$CI->load->model("address_model");
 		
 		$address = $CI->address_model->get_all_address_by_id( $account_id );
-		
+
+		/*
 		$address_categorized = new stdClass();
 		$address_categorized->account_sing_up = null;
 		$address_categorized->account = array();
+		*/
 		
 		if( isset($address) ) {
-		
+		/*
 			foreach ($address as $row) {
 				
 				if( $row->from == "ACCOUNT_SING_UP") 
@@ -34,9 +36,10 @@ class Address {
 				else 
 					$address_categorized->account[] = $row;
 				
-			}
+			}*/
+            return $address;
 		}
-		return $address_categorized;
+		return NUll;
 		
 	}
 
