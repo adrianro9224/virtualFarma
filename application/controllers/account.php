@@ -23,7 +23,11 @@ class Account extends MY_Controller {
 		
 		$data['notifications'] = $this->session->flashdata('notifications');
 		$categories = $this->get_categories();
-		$data['categories'] = $categories;
+        $active_ingredients = $this->get_active_ingredients();
+
+        $data['active_ingredients'] = $active_ingredients;
+
+        $data['categories'] = $categories;
 		
 		$data['title'] = ucfirst($page); // Capitalize the first letter
 		$data['user_logged'] = false;
@@ -91,6 +95,9 @@ class Account extends MY_Controller {
 		
 		$session_data = $this->session->all_userdata();
         $categories = $this->get_categories();
+        $active_ingredients = $this->get_active_ingredients();
+
+        $data['active_ingredients'] = $active_ingredients;
 		
 		if( !isset($session_data['account_types']) ) {
 			$account_types = $this->account_types->get_account_types();
@@ -245,6 +252,9 @@ class Account extends MY_Controller {
 		$data['title'] = "Mi cuenta";
 		
 		$categories = $this->get_categories();
+        $active_ingredients = $this->get_active_ingredients();
+
+        $data['active_ingredients'] = $active_ingredients;
 		
 		$data['categories'] = $categories;
 		

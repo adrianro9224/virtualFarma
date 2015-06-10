@@ -71,6 +71,6 @@
 			</tbody>
 		</table>
 	</div>
-    <a href="/checkout" id="button-payment-bottom" class="btn btn-danger btn-sm addtocart" >Pagar</a>
+    <a href="/checkout" id="button-payment-bottom" class="btn btn-danger btn-sm addtocart" ng-disabled="shoppingcart.minimumOrderValueInvalid">Pagar</a>
 </div>
 

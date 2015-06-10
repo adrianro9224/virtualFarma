@@ -55,12 +55,17 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
-$db['default']['password'] = 'ZmqcHAswFQXSCE5X';
+$db['default']['password'] = 'naci1992';
 $db['default']['database'] = 'l9000182_vfarma';
+/*
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'l9000182';
+$db['default']['password'] = '27safuNAle';
+$db['default']['database'] = 'l9000182_vfarma';*/
 
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
-$db['default']['pconnect'] = TRUE;
+$db['default']['pconnect'] = TRUE;//in remote version false
 $db['default']['db_debug'] = TRUE;
 $db['default']['cache_on'] = FALSE;
 $db['default']['cachedir'] = '';

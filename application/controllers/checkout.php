@@ -49,7 +49,9 @@ class Checkout extends MY_Controller {
 		}
 		
 		$categories = $this->get_categories();
-		
+        $active_ingredients = $this->get_active_ingredients();
+
+        $data['active_ingredients'] = $active_ingredients;
 		$data['categories'] = $categories;
 		$data['shoppingcart'] = null;
 		

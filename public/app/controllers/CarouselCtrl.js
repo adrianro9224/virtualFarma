@@ -7,16 +7,16 @@ var farmapp = angular.module('farmapp', ['ui.bootstrap', 'ngCookies']);
     //Create the farmapp module
 
 farmapp.controller('CarouselCtrl', ['$scope', function($scope) {
-    $scope.myInterval = 5000;
+    $scope.myInterval = 10000;
     var slides = $scope.slides = [];
     $scope.addSlide = function(i) {
         slides.push({
-            image: 'http://virtualfarma.com.co/assets/images/' + i + '.jpg',
-            text: ['Argel','Promelight','Lots of','Surplus'][slides.length % 4] + ' ' +
-            ['Flash', '', 'Felines', 'Cutes', ''][slides.length % 4]
+            image: 'http://virtualfarma.com.co/assets/images/' + i + '.jpg'/*,
+            text: ['Virtualfarma','Argel','Promelight','Entrenador'][slides.length % 4] + ' ' +
+            ['', 'Flash', '','Vaginal'][slides.length % 4]*/
         });
     };
-    for (var i=0; i<=4; i++) {
+    for (var i=0; i<=3; i++) {
         $scope.addSlide(i);
     }
 

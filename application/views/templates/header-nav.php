@@ -2,13 +2,13 @@
 	<div id="sticky-anchor"></div>
 	<div class="container-fluid" id="sticky">
 		<div class="row">
-			<div class="col-md-4 col-md-offset-4 no-padding">
+			<div class="col-md-8 col-md-offset-2 no-padding">
 				<div id="primary-nav">
 					<nav class="navbar navbar-default">
 						<div class="container-fluid">
 							<!-- Brand and toggle get grouped for better mobile display -->
 							<div class="navbar-header">
-							<img class="hidden-md hidden-lg pull-left" id="normal-logo" src="<?= base_url() . 'assets/images/logo/logo_virtualfarma_solo_small_devices.png'?>" class="img-responsive" alt="">
+
 								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 									<span class="sr-only">Toggle navigation</span>
 									<span class="icon-bar"></span>
@@ -35,6 +35,17 @@
 											<?php endforeach;?>	
 										</ul>
 									</li>
+                                    <li class="dropdown">
+                                        <a href="#" title="lista de principios activos" class="dropdown-toggle" role="button" aria-expanded="false">Principios activos <span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu" id="categories-scroll">
+                                            <?php foreach ($active_ingredients as $ingredient):?>
+                                                <li>
+                                                    <a href="<?= "/product/show_products_by_active_ingredient_id/" . $ingredient->id?>"><?= ucfirst(str_replace('\'', '', $ingredient->name)) ?></a>
+                                                </li>
+                                                <li class="divider"></li>
+                                            <?php endforeach;?>
+                                        </ul>
+                                    </li>
 									<li><a href="/product/show_products_by_category/sex_shop" title="Todo lo que necesitas" >Sex shop</a></li>
 								</ul>
 							</div><!-- /.navbar-collapse -->

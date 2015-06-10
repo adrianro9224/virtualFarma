@@ -56,7 +56,7 @@
                     <div class="col-md-9">
                         <section id="form">
                             <div class="well well-lg">
-                                <p class="bg-primary">...</p>
+                                <p class="bg-primary">Lo sentimos no contamos en este momento con el producto que estás buscando, pero hemos creado un servicio para ti, puedes solicitar el producto que deseas y lo conseguiremos por tí, solo debes completar el formulario a continuación:</p>
                                 <form class="form-horizontal" action="<?= base_url() . 'product/send_product_request'?>" method="post" autocomplete="off">
                                     <div class="form-group">
                                         <label for="product_name" class="col-md-3 control-label">Nombre del producto: *</label>

@@ -9,7 +9,7 @@ class Product_model extends CI_Model {
 	
 	public function get_all() {
 		
-		$this->db->select('id, PLU, barcode, name, category_id, presentation, stock, tax, price, discount' );
+		$this->db->select('id, PLU, barcode, name, category_id, active_ingredient, presentation, stock, tax, price, discount' );
 		
 		$query = $this->db->get('product');
 		
@@ -143,4 +143,40 @@ class Product_model extends CI_Model {
 
 
     }
+
+    public function update_active_ingredient_id ( $products_to_update ) {
+
+        foreach ( $products_to_update as $product ) {
+
+            if ( isset($product->active_ingredient_id)) {
+                $this->db->set('active_ingredient_id', $product->active_ingredient_id);
+
+                $this->db->where('id', $product->id);
+
+                $this->db->update('product');
+            }
+
+        }
+
+
+        if( $this->db->affected_rows() > 0 )
+            return true;
+
+        return false;
+    }
+
+    public function get_by_active_ingredient_id ( $active_ingredient_id ) {
+
+        $this->db->where('active_ingredient_id', $active_ingredient_id);
+
+        $query = $this->db->get('product');
+
+        if( $query->num_rows() > 0 )
+            return $query->result();
+
+        return NULL;
+
+
+    }
+
 }

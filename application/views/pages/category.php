@@ -44,7 +44,7 @@
 									<?php include_once( __ROOT__TEMPLATES__ . 'shopping-cart.php');?>
 								</div>
 							</section>
-							<div class="col-md-12" id="categories_panel">
+							<div class="col-md-12 hidden-xs" id="categories_panel">
 								<?php include_once( __ROOT__TEMPLATES__ . 'category-left-sidebar.php');?>								
 							</div>
 						</div>
@@ -52,13 +52,16 @@
 					<!-- category left sidebar over -->
 					
 					<!-- product list start -->
+
 					<section ng-controller="ProductListCtrl" id="product_list" >
 						<div class="col-md-9">
-							<section id="product_pagination_top">
-								<div class="col-md-12">
-									<?php include( __ROOT__TEMPLATES__ . 'product-pagination.php');?>
-								</div>
-							</section>
+                            <section id="product_pagination_top">
+                                <div class="row no-margin">
+                                    <div class="col-md-12">
+                                        <?php include( __ROOT__TEMPLATES__ . 'product-pagination.php');?>
+                                    </div>
+                                </div>
+                            </section>
                             <?php if ( isset($subcategories) ):?>
                                 <section id="sub-categories">
                                     <div class="col-md-12">
@@ -71,6 +74,13 @@
 									<?php include_once( __ROOT__TEMPLATES__ . 'product-list.php');?>
 								</div>
 							</section>
+                            <section id="product_pagination_bottom">
+                                <div class="row no-margin">
+                                    <div class="col-md-12">
+                                        <?php include( __ROOT__TEMPLATES__ . 'product-pagination.php');?>
+                                    </div>
+                                </div>
+                            </section>
                             <?php if ( isset($related_products) ):?>
                                 <section id="slick_slider">
                                     <div id="slick_slider_container" class="col-md-12">
@@ -78,11 +88,6 @@
                                     </div>
                                 </section>
                             <?php endif;?>
-							<section id="product_pagination_bottom">
-								<div class="col-md-12">
-									<?php include( __ROOT__TEMPLATES__ . 'product-pagination.php');?>
-								</div>
-							</section>	
 						</div>
 					</section>
 					<!-- product list over -->

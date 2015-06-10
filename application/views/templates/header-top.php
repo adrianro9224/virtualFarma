@@ -1,7 +1,10 @@
 <div class="">
 	<div class="row" ng-controller="ShoppingCartAxuCtrl">
+        <div class="visible-xs-12 hidden-lg hidden-md">
+            <img class="center-horizontaly" id="normal-logo" src="<?= base_url() . 'assets/images/logo/logo_virtualfarma_final.png'?>" class="img-responsive" alt="virtualfarma.com.co">
+        </div>
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 primary-background">
-            <div class="header-item-container">
+            <div class="header-item-container" >
                 <div class="center-horizontaly-force header-item">
                     <i class="fa fa-phone-square fa-2x"></i><span> Linea de ventas Bogotá D.C</span>
                 </div>
@@ -9,6 +12,7 @@
                     <h1>606 2101</h1>
                 </div>
             </div>
+
         </div>
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
             <img class="hidden-xs hidden-sm center-horizontaly" id="normal-logo" src="<?= base_url() . 'assets/images/logo/logo_virtualfarma_final.png'?>" class="img-responsive" alt="virtualfarma.com.co">

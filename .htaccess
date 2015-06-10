@@ -5,6 +5,17 @@ RewriteEngine on
 	deny from all
 </Files>
 
+<IfModule mod_headers.c>
+    # WEEK
+    <FilesMatch "\.(jpg|jpeg|png|gif|swf)$">
+        Header set Cache-Control "max-age=604800, public"
+    </FilesMatch>
+
+    # WEEK
+    <FilesMatch "\.(js|css|swf)$">
+        Header set Cache-Control "max-age=604800"
+    </FilesMatch>
+</IfModule>
 
 RewriteCond $1 !^(index\.php|embed-test|public|downloads|assets|uploads|tests|robots\.txt)
 RewriteRule ^(.*)$ /index.php?/$1 [L]

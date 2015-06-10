@@ -13,8 +13,12 @@ class Category_model extends CI_Model {
 	public function all_categories() {
 		//The second and third parameters enable you to set a limit and offset clause:
 		//$query = $this->db->get('mytable', 10, 20);
-		$query = $this->db->get('category');
-		
+        $this->db->where('have_products', true);
+
+        $this->db->order_by("name", "asc");
+
+        $query = $this->db->get('category');
+
 		if($query->num_rows() > 0) {
 			$result = $query->result();
 			return $result;
@@ -48,4 +52,21 @@ class Category_model extends CI_Model {
 		
 		
 	}
+
+    public function disable_categories_without_product ( $new_categories ) {
+
+
+        foreach ( $new_categories as $new_category ) {
+            $this->db->set('have_products', $new_category->have_products);
+            $this->db->where('id', $new_category->id);
+
+            $this->db->update('category');
+        }
+
+        if ($this->db->affected_rows() == count($new_categories))
+            return true;
+
+        return false;
+
+    }
 }

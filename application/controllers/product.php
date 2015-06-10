@@ -61,9 +61,13 @@ class Product extends MY_Controller {
 		$notifications = array();
 
 		$categories = $this->get_categories();
-		
-		
-		$data['categories'] = $categories;
+        $active_ingredients = $this->get_active_ingredients();
+
+
+        $data['active_ingredients'] = $active_ingredients;
+
+
+        $data['categories'] = $categories;
 		
 		if( isset($category_name) && !empty($category_name) ) {
 
@@ -173,6 +177,10 @@ class Product extends MY_Controller {
         $notifications = array();
 
         $categories = $this->get_categories();
+        $active_ingredients = $this->get_active_ingredients();
+
+
+        $data['active_ingredients'] = $active_ingredients;
 
 
         $data['categories'] = $categories;
@@ -515,8 +523,13 @@ class Product extends MY_Controller {
 		$notifications = array();
 		
 		$categories = $this->get_categories();
-		
-		$data['categories'] = $categories;
+        $active_ingredients = $this->get_active_ingredients();
+
+
+        $data['active_ingredients'] = $active_ingredients;
+
+
+        $data['categories'] = $categories;
 		
 		if ( !empty($product_info_to_search) ) {
 		
@@ -532,9 +545,12 @@ class Product extends MY_Controller {
 				
 				if ( isset($products) ) {
 
-                    $related_products_by_active_ingredient = $this->product_model->get_by_active_ingredient( $products[0]->active_ingredient );
+                    if( isset($products[0]->active_ingredient) )
+                        $related_products_by_active_ingredient = $this->product_model->get_by_active_ingredient( $products[0]->active_ingredient );
+                    else
+                        $related_products_by_active_ingredient = NULL;
 
-                    if ( $related_products_by_active_ingredient )
+                    if ( isset($related_products_by_active_ingredient) )
                         $data['related_products'] = $related_products_by_active_ingredient;
 
 					$this->_calculate_product_discount( $products );
@@ -567,6 +583,14 @@ class Product extends MY_Controller {
 				if ( isset($products) ) {
 						
 					$this->_calculate_product_discount( $products );
+
+                    if( isset($products[0]->active_ingredient) )
+                        $related_products_by_active_ingredient = $this->product_model->get_by_active_ingredient( $products[0]->active_ingredient );
+                    else
+                        $related_products_by_active_ingredient = NULL;
+
+                    if ( isset($related_products_by_active_ingredient) )
+                        $data['related_products'] = $related_products_by_active_ingredient;
 						
 					$base_url = $base_url = base_url() . "/product/search_product/" . str_replace( ' ', '_', trim($product_info)) . '/';
 					$uri_segment = 4;
@@ -638,6 +662,9 @@ class Product extends MY_Controller {
         $categories = $this->get_categories();
 
         $data['categories'] = $categories;
+        $active_ingredients = $this->get_active_ingredients();
+        $data['active_ingredients'] = $active_ingredients;
+
 
         if ( $data['user_logged'] )
             $notifications['info'] = "Como has iniciado sesión puedes disfrutar de este, uno de nuestros servicios especialmente creados para tí";
@@ -706,6 +733,97 @@ class Product extends MY_Controller {
         redirect('/product/request_product');
     }
 
+
+    public function show_products_by_active_ingredient_id ( $active_ingredient_id, $from_items = 0 ) {
+
+        $data['user_logged'] = false;
+
+        $session_data = $this->session->all_userdata();
+
+        if( !isset($session_data['account_types']) ) {
+            $account_types = $this->account_types->get_account_types();
+            $this->session->set_userdata('account_types', $account_types);
+        }else{
+            $account_types = $session_data['account_types'];
+            $data['account_types'] = $account_types;
+        }
+
+        if( isset($session_data[$account_types[1] . '_id']) ){
+
+            $account = $this->account_model->get_account_by_id($session_data[$account_types[1] . '_id']);
+
+            if( isset($account) ) {
+                $data['account_id'] = $session_data[$account_types[1] . '_id'];
+                $data['user_logged'] = true;
+            }
+        }
+
+
+        $breadcrumb = new stdClass();
+
+        $breadcrumb->title = "Productos por principio activo";
+
+        $breadcrumb_item = new stdClass();
+
+        $breadcrumb_item->name = "productos";
+        $breadcrumb_item->url = "/product/show_products_by_category/sex_shop";
+        $breadcrumb_item->active = true;
+
+        $breadcrumb_list['register'] = $breadcrumb_item;
+
+        $breadcrumb->items = $breadcrumb_list;
+
+        $data['breadcrumb'] = $breadcrumb;
+
+        $category_id = NULL;
+        $products_by_category_id = NULL;
+        $notifications = array();
+
+        $categories = $this->get_categories();
+        $active_ingredients = $this->get_active_ingredients();
+
+
+        $data['active_ingredients'] = $active_ingredients;
+        $data['categories'] = $categories;
+
+        if( isset($active_ingredient_id) ) {
+
+            $data['title'] = "Productos por principio activo";
+
+            $products_by_active_ingredient = $this->product_model->get_by_active_ingredient_id( $active_ingredient_id );
+
+            if( isset($products_by_active_ingredient) ) {
+                //calculate product discounts
+                $products_with_discount = $this->_calculate_product_discount($products_by_active_ingredient);
+
+                $base_url = base_url() . "/product/show_products_by_active_ingredient_id/" . $active_ingredient_id;
+                $uri_segment = 4;
+
+                /*$products_encoded = str_replace(":", "dPoS",
+                        str_replace("]", "cEnd",
+                        str_replace(",", "coInit",
+                        str_replace("\"", "cDInit",
+                        str_replace("}", "llEnd",
+                        str_replace("{", "llInit",
+                                str_replace("[", "cInit",
+                                        json_encode($products_with_discount))))))));*/
+                $this->_do_pagination( $base_url, $uri_segment, $products_with_discount, $data, $from_items );
+
+                //$data['products_encoded'] = $products_encoded;
+            }else {
+                $notifications['warning'] = "No existen productos con este principio activo";
+                $this->session->set_flashdata('notifications', $notifications );
+                redirect('/');
+            }
+        }else {
+            $notifications['warning'][] = "No existe esta categoría ";
+            $this->session->set_flashdata('notifications', $notifications );
+            redirect('/');
+        }
+
+        $this->load->view('pages/category', $data);
+
+    }
 /*
     public function associate_active_ingredient() {
 
@@ -778,6 +896,40 @@ class Product extends MY_Controller {
 
         return $general_drugs;
     }
+*/
+
+/*
+    public function save_ai(){
+
+        $active_ingredients = array();
+
+        $products = $this->product_model->get_all();
+
+            foreach ($products as $product ) {
+
+                if ( isset($product->active_ingredient) )
+                    $active_ingredients[$product->active_ingredient] = $product->active_ingredient;
+
+            }
+        $info_insert_ids = $this->active_ingredient_model->insert_from_array($active_ingredients);
+
+        foreach ($products as $product) {
+
+            foreach( $info_insert_ids as $info ){
+
+                if ($product->active_ingredient == $info->name) {
+                    $product->active_ingredient_id = $info->insert_id;
+                }
+            }
+
+        }
+
+        $result = $this->product_model->update_active_ingredient_id($products);
+
+        var_dump($result);
+
+    }
+
 */
 
     /**

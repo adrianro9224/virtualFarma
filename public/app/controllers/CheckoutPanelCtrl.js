@@ -78,6 +78,7 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
                 newOrder.currentStep = "paymentMethod";
                 $scope.shippingDataComplete = true;
 
+
                 updateOrder( newOrder );
                 switchCheckoutPanelSection( newOrder.currentStep );
             break;
@@ -96,8 +97,8 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
 
                 var currentDate = new Date();
 
-                order.date = currentDate.getFullYear() + '-' + currentDate.getMonth() + '-' + currentDate.getDate() + ' ' + currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds();
-
+                order.date = currentDate.getFullYear() + '-' + (currentDate.getMonth() + 1) + '-' + currentDate.getDate() + ' ' + currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds();
+               
                 order.from = 'WEB';
 
                 $http.post("http://virtualfarma.com.co/checkout/create_order" , { data : order} )

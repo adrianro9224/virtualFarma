@@ -8,6 +8,7 @@
 	<title><?= $title; ?></title>
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="max-age=2592000, public" />
 	
 	<!-- Bootstrap css start -->
 	<link rel="stylesheet" type="text/css" href="<?= base_url() . 'public/bootstrap-3.3.0-dist/dist/css/bootstrap.min.css'?>">

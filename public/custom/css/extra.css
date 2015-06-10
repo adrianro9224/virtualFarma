@@ -381,7 +381,7 @@ p.bg-primary {
 
 .header-item span {
 	color: #FFFFFF;
-	font-size: 18px;
+	font-size: 1.3em;
 }
 
 .center-horizontaly {
@@ -391,7 +391,7 @@ p.bg-primary {
 
 .center-horizontaly-force {
     display: block;
-    width: 50%;
+    width: 60%;
     margin: 0 auto;
 }
 
@@ -457,14 +457,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .header-item {
-	font-size: 14px;
+	font-size: 0.8em;
 	padding-top: 3px;
 }
 
 .header-item h1 {
     font-weight: bold;
     color: #FFF;
-    font-size: 62px !important;
+    font-size: 4.4em !important;
 }
 
 .header-item-container {
@@ -472,7 +472,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #login_buttons {
-    padding: 2% 10%;
+    padding: 3.7em 5em;
 }
 #left_sidebar li.list-group-item a {
 	display: block;
@@ -788,6 +788,9 @@ fieldset[disabled] .btn-primary.active {
 * product list start
 */
 
+#product_options {
+    display: inline-block;
+}
 #product_list .product-product img {
 	padding: 25px 0 25px 25px;
 }
@@ -1388,5 +1391,35 @@ ICONS START
     float: none;
     display: block;
     margin: 0 auto;
-    width: 50%;
+    width: 53%;
+    min-width: 52%;
+}
+
+/*
+* Devices media queries
+*/
+
+@media (max-width: 992px) and (min-width: 768px) {
+    #header-top .center-horizontaly-force.header-item {
+        width: 24%;
+    }
+    #login_buttons {
+        padding: 3.7em 25.5em;
+    }
+}
+
+
+@media (max-width: 768px) {
+    #header-top .primary-background {
+        min-height: 70px;
+    }
+    #login_buttons {
+        padding: 0.5em 2.8em;
+    }
+    #header-top #login_buttons.primary-background {
+        min-height: 48px;
+    }
+    .header-item {
+        font-size: 0.5em;
+    }
 }
