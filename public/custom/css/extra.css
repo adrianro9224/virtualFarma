@@ -466,12 +466,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .header-item-container {
-    padding: 6% 0;
+    padding: 4% 0;
 }
 
 .btn-group-wrap {
     text-align: center;
-    padding: 18% 0;
+    padding: 10% 0;
 }
 
 #left_sidebar li.list-group-item a {
@@ -1391,8 +1391,7 @@ ICONS START
     float: none;
     display: block;
     margin: 0 auto;
-    width: 53%;
-    min-width: 52%;
+
 }
 
 .vertical-center {

@@ -7,7 +7,7 @@ var farmapp = angular.module('farmapp', ['ui.bootstrap', 'ngCookies']);
     //Create the farmapp module
 
 farmapp.controller('CarouselCtrl', ['$scope', function($scope) {
-    $scope.myInterval = 10000;
+    $scope.myInterval = 7500;
     var slides = $scope.slides = [];
     $scope.addSlide = function(i) {
         slides.push({

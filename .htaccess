@@ -5,10 +5,13 @@ RewriteEngine on
 	deny from all
 </Files>
 
+RewriteCond $1 !^(index\.php|embed-test|public|downloads|assets|uploads|tests|robots\.txt)
+RewriteRule ^(.*)$ /index.php?/$1 [L]
+
 <IfModule mod_headers.c>
     # WEEK
     <FilesMatch "\.(jpg|jpeg|png|gif|swf)$">
-        Header set Cache-Control "max-age=604800, public"
+        Header set Cache-Control "max-age=604800, public, must-revalidate"
     </FilesMatch>
 
     # WEEK
@@ -17,5 +20,13 @@ RewriteEngine on
     </FilesMatch>
 </IfModule>
 
-RewriteCond $1 !^(index\.php|embed-test|public|downloads|assets|uploads|tests|robots\.txt)
-RewriteRule ^(.*)$ /index.php?/$1 [L]
+<IfModule mod_deflate.c>
+
+    SetEnvIfNoCase Request_URI "\.(?:gif|jpe?g|png)$" no-gzip
+
+    <filesMatch "\.(js|css|html|php)$">
+            SetOutputFilter DEFLATE
+    </filesMatch>
+
+</IfModule>
+

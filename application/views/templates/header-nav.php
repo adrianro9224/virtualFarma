@@ -2,13 +2,12 @@
 	<div id="sticky-anchor"></div>
 	<div class="container-fluid" id="sticky">
 		<div class="row">
-			<div class="col-md-8 col-md-offset-2 no-padding">
+			<div class="col-md-10 col-md-offset-3 col-lg-6 col-lg-offset-4 no-padding">
 				<div id="primary-nav">
 					<nav class="navbar navbar-default">
 						<div class="container-fluid">
 							<!-- Brand and toggle get grouped for better mobile display -->
 							<div class="navbar-header">
-
 								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 									<span class="sr-only">Toggle navigation</span>
 									<span class="icon-bar"></span>
