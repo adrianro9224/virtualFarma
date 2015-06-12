@@ -19,7 +19,7 @@ class Home extends MY_Controller {
 //    		phpinfo();
 //    		die();
   		
-		$data['title'] = ucfirst($page); // Capitalize the first letter
+		$data['title'] = "Principal"; // Capitalize the first letter
 		$data['notifications'] = $this->session->flashdata('notifications');
 		
 		$data['user_logged'] = false;
