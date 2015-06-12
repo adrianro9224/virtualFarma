@@ -8,6 +8,7 @@ RewriteEngine on
 RewriteCond $1 !^(index\.php|embed-test|public|downloads|assets|uploads|tests|robots\.txt)
 RewriteRule ^(.*)$ /index.php?/$1 [L]
 
+#cache
 <IfModule mod_headers.c>
     # WEEK
     <FilesMatch "\.(jpg|jpeg|png|gif|swf)$">
@@ -15,18 +16,50 @@ RewriteRule ^(.*)$ /index.php?/$1 [L]
     </FilesMatch>
 
     # WEEK
-    <FilesMatch "\.(js|css|swf)$">
-        Header set Cache-Control "max-age=604800"
+    <FilesMatch "\.(js|css|swf|map|woff)$">
+        Header set Cache-Control "max-age=604800, public, must-revalidate"
     </FilesMatch>
 </IfModule>
 
+#gzip-compressing
 <IfModule mod_deflate.c>
 
-    SetEnvIfNoCase Request_URI "\.(?:gif|jpe?g|png)$" no-gzip
-
-    <filesMatch "\.(js|css|html|php)$">
+    <filesMatch "\.(js|css|html|php|map)$">
+            # Dont't compress images
+            SetEnvIfNoCase Request_URI "\.(?:gif|jpe?g|jpg|ico|png)$" no-gzip
             SetOutputFilter DEFLATE
+
     </filesMatch>
 
+</IfModule>
+
+#Serving pre-compressed content
+<IfModule mod_headers.c>
+    # Serve gzip compressed CSS files if they exist
+    # and the client accepts gzip.
+    RewriteCond "%{HTTP:Accept-encoding}" "gzip"
+    RewriteCond "%{REQUEST_FILENAME}\.gz" -s
+    RewriteRule "^(.*)\.css" "$1\.css\.gz" [QSA]
+
+    # Serve gzip compressed JS files if they exist
+    # and the client accepts gzip.
+    RewriteCond "%{HTTP:Accept-encoding}" "gzip"
+    RewriteCond "%{REQUEST_FILENAME}\.gz" -s
+    RewriteRule "^(.*)\.js" "$1\.js\.gz" [QSA]
+
+
+    # Serve correct content types, and prevent mod_deflate double gzip.
+    RewriteRule "\.css\.gz$" "-" [T=text/css,E=no-gzip:1]
+    RewriteRule "\.js\.gz$" "-" [T=text/javascript,E=no-gzip:1]
+
+
+    <FilesMatch "(\.js\.gz|\.css\.gz)$">
+      # Serve correct encoding type.
+      Header append Content-Encoding gzip
+
+      # Force proxies to cache gzipped &
+      # non-gzipped css/js files separately.
+      Header append Vary Accept-Encoding
+    </FilesMatch>
 </IfModule>
 

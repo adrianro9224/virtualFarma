@@ -6,7 +6,8 @@
 	</script>
 	<![endif]-->
 	<title><?= $title; ?></title>
-	
+	<link rel="icon" type="image/png" href="<?= base_url() . 'assets/images/favicon/favicon.ico' ?>">
+
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta http-equiv="Cache-Control" content="max-age=2592000, public" />
 	
