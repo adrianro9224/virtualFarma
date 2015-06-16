@@ -85,6 +85,7 @@
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/TermsAndCondCtrl.js'?>"></script>
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ModalInstanceCtrl.js'?>"></script>
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ShoppingCartAxuCtrl.js'?>"></script>
+    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/RequestProductCtrl.js'?>"></script>
 
 	<!-- Angular js controllers over -->
 	

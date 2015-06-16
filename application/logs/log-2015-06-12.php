@@ -680,3 +680,62 @@ DEBUG - 2015-06-12 20:31:13 --> Model Class Initialized
 DEBUG - 2015-06-12 20:31:13 --> File loaded: application/views/pages/home.php
 DEBUG - 2015-06-12 20:31:13 --> Final output sent to browser
 DEBUG - 2015-06-12 20:31:13 --> Total execution time: 0.2554
+DEBUG - 2015-06-12 20:33:20 --> Config Class Initialized
+DEBUG - 2015-06-12 20:33:20 --> Hooks Class Initialized
+DEBUG - 2015-06-12 20:33:20 --> Utf8 Class Initialized
+DEBUG - 2015-06-12 20:33:20 --> UTF-8 Support Enabled
+DEBUG - 2015-06-12 20:33:20 --> URI Class Initialized
+DEBUG - 2015-06-12 20:33:20 --> Router Class Initialized
+DEBUG - 2015-06-12 20:33:20 --> No URI present. Default controller set.
+DEBUG - 2015-06-12 20:33:20 --> Output Class Initialized
+DEBUG - 2015-06-12 20:33:20 --> Security Class Initialized
+DEBUG - 2015-06-12 20:33:20 --> Input Class Initialized
+DEBUG - 2015-06-12 20:33:20 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-06-12 20:33:20 --> Language Class Initialized
+DEBUG - 2015-06-12 20:33:20 --> Loader Class Initialized
+DEBUG - 2015-06-12 20:33:20 --> Helper loaded: url_helper
+DEBUG - 2015-06-12 20:33:20 --> Database Driver Class Initialized
+ERROR - 2015-06-12 20:33:20 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead C:\Users\Adrian\Dropbox\virtualfarma.com.co\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2015-06-12 20:33:20 --> Session Class Initialized
+DEBUG - 2015-06-12 20:33:20 --> Helper loaded: string_helper
+DEBUG - 2015-06-12 20:33:20 --> Encrypt Class Initialized
+DEBUG - 2015-06-12 20:33:20 --> Session routines successfully run
+DEBUG - 2015-06-12 20:33:20 --> Pagination Class Initialized
+DEBUG - 2015-06-12 20:33:20 --> Model Class Initialized
+DEBUG - 2015-06-12 20:33:20 --> Model Class Initialized
+DEBUG - 2015-06-12 20:33:20 --> Model Class Initialized
+DEBUG - 2015-06-12 20:33:20 --> Controller Class Initialized
+DEBUG - 2015-06-12 20:33:20 --> Model Class Initialized
+DEBUG - 2015-06-12 20:33:20 --> File loaded: application/views/pages/home.php
+DEBUG - 2015-06-12 20:33:20 --> Final output sent to browser
+DEBUG - 2015-06-12 20:33:20 --> Total execution time: 0.2883
+DEBUG - 2015-06-12 20:34:10 --> Config Class Initialized
+DEBUG - 2015-06-12 20:34:10 --> Hooks Class Initialized
+DEBUG - 2015-06-12 20:34:10 --> Utf8 Class Initialized
+DEBUG - 2015-06-12 20:34:10 --> UTF-8 Support Enabled
+DEBUG - 2015-06-12 20:34:11 --> URI Class Initialized
+DEBUG - 2015-06-12 20:34:11 --> Router Class Initialized
+DEBUG - 2015-06-12 20:34:11 --> No URI present. Default controller set.
+DEBUG - 2015-06-12 20:34:11 --> Output Class Initialized
+DEBUG - 2015-06-12 20:34:11 --> Security Class Initialized
+DEBUG - 2015-06-12 20:34:11 --> Input Class Initialized
+DEBUG - 2015-06-12 20:34:11 --> Global POST and COOKIE data sanitized
+DEBUG - 2015-06-12 20:34:11 --> Language Class Initialized
+DEBUG - 2015-06-12 20:34:11 --> Loader Class Initialized
+DEBUG - 2015-06-12 20:34:11 --> Helper loaded: url_helper
+DEBUG - 2015-06-12 20:34:11 --> Database Driver Class Initialized
+ERROR - 2015-06-12 20:34:11 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead C:\Users\Adrian\Dropbox\virtualfarma.com.co\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2015-06-12 20:34:14 --> Session Class Initialized
+DEBUG - 2015-06-12 20:34:14 --> Helper loaded: string_helper
+DEBUG - 2015-06-12 20:34:14 --> Encrypt Class Initialized
+DEBUG - 2015-06-12 20:34:14 --> Session routines successfully run
+DEBUG - 2015-06-12 20:34:14 --> Pagination Class Initialized
+DEBUG - 2015-06-12 20:34:14 --> Model Class Initialized
+DEBUG - 2015-06-12 20:34:14 --> Model Class Initialized
+DEBUG - 2015-06-12 20:34:14 --> Model Class Initialized
+DEBUG - 2015-06-12 20:34:14 --> Controller Class Initialized
+DEBUG - 2015-06-12 20:34:14 --> Model Class Initialized
+DEBUG - 2015-06-12 20:34:15 --> Model Class Initialized
+DEBUG - 2015-06-12 20:34:15 --> File loaded: application/views/pages/home.php
+DEBUG - 2015-06-12 20:34:15 --> Final output sent to browser
+DEBUG - 2015-06-12 20:34:15 --> Total execution time: 6.2114

@@ -221,7 +221,7 @@ class Account extends MY_Controller {
 		}else {
 			$notifications['danger'] = validation_errors();
 			
-			print_r($notifications);//check this
+			//print_r($notifications);//check this
 			$this->session->set_flashdata('notifications', $notifications );
 			
 			//add redirect to account index and show errors

@@ -52,33 +52,75 @@
                 <!-- category left sidebar over -->
 
                 <!-- product list start -->
-                <section ng-controller="ProductListCtrl" id="request_product_form" >
+                <section id="request_product_form" >
                     <div class="col-md-9">
-                        <section id="form">
+                        <section id="product-request-form" ng-controller="RequestProductCtrl">
                             <div class="well well-lg">
-                                <p class="bg-primary">Lo sentimos no contamos en este momento con el producto que estás buscando, pero hemos creado un servicio para ti, puedes solicitar el producto que deseas y lo conseguiremos por tí, solo debes completar el formulario a continuación:</p>
-                                <form class="form-horizontal" action="<?= base_url() . 'product/send_product_request'?>" method="post" autocomplete="off">
-                                    <div class="form-group">
+                                <p class="bg-primary">¡Lo sentimos! No contamos con el producto que estás buscando en estos momentos. Sabemos que tu salud y tu tiempo son muy valiosos, por eso podemos buscar tu producto en el menor tiempo posible. Si deseas este servicio de búsqueda avanzada, por favor diligencia el siguiente formulario:</p>
+                                <form class="form-horizontal" name="productRequestForm" action="<?= base_url() . 'product/send_product_request'?>" method="post" autocomplete="on" novalidate>
+                                    <div class="form-group" ng-class="{'has-error': !productRequestForm.productName.$valid && productRequestForm.productName.$dirty}">
                                         <label for="product_name" class="col-md-3 control-label">Nombre del producto: *</label>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name ="product_name" id="product_name" placeholder="Escribe el nombre del producto" ng-disabled="<?= $user_logged ? 0 : 1?>" required>
+                                            <input type="text" class="form-control" name ="productName" ng-model="productName" id="product_name" placeholder="Escribe el nombre del producto" ng-disabled="<?= $user_logged ? 0 : 1?>"  ng-maxLength="63" required>
+                                            <!-- tooltip -->
+                                            <div ng-if="productRequestForm.productName.$invalid && productRequestForm.productName.$dirty">
+                                                <div class="arrow-up-error">
+                                                </div>
+                                                <div class="farma-tooltip-error">
+                                                    <span ng-if="productRequestForm.productName.$error.required && productRequestForm.productName.$dirty">Por favor escribe el nombre del producto!</span>
+                                                    <span ng-if="productRequestForm.productName.$error.maxlength && productRequestForm.productName.$dirty">Es demaciado extenso!</span>
+                                                </div>
+                                            </div>
+                                            <!-- tooltip -->
+                                            <!-- helptext -->
+                                            <span id="helpBlock" class="help-block">Ejemplo: Losartán</span>
+                                            <!-- helptext -->
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" ng-class="{'has-error': !productRequestForm.productLab.$valid && productRequestForm.productLab.$dirty}">
                                         <label for="product_lab" class="col-md-3 control-label" >Nombre del laboratorio del producto: *</label>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control"  name="product_lab" id="product_lab" placeholder="Escribe el laboratorio del producto" ng-disabled="<?= $user_logged ? 0 : 1?>" required>
+                                            <input type="text" class="form-control"  name="productLab" ng-model="productLab" id="product_lab" placeholder="Escribe el laboratorio del producto" ng-disabled="<?= $user_logged ? 0 : 1?>" ng-maxLength="63" required>
+                                            <!-- tooltip -->
+                                            <div ng-if="productRequestForm.productLab.$invalid && productRequestForm.productLab.$dirty">
+                                                <div class="arrow-up-error">
+                                                </div>
+                                                <div class="farma-tooltip-error">
+                                                    <span ng-if="productRequestForm.productLab.$error.required && productRequestForm.productLab.$dirty">Por favor escribe el laboratorio de tu producto!</span>
+                                                    <span ng-if="productRequestForm.productLab.$error.maxlength && productRequestForm.productLab.$dirty">Es demaciado extenso!</span>
+                                                </div>
+                                            </div>
+                                            <!-- tooltip -->
+                                            <!-- helptext -->
+                                            <span id="helpBlock" class="help-block">Ejemplo: MK</span>
+                                            <!-- helptext -->
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" ng-class="{'has-error': !productRequestForm.productPresentation.$valid && productRequestForm.productPresentation.$dirty}">
                                         <label for="product_presentation" class="col-md-3 control-label">Presentación del producto: *</label>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name="product_presentation" id="product_presentation" placeholder="Escribe la presentación del producto" ng-disabled="<?= $user_logged ? 0 : 1?>" required>
+                                            <input type="text" class="form-control" name="productPresentation" ng-model="productPresentation" id="product_presentation" placeholder="Escribe la presentación del producto" ng-disabled="<?= $user_logged ? 0 : 1?>" ng-maxLength="63" required>
+                                            <!-- tooltip -->
+                                            <div ng-if="productRequestForm.productPresentation.$invalid && productRequestForm.productPresentation.$dirty">
+                                                <div class="arrow-up-error">
+                                                </div>
+                                                <div class="farma-tooltip-error">
+                                                    <span ng-if="productRequestForm.productPresentation.$error.required && productRequestForm.productPresentation.$dirty">Por favor escribe la presentación en la que viene en tu producto!</span>
+                                                    <span ng-if="productRequestForm.productPresentation.$error.maxlength && productRequestForm.productPresentation.$dirty">Es demaciado extenso!</span>
+                                                </div>
+                                            </div>
+                                            <!-- tooltip -->
+                                            <!-- helptext -->
+                                            <span id="helpBlock" class="help-block">Ejemplo: 50mg</span>
+                                            <!-- helptext -->
                                         </div>
                                     </div>
+
+                                    <input type="hidden" name="date_of_product_request" id="date_of_request" ng-value="dateOfProductRequest" required>
+
                                     <div class="form-group">
                                         <div class="col-sm-offset-2 col-sm-10">
-                                            <button type="submit" class="btn btn-primary" ng-disabled="<?= $user_logged ? 0 : 1?>" >Enviar</button>
+                                            <button type="submit" class="btn btn-primary" ng-disabled="<?= $user_logged ? 0 : 1?> || productRequestForm.$invalid" >Enviar</button>
                                         </div>
                                     </div>
                                 </form>

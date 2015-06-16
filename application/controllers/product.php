@@ -639,6 +639,7 @@ class Product extends MY_Controller {
         }
 
 
+
         $breadcrumb = new stdClass();
 
         $breadcrumb->title = "Solicitud de producto";
@@ -657,7 +658,8 @@ class Product extends MY_Controller {
 
         $category_id = NULL;
         $products_by_category_id = NULL;
-        $notifications = array();
+
+        $notifications = $this->session->flashdata('notifications');
 
         $categories = $this->get_categories();
 
@@ -695,27 +697,35 @@ class Product extends MY_Controller {
 
             if( isset($session_data[$account_types[1] . '_id']) ){
 
+                $account_id = $session_data[$account_types[1] . '_id'];
+
                 $validation_response = $this->_validate_product_request_form();
 
                 if ( $validation_response ) {
 
-                    $product_request_saved = $this->products->save_product_request( $product_request_info );
+                    $product_request_saved = $this->products->save_product_request( $product_request_info, $account_id );
 
                     if( $product_request_saved ) {
 
-                        $notifications['primary'] = "La información de tu producto a sido recibída, pronto estaremos comunicandonos contigo para confirmar tu solícitud :)";
+                        $notifications['primary'][] = "La información de tu producto a sido recibída, pronto estaremos comunicandonos contigo para confirmar tu solícitud :)";
 
                     }else{
-                        $notifications['error'] = "Ocurrio un problema con tu solicitud, por favor intentalo de nuevo :,(";
+                        $notifications['danger'][] = "Ocurrio un problema con tu solicitud, por favor intentalo de nuevo :'(";
                     }
 
                     $this->session->set_flashdata('notifications', $notifications);
                     redirect('/product/request_product');
 
+                }else {
+
+                    $notifications['danger'][] = "Ocurrio un problema con tu solicitud, por favor intentalo de nuevo :'(";
+
+                    $this->session->set_flashdata('notifications', $notifications);
+                    redirect('/product/request_product');
                 }
             }else {
 
-                $notifications['error'] = "Tu Session a expirado :,(";
+                $notifications['danger'][] = "Tu Session a expirado :,(";
 
                 $this->session->set_flashdata('notifications', $notifications);
                 redirect('/product/request_product');
@@ -949,9 +959,10 @@ class Product extends MY_Controller {
 
     private function _validate_product_request_form() {
 
-        $this->form_validation->set_rules('product_name', 'productName', 'required|max_length[64]|xss_clean');
-        $this->form_validation->set_rules('product_lab', 'productLab', 'required|max_length[64]|xss_clean');
-        $this->form_validation->set_rules('product_presentation', 'productPresentation', 'required|max_length[64]|xss_clean');
+        $this->form_validation->set_rules('productName', 'productName', 'required|max_length[64]|xss_clean');
+        $this->form_validation->set_rules('productLab', 'productLab', 'required|max_length[64]|xss_clean');
+        $this->form_validation->set_rules('productPresentation', 'productPresentation', 'required|max_length[64]|xss_clean');
+        $this->form_validation->set_rules('date_of_product_request', 'date', 'required|xss_clean');
 
         if ($this->form_validation->run() == FALSE)
             return false;

@@ -170,7 +170,7 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
 
                 var currentDate = new Date();
 
-                order.date = currentDate.getFullYear() + '-' + currentDate.getMonth() + '-' + currentDate.getDate() + ' ' + currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds();
+                order.date = currentDate.getFullYear() + '-' + (currentDate.getMonth() + 1) + '-' + currentDate.getDate() + ' ' + currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds();
 
                 order.from = 'CALL_CENTER';
 
