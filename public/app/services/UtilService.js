@@ -19,6 +19,14 @@ farmapp.factory('UtilService', function() {
         return true;
     };
 
+    utilService.getDateMySql = function () {
+
+        var currentDate = new Date();
+
+        return currentDate.getFullYear() + '-' + (currentDate.getMonth() + 1) + '-' + currentDate.getDate() + ' ' + currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds();
+
+    };
+
     return utilService;
 });
 

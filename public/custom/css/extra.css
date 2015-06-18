@@ -68,7 +68,7 @@ a#button-payment.btn-primary {
 	margin: 2px 0 9px 0;
 }
 #left_sidebar #categories_panel #left-sidebar-categories-list {
-	max-height: 777px;
+	max-height: 675px;
 	overflow: auto;
 	
 }
@@ -732,6 +732,9 @@ fieldset[disabled] .btn-primary.active {
 
 #shipping-data-checkbox-tooltip .arrow-up-info {
 	left: 7% !important;
+}
+#order-summary #order-summary-container #order-totals .arrow-up-info {
+    left: 96%;
 }
 
 .farma-tooltip-error span, .farma-tooltip-info span {
@@ -1431,6 +1434,10 @@ ICONS START
 
     .header-item-container {
         padding: 2% 0;
+    }
+
+    #left_sidebar #categories_panel #left-sidebar-categories-list {
+        min-height: 200px;
     }
 }
 /*

@@ -36,7 +36,7 @@
                                     <li><a href="/account/log_out"><i class="fa fa-sign-out"></i> Cerrar sessión</a></li>
                                 </ul>
                             <?php else:?>
-                                <a class="btn btn-default" href="/account" role="button">Regístrate <i class="fa fa-users"></i></a>
+                                <a class="btn btn-default" href="/account" role="button">Regístrate <i class="fa fa-user-plus"></i></a>
                                 <a class="btn btn-default" href="/account" role="button">Iniciar sesión <i class="fa fa-users"></i></a>
                             <?php endif;?>
                         </div>

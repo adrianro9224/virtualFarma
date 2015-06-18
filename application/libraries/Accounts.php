@@ -23,5 +23,22 @@ class Accounts {
 		
 		return $ids;
 	}
+
+    public function save_points ( $number_of_points, $account_id ) {
+
+        $CI =& get_instance();
+        $CI->load->model("account_model");
+
+        $account_with_points = $CI->account_model->get_points( $account_id );
+
+        if ( isset($account_with_points->points) )
+            $points_to_save = $account_with_points->points + $number_of_points;
+        else
+            $points_to_save = $number_of_points;
+
+        $result = $CI->account_model->update_points( $points_to_save, $account_id );
+
+        return $result;
+    }
 	
 }

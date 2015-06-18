@@ -19,6 +19,7 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
     $scope.limitOrderValueInvalid = false;
     var limitPayuOrderValue = ConstantsService.LIMIT_PAYU_ORDER_VALUE;
     var minimumOrderValue = ConstantsService.MINIMUM_ORDER_VALUE;
+    var limitForFreeShipping = ConstantsService.LIMIT_FOR_FREE_SHIPPING;
 
     $rootScope.$on( ConstantsService.SHOPPINGCART_CHANGED, function(event, data){
         $scope.shoppingcart = data;
@@ -36,7 +37,12 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
             $scope.shoppingcart.subtotal = shoppingCartSubtotals.productsSubtotal;
             $scope.shoppingcart.tax = shoppingCartSubtotals.productsTaxTotal;
 
+            if ( $scope.shoppingcart.hasDiscount )
+                $scope.shoppingcart.subtotal -= $scope.shoppingcart.pointsDoDiscount;
+
             var shippingCharge = getShippingCharge($scope.shoppingcart.subtotal);
+
+            console.info($scope.shoppingcart);
 
             $scope.shoppingcart.shippingCharge = shippingCharge;
 
@@ -71,6 +77,11 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
                 else
                     $scope.shoppingcart.limitOrderValueInvalid = false;
             }
+
+            if ( limitForFreeShipping != undefined )
+                $scope.shoppingcart.limitForFreeShipping = limitForFreeShipping;
+
+
 
             $scope.total = $scope.shoppingcart.total;
 

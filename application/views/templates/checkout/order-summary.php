@@ -5,6 +5,16 @@
 	<div class="panel-body" ng-if="orderSummary">
 		<div id="order-summary-container" ng-hide="order.sended">
 			<p>Acá esta toda la información relacionada con tu compra:</p>
+            <p class="bg-info">Con cada compra que realices acumularás 10 puntos por cada $1000 pesos en tus compras :D <i class="fa fa-gift"></i></p>
+            <!-- Use points -->
+            <?php if ( isset($points) ): ?>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-change="reedemPoints( '<?= $points?>' )" ng-model="pointsToReedem" ng-value="<?= $points?>"> Tienes <strong><?= $points . " puntos"?></strong>, haz click en el recuadro para usarlos como un descuento en tu compra
+                </label>
+            </div>
+            <?php endif; ?>
+            <!-- Use points -->
 			<div class="table-responsive">
 				<table class="table table-hover table-striped">
 					<thead>
@@ -48,7 +58,16 @@
 						<div class="order-summary-item-content">
 							<span class="pull-right value" ng-bind="order.shoppingcart.subtotal | currency : '$' : 0"></span>
 						</div>
-					</div>
+                        <div class="form-group ng-cloak" ng-if="!order.shoppingcart.shippingFree" ng-cloak>
+                            <!-- tooltip -->
+                            <div class="arrow-up-info">
+                            </div>
+                            <div class="farma-tooltip-info">
+                                <span ng-bind=" 'Si quieres que tu envío sea gratis tu compra debe ser de ' + (order.shoppingcart.limitForFreeShipping | currency : '$' : 0) + ' pesos :(, solo te faltan ' + ((order.shoppingcart.limitForFreeShipping - order.shoppingcart.subtotal) | currency : '$' : 0) + ' :D'"></span>
+                            </div>
+                            <!-- tooltip -->
+                        </div>
+                    </div>
 					<div id="total-products" class="order-summary-item">
 						<div class="order-summary-item-content">
 							<span class="title">Costo de envío</span>
@@ -66,6 +85,14 @@
 							<span class="pull-right value" ng-bind="order.shoppingcart.tax | currency : '$' : 0"></span>
 						</div>
 					</div>
+                    <div id="total-products" class="order-summary-item">
+                        <div class="order-summary-item-content">
+                            <span class="title">Puntos que ganarás</span>
+                        </div>
+                        <div class="order-summary-item-content">
+                            <span class="pull-right value" ng-bind="order.shoppingcart.subtotal * 0.01"></span>
+                        </div>
+                    </div>
 					<div id="total-products" class="order-summary-item">
 						<div class="order-summary-item-content">
 							<span class="title">Total</span>
@@ -78,10 +105,13 @@
 			</div>
 		</div>
 		<div class="well" ng-show="order.sended">
-		<p>
+		<p class="bg-primary">
 			Tu orden a sido realizada con éxito, en este momento uno de nuestro mensajeros va en camino con tu pedido en la dirrecíon {{order.shippingData.addressLine1}}. 
 			Tu pedido estará allí en menos de 80 minutos, gracias por tu compra!.
 		</p>
+        <p class="bg-primary">
+            Acumulaste {{order.points}}
+        </p>
 		<h3>¿Que desear hacer ahora?</h3>
 		<div class="list-group">
 			<!-- Add if isset discount -->

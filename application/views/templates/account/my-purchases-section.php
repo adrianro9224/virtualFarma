@@ -26,6 +26,7 @@
 				<tr>
 					<th>Fecha de la compra</th>
 					<th>Productos</th>
+                    <th>Costo de envío</th>
 					<th>Valor</th>	
 				</tr>
 			</thead>
@@ -39,7 +40,8 @@
 								<a href="<?= base_url() . 'product/search_product/' . str_replace(' ', '_', $product->name) ?>"><?=$product->name?></a>
 							<?php endforeach;?>
 						</td>
-						<td><?= '$' . number_format($order->value)?></td>
+                        <td><?= '$' . number_format($order->shipping_charge)?></td>
+						<td><?= '$' . number_format(bcsub($order->value, $order->shipping_charge))?></td>
 					</tr>
 				<?php endforeach;?>
 			
@@ -51,21 +53,25 @@
 	<?php endif;?>
 </div>
     
-    <div class="row">
-	    <div class="col-md-6">
+<div class="row">
+    <div class="col-md-6">
 	    <div class="panel panel-info">
-  <div class="panel-heading">Panel heading without title</div>
-  <div class="panel-body">
-    Panel content
-  </div>
-</div>
-	    </div>
-	    <div class="col-md-6">
+            <div class="panel-heading"><i class="fa fa-gift"></i> Puntos acumulados</div>
+            <div class="panel-body">
+                <?php if (  isset($points) ):?>
+                    <span>Ya cuentas con <strong><?= $points . " puntos"?></strong>, podrás redimirlos cuando quieras!!</span>
+                <?php else:?>
+                    <span>Aún no tienes puntos <i class="fa fa-frown-o"></i>. Con cada compra que realices acumularás 10 puntos por cada $1000 pesos en tus compras :D <i class="fa fa-gift"></i> </span>
+                <?php endif;?>
+            </div>
+        </div>
+     </div>
+    <div class="col-md-6">
 	    <div class="panel panel-warning">
-  <div class="panel-heading">Panel heading without title</div>
-  <div class="panel-body">
-    Panel content
-  </div>
-</div>
-	    </div>
+            <div class="panel-heading">Panel heading without title</div>
+            <div class="panel-body">
+            Panel content
+            </div>
+        </div>
     </div>
+</div>

@@ -8,7 +8,7 @@ class Checkout extends MY_Controller {
 	 */
 	function __construct() {
 		parent::__construct();
-		$this->load->library( array('address', 'orders', 'account_types') );
+		$this->load->library( array('address', 'orders', 'account_types', 'accounts') );
 		$this->load->model("Payment_method_model");
 	}
 	
@@ -60,6 +60,10 @@ class Checkout extends MY_Controller {
 			
 			$address = $this->address->get_all_address( $session_data[$account_types[1]. '_id'] );
 			$account_data = $this->get_account($session_data[$account_types[1] . '_id']);
+
+            if ( isset($account_data->points) )
+                $data['points'] = $account_data->points;
+
 			$payment_methods = $this->Payment_method_model->get_enabled_payment_methods();
 			
 			if ( isset($payment_methods) )
@@ -145,8 +149,10 @@ class Checkout extends MY_Controller {
 				$account_id = $session_data[$account_types[2] . '_id'];
 			
 			$result = $this->orders->save_order( $order->data, $account_id );
+
+            $saved = $this->accounts->save_points( $order->data->points, $account_id );
 			
-			if ($result) {
+			if ($result && $saved) {
 				echo 'true';
 			}else {
 				echo 'false';

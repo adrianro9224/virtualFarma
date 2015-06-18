@@ -13,7 +13,8 @@ farmapp.factory( 'ConstantsService', function(){ // no inject $scope dependency,
         SHIPPING_CHARGE : 1000,
         SHOPPINGCART_CHANGED : "SHOPPINGCART_CHANGED",
         UPDATE_ORDER : "UPDATE_ORDER",
-        SALE_CHANGED : "SALE_CHANGED"
+        SALE_CHANGED : "SALE_CHANGED",
+        POINTS_BASE : 0.01
     };
 
     return constantService;

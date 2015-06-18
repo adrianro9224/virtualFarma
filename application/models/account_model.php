@@ -80,7 +80,7 @@ class Account_model extends CI_Model {
 	
 	public function get_account_by_id($account_id) {
 		
-		$this->db->select('id, first_name, second_name, last_name, surname, identification_number, phone, mobile, gender, email, terms_and_conditions');
+		$this->db->select('id, first_name, second_name, last_name, surname, identification_number, phone, mobile, gender, email, terms_and_conditions, points');
 		
 		$this->db->where('id', $account_id);
 		
@@ -189,4 +189,30 @@ class Account_model extends CI_Model {
 		return NULL;
 		
 	}
+
+    public function get_points ( $account_id ) {
+
+        $this->db->select('points');
+        $this->db->where('id', $account_id);
+
+        $query = $this->db->get('account');
+
+        if ( $query->num_rows() == 1 )
+            return $query->row();
+        else
+            return NULL;
+    }
+
+    public function update_points( $points_to_save, $account_id ) {
+
+        $this->db->set( 'points', $points_to_save );
+        $this->db->where('id', $account_id);
+        $this->db->update('account');
+
+        if($this->db->affected_rows() > 0)
+            return true;
+
+        return false;
+
+    }
 }

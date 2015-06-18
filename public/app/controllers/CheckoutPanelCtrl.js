@@ -2,7 +2,7 @@
  * Created by Adrian on 17/02/2015.
  */
 
-farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cookies', '$http', 'ConstantsService', '$location', function( $scope ,$rootScope ,$log ,$cookies, $http, ConstantsService, $location) {
+farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cookies', '$http', 'ConstantsService', '$window', 'UtilService', function( $scope ,$rootScope ,$log ,$cookies, $http, ConstantsService, $window, UtilService) {
 
     "use strict";
 
@@ -95,11 +95,11 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
 
                 var order = newOrder;
 
-                var currentDate = new Date();
-
-                order.date = currentDate.getFullYear() + '-' + (currentDate.getMonth() + 1) + '-' + currentDate.getDate() + ' ' + currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds();
+                order.date = UtilService.getDateMySql();
                
                 order.from = 'WEB';
+
+                order.points = order.shoppingcart.subtotal * ConstantsService.POINTS_BASE;
 
                 $http.post("http://virtualfarma.com.co/checkout/create_order" , { data : order} )
                     .success(function(data, status, headers, config) {
@@ -117,7 +117,7 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
 
                     }).
                     error(function(data, status, headers, config) {
-                        $location.reload();
+                        //$window.location.reload();
                         console.info(data + ":(");
                     });
 
@@ -190,5 +190,25 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
         $scope.order.shoppingcart.products.splice( key, 1 );
         $scope.order.shoppingcart.numOfproductsTotal--;
         $scope.order.shoppingcart.numOfproductsSubtotal--;
+    }
+
+    $scope.reedemPoints = function( Points ) {
+
+        var PointsInt = parseInt(Points);
+
+        var residue = PointsInt % 100;
+
+        var pointsToUse = PointsInt - residue;
+
+        if ( $scope.order.shoppingcart.hasDiscount ) {
+
+            $scope.order.shoppingcart.hasDiscount = false;
+
+        }else {
+            $scope.order.shoppingcart.pointsDoDiscount = pointsToUse;
+            $scope.order.shoppingcart.hasDiscount = true;
+        }
+
+        $rootScope.$broadcast( ConstantsService.SHOPPINGCART_CHANGED, $scope.order.shoppingcart );
     }
 }]);

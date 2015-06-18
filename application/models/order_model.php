@@ -28,7 +28,7 @@ class Order_model extends CI_Model {
 				'account_id' => $account_id,
 				'status' => 'RECEIVED',
 				'farmacy_id' => 1,
-				'from' => $order_data->from
+				'from_app' => $order_data->from
 		);
 		
 		$this->db->insert( 'order', $data );

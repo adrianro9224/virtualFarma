@@ -37,3 +37,23 @@ if ( !function_exists('_password_account_h2o')) {
 		return $password_decrypted;
 	}
 }
+
+if ( !function_exists('_calculate_points') ) {
+
+    function _calculate_points ( $orders ) {
+
+        $number_of_points = 0;
+        $points_base = 0.01; // 10 points for each $1000 COP
+
+        foreach ( $orders as $order ) {
+
+            $points_by_order = bcmul( $order->value, $points_base);
+            $number_of_points += $points_by_order;
+
+        }
+
+        return $number_of_points;
+
+    }
+
+}
