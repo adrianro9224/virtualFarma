@@ -415,7 +415,7 @@ class Account extends MY_Controller {
 
 							if( isset($_COOKIE['shoppingcart']) ) {
 
-                                $shoppingcart = json_decode( isset($_COOKIE['shoppingcart']) );
+                                $shoppingcart = json_decode( $_COOKIE['shoppingcart'] );
 
                                 $data['shoppingcart'] = $shoppingcart;
 
@@ -652,33 +652,4 @@ class Account extends MY_Controller {
 	
 	}
 
-    public function fix_active_ingredients() {
-
-        $active_ingredients = $this->get_active_ingredients();
-        $to_replace = array();
-
-        $cont = 0;
-
-
-        foreach ( $active_ingredients as $ingredient ) {
-
-            $aux_obj = new stdClass();
-
-            if ( str_split($ingredient->name)[0] == '\'' ) {
-                $aux_obj->id = $ingredient->id;
-                $aux_obj->name = $ingredient->name;
-                $to_replace[] = $aux_obj;
-            }
-
-        }
-
-
-        $fixed = $this->active_ingredient_model->update_by_ids( $to_replace );
-
-        if ( $fixed )
-            echo ":D";
-        else
-            echo ":'(";
-
-    }
 }
