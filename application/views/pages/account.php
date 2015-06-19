@@ -29,12 +29,11 @@
 			</div>
 		</div>
 		<!-- Errors over -->
-		
 		<!-- Content start -->
-		
 		<section id="content">
 			<div  class="container">
 				<div class="row">
+                    <p id="benefits-banner" class="bg-info">Regístrarte y podrás obtener <strong>puntos</strong> por cada compra, <strong>descuentos</strong>, <strong>tips</strong> de salud, <strong>boletín</strong> de noticias y muchas otras cosas más!</p>
 					<div class="col-md-5" ng-controller="RegisterForm">
 						<div class="panel panel-default">
 		  					<div class="panel-heading">

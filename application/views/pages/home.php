@@ -20,19 +20,10 @@
 				<section id="errors">
 					<?php include_once( __ROOT__TEMPLATES__ . 'notifications-banner.php');?>
 				</section>
+                <p id="hours_of_operation" class="bg-info"><strong>Horario de actención:</strong> Lunes a Viernes 8am a 8pm / Sábados de 8am a 6pm y Domingos y Festivos servicio solo virtual (no Callcenter) de 9am a 6pm‏</p>
 			</div>
 		</div>
 		<!-- Errors over -->
-		
-		<!-- Search products results start -->
-		<section id="search-widget-results">
-			<div class="container">
-				<div class="col-md-12">
-					<?php include_once( __ROOT__TEMPLATES__ . 'search_results.php');?>
-				</div>
-			</div>
-		</section>
-		<!-- Search products results start -->
 		
 		<!-- Content start -->
 		<section id="carousel">

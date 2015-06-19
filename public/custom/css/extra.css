@@ -341,6 +341,9 @@ a , .emphasis, span {
 	color: #05A8AA;
 }
 
+#product_listing .product-product .product-body h3 {
+    color: #05A8AA;
+}
 
 .btn-default {
 	background-color: rgba(255, 255, 255, 0.37);
@@ -366,6 +369,18 @@ button.btn.btn-default, a.btn.btn-default {
 	background-color: #e6e6e6;
   	border-color: #adadad;
 }
+
+#hours_of_operation {
+    border-radius: 0 0 5px 5px;
+    font-size: 1.1em;
+}
+
+#benefits-banner {
+    font-size: 1.5em;
+}
+
+
+
 
 #my-account-options-banner .btn-group i, #checkout-panel-nav .btn-group i {
 	color: #05A8AA;

@@ -6,13 +6,8 @@
 			</div>
 			<div class="col-lg-9 col-md-8 col-xs-7">
 	        	<div class="product-body">
-					<div class="product-tags">
-						<?php if( isset($product->stock) ):?>
-	                		<span class="label label-info">Stock</span>
-	                	<?php endif;?>
-	                    <span class="label label-danger">New</span>
-					</div>
-	                <h3><a><?= $product->name ?></a></h3>
+
+	                <h3><?= $product->name ?></h3>
 	                <p><?= $product->description ?></p>
 	                <div class="clearfix">
 	                	<div class="product-price pull-left">
