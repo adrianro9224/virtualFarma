@@ -37,10 +37,15 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
             $scope.shoppingcart.subtotal = shoppingCartSubtotals.productsSubtotal;
             $scope.shoppingcart.tax = shoppingCartSubtotals.productsTaxTotal;
 
-            if ( $scope.shoppingcart.hasDiscount )
+            var auxSubtotal = $scope.shoppingcart.subtotal
+
+            if ( $scope.shoppingcart.hasDiscount ) {
                 $scope.shoppingcart.subtotal -= $scope.shoppingcart.pointsDoDiscount;
 
-            var shippingCharge = getShippingCharge($scope.shoppingcart.subtotal);
+                auxSubtotal += $scope.shoppingcart.pointsDoDiscount;
+            }
+
+            var shippingCharge = getShippingCharge(auxSubtotal);
 
             console.info($scope.shoppingcart);
 

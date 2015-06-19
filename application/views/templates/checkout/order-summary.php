@@ -10,7 +10,7 @@
             <?php if ( isset($points) ): ?>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" ng-change="reedemPoints( '<?= $points?>' )" ng-model="pointsToReedem" ng-value="<?= $points?>"> Tienes <strong><?= $points . " puntos"?></strong>, haz click en el recuadro para usarlos como un descuento en tu compra
+                    <input type="checkbox" ng-checked="order.shoppingcart.hasDiscount" ng-change="reedemPoints( '<?= $points?>' )" ng-model="pointsToReedem" ng-value="<?= $points?>"> Tienes <strong><?= $points . " puntos"?></strong>, haz click en el recuadro para usarlos como un descuento en tu compra
                 </label>
             </div>
             <?php endif; ?>
@@ -63,7 +63,8 @@
                             <div class="arrow-up-info">
                             </div>
                             <div class="farma-tooltip-info">
-                                <span ng-bind=" 'Si quieres que tu envío sea gratis tu compra debe ser de ' + (order.shoppingcart.limitForFreeShipping | currency : '$' : 0) + ' pesos :(, solo te faltan ' + ((order.shoppingcart.limitForFreeShipping - order.shoppingcart.subtotal) | currency : '$' : 0) + ' :D'"></span>
+                                <span ng-if="!order.shoppingcart.hasDiscount" ng-bind=" 'Si quieres que tu envío sea gratis tu compra debe ser de ' + (order.shoppingcart.limitForFreeShipping | currency : '$' : 0) + ' pesos :(, solo te faltan ' + ((order.shoppingcart.limitForFreeShipping - order.shoppingcart.subtotal) | currency : '$' : 0) + ' :D'"></span>
+                                <span ng-if="order.shoppingcart.hasDiscount" ng-bind=" 'Si quieres que tu envío sea gratis tu compra debe ser de ' + (order.shoppingcart.limitForFreeShipping | currency : '$' : 0) + ' pesos :(, solo te faltan ' + ((order.shoppingcart.limitForFreeShipping - (order.shoppingcart.subtotal + order.shoppingcart.pointsDoDiscount ) ) | currency : '$' : 0) + ' :D'"></span>
                             </div>
                             <!-- tooltip -->
                         </div>

@@ -203,6 +203,7 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
         if ( $scope.order.shoppingcart.hasDiscount ) {
 
             $scope.order.shoppingcart.hasDiscount = false;
+            $scope.order.shoppingcart.subtotal += pointsToUse;
 
         }else {
             $scope.order.shoppingcart.pointsDoDiscount = pointsToUse;
