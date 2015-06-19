@@ -54,10 +54,10 @@
 					<section id="my-purchases" class="col-md-12 no-padding" ng-show="myPurchasesSelected"> 
 						<?php include_once( __ROOT__TEMPLATES__ . '/account/my-purchases-section.php');?>			
 					</section>
-					
+					<!--
 					<section id="my-diagnostic" class="col-md-12 no-padding" ng-show="myDiagnosticSelected">
-						<?php include_once( __ROOT__TEMPLATES__ . '/account/my-diagnostic-section.php');?>
-					</section>
+						<// include_once( __ROOT__TEMPLATES__ . '/account/my-diagnostic-section.php');?>
+					</section> -->
 				</div>
 			</div>
 		</section>

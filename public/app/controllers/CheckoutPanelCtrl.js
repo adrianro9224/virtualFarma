@@ -117,7 +117,7 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
 
                     }).
                     error(function(data, status, headers, config) {
-                        //$window.location.reload();
+                        $window.location.reload();
                         console.info(data + ":(");
                     });
 

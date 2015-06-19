@@ -40,5 +40,20 @@ class Accounts {
 
         return $result;
     }
+
+    public function redeem_points( $pointsDoRedeem, $account_id ) {
+
+        $CI =& get_instance();
+        $CI->load->model("account_model");
+
+        $account_with_points = $CI->account_model->get_points( $account_id );
+
+        $points_to_save = $account_with_points->points - $pointsDoRedeem;
+
+        $result = $CI->account_model->update_points( $points_to_save, $account_id );
+
+        return $result;
+
+    }
 	
 }

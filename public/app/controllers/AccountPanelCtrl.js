@@ -8,8 +8,8 @@ farmapp.controller('AccountPanelCtrl', ['$scope', '$http', function( $scope, $ht
 
     "use strict";
 
-    $scope.myAccountSelected = true;
-    $scope.myPurchasesSelected = false;
+    $scope.myAccountSelected = false;
+    $scope.myPurchasesSelected = true;
     $scope.myDiagnosticSelected = false;
 
     $scope.openSection = function ( panelSelection ) {

@@ -53,4 +53,20 @@ Class Active_ingredient_model extends CI_Model {
         return $insert_info;
 
     }
+
+    public function update_by_ids ( $to_replace ) {
+
+        $cont = 0;
+        foreach ( $to_replace as $item ) {
+
+            $this->db->set('name', ucfirst(str_replace('\'', '', $item->name)));
+            $this->db->where('id', $item->id);
+
+            $this->db->update('active_ingredient');
+
+            $cont++;
+        }
+
+        return $cont == count($to_replace);
+    }
 }

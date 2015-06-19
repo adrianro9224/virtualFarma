@@ -150,14 +150,28 @@ class Checkout extends MY_Controller {
 			
 			$result = $this->orders->save_order( $order->data, $account_id );
 
-            $saved = $this->accounts->save_points( $order->data->points, $account_id );
-			
-			if ($result && $saved) {
-				echo 'true';
-			}else {
-				echo 'false';
-			}
-			
+            //redeem points
+            if ( $order->data->shoppingcart->hasDiscount ) {
+                $redeemed = $this->accounts->redeem_points($order->data->shoppingcart->pointsDoDiscount, $account_id);
+
+                if ( $redeemed )
+                    $saved = $this->accounts->save_points( $order->data->points, $account_id );
+
+                if ( $result && $saved && $redeemed ) {
+                    echo 'true';
+                }else {
+                    echo 'false';
+                }
+            }else {
+                $saved = $this->accounts->save_points( $order->data->points, $account_id );
+
+                if ($result && $saved) {
+                    echo 'true';
+                }else {
+                    echo 'false';
+                }
+            }
+
 		} else 
 			redirect('/account');
 		

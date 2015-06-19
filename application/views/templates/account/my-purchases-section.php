@@ -66,9 +66,10 @@
             </div>
         </div>
      </div>
+
     <div class="col-md-6">
 	    <div class="panel panel-warning">
-            <div class="panel-heading">Panel heading without title</div>
+            <div class="panel-heading">Nuestros horarios</div>
             <div class="panel-body">
             Panel content
             </div>

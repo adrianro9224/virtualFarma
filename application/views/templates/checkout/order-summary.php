@@ -58,16 +58,18 @@
 						<div class="order-summary-item-content">
 							<span class="pull-right value" ng-bind="order.shoppingcart.subtotal | currency : '$' : 0"></span>
 						</div>
-                        <div class="form-group ng-cloak" ng-if="!order.shoppingcart.shippingFree" ng-cloak>
+                        <div class="form-group ng-cloak" ng-if="(order.shoppingcart.minimumOrderValueInvalid) || !order.shoppingcart.shippingFree" ng-cloak>
                             <!-- tooltip -->
                             <div class="arrow-up-info">
                             </div>
                             <div class="farma-tooltip-info">
-                                <span ng-if="!order.shoppingcart.hasDiscount" ng-bind=" 'Si quieres que tu envío sea gratis tu compra debe ser de ' + (order.shoppingcart.limitForFreeShipping | currency : '$' : 0) + ' pesos :(, solo te faltan ' + ((order.shoppingcart.limitForFreeShipping - order.shoppingcart.subtotal) | currency : '$' : 0) + ' :D'"></span>
-                                <span ng-if="order.shoppingcart.hasDiscount" ng-bind=" 'Si quieres que tu envío sea gratis tu compra debe ser de ' + (order.shoppingcart.limitForFreeShipping | currency : '$' : 0) + ' pesos :(, solo te faltan ' + ((order.shoppingcart.limitForFreeShipping - (order.shoppingcart.subtotal + order.shoppingcart.pointsDoDiscount ) ) | currency : '$' : 0) + ' :D'"></span>
+                                <span ng-if="order.shoppingcart.minimumOrderValueInvalid" ng-bind=" 'El mónto mínimo de tu compra debe ser de ' + (order.shoppingcart.minimumOrderValue | currency : '$' : 0) + ' pesos :(, solo te faltan ' + ((order.shoppingcart.minimumOrderValue - order.shoppingcart.subtotal) | currency : '$' : 0) + ' :D'"></span>
+                                <span ng-if="(!order.shoppingcart.hasDiscount) && (!order.shoppingcart.shippingFree && !order.shoppingcart.minimumOrderValueInvalid)" ng-bind=" 'Si quieres que tu envío sea gratis tu compra debe ser de ' + (order.shoppingcart.limitForFreeShipping | currency : '$' : 0) + ' pesos :(, solo te faltan ' + ((order.shoppingcart.limitForFreeShipping - order.shoppingcart.subtotal) | currency : '$' : 0) + ' :D'"></span>
+                                <span ng-if="order.shoppingcart.hasDiscount && (!order.shoppingcart.shippingFree && !order.shoppingcart.minimumOrderValueInvalid)" ng-bind=" 'Si quieres que tu envío sea gratis tu compra debe ser de ' + (order.shoppingcart.limitForFreeShipping | currency : '$' : 0) + ' pesos :(, solo te faltan ' + ((order.shoppingcart.limitForFreeShipping - (order.shoppingcart.subtotal + order.shoppingcart.pointsDoDiscount ) ) | currency : '$' : 0) + ' :D'"></span>
                             </div>
                             <!-- tooltip -->
                         </div>
+
                     </div>
 					<div id="total-products" class="order-summary-item">
 						<div class="order-summary-item-content">
@@ -127,6 +129,6 @@
 		</div>		
 		</div>
 		<a href="/account/log_in" ng-show="order.sended" id="go-to-orders-button" class="btn btn-success btn-lg" role="button">Compra completada, ir a mi cuenta</a>
-		<a ng-click="stepCompleted( order, 'orderSummary' )" ng-hide="order.sended" ng-disabled="!(order.shippingData.status && order.paymentMethod.status) || sendingOrder" id="confirm-order-button" class="btn btn-warning btn-lg" role="button">Confirmar Orden</a>
+		<a ng-click="stepCompleted( order, 'orderSummary' )" ng-hide="order.sended" ng-disabled="( !(order.shippingData.status && order.paymentMethod.status) || sendingOrder ) || order.shoppingcart.minimumOrderValueInvalid" id="confirm-order-button" class="btn btn-warning btn-lg" role="button">Confirmar Orden</a>
 	</div>
 </div>
