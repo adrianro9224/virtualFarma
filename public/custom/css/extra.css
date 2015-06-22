@@ -1461,3 +1461,10 @@ ICONS START
 #product-request-form p.bg-primary {
     font-size: 24px;
 }
+/*
+*admin
+*/
+
+#admin-header {
+    margin-bottom: 20px;
+}

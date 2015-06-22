@@ -17,6 +17,8 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
     $scope.checkoutCurrentStep = "shippingData";
 
     var limitPayuOrderValue = ConstantsService.LIMIT_PAYU_ORDER_VALUE;
+    var minimumOrderValue = ConstantsService.MINIMUM_ORDER_VALUE;
+    var limitForFreeShipping = ConstantsService.LIMIT_FOR_FREE_SHIPPING;
 
     $scope.mouseover = false;
 
@@ -218,6 +220,8 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
                 $scope.sale.shoppingcart.numOfproductsSubtotal = 0;
                 $scope.sale.shoppingcart.numOfproductsTotal = 0;
                 $scope.sale.shoppingcart.limitOrderValueInvalid = false;
+                $scope.sale.shoppingcart.minimumOrderValueInvalid = false;
+                $scope.sale.shoppingcart.hasDiscount = false;
                 $scope.sale.shoppingcart.sended = false;
 
                 var firtsProduct = _chargeProductObject( producToAdd );
@@ -294,7 +298,15 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
         $scope.sale.shoppingcart.subtotal = shoppingCartSubtotals.productsSubtotal;
         $scope.sale.shoppingcart.tax = shoppingCartSubtotals.productsTaxTotal;
 
-        var shippingCharge = getShippingCharge( $scope.sale.shoppingcart.subtotal );
+        var auxSubtotal = $scope.sale.shoppingcart.subtotal
+
+        if ( $scope.sale.shoppingcart.hasDiscount ) {
+            $scope.sale.shoppingcart.subtotal -= $scope.sale.shoppingcart.pointsDoDiscount;
+
+            auxSubtotal += $scope.sale.shoppingcart.pointsDoDiscount;
+        }
+
+        var shippingCharge = getShippingCharge(auxSubtotal);
 
         $scope.sale.shoppingcart.shippingCharge = shippingCharge;
 
@@ -311,10 +323,25 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
         $scope.subtotal = $scope.sale.shoppingcart.subtotal;
 
 
+        if (minimumOrderValue != undefined) {
+
+            $scope.sale.shoppingcart.minimumOrderValue = minimumOrderValue;
+
+            if ($scope.sale.shoppingcart.subtotal < minimumOrderValue)
+                $scope.sale.shoppingcart.minimumOrderValueInvalid = true;
+            else
+                $scope.sale.shoppingcart.minimumOrderValueInvalid = false;
+
+        }
+
+
         if( limitPayuOrderValue != undefined ) {
             if( $scope.sale.shoppingcart.total > limitPayuOrderValue )
                 $scope.sale.shoppingcart.limitOrderValueInvalid = true;
         }
+
+        if ( limitForFreeShipping != undefined )
+            $scope.sale.shoppingcart.limitForFreeShipping = limitForFreeShipping;
 
         $scope.total = $scope.sale.shoppingcart.total;
 

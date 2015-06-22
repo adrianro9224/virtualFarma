@@ -5,7 +5,7 @@
 <body>
 	<div id="wrapper">
 		<!-- Header start -->
-		<section id="header">
+		<section id="admin-header" class="primary-background">
 			<section id="header-top" class="container-fluid">
 				<?php include_once( __ROOT__ADMIN__TEMPLATES__ . 'header-top.php');?>
 			</section>
@@ -39,9 +39,7 @@
 		<!-- Content over -->
 		
 		<!-- Footer start -->
-		<section id="footer">
-				<?php include_once( __ROOT__ADMIN__TEMPLATES__ . 'footer.php');?>
-		</section>
+
 		<!-- Footer over -->
 	</div>	
 </body>

@@ -7,7 +7,16 @@
 			<div class="shopping-cart-item-content">
 				<span class="pull-right value" ng-bind="subtotal | currency : '$' : 0"></span>
 			</div>
-		</div>
+            <div class="form-group ng-cloak" ng-if="sale.shoppingcart.minimumOrderValueInvalid" ng-cloak>
+                <!-- tooltip -->
+                <div class="arrow-up-info">
+                </div>
+                <div class="farma-tooltip-info">
+                    <span ng-bind=" 'El mónto mínimo de tu compra debe ser de ' + (sale.shoppingcart.minimumOrderValue | currency : '$' : 0) + ' pesos :(, solo te faltan ' + ((sale.shoppingcart.minimumOrderValue - sale.shoppingcart.subtotal) | currency : '$' : 0) + ' :D'"></span>
+                </div>
+                <!-- tooltip -->
+            </div>
+        </div>
 		<div id="total-products" class="shopping-cart-item">
 			<div class="shopping-cart-item-content">
 				<span class="title" >Costo de envío</span>

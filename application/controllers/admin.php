@@ -28,7 +28,7 @@ class Admin extends MY_Controller {
 			$data['account_types'] = $session_data['account_types'];
 		}
 		
-		if ( isset($session_data[$account_types[0] . '_id']) || isset($session_data[$account_types[2] . '_id']) || isset($session_data[$account_types[3] . '_id']))
+		if ( isset($session_data[$account_types[0] . '_id']) || isset($session_data[$account_types[2] . '_id']) || isset($session_data[$account_types[3] . '_id']) || isset($session_data[$account_types[4] . '_id']) )
 			redirect('/admin/admin_login');
 		
 		$this->load->view($page . '/index', $data );
