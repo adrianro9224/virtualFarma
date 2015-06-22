@@ -55,5 +55,16 @@ class Accounts {
         return $result;
 
     }
+
+    public function search_account_by_identification_number( $identification_number_to_search ) {
+
+        $CI =& get_instance();
+        $CI->load->model("account_model");
+
+        $account = $CI->account_model->get_by_identification_number( $identification_number_to_search );
+
+        return $account;
+
+    }
 	
 }

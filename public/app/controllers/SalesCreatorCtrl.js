@@ -19,6 +19,7 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
     var limitPayuOrderValue = ConstantsService.LIMIT_PAYU_ORDER_VALUE;
     var minimumOrderValue = ConstantsService.MINIMUM_ORDER_VALUE;
     var limitForFreeShipping = ConstantsService.LIMIT_FOR_FREE_SHIPPING;
+    var pointsBase = ConstantsService.POINTS_BASE;
 
     $scope.mouseover = false;
 
@@ -57,7 +58,7 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
         $http.get("http://virtualfarma.com.co/admin/all_products")
             .success(function (data, status, headers, config) {
 
-              //  console.info(data + ":(");
+                //  console.info(data + ":(");
 
                 if ( json != 'NULL' ){
                     var json = angular.fromJson(data);
@@ -174,6 +175,8 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
 
                 order.from = 'CALL_CENTER';
 
+                order.points = order.shoppingcart.subtotal * ConstantsService.POINTS_BASE;
+
                 $http.post("http://virtualfarma.com.co/checkout/create_order" , { data : order} )
                     .success(function(data, status, headers, config) {
 
@@ -222,6 +225,7 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
                 $scope.sale.shoppingcart.limitOrderValueInvalid = false;
                 $scope.sale.shoppingcart.minimumOrderValueInvalid = false;
                 $scope.sale.shoppingcart.hasDiscount = false;
+                $scope.sale.shoppingcart.pointsBase = ( pointsBase != undefined ) ? pointsBase : ConstantsService.POINTS_BASE;
                 $scope.sale.shoppingcart.sended = false;
 
                 var firtsProduct = _chargeProductObject( producToAdd );
@@ -281,7 +285,7 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
         currentProduct.categoryId = productToAdd.category_id;
         currentProduct.presentation = productToAdd.presentation;
         currentProduct.cant = productToAdd.cant;
-         currentProduct.tax = taxUnit == 0 ? 0 : taxUnit;
+        currentProduct.tax = taxUnit == 0 ? 0 : taxUnit;
         currentProduct.price = priceUnit;
         currentProduct.discount = discount == 0 ? 0 : discount;
 
@@ -355,7 +359,7 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
 
         var shippingCharge;
 
-        if ( subtotal > ConstantsService.LIMIT_FOR_FREE_SHIPPING )
+        if ( subtotal >= ConstantsService.LIMIT_FOR_FREE_SHIPPING )
             shippingCharge = "Es gratis";
         else
             shippingCharge = ConstantsService.SHIPPING_CHARGE;
@@ -452,6 +456,30 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
         $scope.sale.shoppingcart.products.splice( key, 1 );
         $scope.sale.shoppingcart.numOfproductsTotal--;
         $scope.sale.shoppingcart.numOfproductsSubtotal--;
+    }
+
+    $scope.reedemPoints = function( Points ) {
+
+
+        console.info( Points );
+
+        var PointsInt = parseInt(Points);
+
+        var residue = PointsInt % 100;
+
+        var pointsToUse = PointsInt - residue;
+
+        if ( $scope.sale.shoppingcart.hasDiscount ) {
+
+            $scope.sale.shoppingcart.hasDiscount = false;
+            $scope.sale.shoppingcart.subtotal += pointsToUse;
+
+        }else {
+            $scope.sale.shoppingcart.pointsDoDiscount = pointsToUse;
+            $scope.sale.shoppingcart.hasDiscount = true;
+        }
+
+        $rootScope.$broadcast( ConstantsService.SALE_CHANGED, $scope.sale );
     }
 
 }]);

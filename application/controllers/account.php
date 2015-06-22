@@ -509,7 +509,7 @@ class Account extends MY_Controller {
 					
 					$address->line1 = $update_account_form['userAddressLine1'];
 					$address->neighborhood = $update_account_form['userNeighborhood'];
-					$address->from = "ACCOUNT_sign_up";
+					$address->from = "ACCOUNT_SING_UP";
 					
 					$address_registered_status = $this->address->write_account_sign_up_address( $address, $account_id );
 					
