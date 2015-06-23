@@ -482,4 +482,22 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
         $rootScope.$broadcast( ConstantsService.SALE_CHANGED, $scope.sale );
     }
 
+    $scope.DoGeoCoding = function( addressToGeoencoding) {
+
+        alert(addressToGeoencoding);
+        $http.get("http://maps.googleapis.com/maps/api/geocode/json?address=" + addressToGeoencoding )
+            .success(function(data, status, headers, config) {
+
+                console.info(data);
+
+            }).
+            error(function(data, status, headers, config) {
+
+                console.info(data + ":(");
+            });
+
+    }
+
+
+
 }]);

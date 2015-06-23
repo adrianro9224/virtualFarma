@@ -47,8 +47,8 @@
             </div>
             <button class="btn btn-warning" type="submit" ng-disabled="searchClientForm.$invalid">Buscar</button>
         </div>
-
     </form>
+<!--    <input type="text" name="address" ng-model="addressToSearch" ng-change="DoGeoCoding(addressToSearch)"> -->
 </div>
 
 <div class="well well-lg col-md-12" >

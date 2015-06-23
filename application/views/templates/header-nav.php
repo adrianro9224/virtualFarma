@@ -46,6 +46,10 @@
                                         </ul>
                                     </li>
 									<li><a href="/product/show_products_by_category/sex_shop" title="Todo lo que necesitas" >Sex shop</a></li>
+                                    <li ng-controller="HoursOfOperationCtrl">
+                                        <?php include_once( __ROOT__TEMPLATES__ . 'hours_of_operation_modal.php' )?>
+                                        <a ng-click="open('sm')" title="Horario" >Horario de atención</a>
+                                    </li>
 								</ul>
 							</div><!-- /.navbar-collapse -->
 						</div><!-- /.container-fluid -->

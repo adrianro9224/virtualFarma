@@ -14,7 +14,12 @@ farmapp.factory( 'ConstantsService', function(){ // no inject $scope dependency,
         SHOPPINGCART_CHANGED : "SHOPPINGCART_CHANGED",
         UPDATE_ORDER : "UPDATE_ORDER",
         SALE_CHANGED : "SALE_CHANGED",
-        POINTS_BASE : 0.01
+        POINTS_BASE : 0.01,
+        GALERIAS_GEOMETRY_LOCATION :{ lat: 4.642956, lng: -74.0734688 },
+        CAMPIN_GEOMETRY_LOCATION : { lat: 4.6436076, lng: -74.0763303 },
+        PORCIUNCULA_GEOMETRY_LOCATION : { lat: 4.6592169, lng: -74.0567377 },
+        ANDES_GEOMETRY_LOCATION : { lat:4.6871349, lng: -74.0692006 },
+        CASTELLANA_GEOMETRY_LOCATION : { lat: 4.684235, lng: -74.060316 }
     };
 
     return constantService;
