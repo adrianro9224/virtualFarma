@@ -1468,3 +1468,11 @@ ICONS START
 #admin-header {
     margin-bottom: 20px;
 }
+
+/*
+*Maps
+*/
+
+#checkout-map-canvas {
+    height: 250px;
+}

@@ -21,6 +21,14 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
     var limitForFreeShipping = ConstantsService.LIMIT_FOR_FREE_SHIPPING;
     var pointsBase = ConstantsService.POINTS_BASE;
 
+    var origins = [
+        new google.maps.LatLng(ConstantsService.GALERIAS_GEOMETRY_LOCATION.lat, ConstantsService.GALERIAS_GEOMETRY_LOCATION.lng),
+        new google.maps.LatLng(ConstantsService.CAMPIN_GEOMETRY_LOCATION.lat, ConstantsService.CAMPIN_GEOMETRY_LOCATION.lng),
+        new google.maps.LatLng(ConstantsService.PORCIUNCULA_GEOMETRY_LOCATION.lat, ConstantsService.PORCIUNCULA_GEOMETRY_LOCATION.lng),
+        new google.maps.LatLng(ConstantsService.ANDES_GEOMETRY_LOCATION.lat, ConstantsService.ANDES_GEOMETRY_LOCATION.lng),
+        new google.maps.LatLng(ConstantsService.CASTELLANA_GEOMETRY_LOCATION.lat, ConstantsService.CASTELLANA_GEOMETRY_LOCATION.lng)
+    ];
+
     $scope.mouseover = false;
 
     $scope.showSubmitButtonTooltip = function() {
@@ -484,11 +492,15 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
 
     $scope.DoGeoCoding = function( addressToGeoencoding) {
 
-        alert(addressToGeoencoding);
+
         $http.get("http://maps.googleapis.com/maps/api/geocode/json?address=" + addressToGeoencoding )
             .success(function(data, status, headers, config) {
 
-                console.info(data);
+                //console.info(data);
+
+                //renderMap();
+                var destination = {lat: 4.676485899999999, lng: -74.1042658};
+                calculateDistances( destination );
 
             }).
             error(function(data, status, headers, config) {
@@ -497,6 +509,102 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
             });
 
     }
+
+    function renderMap ( lat, lng ) {
+        var map;
+        function initialize() {
+            map = new google.maps.Map(document.getElementById('my-map'), {
+                zoom: 16,
+                center: {lat: 4.676485899999999, lng: -74.1042658}
+            });
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize());
+    }
+
+    function calculateDistances ( destination ) {
+
+        var destinationLatLng = new google.maps.LatLng( destination.lat, destination.lng );
+
+        var service = new google.maps.DistanceMatrixService();
+        service.getDistanceMatrix(
+            {
+                origins: origins,
+                destinations: [destinationLatLng],
+                travelMode: google.maps.TravelMode.DRIVING,
+                unitSystem: google.maps.UnitSystem.METRIC,
+                durationInTraffic: true,
+                avoidHighways: true,
+                avoidTolls: true
+            }, searchMoreNearby);
+
+        function searchMoreNearby(response, status) {
+
+            if (status === "OK") {
+
+                console.info(response.rows);
+
+                var values = getValues( response.rows );
+
+                Array.prototype.max = function() {
+                    return Math.max.apply(null, this);
+                };
+
+                Array.prototype.min = function() {
+                    return Math.min.apply(null, this);
+                };
+
+                var min = values.min();
+                var minKey = undefined
+
+                angular.forEach( response.rows, function(value ,key) {
+
+                    if( value.elements[0].status === "OK"){
+
+                        if ( value.elements[0].distance.value == min )
+                            minKey = key;
+
+                    }
+                });
+
+                console.info(minKey + ' ' + min);
+
+            }
+
+        }
+
+        function getValues( rows ) {
+
+            var result = [];
+
+            angular.forEach( rows, function(value ,key) {
+
+                if ( value.elements[0].status === "OK" ) {
+                    result[key] = value.elements[0].distance.value;
+                }
+
+            });
+
+            return result;
+        }
+
+/*
+        var lats = origin.lat - destination.lat;
+        var lngs = origin.lng - destination.lng;
+
+        var latm = lats *60 * 1852;
+        var lngm = (lngs * Math.cos(origin.lat * Math.PI / 180)) * 60 * 1852;
+
+        var distInMeters = Math.sqrt(Math.pow(latm, 2) + Math.pow(lngm, 2));*/
+
+        /*
+        var r = 6378.7;// radio de la tierra
+        var d = r * Math.acos(Math.sin(origin.lat) * Math.sin(destination.lat) + Math.cos(origin.lat) * Math.cos(destination.lat) * Math.cos(destination.lng - origin.lng));*/
+
+        //console.info(distInMeters);
+
+    }
+
 
 
 
