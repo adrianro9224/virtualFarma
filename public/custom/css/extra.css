@@ -1469,6 +1469,10 @@ ICONS START
     margin-bottom: 20px;
 }
 
+#header-nav-container.col-sm-12.col-md-10.col-md-offset-2.col-lg-6.col-lg-offset-4.no-padding {
+    margin-left: 31.333333% !important;
+}
+
 /*
 *Maps
 */

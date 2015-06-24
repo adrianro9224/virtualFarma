@@ -2,7 +2,7 @@
 	<div id="sticky-anchor"></div>
 	<div class="container-fluid" id="sticky">
 		<div class="row">
-			<div class="col-md-10 col-md-offset-3 col-lg-6 col-lg-offset-4 no-padding">
+			<div id="header-nav-container"class="col-sm-12 col-md-10 col-md-offset-2 col-lg-6 col-lg-offset-4 no-padding">
 				<div id="primary-nav">
 					<nav class="navbar navbar-default">
 						<div class="container-fluid">
@@ -45,7 +45,8 @@
                                             <?php endforeach;?>
                                         </ul>
                                     </li>
-									<li><a href="/product/show_products_by_category/sex_shop" title="Todo lo que necesitas" >Sex shop</a></li>
+									<li><a href="/wordpress" title="Todo lo que necesitas" >Sex shop</a></li>
+                                    <li><a href="/product/show_products_by_category/sex_shop" title="Todo lo que necesitas" >Noticias</a></li>
                                     <li ng-controller="HoursOfOperationCtrl">
                                         <?php include_once( __ROOT__TEMPLATES__ . 'hours_of_operation_modal.php' )?>
                                         <a ng-click="open('sm')" title="Horario" >Horario de atención</a>
