@@ -2,37 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="acc28122-f764-417e-9c43-8a5aa7bb356b" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/images/4.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/images/5.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/images/0.jpg" afterPath="$PROJECT_DIR$/assets/images/0.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/images/1.jpg" afterPath="$PROJECT_DIR$/assets/images/1.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/images/2.jpg" afterPath="$PROJECT_DIR$/assets/images/2.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/images/3.jpg" afterPath="$PROJECT_DIR$/assets/images/3.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.htaccess" afterPath="$PROJECT_DIR$/.htaccess" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/controllers/CarouselCtrl.js" afterPath="$PROJECT_DIR$/public/app/controllers/CarouselCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/controllers/CheckoutPanelCtrl.js" afterPath="$PROJECT_DIR$/public/app/controllers/CheckoutPanelCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/core/MY_Controller.php" afterPath="$PROJECT_DIR$/application/core/MY_Controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/account.php" afterPath="$PROJECT_DIR$/application/controllers/account.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/config/autoload.php" afterPath="$PROJECT_DIR$/application/config/autoload.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/templates/carousel.php" afterPath="$PROJECT_DIR$/application/views/templates/carousel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/pages/category.php" afterPath="$PROJECT_DIR$/application/views/pages/category.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/category_model.php" afterPath="$PROJECT_DIR$/application/models/category_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/checkout.php" afterPath="$PROJECT_DIR$/application/controllers/checkout.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/config/database.php" afterPath="$PROJECT_DIR$/application/config/database.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/custom/css/extra.css" afterPath="$PROJECT_DIR$/public/custom/css/extra.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/templates/head.php" afterPath="$PROJECT_DIR$/application/views/templates/head.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/templates/header-nav.php" afterPath="$PROJECT_DIR$/application/views/templates/header-nav.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/templates/header-top.php" afterPath="$PROJECT_DIR$/application/views/templates/header-top.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/home.php" afterPath="$PROJECT_DIR$/application/controllers/home.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/.idea/misc.xml" afterPath="$PROJECT_DIR$/public/app/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/templates/checkout/order-summary.php" afterPath="$PROJECT_DIR$/application/views/templates/checkout/order-summary.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/templates/product-list.php" afterPath="$PROJECT_DIR$/application/views/templates/product-list.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/product.php" afterPath="$PROJECT_DIR$/application/controllers/product.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/product_model.php" afterPath="$PROJECT_DIR$/application/models/product_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/pages/request_products.php" afterPath="$PROJECT_DIR$/application/views/pages/request_products.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/templates/checkout/shipping-data.php" afterPath="$PROJECT_DIR$/application/views/templates/checkout/shipping-data.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/templates/shopping-cart.php" afterPath="$PROJECT_DIR$/application/views/templates/shopping-cart.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/templates/suggested_products_carousel.php" afterPath="$PROJECT_DIR$/application/views/templates/suggested_products_carousel.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/.idea/workspace.xml" afterPath="$PROJECT_DIR$/public/app/.idea/workspace.xml" />
     </list>
@@ -65,21 +35,71 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="header-nav.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/templates/header-nav.php">
+      <file leaf-file-name="header-top.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/admin/templates/header-top.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.6666665" vertical-offset="0" max-vertical-offset="1386">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+            <state vertical-scroll-proportion="-2.6666667" vertical-offset="0" max-vertical-offset="378">
+              <caret line="4" column="57" selection-start-line="4" selection-start-column="57" selection-end-line="4" selection-end-column="57" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header-top.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/templates/header-top.php">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/admin/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="12.777778" vertical-offset="381" max-vertical-offset="2376">
-              <caret line="2" column="53" selection-start-line="2" selection-start-column="53" selection-end-line="2" selection-end-column="53" />
+            <state vertical-scroll-proportion="-2.6666667" vertical-offset="54" max-vertical-offset="972">
+              <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/admin/seller/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.0" vertical-offset="378" max-vertical-offset="1242">
+              <caret line="33" column="95" selection-start-line="33" selection-start-column="95" selection-end-line="33" selection-end-column="95" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="shopping-cart.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/templates/shopping-cart.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-17.481482" vertical-offset="302" max-vertical-offset="1476">
+              <caret line="43" column="24" selection-start-line="35" selection-start-column="12" selection-end-line="43" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="order-summary.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/templates/checkout/order-summary.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.666667" vertical-offset="1278" max-vertical-offset="2520">
+              <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="97" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sales-shopping-cart.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/admin/seller/templates/sales-shopping-cart.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="4.6666665" vertical-offset="378" max-vertical-offset="1440">
+              <caret line="14" column="219" selection-start-line="14" selection-start-column="219" selection-end-line="14" selection-end-column="219" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/controllers/admin.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.5123558" vertical-offset="2052" max-vertical-offset="4860">
+              <caret line="63" column="34" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -88,48 +108,8 @@
       <file leaf-file-name="extra.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/custom/css/extra.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.631579" vertical-offset="24810" max-vertical-offset="25740">
-              <caret line="1393" column="13" selection-start-line="1393" selection-start-column="13" selection-end-line="1393" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="checkout.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/pages/checkout.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="20.0" vertical-offset="540" max-vertical-offset="1764">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="order-summary.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/views/templates/checkout/order-summary.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7413509" vertical-offset="1026" max-vertical-offset="1926">
-              <caret line="82" column="47" selection-start-line="82" selection-start-column="47" selection-end-line="82" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="shipping-data.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/templates/checkout/shipping-data.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.666667" vertical-offset="3690" max-vertical-offset="4680">
-              <caret line="224" column="103" selection-start-line="224" selection-start-column="103" selection-end-line="224" selection-end-column="103" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="carousel.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/templates/carousel.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.3333333" vertical-offset="0" max-vertical-offset="306">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state vertical-scroll-proportion="-9.491228" vertical-offset="25883" max-vertical-offset="26550">
+              <caret line="1468" column="24" selection-start-line="1468" selection-start-column="24" selection-end-line="1468" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -171,9 +151,14 @@
         <option value="$PROJECT_DIR$/application/config/database.php" />
         <option value="$PROJECT_DIR$/application/views/templates/header-nav.php" />
         <option value="$PROJECT_DIR$/application/views/templates/carousel.php" />
-        <option value="$PROJECT_DIR$/public/custom/css/extra.css" />
         <option value="$PROJECT_DIR$/application/views/templates/checkout/shipping-data.php" />
         <option value="$PROJECT_DIR$/application/views/templates/checkout/order-summary.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/templates/header-top.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/index.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/seller/index.php" />
+        <option value="$PROJECT_DIR$/public/custom/css/extra.css" />
+        <option value="$PROJECT_DIR$/application/views/admin/seller/templates/sales-shopping-cart.php" />
+        <option value="$PROJECT_DIR$/application/controllers/admin.php" />
       </list>
     </option>
   </component>
@@ -182,9 +167,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="y" value="24" />
+    <option name="y" value="-4" />
     <option name="width" value="1360" />
-    <option name="height" value="744" />
+    <option name="height" value="772" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -334,8 +319,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="24" width="1360" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="-4" width="1360" height="772" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32789317" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -400,41 +385,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/models/product_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="2312">
-          <caret line="23" column="51" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/account_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="356" max-vertical-offset="3349">
-          <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/account.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="10302">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/templates/header-nav.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="1122">
-          <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/templates/breadcrumb.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="459">
-          <caret line="6" column="134" selection-start-line="6" selection-start-column="134" selection-end-line="6" selection-end-column="166" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/models/account_model.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="3349">
@@ -575,13 +525,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/templates/shopping-cart.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73311365" vertical-offset="869" max-vertical-offset="1476">
-          <caret line="73" column="4" selection-start-line="73" selection-start-column="4" selection-end-line="73" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/templates/product-list.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22899505" vertical-offset="887" max-vertical-offset="1638">
@@ -621,7 +564,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2566" max-vertical-offset="3366">
           <caret line="169" column="0" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -664,7 +606,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="17406">
           <caret line="11" column="66" selection-start-line="11" selection-start-column="66" selection-end-line="11" selection-end-column="66" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -672,7 +613,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="1116">
           <caret line="16" column="27" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -680,7 +620,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1386">
           <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -688,7 +627,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="1026">
           <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -696,7 +634,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="441" max-vertical-offset="11754">
           <caret line="96" column="14" selection-start-line="96" selection-start-column="14" selection-end-line="96" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -704,21 +641,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="1332">
           <caret line="44" column="59" selection-start-line="44" selection-start-column="37" selection-end-line="44" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/config/database.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8971061" vertical-offset="648" max-vertical-offset="1530">
-          <caret line="67" column="59" selection-start-line="67" selection-start-column="59" selection-end-line="67" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/templates/header-nav.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.6666665" vertical-offset="0" max-vertical-offset="1386">
+        <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="1368">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
@@ -726,48 +654,103 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/templates/carousel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.3333333" vertical-offset="0" max-vertical-offset="306">
+        <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="306">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/templates/header-top.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="12.777778" vertical-offset="381" max-vertical-offset="2376">
+        <state vertical-scroll-proportion="0.0" vertical-offset="381" max-vertical-offset="2592">
           <caret line="2" column="53" selection-start-line="2" selection-start-column="53" selection-end-line="2" selection-end-column="53" />
+          <folding>
+            <marker date="1434668090266" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/templates/checkout/shipping-data.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3690" max-vertical-offset="4680">
+          <caret line="224" column="103" selection-start-line="224" selection-start-column="103" selection-end-line="224" selection-end-column="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/pages/checkout.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="1764">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26935485" vertical-offset="733" max-vertical-offset="1548">
+          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/templates/header-top.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.6666667" vertical-offset="0" max-vertical-offset="378">
+          <caret line="4" column="57" selection-start-line="4" selection-start-column="57" selection-end-line="4" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.6666667" vertical-offset="54" max-vertical-offset="972">
+          <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/custom/css/extra.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.631579" vertical-offset="24810" max-vertical-offset="25740">
-          <caret line="1393" column="13" selection-start-line="1393" selection-start-column="13" selection-end-line="1393" selection-end-column="13" />
+        <state vertical-scroll-proportion="-9.491228" vertical-offset="25883" max-vertical-offset="26550">
+          <caret line="1468" column="24" selection-start-line="1468" selection-start-column="24" selection-end-line="1468" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/templates/checkout/shipping-data.php">
+    <entry file="file://$PROJECT_DIR$/application/views/admin/seller/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.666667" vertical-offset="3690" max-vertical-offset="4680">
-          <caret line="224" column="103" selection-start-line="224" selection-start-column="103" selection-end-line="224" selection-end-column="103" />
+        <state vertical-scroll-proportion="-8.0" vertical-offset="378" max-vertical-offset="1242">
+          <caret line="33" column="95" selection-start-line="33" selection-start-column="95" selection-end-line="33" selection-end-column="95" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/pages/checkout.php">
+    <entry file="file://$PROJECT_DIR$/application/views/templates/shopping-cart.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="20.0" vertical-offset="540" max-vertical-offset="1764">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="-17.481482" vertical-offset="302" max-vertical-offset="1476">
+          <caret line="43" column="24" selection-start-line="35" selection-start-column="12" selection-end-line="43" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/templates/checkout/order-summary.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7413509" vertical-offset="1026" max-vertical-offset="1926">
-          <caret line="82" column="47" selection-start-line="82" selection-start-column="47" selection-end-line="82" selection-end-column="47" />
+        <state vertical-scroll-proportion="-12.666667" vertical-offset="1278" max-vertical-offset="2520">
+          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="97" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/seller/templates/sales-shopping-cart.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="4.6666665" vertical-offset="378" max-vertical-offset="1440">
+          <caret line="14" column="219" selection-start-line="14" selection-start-column="219" selection-end-line="14" selection-end-column="219" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.5123558" vertical-offset="2052" max-vertical-offset="4860">
+          <caret line="63" column="34" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="34" />
           <folding />
         </state>
       </provider>
