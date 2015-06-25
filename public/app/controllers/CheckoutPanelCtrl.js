@@ -18,6 +18,15 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
 
     var orderInCookie = $cookies.getObject("order");
     var shoppingcartInCookie = $cookies.getObject("shoppingcart");
+    var origins = [
+        new google.maps.LatLng(ConstantsService.GALERIAS_GEOMETRY_LOCATION.lat, ConstantsService.GALERIAS_GEOMETRY_LOCATION.lng),
+        new google.maps.LatLng(ConstantsService.CAMPIN_GEOMETRY_LOCATION.lat, ConstantsService.CAMPIN_GEOMETRY_LOCATION.lng),
+        new google.maps.LatLng(ConstantsService.PORCIUNCULA_GEOMETRY_LOCATION.lat, ConstantsService.PORCIUNCULA_GEOMETRY_LOCATION.lng),
+        new google.maps.LatLng(ConstantsService.ANDES_GEOMETRY_LOCATION.lat, ConstantsService.ANDES_GEOMETRY_LOCATION.lng),
+        new google.maps.LatLng(ConstantsService.CASTELLANA_GEOMETRY_LOCATION.lat, ConstantsService.CASTELLANA_GEOMETRY_LOCATION.lng)
+    ];
+
+    geolocation();
 
     if( ((orderInCookie != undefined) && (shoppingcartInCookie != undefined)) && !orderInCookie.sended) {
             orderInCookie.shoppingcart = shoppingcartInCookie;
@@ -78,6 +87,7 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
                 newOrder.currentStep = "paymentMethod";
                 $scope.shippingDataComplete = true;
 
+                //select farmacy more nearby
 
                 updateOrder( newOrder );
                 switchCheckoutPanelSection( newOrder.currentStep );
@@ -211,5 +221,181 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
         }
 
         $rootScope.$broadcast( ConstantsService.SHOPPINGCART_CHANGED, $scope.order.shoppingcart );
+    };
+
+    function geolocation() {
+    // Note: This example requires that you consent to location sharing when
+    // prompted by your browser. If you see a blank space instead of the map, this
+    // is probably because you have denied permission for location sharing.
+        var map;
+
+        function initialize() {
+            var mapOptions = {
+                zoom: 15
+            };
+            map = new google.maps.Map(document.getElementById('checkout-map-canvas'),
+                mapOptions);
+
+            // Try HTML5 geolocation
+            if(navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var pos = new google.maps.LatLng(position.coords.latitude,
+                        position.coords.longitude);
+
+                    var infowindow = new google.maps.InfoWindow({
+                        map: map,
+                        position: pos,
+                        content: 'Estás aquí! :)'
+                    });
+
+                    var marker = new google.maps.Marker({
+                        position: pos,
+                        map: map,
+                        title: 'Esta es tu posición!'
+                    });
+
+                    google.maps.event.addListener(map, 'center_changed', function() {
+                        // 3 seconds after the center of the map has changed, pan back to the
+                        // marker.
+                        window.setTimeout(function() {
+                            map.panTo(marker.getPosition());
+                        }, 3000);
+                    });
+                    //console.info(position);
+
+                    reverseGeocoding( position.coords.latitude, position.coords.longitude );
+
+                    calculateDistances( position.coords.latitude, position.coords.longitude );
+
+                    console.info($scope.order);
+
+                    map.setCenter(pos);
+                }, function() {
+                    handleNoGeolocation(true);
+                });
+
+
+            } else {
+                // Browser doesn't support Geolocation
+                handleNoGeolocation(false);
+            }
+        }
+
+
+        function reverseGeocoding (lat, lng){
+
+            var geocoder = new google.maps.Geocoder();
+
+            var latlng = new google.maps.LatLng(lat, lng);
+            geocoder.geocode({'latLng': latlng}, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    if (results[1]) {
+                        map.setZoom(11);
+                        var marker = new google.maps.Marker({
+                            position: latlng,
+                            map: map
+                        });
+                        //console.info(results[1].address_components[0].long_name);
+                        $scope.order.shippingData.addressLine1 = results[1].address_components[0].long_name;
+                        $scope.order.shippingData.neighborhood = results[1].address_components[1].long_name;
+
+                        updateOrder( $scope.order );
+                    } else {
+                        alert('No results found');
+                    }
+                } else {
+                    alert('Geocoder failed due to: ' + status);
+                }
+            })
+        }
+
+        function handleNoGeolocation(errorFlag) {
+            if (errorFlag) {
+                var content = 'Error: The Geolocation service failed.';
+            } else {
+                var content = 'Error: Your browser doesn\'t support geolocation.';
+            }
+
+            var options = {
+                map: map,
+                position: new google.maps.LatLng(60, 105),
+                content: content
+            };
+
+            var infowindow = new google.maps.InfoWindow(options);
+            map.setCenter(options.position);
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+    }
+
+    function calculateDistances ( destinationLat, destinationLng ) {
+
+        var destinationLatLng = new google.maps.LatLng(destinationLat, destinationLng);
+
+        var service = new google.maps.DistanceMatrixService();
+        service.getDistanceMatrix(
+            {
+                origins: origins,
+                destinations: [destinationLatLng],
+                travelMode: google.maps.TravelMode.DRIVING,
+                unitSystem: google.maps.UnitSystem.METRIC,
+                durationInTraffic: true,
+                avoidHighways: true,
+                avoidTolls: true
+            }, searchMoreNearby);
+
+        function searchMoreNearby(response, status) {
+
+            if (status === "OK") {
+
+                console.info(response.rows);
+
+                var values = getValues(response.rows);
+
+                Array.prototype.max = function () {
+                    return Math.max.apply(null, this);
+                };
+
+                Array.prototype.min = function () {
+                    return Math.min.apply(null, this);
+                };
+
+                var min = values.min();
+                var minKey = undefined;
+
+                angular.forEach(response.rows, function (value, key) {
+
+                    if (value.elements[0].status === "OK") {
+
+                        if (value.elements[0].distance.value == min)
+                            minKey = key;
+
+                    }
+                });
+                console.info(minKey);
+                $scope.order.shippingData.FarmacyNearbyId = minKey;
+
+                updateOrder($scope.order);
+
+            }
+
+        }
+
+        function getValues(rows) {
+
+            var result = [];
+
+            angular.forEach(rows, function (value, key) {
+
+                if (value.elements[0].status === "OK") {
+                    result[key] = value.elements[0].distance.value;
+                }
+
+            });
+
+            return result;
+
+        }
     }
 }]);

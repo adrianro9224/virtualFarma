@@ -52,7 +52,7 @@
 		
 		<!-- Footer start -->
 		<section id="footer">
-				<?php include_once( __ROOT__ADMIN__TEMPLATES__ . 'footer.php');?>
+
 		</section>
 		<!-- Footer over -->
 	</div>	

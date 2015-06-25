@@ -11,7 +11,7 @@ class Admin extends MY_Controller {
 		
 		$this->load->model('account_model');
 		$this->load->helper(array('form', 'account_helper'));
-		$this->load->library( array('form_validation', 'account_types', 'products', 'orders') );
+		$this->load->library( array('form_validation', 'account_types', 'products', 'orders', 'accounts', 'address') );
 		
 	}
 	
@@ -89,9 +89,62 @@ class Admin extends MY_Controller {
 		} 
 		
 	}
+
+    public function search_client() {
+
+        $post = $this->input->post();
+
+        $session_data = $this->session->all_userdata();
+
+        if( !isset($session_data['account_types']) ) {
+            $account_types = $this->account_types->get_account_types();
+            $this->session->set_userdata('account_types', $account_types);
+        }else{
+            $account_types = $session_data['account_types'];
+            $data['account_types'] = $session_data['account_types'];
+        }
+
+        if ( isset($session_data[$account_types[0] . '_id']) || isset($session_data[$account_types[2] . '_id']) || isset($session_data[$account_types[3] . '_id']) || isset($session_data[$account_types[4] . '_id']) ) {
+
+            $admin_id = $this->_search_admin_id_in_session($session_data, $account_types);
+
+            $admin_account = $this->account_model->get_admin_account_by_id($admin_id);
+
+            if ($post) {
+
+                $client_identification_number = $post['clientId'];
+
+                $account = $this->accounts->search_account_by_identification_number($client_identification_number);
+
+                if ( isset($account) ){
+
+                    $data['client_account'] = $account;
+
+                    $address = $this->address->get_all_address( $account->id );;
+
+                    if ( isset($address) )
+                        $data['address'] = $address;
+
+                    if ( isset($account->points) )
+                        $data['points'] = $account->points;
+
+                    $notifications['success'] = "Cliente encontrádo!!";
+
+                    $this->_choose_admin_account($admin_account, $account_types, $notifications, $data);
+                }else {
+                    $notifications['danger'] = "El cliente no existe!!";
+                    $this->_choose_admin_account($admin_account, $account_types, $notifications);
+                }
+
+            } else {
+                redirect('/admin');
+            }
+        }else{
+            redirect('/admin');
+        }
+    }
 	
-	
-	private function _choose_admin_account( $admin_account, $account_types, &$notifications ) {
+	private function _choose_admin_account( $admin_account, $account_types, &$notifications, $data = null ) {
 		
 		unset( $admin_account->password );
 		$data['account_types'] = $account_types;
@@ -99,10 +152,10 @@ class Admin extends MY_Controller {
 		switch ( $admin_account->account_type_id ) {
 			case 1:
 				//admin
-				$this->_admin_do_login($account_types[0], $admin_account, $account_types, $data);
-				
+
 				$data['title'] = 'Administrador';
 				$data['type_of_admin'] = $account_types[0];
+                $this->_admin_do_login($account_types[0], $admin_account, $account_types, $data);
 				
 				$this->load->view('admin/control_panel', $data);
 				break;
@@ -116,7 +169,10 @@ class Admin extends MY_Controller {
 				//seller
 				$data['title'] = 'Ventas';
 				$data['type_of_admin'] = $account_types[2];
-					
+
+                if( isset($notifications) )
+                    $data['notifications'] = $notifications;
+
 				$this->_admin_do_login( $account_types[2], $admin_account, $account_types, $data );
 				$this->load->view('admin/seller/index', $data);
 				break;

@@ -27,6 +27,7 @@ class Order_model extends CI_Model {
 				'recipient_id' => $recipient_id,
 				'account_id' => $account_id,
 				'status' => 'RECEIVED',
+                'nearby_id' => $order_data->shippingData->FarmacyNearbyId,
 				'farmacy_id' => 1,
 				'from_app' => $order_data->from
 		);

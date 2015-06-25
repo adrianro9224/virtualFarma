@@ -3,7 +3,11 @@
 		<h4><i class="fa fa-truck"></i> Datos de envío <i ng-show="order.shippingData.status" class="fa fa-check"></i> </h4>
 	</div>
 	<div class="panel-body" ng-if="shippingData">
-		<p>Por favor ingresa los datos de la persona a quien se la hará el envío.</p>
+		<p>Por favor ingresa los datos de la persona a quien se la hará el envío.
+        <!-- helptext -->
+        <span id="helpBlock" class="help-block">Usamos tu ubicación para ayudarte con la dirección :)</span>
+        <!-- helptext -->
+        <div id="checkout-map-canvas"></div>
 		<div class="checkbox" ng-init="shippingDataCompleted=<?= ( isset($shipping_data) ) ? 1 : 0 ?>">
 			<label>
 		    	<input type="checkbox" ng-model="order.shippingData.useMyDataStatus" ng-disabled="!shippingDataCompleted" ng-change="changeUseAccountDataStatus()">

@@ -10,7 +10,11 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta http-equiv="Cache-Control" content="max-age=2592000, public" />
-	
+
+    <!-- Google Maps API -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBS01MZwvdqFbIdS6SWb3ccjyech0o1WuM"></script>
+    <!-- Google Maps API -->
+
 	<!-- Bootstrap css start -->
 	<link rel="stylesheet" type="text/css" href="<?= base_url() . 'public/bootstrap-3.3.0-dist/dist/css/bootstrap.min.css'?>">
 	<!-- Bootstrap css over -->
@@ -86,6 +90,7 @@
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ModalInstanceCtrl.js'?>"></script>
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ShoppingCartAxuCtrl.js'?>"></script>
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/RequestProductCtrl.js'?>"></script>
+    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/HoursOfOperationCtrl.js'?>"></script>
 
 	<!-- Angular js controllers over -->
 	

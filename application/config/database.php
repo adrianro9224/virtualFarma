@@ -48,15 +48,15 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-//$db['default']['hostname'] = 'localhost';
-//$db['default']['username'] = 'root';
-//$db['default']['password'] = 'naci1992';
-//$db['default']['database'] = 'l9000182_vfarma';
-
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
-$db['default']['password'] = 'ZmqcHAswFQXSCE5X';
+$db['default']['password'] = 'naci1992';
 $db['default']['database'] = 'l9000182_vfarma';
+
+//$db['default']['hostname'] = 'localhost';
+//$db['default']['username'] = 'root';
+//$db['default']['password'] = 'ZmqcHAswFQXSCE5X';
+//$db['default']['database'] = 'l9000182_vfarma';
 
 /*
 $db['default']['hostname'] = 'localhost';

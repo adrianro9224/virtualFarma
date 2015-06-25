@@ -19,6 +19,15 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
     var limitPayuOrderValue = ConstantsService.LIMIT_PAYU_ORDER_VALUE;
     var minimumOrderValue = ConstantsService.MINIMUM_ORDER_VALUE;
     var limitForFreeShipping = ConstantsService.LIMIT_FOR_FREE_SHIPPING;
+    var pointsBase = ConstantsService.POINTS_BASE;
+
+    var origins = [
+        new google.maps.LatLng(ConstantsService.GALERIAS_GEOMETRY_LOCATION.lat, ConstantsService.GALERIAS_GEOMETRY_LOCATION.lng),
+        new google.maps.LatLng(ConstantsService.CAMPIN_GEOMETRY_LOCATION.lat, ConstantsService.CAMPIN_GEOMETRY_LOCATION.lng),
+        new google.maps.LatLng(ConstantsService.PORCIUNCULA_GEOMETRY_LOCATION.lat, ConstantsService.PORCIUNCULA_GEOMETRY_LOCATION.lng),
+        new google.maps.LatLng(ConstantsService.ANDES_GEOMETRY_LOCATION.lat, ConstantsService.ANDES_GEOMETRY_LOCATION.lng),
+        new google.maps.LatLng(ConstantsService.CASTELLANA_GEOMETRY_LOCATION.lat, ConstantsService.CASTELLANA_GEOMETRY_LOCATION.lng)
+    ];
 
     $scope.mouseover = false;
 
@@ -57,7 +66,7 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
         $http.get("http://virtualfarma.com.co/admin/all_products")
             .success(function (data, status, headers, config) {
 
-              //  console.info(data + ":(");
+                //  console.info(data + ":(");
 
                 if ( json != 'NULL' ){
                     var json = angular.fromJson(data);
@@ -174,6 +183,8 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
 
                 order.from = 'CALL_CENTER';
 
+                order.points = order.shoppingcart.subtotal * ConstantsService.POINTS_BASE;
+
                 $http.post("http://virtualfarma.com.co/checkout/create_order" , { data : order} )
                     .success(function(data, status, headers, config) {
 
@@ -222,6 +233,7 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
                 $scope.sale.shoppingcart.limitOrderValueInvalid = false;
                 $scope.sale.shoppingcart.minimumOrderValueInvalid = false;
                 $scope.sale.shoppingcart.hasDiscount = false;
+                $scope.sale.shoppingcart.pointsBase = ( pointsBase != undefined ) ? pointsBase : ConstantsService.POINTS_BASE;
                 $scope.sale.shoppingcart.sended = false;
 
                 var firtsProduct = _chargeProductObject( producToAdd );
@@ -281,7 +293,7 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
         currentProduct.categoryId = productToAdd.category_id;
         currentProduct.presentation = productToAdd.presentation;
         currentProduct.cant = productToAdd.cant;
-         currentProduct.tax = taxUnit == 0 ? 0 : taxUnit;
+        currentProduct.tax = taxUnit == 0 ? 0 : taxUnit;
         currentProduct.price = priceUnit;
         currentProduct.discount = discount == 0 ? 0 : discount;
 
@@ -355,7 +367,7 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
 
         var shippingCharge;
 
-        if ( subtotal > ConstantsService.LIMIT_FOR_FREE_SHIPPING )
+        if ( subtotal >= ConstantsService.LIMIT_FOR_FREE_SHIPPING )
             shippingCharge = "Es gratis";
         else
             shippingCharge = ConstantsService.SHIPPING_CHARGE;
@@ -453,5 +465,147 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
         $scope.sale.shoppingcart.numOfproductsTotal--;
         $scope.sale.shoppingcart.numOfproductsSubtotal--;
     }
+
+    $scope.reedemPoints = function( Points ) {
+
+
+        console.info( Points );
+
+        var PointsInt = parseInt(Points);
+
+        var residue = PointsInt % 100;
+
+        var pointsToUse = PointsInt - residue;
+
+        if ( $scope.sale.shoppingcart.hasDiscount ) {
+
+            $scope.sale.shoppingcart.hasDiscount = false;
+            $scope.sale.shoppingcart.subtotal += pointsToUse;
+
+        }else {
+            $scope.sale.shoppingcart.pointsDoDiscount = pointsToUse;
+            $scope.sale.shoppingcart.hasDiscount = true;
+        }
+
+        $rootScope.$broadcast( ConstantsService.SALE_CHANGED, $scope.sale );
+    }
+
+    $scope.DoGeoCoding = function( addressToGeoencoding) {
+
+
+        $http.get("http://maps.googleapis.com/maps/api/geocode/json?address=" + addressToGeoencoding )
+            .success(function(data, status, headers, config) {
+
+                //console.info(data);
+
+                //renderMap();
+                var destination = {lat: 4.676485899999999, lng: -74.1042658};
+                calculateDistances( destination );
+
+            }).
+            error(function(data, status, headers, config) {
+
+                console.info(data + ":(");
+            });
+
+    }
+
+    function renderMap ( lat, lng ) {
+        var map;
+        function initialize() {
+            map = new google.maps.Map(document.getElementById('my-map'), {
+                zoom: 16,
+                center: {lat: 4.676485899999999, lng: -74.1042658}
+            });
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize());
+    }
+
+    function calculateDistances ( destination ) {
+
+        var destinationLatLng = new google.maps.LatLng( destination.lat, destination.lng );
+
+        var service = new google.maps.DistanceMatrixService();
+        service.getDistanceMatrix(
+            {
+                origins: origins,
+                destinations: [destinationLatLng],
+                travelMode: google.maps.TravelMode.DRIVING,
+                unitSystem: google.maps.UnitSystem.METRIC,
+                durationInTraffic: true,
+                avoidHighways: true,
+                avoidTolls: true
+            }, searchMoreNearby);
+
+        function searchMoreNearby(response, status) {
+
+            if (status === "OK") {
+
+                console.info(response.rows);
+
+                var values = getValues( response.rows );
+
+                Array.prototype.max = function() {
+                    return Math.max.apply(null, this);
+                };
+
+                Array.prototype.min = function() {
+                    return Math.min.apply(null, this);
+                };
+
+                var min = values.min();
+                var minKey = undefined
+
+                angular.forEach( response.rows, function(value ,key) {
+
+                    if( value.elements[0].status === "OK"){
+
+                        if ( value.elements[0].distance.value == min )
+                            minKey = key;
+
+                    }
+                });
+
+                console.info(minKey + ' ' + min);
+
+            }
+
+        }
+
+        function getValues( rows ) {
+
+            var result = [];
+
+            angular.forEach( rows, function(value ,key) {
+
+                if ( value.elements[0].status === "OK" ) {
+                    result[key] = value.elements[0].distance.value;
+                }
+
+            });
+
+            return result;
+        }
+
+/*
+        var lats = origin.lat - destination.lat;
+        var lngs = origin.lng - destination.lng;
+
+        var latm = lats *60 * 1852;
+        var lngm = (lngs * Math.cos(origin.lat * Math.PI / 180)) * 60 * 1852;
+
+        var distInMeters = Math.sqrt(Math.pow(latm, 2) + Math.pow(lngm, 2));*/
+
+        /*
+        var r = 6378.7;// radio de la tierra
+        var d = r * Math.acos(Math.sin(origin.lat) * Math.sin(destination.lat) + Math.cos(origin.lat) * Math.cos(destination.lat) * Math.cos(destination.lng - origin.lng));*/
+
+        //console.info(distInMeters);
+
+    }
+
+
+
 
 }]);

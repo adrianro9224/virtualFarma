@@ -127,7 +127,7 @@ class Checkout extends MY_Controller {
 		$order = json_decode( $post );
 		$format = 'Y-m-d H:i:s';
 		$order->data->date = date($format, strtotime($order->data->date));
-		
+
 		$session_data = $this->session->all_userdata();
 		
 		if( !isset($session_data['account_types']) ) {

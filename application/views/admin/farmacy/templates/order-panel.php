@@ -20,6 +20,7 @@
 				<thead>
 					<tr>
 					  <th>#</th>
+                      <th>P.L.U</th>
 					  <th>Producto</th>
 					  <th>Descripción</th>
 					  <th>IVA</th>
@@ -32,6 +33,7 @@
 				<?php foreach ( json_decode($order->products) as $key=>$product ):?>
 					<tr>
 					  <th><?= $key + 1?></th>
+                      <td><?= $product->PLU?></td>
 					  <td><?= $product->name?></td>
 					  <td><?= $product->presentation?></td>
 					  <td><?= $product->tax?></td>

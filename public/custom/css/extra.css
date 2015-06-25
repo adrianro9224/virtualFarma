@@ -224,7 +224,7 @@ a#button-payment.btn-primary {
     position: fixed;
     top: 0;
     z-index: 1000;
-    background-color: #ED2F59;
+    background-color: #FFF;
     max-height: 50px;
 	border-bottom: 2px solid transparent;
 	box-shadow: 0 1px 14px #888888;
@@ -1467,4 +1467,16 @@ ICONS START
 
 #admin-header {
     margin-bottom: 20px;
+}
+
+#header-nav-container.col-sm-12.col-md-10.col-md-offset-2.col-lg-6.col-lg-offset-4.no-padding {
+    margin-left: 31.333333% !important;
+}
+
+/*
+*Maps
+*/
+
+#checkout-map-canvas {
+    height: 250px;
 }
