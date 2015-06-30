@@ -373,7 +373,7 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
 
                     }
                 });
-                console.info(minKey);
+                //console.info(minKey);
                 $scope.order.shippingData.FarmacyNearbyId = minKey;
 
                 updateOrder($scope.order);

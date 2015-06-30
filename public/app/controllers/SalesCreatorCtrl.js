@@ -496,11 +496,12 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
         $http.get("http://maps.googleapis.com/maps/api/geocode/json?address=" + addressToGeoencoding )
             .success(function(data, status, headers, config) {
 
-                //console.info(data);
-
-                //renderMap();
-                var destination = {lat: 4.676485899999999, lng: -74.1042658};
-                calculateDistances( destination );
+                if ( data.status == "OK" ) {
+                    //console.info(data.results[0].geometry.location);
+                    var destination = {lat: data.results[0].geometry.location.lat, lng: data.results[0].geometry.location.lng};
+                    calculateDistances( destination );
+                    renderMap( data.results[0].geometry.location.lat, data.results[0].geometry.location.lng );
+                }
 
             }).
             error(function(data, status, headers, config) {
@@ -510,12 +511,12 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
 
     }
 
-    function renderMap ( lat, lng ) {
+    function renderMap ( addressLat, addressLng ) {
         var map;
         function initialize() {
             map = new google.maps.Map(document.getElementById('my-map'), {
                 zoom: 16,
-                center: {lat: 4.676485899999999, lng: -74.1042658}
+                center: {lat: addressLat, lng: addressLng}
             });
         }
 
@@ -555,7 +556,7 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
                 };
 
                 var min = values.min();
-                var minKey = undefined
+                var minKey = undefined;
 
                 angular.forEach( response.rows, function(value ,key) {
 
@@ -567,7 +568,11 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
                     }
                 });
 
-                console.info(minKey + ' ' + min);
+                //console.info(minKey + ' ' + min);
+
+                $scope.sale.shippingData.FarmacyNearbyId = minKey;
+
+                updateOrder($scope.sale);
 
             }
 
