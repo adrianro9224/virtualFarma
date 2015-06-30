@@ -1480,3 +1480,7 @@ ICONS START
 #checkout-map-canvas {
     height: 250px;
 }
+
+#left-sidebar-seller_options #farmacies-addresses li{
+    font-size: 12px;
+}

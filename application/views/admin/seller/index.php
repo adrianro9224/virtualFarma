@@ -34,7 +34,7 @@
 									<?php include_once( __ROOT__SELLER__TEMPLATES . 'sales-shopping-cart.php');?>
 								</div>
 							</section>
-							<div class="col-md-12" >
+							<div class="col-md-12" id="left-sidebar-seller_options">
 								<?php include_once( __ROOT__SELLER__TEMPLATES . 'seller-left-sidebar.php');?>
 							</div>
 						</div>

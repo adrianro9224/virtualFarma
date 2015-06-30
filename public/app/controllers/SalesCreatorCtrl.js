@@ -46,7 +46,7 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
 
     var cookiesOptions = { path: "/admin" , expires: todayFull };
 
-    var currentSaleInCookie = $cookies.getObject('sale');
+    var currentSaleInCookie = $cookies.getObject("sale");
 
     if ( currentSaleInCookie != undefined ) {
         $scope.sale = currentSaleInCookie;
@@ -106,13 +106,16 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
     $scope.putSaveAndSound = function ( sale, IsValid ) {
 
         if ( arguments[2] == undefined ) {
-            if (sale != undefined && IsValid)
-                $cookies.putObject('sale', sale, cookiesOptions);
+
+            if (sale != undefined && IsValid){
+                updateOrder(sale);
+            }
+
         }else if ( arguments[2] == 1 ) {
-            $cookies.putObject('sale', sale, cookiesOptions);
+            updateOrder(sale);
         }
 
-    }
+    };
 
     $scope.openSection = function ( panelSelectionName ){
         switchCheckoutPanelSection( panelSelectionName )

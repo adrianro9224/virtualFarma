@@ -4,6 +4,30 @@
 			<!-- Default panel contents -->
 			<div class="panel-heading"><h3>Orden: <?= $order->id?> <i class="fa fa-times-circle-o pull-right handy" ng-click="closeOrderDetails( '<?= $order->id?>' )" ></i></h3></div>
 			<div class="panel-body">
+                <p><strong>Código farmacia de origen:</strong>
+                    <?php if ( isset($order->nearby_id) ):?>
+                        <?= $order->nearby_id?>
+                        <?php switch( $order->nearby_id ):
+                             case'0':?>
+                                <em>Galerias</em>
+                            <?php break;?>
+                            <?php case'1':?>
+                                <em>Campín</em>
+                            <?php break;?>
+                            <?php case'2':?>
+                                <em>Porciúncula</em>
+                            <?php break;?>
+                            <?php case'3':?>
+                                <em>Andes</em>
+                            <?php break;?>
+                            <?php case'4':?>
+                                <em>Castellana</em>
+                            <?php break;?>
+                        <?php endswitch;?>
+                    <?php else:?>
+                        <em>Orden sin nerby_id</em>
+                    <?php endif;?>
+                </p>
 				<p><strong>Notas:</strong> 
 					<?php if ( isset($order->note) ):?>
 					<?= $order->note?>
