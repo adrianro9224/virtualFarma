@@ -106,7 +106,7 @@ Class Products {
 	}
 	
 	public function read_categories_and_potential_products() {
-		$CI =& get_instance();
+		//$CI =& get_instance();
 	
 		$handle = fopen(__ROOT__FILES__ . "csv/MundofarmaMarzo24de2015.csv", 'r');
 	
@@ -136,7 +136,43 @@ Class Products {
 	
 		return $result;
 	}
-	
+
+
+    public function read_copidrogas_products() {
+
+        $handle = fopen(__ROOT__FILES__ . "csv/Copidrogas_products.csv", 'r');
+
+        if( $handle !== FALSE ) {
+            $result = new stdClass();
+            //$result->categories = array();
+            $result->copidrogas_products = array();
+
+            while ( ($data = fgetcsv($handle, 150, ',')) !== FALSE ){
+           //     $category = new stdClass();
+                $copidrogas_product = new stdClass();
+
+                if( (count($data)) >= 10 ){
+
+                    //$category->code_line = utf8_encode(trim($data[6]));
+                    //$category->name =  utf8_encode(ucfirst( strtolower(trim(str_replace('/', '-',$data[7]))) ) );
+
+                    //$copidrogas_product->name = utf8_encode( ucfirst(strtolower(trim(str_replace(' ', '',$data[2])))) );
+
+                    $copidrogas_product->name = utf8_encode( strtolower(trim(str_replace('/', '-',(str_replace(' ', '',$data[2])))) ));
+                    $copidrogas_product->price = (trim($data[4]) < trim($data[5])) ? trim($data[4]): trim($data[5]);
+                    $copidrogas_product->presentation = trim($data[3]);
+
+                   // $result->categories[$category->code_line] = $category;
+                    $result->copidrogas_products[] = $copidrogas_product;
+                }
+            }
+            fclose( $handle );
+        }
+
+        return $result;
+
+    }
+
 	public function search_products_in_vademecum() {
 		//load all products in DB
 		

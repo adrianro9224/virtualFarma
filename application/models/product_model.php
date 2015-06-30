@@ -179,4 +179,26 @@ class Product_model extends CI_Model {
 
     }
 
+    public function update_prices( $products_to_update ) {
+
+        foreach ( $products_to_update as $product ) {
+
+            if ( isset($product->active_ingredient_id)) {
+                $this->db->set('price', $product->price);
+
+                $this->db->where('id', $product->id);
+
+                $this->db->update('product');
+            }
+
+        }
+
+
+        if( $this->db->affected_rows() > 0 )
+            return true;
+
+        return false;
+
+    }
+
 }

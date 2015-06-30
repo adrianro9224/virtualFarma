@@ -942,6 +942,38 @@ class Product extends MY_Controller {
 
 */
 
+    public function copidrogas_prices() {
+
+
+        $db_products = $this->product_model->get_all();
+        $result = $this->products->read_copidrogas_products();
+
+        $copidrogas_products = $result->copidrogas_products;
+
+        echo count($copidrogas_products) . ' - ' . count($db_products);
+
+        $cont = 0;
+
+        $products_new_prices = array();
+
+        foreach ( $db_products as $db_product ) {
+
+            foreach ( $copidrogas_products as $copidrogas_product ) {
+
+                if ( lcfirst(str_replace(' ', '', $db_product->name )) == $copidrogas_product->name ) {
+                    $db_product->price = $copidrogas_product->price;
+                    $products_new_prices[] =$db_product;
+                }
+
+            }
+
+        }
+
+        var_dump($this->product_model->update_prices( $products_new_prices ));
+
+
+    }
+
     /**
 	 * Custom form sing_up valilation
 	 * @return result of form validation
