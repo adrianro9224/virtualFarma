@@ -17,7 +17,7 @@
     <!-- Google Maps API -->
 
     <!-- Goole Analitics -->
-    <script type="text/javascript" src="<?= base_url() . 'public/Google-Analitics/analyticstraking.js'?>"></script>
+    <script type="text/javascript" src="<?= base_url() . 'public/Google-Analitics/analyticstracking.js'?>"></script>
     <!-- Goole Analitics -->
 
 	<!-- Bootstrap css start -->

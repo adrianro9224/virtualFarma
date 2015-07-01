@@ -42,7 +42,12 @@ class Product_model extends CI_Model {
 		$query = $this->db->get('product');
 		
 		if( $query->num_rows() > 0 ) {
-			return $query->result();
+
+            $products = $query->result();
+
+            $this->calculate_prices_to_client( $products );
+
+			return $products;
 		}
 		
 		return null;
@@ -98,7 +103,11 @@ class Product_model extends CI_Model {
 		$query = $this->db->get('product');
 		
 		if( $query->num_rows() > 0 ) {
-			return $query->result();
+
+            $products = $query->result();
+            $this->calculate_prices_to_client( $products );
+
+			return $products;
 		}
 		
 		return NULL;
@@ -200,6 +209,26 @@ class Product_model extends CI_Model {
 
         return false;
 
+    }
+
+    public function calculate_prices_to_client( &$products ) {
+
+        foreach( $products as $product ) {
+
+            if( isset($product->tax) ) {
+
+                if( $product->price < 100000 ) {
+
+                    $IVA = bcmul($product->price, 0.16, 3);
+
+                    if ( $product->tax )
+                        $product->price = round(ceil( (bcmul( $product->price, 1.40, 3 ) + $IVA) ), -2);
+                    else
+                        $product->price = round(ceil( bcmul( $product->price, 1.10, 3 ) ), -2);
+
+                }
+            }
+        }
     }
 
 }

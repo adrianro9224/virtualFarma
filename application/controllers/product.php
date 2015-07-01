@@ -392,7 +392,7 @@ class Product extends MY_Controller {
 			$discount = NULL;
 			
 			$product->has_discount = false;
-			
+
 			if( isset($product->discount) ) {
 				
 				$product->has_discount = true;

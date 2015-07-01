@@ -46,7 +46,7 @@
                                         </ul>
                                     </li>
 									<li><a href="/product/show_products_by_category/sex_shop" title="Todo lo que necesitas" >Sex shop</a></li>
-                                    <li><a href="/wordpress" title="Blog de noticias" >Noticias</a></li>
+                                    <li><a href="/wordpress" title="Blog de noticias" target="_blank">Noticias</a></li>
                                     <li ng-controller="HoursOfOperationCtrl">
                                         <?php include_once( __ROOT__TEMPLATES__ . 'hours_of_operation_modal.php' )?>
                                         <a ng-click="open('sm')" title="Horario" >Horario de atención</a>
