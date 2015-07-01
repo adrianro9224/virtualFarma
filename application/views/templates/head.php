@@ -10,10 +10,15 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta http-equiv="Cache-Control" content="max-age=2592000, public" />
-
+    <meta name="description" content="Virtual Farma, todo a un clic, es la mejor droguería virtual, que te corre porque el tiempo es oro y donde encuentras todo sin salir de casa">
+    <meta name="keywords" content="Droguerías virtuales, farmacias virtuales, Droguería Virtual, Farmacia Virtual,  droguería en línea, farmacia en línea, droguería online, farmacia online, domicilios, medicamentos, medicamentos a domicilio, medicamentos baratos, inyectología">
     <!-- Google Maps API -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBS01MZwvdqFbIdS6SWb3ccjyech0o1WuM"></script>
     <!-- Google Maps API -->
+
+    <!-- Goole Analitics -->
+    <script type="text/javascript" src="<?= base_url() . 'public/Google-Analitics/analyticstraking.js'?>"></script>
+    <!-- Goole Analitics -->
 
 	<!-- Bootstrap css start -->
 	<link rel="stylesheet" type="text/css" href="<?= base_url() . 'public/bootstrap-3.3.0-dist/dist/css/bootstrap.min.css'?>">
