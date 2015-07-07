@@ -9,13 +9,17 @@ class Product_model extends CI_Model {
 	
 	public function get_all() {
 		
-		$this->db->select('id, PLU, barcode, name, category_id, active_ingredient, presentation, stock, tax, price, discount' );
+		$this->db->select('id, PLU, barcode, name, category_id, active_ingredient, presentation, stock, tax, price, discount, lab' );
 		
 		$query = $this->db->get('product');
 		
 		if( $query->num_rows() > 0 ) {
-			$result = $query->result();
-			return $result;
+
+            $products = $query->result();
+
+            $this->calculate_prices_to_client( $products );
+
+			return $products;
 		}
 		
 		return NULL;
@@ -140,7 +144,7 @@ class Product_model extends CI_Model {
 
     public function get_by_active_ingredient ( $active_ingredient ) {
 
-        $this->db->select('id, PLU, barcode, name, active_ingredient, category_id, presentation, stock, tax, price, discount' );
+        $this->db->select('id, PLU, barcode, name, active_ingredient, category_id, presentation, stock, tax, price, discount, lab' );
 
         $this->db->where('active_ingredient', $active_ingredient);
 
@@ -226,6 +230,8 @@ class Product_model extends CI_Model {
                     else
                         $product->price = round(ceil( bcmul( $product->price, 1.10, 3 ) ), -2);
 
+                }else {
+                    $product->price = round(ceil( $product->price ), -2);
                 }
             }
         }

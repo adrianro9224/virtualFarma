@@ -68,8 +68,8 @@ Class Products {
 	
 	public function create_json_of_products( $products ) {
 		
-		$CI =& get_instance();
-		
+		//$CI =& get_instance();
+
 		$products_encoded = json_encode($products) ;
 		
 		$result = new stdClass();
@@ -82,7 +82,9 @@ Class Products {
 	
 	public function save_json_of_products( $products ) {
 		$CI =& get_instance();
-		
+
+        $CI->load->model('product_json_model');
+
 		$insert_id = $CI->product_json_model->insert_product_json( $products );
 		
 		if ( isset($insert_id) ) 

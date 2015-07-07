@@ -11,7 +11,7 @@ class Account extends MY_Controller {
 		parent::__construct();
 		$this->load->helper(array('form', 'url', 'account_helper'));
 		
-		$this->load->library(array('form_validation', 'messages', 'accounts', 'address', 'account_types', 'orders', 'mail_chimp', 'pathologies'));
+		$this->load->library(array('form_validation', 'messages', 'accounts', 'address', 'account_types', 'orders', 'mandrill_lib', 'pathologies'));
 		$this->load->model('account_model');// add second param for add a "alias" ex: $this->load->model('Account', 'user')
 	}
 	
@@ -190,7 +190,7 @@ class Account extends MY_Controller {
 
                 $data['pathologies'] = $pathologies;
 				
-				$this->mail_chimp->send_register_email( $account );
+				$this->mandrill_lib->send_register_email( $account );
 				
 				$this->_do_login( $account , $data, $account_types);
 				

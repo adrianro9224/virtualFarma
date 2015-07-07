@@ -107,7 +107,7 @@
   										<div class="checkbox" ng-controller="TermsAndCondCtrl">
 	      									<label>
                                                 <?php include_once( __ROOT__TEMPLATES__ . 'terms_and_conditions_modal.php' )?>
-	        									<input type="checkbox" name="termsAndConditions" value="1" required> Acepto <a ng-click="open('lg')" ng-model="termsAndConditions" id="terms-and-conditions" >Términos y Condiciones</a>
+	        									<input type="checkbox" name="termsAndConditions" ng-model="termsAndConditions" value="1" required> Acepto <a ng-click="open('lg')" id="terms-and-conditions" >Términos y Condiciones</a>
 	      									</label>
     									</div>
 	    								<!-- tooltip -->

@@ -9,6 +9,9 @@
 
 	                <h3><?= $product->name ?></h3>
 	                <p><?= $product->description ?></p>
+                    <?php if ( isset($product->lab) ): ?>
+                        <p><?= $product->lab?></p>
+                    <?php endif; ?>
 	                <div class="clearfix">
 	                	<div class="product-price pull-left">
 	                		<?php if( $product->has_discount ): ?>
@@ -49,7 +52,10 @@
                         </div>
                         <h3><a><?= $product->name ?></a></h3>
 
-                        <p><?= $product->description ?></p>
+                        <p><?= $product->description?></p>
+                        <?php if ( isset($product->lab) ): ?>
+                            <p><?= $product->lab?></p>
+                        <?php endif; ?>
                         <div id="product_options">
                             <div class="product-price pull-left">
                                 <?php if( $product->has_discount ): ?>

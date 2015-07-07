@@ -379,6 +379,49 @@ class Product extends MY_Controller {
 		}else
 			show_404();
 	}
+
+    public function generate_json_of_products_for_seller_module() {
+
+        $products_from_db = $this->product_model->get_all();
+
+        $result = $this->products->create_json_of_products( $products_from_db );
+
+        switch( $result->code_status ) {
+            case JSON_ERROR_NONE:
+                echo ' - Sin errores';
+                echo "Saving JSON of products in product_json tabla...";
+
+                $json_saved = $this->products->save_json_of_products( $result->products_in_json );
+
+                if ( $json_saved )
+                    echo "JSON of Products saved :D.";
+                else
+                    echo "JSON no saved";
+
+                break;
+            case JSON_ERROR_DEPTH:
+                echo ' - Excedido tamaño máximo de la pila';
+                break;
+            case JSON_ERROR_STATE_MISMATCH:
+                echo ' - Desbordamiento de buffer o los modos no coinciden';
+                break;
+            case JSON_ERROR_CTRL_CHAR:
+                echo ' - Encontrado carácter de control no esperado';
+                break;
+            case JSON_ERROR_SYNTAX:
+                echo ' - Error de sintaxis, JSON mal formado';
+                break;
+            case JSON_ERROR_UTF8:
+                echo ' - Caracteres UTF-8 malformados, posiblemente están mal codificados';
+                break;
+            default:
+                echo ' - Error desconocido';
+                break;
+        }
+
+
+
+    }
 	
 	/**
 	 * Calculate the discount of all products
@@ -551,7 +594,7 @@ class Product extends MY_Controller {
                         $related_products_by_active_ingredient = NULL;
 
                     if ( isset($related_products_by_active_ingredient) )
-                        $data['related_products'] = $related_products_by_active_ingredient;
+                        $data['related_products'] = ( count($related_products_by_active_ingredient) > 12 ) ? array_slice($related_products_by_active_ingredient, 0, 11): $related_products_by_active_ingredient;
 
 					$this->_calculate_product_discount( $products );
 					

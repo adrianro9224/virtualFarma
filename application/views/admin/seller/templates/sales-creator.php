@@ -323,6 +323,7 @@
 						<thead>
 							<tr>
 								<th>Nombre</th>
+                                <th>Laboratorio</th>
 								<th>Presentación</th>
 								<th>Precio</th>
 								<th></th>
@@ -332,6 +333,7 @@
 						<tbody>
 							<tr ng-repeat="(key, product) in results" >
 								<td ng-bind="product.name"></td>
+                                <td ng-bind="product.lab"></td>
 								<td ng-bind="product.presentation"></td>
 								<td ng-bind="product.price | currency : '$' : 0"></td>
 								<th>
