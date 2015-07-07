@@ -189,9 +189,8 @@ class Account extends MY_Controller {
                 }
 
                 $data['pathologies'] = $pathologies;
-				
-				$this->mandrill_lib->send_register_email( $account );
-				
+
+
 				$this->_do_login( $account , $data, $account_types);
 				
 				$notifications['success'][] = "Su cuenta a sido creada con éxito, te damos la bienvenida a VirtualFarma!"; 
@@ -205,7 +204,11 @@ class Account extends MY_Controller {
 						
 					redirect("/checkout");
 				}
-				
+
+                //if ( $account->email == "adrian.romero9224@gmail.com" || $account->email == "tuto13@gmail.com" || $account->email == "tuto13@yahoo.com" ) {
+                $this->mandrill_lib->send_register_email( $account );
+                //}
+
 				$this->load->view('pages/account-panel', $data); // admin account panel
 			}else {
 				// level('error', 'debug')

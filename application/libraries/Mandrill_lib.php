@@ -24,14 +24,14 @@ class Mandrill_lib {
 
             $CI =& get_instance();
 
-            $CI->load->library('Mandrill');
+            $CI->load->library('mandrill');
 
 /*
             $result = $CI->$mandrill->users->ping();
-            print_r($result);*/
+            print_r($result);
+*/
 
-
-            $template_name = 'Registro';
+            $template_name = 'finalRegister';
             $template_content = array(
                 array(
                     'name' => 'example name',
@@ -42,7 +42,7 @@ class Mandrill_lib {
                 //'html' => '<p>Example HTML content</p>',
                 //'text' => 'Example text content',
                 'subject' => 'Gracias por registrarte',
-                'from_email' => 'social@virtualfarma.com.co',
+                'from_email' => 'registro@virtualfarma.com.co',
                 'from_name' => 'Equipo Virtualfarma.com.co',
                 'to' => array(
                     array(
@@ -51,21 +51,21 @@ class Mandrill_lib {
                         'type' => 'to'
                     )
                 ),
-                'headers' => array('Reply-To' => 'adrian.romero9224@gmail.com'),
+                //'headers' => array('Reply-To' => 'registro@virtualfarma.com.co'),
                 'important' => false,
-                'track_opens' => null,
-                'track_clicks' => null,
-                'auto_text' => null,
-                'auto_html' => null,
-                'inline_css' => null,
-                'url_strip_qs' => null,
-                'preserve_recipients' => null,
+                //'track_opens' => null,
+               //track_clicks' => null,
+                //'auto_text' => null,
+                //'auto_html' => null,
+                //'inline_css' => null,
+                //'url_strip_qs' => null,
+                //'preserve_recipients' => null,
                 'view_content_link' => null,
-                'bcc_address' => 'message.bcc_address@example.com',
-                'tracking_domain' => null,
-                'signing_domain' => null,
-                'return_path_domain' => null,
-                'merge' => true,
+                'bcc_address' => 'adrian.romero9224@gmail.com',
+                //'tracking_domain' => null,
+                //'signing_domain' => null,
+               // 'return_path_domain' => null,
+                //'merge' => true,
                 'merge_language' => 'mailchimp',
                 'global_merge_vars' => array(
                     array(
@@ -80,23 +80,25 @@ class Mandrill_lib {
                             array(
                                 'name' => 'FNAME',
                                 'content' => $account->first_name,
+                            ),
+                            array(
                                 'name' => 'COMPANY',
                                 'content' => "virtuafarma.com.co"
                             )
                         )
                     )
                 ),
-                'tags' => array('password-resets'),
+                'tags' => array('register'),
                // 'subaccount' => 'customer-123',
               //  'google_analytics_domains' => array('example.com'),
                // 'google_analytics_campaign' => 'message.from_email@example.com',
-                'metadata' => array('website' => 'www.virtualfarma.com.co'),
-                'recipient_metadata' => array(
-                    array(
-                        'rcpt' => $account->email,
-                        'values' => array('user_id' => 123456)
-                    )
-                )/*,
+                //'metadata' => array('website' => 'www.virtualfarma.com.co'),
+                //'recipient_metadata' => array(
+                  //  array(
+                    //    'rcpt' => $account->email,
+                      //  'values' => array('user_id' => 123456)
+                    //)
+                /*),
                 'attachments' => array(
                     array(
                         'type' => 'text/plain',
@@ -111,12 +113,16 @@ class Mandrill_lib {
                         'content' => 'ZXhhbXBsZSBmaWxl'
                     )
                 )*/
+
+
+
+
             );
             $async = false;
             $ip_pool = 'Register';
            // $send_at = 'example send_at';
             $result = $CI->mandrill->messages->sendTemplate($template_name, $template_content, $message, $async, $ip_pool);
-            print_r($result);
+         //   print_r($result);
 
 
 

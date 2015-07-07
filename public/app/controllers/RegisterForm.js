@@ -15,4 +15,21 @@ farmapp.controller('RegisterForm', ['$scope', function($scope) {
         $scope.mouseover = false;
     };
 
+
+
+    $scope.isEqual = function ( secondInput, typeInputToCompare ) {
+
+        switch ( typeInputToCompare ) {
+            case 'e':
+                compareEmails( secondInput );
+                break;
+
+        }
+    };
+
+    function compareEmails( emailInputConfirmation ) {
+
+        
+
+    }
 }]);
