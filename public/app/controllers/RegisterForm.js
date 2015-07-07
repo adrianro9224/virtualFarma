@@ -29,7 +29,7 @@ farmapp.controller('RegisterForm', ['$scope', function($scope) {
 
     function compareEmails( emailInputConfirmation ) {
 
-        
+
 
     }
 }]);
