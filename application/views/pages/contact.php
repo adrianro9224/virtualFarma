@@ -77,7 +77,7 @@
                                     <div class="form-group" ng-class="{'has-error': !productRequestForm.email.$valid && productRequestForm.email.$dirty}">
                                         <label for="product_lab" class="col-md-3 control-label" >Correo electrónico: *</label>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control"  name="email" ng-model="email" id="product_lab" placeholder="Tu email"  ng-maxLength="63" required>
+                                            <input type="text" class="form-control"  name="email" ng-model="email" id="product_lab" placeholder="Tu email" placeholder="Ingrese su correo electrónico" ng-pattern="/[\w.]+?\@{1}[\w.]+(\.+[\w.]+)/" ng-maxLength="63" required>
                                             <!-- tooltip -->
                                             <div ng-if="productRequestForm.email.$invalid && productRequestForm.email.$dirty">
                                                 <div class="arrow-up-error">
@@ -85,6 +85,7 @@
                                                 <div class="farma-tooltip-error">
                                                     <span ng-if="productRequestForm.email.$error.required && productRequestForm.email.$dirty">Por favor escribe tu email!</span>
                                                     <span ng-if="productRequestForm.email.$error.maxlength && productRequestForm.email.$dirty">Es demaciado extenso!</span>
+                                                    <span ng-if="productRequestForm.email.$error.pattern || productRequestForm.email.$error.email">Por favor ingresa un correo electrónico válido!</span>
                                                 </div>
                                             </div>
                                             <!-- tooltip -->
@@ -107,7 +108,7 @@
                                         </div>
                                     </div>
 
-                                    <input type="hidden" name="date_of_product_request" id="date_of_request" ng-value="dateOfProductRequest" required>
+                                    <input type="hidden" name="date_of_pqrs_request" id="date_of_request" ng-value="dateOfProductRequest" required>
 
                                     <div class="form-group">
                                         <div class="col-sm-offset-2 col-sm-10">

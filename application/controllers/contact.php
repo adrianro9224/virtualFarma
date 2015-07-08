@@ -7,7 +7,7 @@ Class Contact extends MY_Controller {
     function __construct(){
         parent::__construct();
        // $this->load->model('pathology_model');
-        //$this->load->library('roots');
+        $this->load->library(array('form_validation', 'mandrill_lib'));
     }
 
     public function index($page = 'contact') {
@@ -80,11 +80,37 @@ Class Contact extends MY_Controller {
 
         $form = $this->input->post();
 
-        die(var_dump($form));
+        $validation_response = $this->_validate_pqrs_form();
 
-        $notifications['warning'] = "Hemos recibido tu comentario, pronto estaremos en contacto!";
-        $this->session->set_flashdata('notifications', $notifications );
+        if( $validation_response ) {
+            $notifications['warning'] = "Hemos recibido tu comentario, pronto estaremos en contacto!";
+            $this->session->set_flashdata('notifications', $notifications );
+
+            $this->mandrill_lib->send_pqrs( $form );
+        }else {
+            $notifications['warning'] = "Por favor intentalo de nuevo!";
+            $this->session->set_flashdata('notifications', $notifications );
+        }
+
         redirect('/contact');
+    }
+
+
+    /**
+     * Custom form log_in valilation
+     * @return result true if the validation is clean, false in a other case
+     */
+    private function _validate_pqrs_form() {
+
+        $this->form_validation->set_rules('name', 'The name', 'required|xss_clean');
+        $this->form_validation->set_rules('email', 'UserPassword', 'required|xss_clean');
+        $this->form_validation->set_rules('pqrs', 'UserPassword', 'required|xss_clean');
+
+        if ($this->form_validation->run() == FALSE)
+            return false;
+
+        return true;
+
     }
 
 
