@@ -21,7 +21,8 @@ class Account_model extends CI_Model {
 				'email' => $sign_up_form['userEmail'],
 				'terms_and_conditions' => $sign_up_form['termsAndConditions'],
 				'registration_date' => date($date_format),
-				'password' => $sign_up_form['userPassword']
+				'password' => $sign_up_form['userPassword'],
+                'points' => 1000
 				
 									
 		);

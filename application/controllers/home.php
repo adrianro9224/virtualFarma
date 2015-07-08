@@ -51,6 +51,11 @@ class Home extends MY_Controller {
 		if( isset($session_data[$account_types[1] . '_id']) ){
 			$data['user_logged'] = true;
 		}
+
+        $products = $this->products->get_home_products();
+
+        if ( isset($products) )
+            $data['products'] = $products;
 		
 		$this->load->view('pages/' . $page, $data);
 		

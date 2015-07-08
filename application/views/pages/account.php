@@ -74,7 +74,7 @@
     									<label for="userEmail">Correo electrónico<span class="primary-emphasis">*</span></label>
     									<div class="input-group">
     										<div class="input-group-addon">@</div>
-    										<input type="text" name="userEmail" ng-model="userEmail" class="form-control" id="userEmail" placeholder="Ingrese su correo electrónico" ng-pattern="/[\w.]+?\@{1}[\w.]+(\.+[\w.]+)/" ng-maxLength="90" required>
+    										<input type="text" name="userEmail" ng-model="userEmail" ng-change="isEqual( userEmail, 'e' )" class="form-control" id="userEmail" placeholder="Ingrese su correo electrónico" ng-pattern="/[\w.]+?\@{1}[\w.]+(\.+[\w.]+)/" ng-maxLength="90" required>
     									</div>
     									<!-- tooltip -->
     									<div ng-if="SignUpForm.userEmail.$invalid && SignUpForm.userEmail.$dirty">
@@ -88,27 +88,29 @@
     									</div>
     									<!-- tooltip -->
   									</div>
+
                                     <div class="form-group" ng-if="SignUpForm.userEmail.$valid" ng-class="{'has-error': !SignUpForm.userEmailConfirmation.$valid && SignUpForm.userEmailConfirmation.$dirty}">
                                         <label for="userEmailConfirmation">Confirma tu correo electrónico<span class="primary-emphasis">*</span></label>
                                         <div class="input-group">
                                             <div class="input-group-addon">@</div>
-                                            <input type="text" ng-model="userEmailConfirmation" ng-changue="isEqual( userEmailConfirmation, 'e' )" class="form-control" id="userEmailConfirmation" placeholder="Confirma tu correo electrónico" ng-pattern="/[\w.]+?\@{1}[\w.]+(\.+[\w.]+)/" ng-maxLength="90" required>
+                                            <input type="text" name="userEmailConfirmation" ng-model="userEmailConfirmation" ng-change="isEqual( userEmailConfirmation, 'e' )" class="form-control" id="userEmailConfirmation" placeholder="Confirma tu correo electrónico" ng-pattern="/[\w.]+?\@{1}[\w.]+(\.+[\w.]+)/" ng-maxLength="90" required>
                                         </div>
                                         <!-- tooltip -->
-                                        <div ng-if="SignUpForm.userEmailConfirmation.$invalid && SignUpForm.userEmailConfirmation.$dirty">
+                                        <div ng-if="(SignUpForm.userEmailConfirmation.$invalid && SignUpForm.userEmailConfirmation.$dirty) || (!emailComparation && SignUpForm.userEmailConfirmation.$dirty)">
                                             <div class="arrow-up-error">
                                             </div>
                                             <div class="farma-tooltip-error">
                                                 <span ng-if="SignUpForm.userEmailConfirmation.$error.required && SignUpForm.userEmailConfirmation.$dirty">Por favor confirma tu correo electrónico!</span>
                                                 <span ng-if="(SignUpForm.userEmailConfirmation.$error.maxlength && SignUpForm.userEmailConfirmation.$dirty) && !(SignUpForm.userEmailConfirmation.$error.pattern || SignUpForm.userEmailConfirmation.$error.email)">Es demaciado extenso!</span>
                                                 <span ng-if="SignUpForm.userEmailConfirmation.$error.pattern || SignUpForm.userEmailConfirmation.$error.email">Por favor ingresa un correo electrónico válido!</span>
+                                                <span ng-if="!emailComparation && SignUpForm.userEmailConfirmation.$dirty">Los correos electrónicos no coinciden :(</span>
                                             </div>
                                         </div>
                                         <!-- tooltip -->
                                     </div>
   									<div class="form-group" ng-class="{'has-error': !SignUpForm.userPassword.$valid && SignUpForm.userPassword.$dirty}">
     									<label for="userPassword">Contraseña<span class="primary-emphasis">*</span></label>
-    									<input type="password" name="userPassword" ng-model="userPassword" class="form-control" id="userPassword" placeholder="Debe contener mínimo 6 dígitos" ng-maxLength="50" ng-minLength="6" required>
+    									<input type="password" name="userPassword" ng-model="userPassword" ng-change="isEqual( userPassword, 'p' )" class="form-control" id="userPassword" placeholder="Debe contener mínimo 6 dígitos" ng-maxLength="50" ng-minLength="6" required>
     									<!-- tooltip -->
     									<div ng-if="SignUpForm.userPassword.$invalid && SignUpForm.userPassword.$dirty">
     										<div class="arrow-up-error"> 
@@ -122,16 +124,17 @@
     									<!-- tooltip -->
   									</div>
                                     <div class="form-group" ng-if="SignUpForm.userPassword.$valid" ng-class="{'has-error': !SignUpForm.userPasswordConfirmation.$valid && SignUpForm.userPasswordConfirmation.$dirty}">
-                                        <label for="userPasswordConfirmation">Confirmar tu contraseña<span class="primary-emphasis">*</span></label>
-                                        <input type="password" ng-model="userPasswordConfirmation" class="form-control" id="userPasswordConfirmation" placeholder="Confirmar tu contraseña" ng-maxLength="50" ng-minLength="6" required>
+                                        <label for="userPasswordConfirmation">Confirma tu contraseña<span class="primary-emphasis">*</span></label>
+                                        <input type="password" name="userPasswordConfirmation" ng-model="userPasswordConfirmation" ng-change="isEqual( userPasswordConfirmation, 'p' )" class="form-control" id="userPasswordConfirmation" placeholder="Confirmar tu contraseña" ng-maxLength="50" ng-minLength="6" required>
                                         <!-- tooltip -->
-                                        <div ng-if="SignUpForm.userPasswordConfirmation.$invalid && SignUpForm.userPasswordConfirmation.$dirty">
+                                        <div ng-if="(SignUpForm.userPasswordConfirmation.$invalid && SignUpForm.userPasswordConfirmation.$dirty) || (!passwordComparation && SignUpForm.userPasswordConfirmation.$dirty)">
                                             <div class="arrow-up-error">
                                             </div>
                                             <div class="farma-tooltip-error">
                                                 <span ng-if="SignUpForm.userPasswordConfirmation.$error.required && SignUpForm.userPasswordConfirmation.$dirty">Por favor confirma tu contraseña!</span>
                                                 <span ng-if="SignUpForm.userPasswordConfirmation.$error.maxlength && SignUpForm.userPasswordConfirmation.$dirty">Es demaciado extensa!</span>
                                                 <span ng-if="SignUpForm.userPasswordConfirmation.$error.minlength && SignUpForm.userPasswordConfirmation.$dirty">Tu contraseña es muy corta, debe contener mínimo 6 dígitos!</span>
+                                                <span ng-if="!passwordComparation && SignUpForm.userPasswordConfirmation.$dirty">Las contraseñas no coinciden :(</span>
                                             </div>
                                         </div>
                                         <!-- tooltip -->

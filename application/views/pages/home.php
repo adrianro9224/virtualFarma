@@ -30,7 +30,24 @@
 		</section>
 		<div class="container" >
 			<section id="content">
-			</section>
+                <?php if ( isset($products) ):?>
+                <div class="row">
+                    <?php foreach ( $products as $product ): ?>
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <img src="<?= base_url() . 'assets/images/products/' . $product->uri_img . $product->image_format_id?>" class="img-responsive" alt="<?= $product->name ?>" >
+                            <div class="caption">
+                                <h3><?= $product->name ?></h3>
+                                <p><?= $product->presentation ?></p>
+                                <h3 class="primary-emphasis" ng-bind="<?= $product->price ?> | currency : '$' : 0"></h3>
+                                <p><a href="<?= '/product/search_product/' . lcfirst(str_replace(' ', '_', $product->name))  ?>" class="btn btn-primary">Agregar</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+                <?php endif;?>
+            </section>
 		</div>
 		<!-- Content over -->
 		<!-- Footer start -->

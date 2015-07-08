@@ -4,6 +4,17 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 Class Products {
 	
 
+    public function get_home_products() {
+
+        $CI =& get_instance();
+		$CI->load->model('product_model');
+
+        $products = $CI->product_model->get_by_category_id( 1 );
+
+        return $products;
+
+    }
+
     public function save_product_request( $product_request_to_save, $account_id ) {
 
         $CI =& get_instance();
