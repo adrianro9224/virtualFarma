@@ -91,7 +91,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group" ng-class="{'has-error': !productRequestForm.pqrs.$valid && productRequestForm.pqrs.$dirty}">
-                                        <label for="product_presentation" class="col-md-3 control-label">Descripción: *</label>
+                                        <label for="product_presentation" class="col-md-3 control-label">Comentario: *</label>
                                         <div class="col-md-5">
                                             <textarea class="form-control" name="pqrs" ng-model="pqrs" rows="3" required></textarea>
                                             <!-- tooltip -->
@@ -99,7 +99,7 @@
                                                 <div class="arrow-up-error">
                                                 </div>
                                                 <div class="farma-tooltip-error">
-                                                    <span ng-if="productRequestForm.pqrs.$error.required && productRequestForm.pqrs.$dirty">Indicanos tu inquietud!</span>
+                                                    <span ng-if="productRequestForm.pqrs.$error.required && productRequestForm.pqrs.$dirty">Indicanos tu comentario!</span>
                                                 </div>
                                             </div>
                                             <!-- tooltip -->

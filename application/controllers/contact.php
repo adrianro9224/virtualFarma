@@ -49,7 +49,7 @@ Class Contact extends MY_Controller {
 
         $breadcrumb = new stdClass();
 
-        $breadcrumb->title = "Productos";
+        $breadcrumb->title = "Contactanos";
 
         $breadcrumb_item = new stdClass();
 
@@ -78,7 +78,11 @@ Class Contact extends MY_Controller {
 
     public function send_pqrs() {
 
-        $notifications['warning'] = "Hemos recibido tu inquietud, pronto estaremos en contacto!";
+        $form = $this->input->post();
+
+        die(var_dump($form));
+
+        $notifications['warning'] = "Hemos recibido tu comentario, pronto estaremos en contacto!";
         $this->session->set_flashdata('notifications', $notifications );
         redirect('/contact');
     }

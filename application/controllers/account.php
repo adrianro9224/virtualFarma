@@ -165,6 +165,8 @@ class Account extends MY_Controller {
 				
 				$account = $this->account_model->get_account_by_id($insert_id);
 
+                if( isset($account->points) )
+                    $data['points'] = $account->points;
 
                 $pathologies = new stdClass();
 
@@ -193,7 +195,7 @@ class Account extends MY_Controller {
 
 				$this->_do_login( $account , $data, $account_types);
 				
-				$notifications['success'][] = "Su cuenta a sido creada con éxito, te damos la bienvenida a VirtualFarma!"; 
+				$notifications['success'][] = "Tu cuenta a sido creada con éxito, te hemos obsequiado <strong>1000 puntos</strong> que podrás redimir cuando quieras, bienvenido a VirtualFarma!";
 				
 				$data['notifications'] = $notifications;
 				

@@ -1303,7 +1303,8 @@ ICONS START
 *carousel start
 */
 #carousel-content {
-	height: 400px !important;
+	/*height: 400px !important;*/
+    margin-bottom: 20px;
 }
 
 .carousel-control {
@@ -1548,5 +1549,5 @@ a:hover.promelight-button {
 }
 
 .thumbnail {
-    min-height: 330px;
+    min-height: 380px;
 }

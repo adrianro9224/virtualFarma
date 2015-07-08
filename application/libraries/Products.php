@@ -11,7 +11,43 @@ Class Products {
 
         $products = $CI->product_model->get_by_category_id( 1 );
 
-        return $products;
+        $first_products_ids = array('5', '7', '43289');
+
+        $first_products = array();
+
+        if ( isset($products) ) {
+
+            foreach( $products as $key=>$product ) {
+
+                if ( $product->id == $first_products_ids[0] ) {
+                    $first_products[] = $product;
+                    unset($products[$key]);
+                }
+
+                if ( $product->id == $first_products_ids[1] ) {
+                    $first_products[] = $product;
+                    unset($products[$key]);
+                }
+
+                if ( $product->id == $first_products_ids[2] ) {
+                    $first_products[] = $product;
+                    unset($products[$key]);
+                }
+
+            }
+
+            $sortedProducts = array();
+
+            foreach( $first_products as $product ) {
+                $sortedProducts[] = $product;
+            }
+
+            foreach( $products as $product ) {
+                $sortedProducts[] = $product;
+            }
+        }
+
+        return $sortedProducts;
 
     }
 

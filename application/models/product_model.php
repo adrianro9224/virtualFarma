@@ -43,6 +43,7 @@ class Product_model extends CI_Model {
 	public function get_by_category_id($category_id) {
 		
 		$this->db->where('category_id', $category_id);
+        $this->db->where('stock >', 0);
 		$query = $this->db->get('product');
 		
 		if( $query->num_rows() > 0 ) {

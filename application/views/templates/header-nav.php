@@ -2,7 +2,7 @@
 	<div id="sticky-anchor"></div>
 	<div class="container-fluid" id="sticky">
 		<div class="row">
-			<div id="header-nav-container"class="col-sm-12 col-md-11 col-md-offset-1 col-lg-10 col-lg-offset-2 no-padding">
+			<div id="header-nav-container"class="col-sm-12 col-md-11 col-md-offset-1 col-lg-9 col-lg-offset-3 no-padding">
 				<div id="primary-nav">
 					<nav class="navbar navbar-default">
 						<div class="container-fluid">
