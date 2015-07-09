@@ -29,7 +29,7 @@
 	<!-- Custom css over -->
 	
 	<!-- Font awesome css start -->
-	<link rel="stylesheet" type="text/css" href="<?= base_url() . 'public/font-awesome-4.2.0/css/font-awesome.min.css'?>">
+	<link rel="stylesheet" type="text/css" href="<?= base_url() . 'public/font-awesome-4.3.0/css/font-awesome.min.css'?>">
 	<!-- Font awesome css over -->
 	
 	<!-- Jquery start -->

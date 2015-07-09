@@ -15,7 +15,7 @@
 								<span class="icon-bar"></span>
 								</button>
 								<a class="navbar-brand" href="#">
-									<i class="fa fa-cart-plus"></i>
+									<!--<i class="fa fa-cart-plus"></i>-->
 								</a>
 							</div>
 					

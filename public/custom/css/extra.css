@@ -481,7 +481,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .header-item-container {
-    padding: 3% 0;
+    padding: 1% 0;
 }
 
 .btn-group-wrap {
@@ -1550,4 +1550,8 @@ a:hover.promelight-button {
 
 .thumbnail {
     min-height: 380px;
+}
+
+#WA-info i {
+    font-size: 1.7em;
 }
