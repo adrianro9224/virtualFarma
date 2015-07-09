@@ -158,7 +158,7 @@
   									</div>
   									
     								<div id="register-button-wrapper"  ng-mouseover="showSubmitButtonTooltip()" ng-mouseleave="hideSubmitButtonTooltip()">
-    									<button type="submit" class="btn btn-primary center-horizontaly" ng-disabled="SignUpForm.$invalid" >Registrárme</button>
+    									<button type="submit" class="btn btn-primary center-horizontaly" ng-disabled="SignUpForm.$invalid" >Registrarme</button>
     								</div>
     								<div class="form-group" ng-if="SignUpForm.$invalid">
 	    								<!-- tooltip -->

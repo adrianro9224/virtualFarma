@@ -161,7 +161,7 @@
 				</div>			
 				
 				<div class="form-group" ng-class="{'has-error': !ShippingDataForm.shippingDataPhone.$valid && ShippingDataForm.shippingDataPhone.$dirty}">
-					<label for="shippingDataPhone">Teléfono fijo<span class="primary-emphasis">*</span></label>
+					<label for="shippingDataPhone">Teléfono de contacto<span class="primary-emphasis">*</span></label>
 					<div class="input-group">
 						<div class="input-group-addon">#</div>
 						<div ng-if="order.shippingData.useMyDataStatus">
@@ -176,7 +176,7 @@
 						<div class="arrow-up-error"> 
 						</div>
 						<div class="farma-tooltip-error">
-							<span ng-if="ShippingDataForm.shippingDataPhone.$error.required && ShippingDataForm.shippingDataPhone.$dirty">Tu telefono fijo es obligatorio!</span>
+							<span ng-if="ShippingDataForm.shippingDataPhone.$error.required && ShippingDataForm.shippingDataPhone.$dirty">Tu telefono de contacto es obligatorio!</span>
 							<span ng-if="ShippingDataForm.shippingDataPhone.$error.maxlength && !ShippingDataForm.shippingDataPhone.$error.pattern && ShippingDataForm.shippingDataPhone.$dirty">Es muy extenso!</span>
 							<span ng-if="ShippingDataForm.shippingDataPhone.$error.minlength && !ShippingDataForm.shippingDataPhone.$error.pattern && ShippingDataForm.shippingDataPhone.$dirty">Es muy corto, debe contener mínimo 7 dígitos</span>
 							<span ng-if="ShippingDataForm.shippingDataPhone.$error.pattern">Solo se permiten valores numéricos y el caractér "-"</span>
@@ -187,42 +187,14 @@
 					<span id="helpBlock" class="help-block">Ej: (571) 6742838 ó puedes también poner tu número de celular</span>
 					<!-- helptext -->
 				</div>
-				
-				<div class="form-group" ng-class="{'has-error': !ShippingDataForm.ShippingDataMobile.$valid && ShippingDataForm.ShippingDataMobile.$dirty}">
-					<label for="ShippingDataMobile">Teléfono celular<span class="primary-emphasis">*</span></label>
-					<div class="input-group">
-						<div class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></div>
-						<div ng-if="order.shippingData.useMyDataStatus">
-							<input type="text" name="ShippingDataMobile" ng-model="order.shippingData.mobile" class="form-control" id="ShippingDataMobile" placeholder="Ingrese su teléfono celular" ng-init="order.shippingData.mobile='<?= ( isset($shipping_data) ) ? $shipping_data->mobile : null ?>'" ng-maxLength="32" ng-minLength="10" ng-pattern="/[\d-]/" required>
-						</div>
-						<div ng-if="!order.shippingData.useMyDataStatus">
-							<input type="text" name="ShippingDataMobile" ng-model="order.shippingData.mobile" class="form-control" id="ShippingDataMobile" placeholder="Ingrese su teléfono celular" ng-init="order.shippingData.mobile=undefined" ng-maxLength="32" ng-minLength="10" ng-pattern="/[\d-]/" required>
-						</div>
-					</div>
-					<!-- tooltip -->
-					<div ng-if="ShippingDataForm.ShippingDataMobile.$invalid && ShippingDataForm.ShippingDataMobile.$dirty">
-						<div class="arrow-up-error"> 
-						</div>
-						<div class="farma-tooltip-error">
-							<span ng-if="ShippingDataForm.ShippingDataMobile.$error.required && ShippingDataForm.ShippingDataMobile.$dirty">Tu telefono fijo es obligatorio!</span>
-							<span ng-if="ShippingDataForm.ShippingDataMobile.$error.maxlength && !ShippingDataForm.ShippingDataMobile.$error.pattern && ShippingDataForm.ShippingDataMobile.$dirty">Es muy extenso!</span>
-							<span ng-if="ShippingDataForm.ShippingDataMobile.$error.minlength && !ShippingDataForm.ShippingDataMobile.$error.pattern && ShippingDataForm.ShippingDataMobile.$dirty">Es muy corto, debe contener mínimo 10 dígitos</span>
-							<span ng-if="ShippingDataForm.ShippingDataMobile.$error.pattern && ShippingDataForm.ShippingDataMobile.$dirty">Solo se permiten valores numéricos y el caractér "-"</span>
-						</div>
-					</div>	
-					<!-- tooltip -->
-					<!-- helptext -->
-					<span id="helpBlock" class="help-block">Ej: 3124718075</span>
-					<!-- helptext -->
-				</div>
-			</div>
-            <div class="col-md-12 margin-bottom-5" >
-                <div class="form-group">
-                    <label for="exampleInputFile">Imagen de tu prescripción</label>
-                    <input type="file" id="exampleInputFile" required>
-                    <p class="help-block">Sube una foto de tu orden médica.</p>
+                <div class="col-md-12 margin-bottom-5" >
+                    <div class="form-group">
+                        <label for="exampleInputFile">Imagen de tu prescripción</label>
+                        <input type="file" id="exampleInputFile" required>
+                        <p class="help-block">Sube una foto de tu orden médica.</p>
+                    </div>
                 </div>
-            </div>
+			</div>
             <div class="col-md-12 margin-bottom-5" >
                 <div class="checkbox">
                     <label>

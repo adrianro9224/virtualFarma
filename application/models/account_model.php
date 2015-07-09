@@ -44,16 +44,33 @@ class Account_model extends CI_Model {
 		$update_account_form['userId'] = ( empty($update_account_form['userId']) ) ? NULL : $update_account_form['userId'];
 		$update_account_form['userPhone'] = ( empty( $update_account_form['userPhone'] ) ) ? NULL : $update_account_form['userPhone'];
 		$update_account_form['userMobile'] = ( empty($update_account_form['userMobile']) ) ? NULL : $update_account_form['userMobile'];
-		
-		$this->db->set('first_name', $update_account_form['userFirstName']);
-		$this->db->set('second_name', $update_account_form['userSecondName'] );
-		$this->db->set('last_name', $update_account_form['userLastName']);
-		$this->db->set('surname', $update_account_form['userSurname']);
-		$this->db->set('email', $update_account_form['userEmail']);
-		$this->db->set('identification_number', $update_account_form['userId'] );
-		$this->db->set('phone', $update_account_form['userPhone'] );
-		$this->db->set('mobile', $update_account_form['userMobile']);
-		$this->db->set('gender', $update_account_form['userGender']);
+
+        if ( isset($update_account_form['userFirstName']) )
+		    $this->db->set('first_name', $update_account_form['userFirstName']);
+
+        if ( isset($update_account_form['userSecondName']) )
+		    $this->db->set('second_name', $update_account_form['userSecondName'] );
+
+        if ( isset($update_account_form['userLastName']) )
+		    $this->db->set('last_name', $update_account_form['userLastName']);
+
+        if ( isset($update_account_form['userSurname']) )
+		    $this->db->set('surname', $update_account_form['userSurname']);
+
+        if ( isset($update_account_form['userEmail']) )
+		    $this->db->set('email', $update_account_form['userEmail']);
+
+        if ( isset($update_account_form['userId']) )
+		    $this->db->set('identification_number', $update_account_form['userId'] );
+
+        if ( isset($update_account_form['userPhone']) )
+		    $this->db->set('phone', $update_account_form['userPhone'] );
+
+        if ( isset($update_account_form['userMobile']) )
+		    $this->db->set('mobile', $update_account_form['userMobile']);
+
+        if ( isset($update_account_form['userGender']) )
+            $this->db->set('gender', $update_account_form['userGender']);
 		
 		$this->db->where('id', $account_id);
 		$this->db->update('account');

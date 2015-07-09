@@ -148,7 +148,7 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
 
         var shippingCharge;
 
-        if ( subtotal > ConstantsService.LIMIT_FOR_FREE_SHIPPING )
+        if ( subtotal >= ConstantsService.LIMIT_FOR_FREE_SHIPPING )
             shippingCharge = "Es gratis";
         else
             shippingCharge = ConstantsService.SHIPPING_CHARGE;

@@ -21,7 +21,7 @@ class Recipient_model extends CI_Model {
 			'identification_number' => $recipient_data->id,
 			'names' => $recipient_data->names,
 			'last_names' => $recipient_data->lastNames,
-			'mobile' => $recipient_data->mobile,
+			//'mobile' => $recipient_data->mobile,
 			'phone' => $recipient_data->phone
 		);
 		

@@ -282,6 +282,7 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
         }
 
 
+
         function reverseGeocoding (lat, lng){
 
             var geocoder = new google.maps.Geocoder();
@@ -290,7 +291,7 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
             geocoder.geocode({'latLng': latlng}, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     if (results[1]) {
-                        map.setZoom(11);
+                        //map.setZoom(11);
                         var marker = new google.maps.Marker({
                             position: latlng,
                             map: map

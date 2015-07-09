@@ -80,10 +80,10 @@
 						<!-- helptext -->
 					</div>
 					<label class="radio-inline">
-						<input type="radio" name="userGender" id="userGenderMale" value="M" <?= ( ( isset($user_logged_account->gender) ) && ($user_logged_account->gender == 'M') ) ? 'checked' : null ?>> Hombre
+						<input type="radio" name="userGender" ng-model="userGender" id="userGenderMale" value="M" ng-checked="<?= ( ( isset($user_logged_account->gender) ) && ($user_logged_account->gender == 'M') ) ? 1 : null ?>"> Hombre
 					</label>
 					<label class="radio-inline">
-						<input type="radio" name="userGender" id="userGenderFemale" value="F" <?= ( ( isset($user_logged_account->gender) ) && ($user_logged_account->gender == 'F') ) ? 'checked' : null ?>> Mujer
+						<input type="radio" name="userGender" ng-model="userGender" id="userGenderFemale" value="F" ng-checked="<?= ( ( isset($user_logged_account->gender) ) && ($user_logged_account->gender == 'F') ) ? 1 : null ?>"> Mujer
 					</label>
 				</div>
 				<div class="col-md-6">
