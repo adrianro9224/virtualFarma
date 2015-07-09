@@ -14,6 +14,10 @@
                         <div class="header-item">
                             <h1>606 2101</h1>
                         </div>
+                        <div class="header-item" id="WA-info">
+                            <i class="fa fa-whatsapp"></i>
+                            <span ><strong>WhatsApp 322 5714648</strong></span>
+                        </div>
                     </div>
                 </div>
             </div>

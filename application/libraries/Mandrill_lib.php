@@ -144,20 +144,13 @@ class Mandrill_lib {
     public function send_pqrs( $account ){
 
 
+       // die(var_dump($account));
 
         try {
 
             $CI =& get_instance();
 
             $CI->load->library('mandrill');
-
-            /*
-                        $result = $CI->$mandrill->users->ping();
-                        print_r($result);
-            */
-
-
-            // template name ->string, $message->array
 
             $template_name = 'NewPqrs';
             $template_content = array(
@@ -179,7 +172,7 @@ class Mandrill_lib {
                         'type' => 'to'
                     )
                 ),
-                //'headers' => array('Reply-To' => 'registro@virtualfarma.com.co'),
+              //  'headers' => array('Reply-To' => 'adrian.romero9224@gmail.com'),
                 'important' => false,
                 //'track_opens' => null,
                 //track_clicks' => null,
@@ -203,7 +196,7 @@ class Mandrill_lib {
                 ),
                 'merge_vars' => array(
                     array(
-                        'rcpt' => $account['email'],
+                        'rcpt' => 'contacto@virtualfarma.com.co',
                         'vars' => array(
                             array(
                                 'name' => 'NAME',

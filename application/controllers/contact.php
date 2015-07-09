@@ -6,8 +6,8 @@ Class Contact extends MY_Controller {
 
     function __construct(){
         parent::__construct();
-       // $this->load->model('pathology_model');
-        $this->load->library(array('form_validation', 'mandrill_lib'));
+        //$this->load->model('pathology_model');
+        $this->load->library(array('form_validation', 'mandrill_lib', 'account_types'));
     }
 
     public function index($page = 'contact') {
