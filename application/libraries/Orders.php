@@ -63,4 +63,17 @@ class Orders {
 		
 		return $order_update_completed;
 	}
+
+    public function get_order_by_id( $order_id ) {
+
+        $CI =& get_instance();
+
+        $CI->load->model('order_model');
+
+        $order = $CI->order_model->get_by_id( $order_id );
+
+        //$order->products = json_decode($order->products);
+
+        return $order;
+    }
 }

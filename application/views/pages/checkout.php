@@ -40,7 +40,7 @@
 					<section ng-controller="CheckoutPanelCtrl" id="checkout-panel-content" >
 						<div class="col-md-9">
 							<section id="checkout-panel">
-								<div class="row">
+								<div class="row hidden-xs" >
 									<div class="col-md-12">
 										<?php include_once( __ROOT__TEMPLATES__ . '/checkout/checkout-panel-nav.php');?>
 									</div>

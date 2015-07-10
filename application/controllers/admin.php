@@ -11,7 +11,7 @@ class Admin extends MY_Controller {
 		
 		$this->load->model('account_model');
 		$this->load->helper(array('form', 'account_helper'));
-		$this->load->library( array('form_validation', 'account_types', 'products', 'orders', 'accounts', 'address') );
+		$this->load->library( array('form_validation', 'account_types', 'products', 'orders', 'accounts', 'address', 'mandrill_lib') );
 		
 	}
 	
@@ -273,6 +273,19 @@ class Admin extends MY_Controller {
 			$order_updated = $this->orders->update_order_by_id( $orderInfo->data->orderId, $orderInfo->data->newOrderStatus, $orderInfo->data->date);
 			
 			if ( $order_updated ) {
+
+                if ( $orderInfo->data->newOrderStatus == "SENDED" ) {
+
+                    $order = $this->orders->get_order_by_id( $orderInfo->data->orderId );
+
+                    $account = $this->account_model->get_account_by_id( $order->account_id );
+
+                    if ( isset($account) && isset($order) )
+                        $this->mandrill_lib->send_order_confirmed( $order, $account, $orderInfo->data->date );
+
+                }
+
+
 				echo 'true';
 			}else {
 				echo 'false';

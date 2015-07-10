@@ -58,10 +58,10 @@ class Order_model extends CI_Model {
 	
 	public function get_by_FARMACY_id( $account_farmacy_id ) {
 		
-		$this->db->select('*');
+		$this->db->select('order.id as orderid , order.*, recipient.*');
 		$this->db->from('order');
 		
-		$this->db->join( 'recipient', 'recipient.id = order.recipient_id' );
+		$this->db->join( 'recipient', 'recipient.id = order.recipient_id','left' );
 		
 		$this->db->where( 'farmacy_id', $account_farmacy_id );
 		
@@ -75,6 +75,24 @@ class Order_model extends CI_Model {
 		return NULL;
 		
 	}
+
+    public function get_by_id( $order_id ) {
+
+        $this->db->select('order.id as orderid , order.*, recipient.*');
+        $this->db->from('order');
+
+        $this->db->join( 'recipient', 'recipient.id = order.recipient_id','left' );
+
+        $this->db->where( 'order.id', $order_id );
+
+        $query = $this->db->get();
+
+        if ( $query->num_rows() > 0 )
+            return $query->row();
+
+        return NULL;
+
+    }
 	
 	/**
 	 * Update the status of a order by id

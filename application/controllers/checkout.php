@@ -8,7 +8,7 @@ class Checkout extends MY_Controller {
 	 */
 	function __construct() {
 		parent::__construct();
-		$this->load->library( array('address', 'orders', 'account_types', 'accounts') );
+		$this->load->library( array('address', 'orders', 'account_types', 'accounts', 'mandrill_lib') );
 		$this->load->model("Payment_method_model");
 	}
 	
@@ -166,6 +166,12 @@ class Checkout extends MY_Controller {
                 $saved = $this->accounts->save_points( $order->data->points, $account_id );
 
                 if ($result && $saved) {
+
+                    $account = $this->get_account( $account_id );
+                    //if( $account->email == "adrian.romero9224@gmail.com") {
+                    $this->mandrill_lib->send_order_sended( $order->data, $account );
+                    //}
+
                     echo 'true';
                 }else {
                     echo 'false';

@@ -1,7 +1,7 @@
 /**
  * Created by Adrian on 05/05/2015.
  */
-farmapp.controller( 'FarmacyOrdersCtrl', ['$scope', '$http', '$window', function( $scope, $http, $window ){
+farmapp.controller( 'FarmacyOrdersCtrl', ['$scope', '$http', '$window', 'UtilService', function( $scope, $http, $window, UtilService ){
 
     'use strict';
 
@@ -52,9 +52,7 @@ farmapp.controller( 'FarmacyOrdersCtrl', ['$scope', '$http', '$window', function
         orderInfo.orderId = orderId;
         orderInfo.newOrderStatus = 'DECLINED';
 
-        var currentDate = new Date();
-
-        orderInfo.date = currentDate.getFullYear() + '-' + currentDate.getMonth() + '-' + currentDate.getDate() + ' ' + currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds();
+        orderInfo.date = UtilService.getDateMySql();
         $scope.UpdatingOrderToSended = true;
 
         $http.post("http://virtualfarma.com.co/admin/change_order_status" , { data : orderInfo } )
@@ -84,9 +82,7 @@ farmapp.controller( 'FarmacyOrdersCtrl', ['$scope', '$http', '$window', function
         orderInfo.orderId = orderId;
         orderInfo.newOrderStatus = 'SENDED';
 
-        var currentDate = new Date();
-
-        orderInfo.date = currentDate.getFullYear() + '-' + currentDate.getMonth() + '-' + currentDate.getDate() + ' ' + currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds();
+        orderInfo.date = UtilService.getDateMySql();
         $scope.UpdatingOrderToSended = true;
 
         $http.post("http://virtualfarma.com.co/admin/change_order_status" , { data : orderInfo } )
