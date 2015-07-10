@@ -167,10 +167,14 @@ class Checkout extends MY_Controller {
 
                 if ($result && $saved) {
 
-                    $account = $this->get_account( $account_id );
-                    //if( $account->email == "adrian.romero9224@gmail.com") {
-                    $this->mandrill_lib->send_order_sended( $order->data, $account );
-                    //}
+                    if( $order->data->from != 'CALL_CENTER') {
+
+                        $account = $this->get_account( $account_id );
+                        //if( $account->email == "adrian.romero9224@gmail.com") {
+                        $this->mandrill_lib->send_order_sended( $order->data, $account );
+                        //}
+
+                    }
 
                     echo 'true';
                 }else {

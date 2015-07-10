@@ -52,9 +52,35 @@
                 <!-- category left sidebar over -->
 
                 <!-- product list start -->
-                <section id="request_product_form" >
-                    <div class="col-md-9">
-                        <section id="product-request-form" ng-controller="RequestProductCtrl">
+                <section id="request_product_form" ng-controller="RequestProductCtrl">
+
+                    <div class="col-md-9" >
+                        <section id="product-request-before" >
+                            <div class="row" >
+                                <p class="bg-primary sample-show-hide.ng-hide" ng-if="!showRequestProductForm">¡Lo sentimos! tu búsqueda <strong><?= '"' . $string_to_search  . '"'?></strong> no ha generado ninguna coincidencia.</p>
+                                <div class="col-md-4">
+                                    <section id="product-request-before" >
+                                        <div class="list-group">
+                                            <a href="#" class="list-group-item active">
+                                                <h4 class="list-group-item-heading">Te sugerimos</h4>
+                                                <p class="list-group-item-text">Revisa la ortografía de tu búsqueda</p>
+                                            </a>
+                                        </div>
+                                    </section>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="list-group" ng-click="showForm()">
+                                        <a href="#" class="list-group-item active">
+                                            <h4 class="list-group-item-heading">Solicitar producto</h4>
+                                            <p class="list-group-item-text">¿No encontraste tu producto?, permitenos ayudarte, haz click y sigue los pasos</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+
+                        <section id="product-request-form" ng-if="showRequestProductForm" >
                             <div class="well well-lg">
                                 <p class="bg-primary">¡Lo sentimos! No contamos con el producto que estás buscando en estos momentos. Sabemos que tu salud y tu tiempo son muy valiosos, por eso podemos buscar tu producto en el menor tiempo posible. Si deseas este servicio de búsqueda avanzada, por favor diligencia el siguiente formulario:</p>
                                 <form class="form-horizontal" name="productRequestForm" action="<?= base_url() . 'product/send_product_request'?>" method="post" autocomplete="on" novalidate>

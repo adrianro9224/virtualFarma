@@ -5,6 +5,11 @@
 
 farmapp.controller('RequestProductCtrl', ['$scope', function( $scope ){
 
+
+
+    $scope.showRequestProductForm = false;
+
+
     var currentDate = new Date();
 
     var dateFormatted = currentDate.getFullYear() + '-' + (currentDate.getMonth() + 1) + '-' + currentDate.getDate() + ' ' + currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds();
@@ -14,5 +19,9 @@ farmapp.controller('RequestProductCtrl', ['$scope', function( $scope ){
         $scope.dateOfProductRequest = dateFormatted;
 
     console.info($scope.dateOfProductRequest);
+
+    $scope.showForm = function () {
+        $scope.showRequestProductForm = true;
+    }
 
 }]);

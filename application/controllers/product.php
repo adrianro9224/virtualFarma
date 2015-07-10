@@ -575,11 +575,13 @@ class Product extends MY_Controller {
         $data['categories'] = $categories;
 		
 		if ( !empty($product_info_to_search) ) {
-		
+
 			$validation_response = $this->_validate_search_product_form();
 			
 			if ( $validation_response ) {
-				
+
+                $data['string_to_search'] = $product_info_to_search['productName'];
+
 				$breadcrumb->sub_title = $product_info_to_search['productName'];
 				
 				$products = $this->product_model->get_by_name( $product_info_to_search['productName'] );
@@ -704,22 +706,33 @@ class Product extends MY_Controller {
 
         $notifications = $this->session->flashdata('notifications');
 
-        $categories = $this->get_categories();
+        $aux_data = $this->session->flashdata('data');
 
-        $data['categories'] = $categories;
-        $active_ingredients = $this->get_active_ingredients();
-        $data['active_ingredients'] = $active_ingredients;
+        if ( isset($aux_data)&& !empty($aux_data['string_to_search']) ) {
+            $data['string_to_search'] = $aux_data['string_to_search'];
 
 
-        if ( $data['user_logged'] )
-            $notifications['info'] = "Como has iniciado sesión puedes disfrutar de este, uno de nuestros servicios especialmente creados para tí";
-        else
-            $notifications['danger'] = "Para poder solicitar productos debes estar registrádo y haber iniciado sesión, hazlo dando click <a href='/account'>aquí</a>";
+            $categories = $this->get_categories();
 
-        //$this->session->set_flashdata('notifications', $notifications );
-        $data['notifications'] = $notifications;
+            $data['categories'] = $categories;
+            $active_ingredients = $this->get_active_ingredients();
+            $data['active_ingredients'] = $active_ingredients;
 
-        $this->load->view('pages/request_products', $data);
+
+            if ($data['user_logged'])
+                $notifications['info'] = "Como has iniciado sesión puedes disfrutar de este, uno de nuestros servicios especialmente creados para tí";
+            else
+                $notifications['danger'] = "Para poder solicitar productos debes estar registrádo y haber iniciado sesión, hazlo dando click <a href='/account'>aquí</a>";
+
+            //$this->session->set_flashdata('notifications', $notifications );
+            $data['notifications'] = $notifications;
+
+            $data['string_to_search'] =
+
+            $this->load->view('pages/request_products', $data);
+        }else{
+            redirect('/');
+        }
     }
 
     public function send_product_request(){
@@ -783,6 +796,7 @@ class Product extends MY_Controller {
 
         $notifications['info'] = "No existen resultados para la búsqueda. Si no encontraste el medicamento que estabas buscando puedes enviarnos los datos de este y te llamarémos para confirmarte el envío al siguiente día";
         $this->session->set_flashdata('notifications', $notifications );
+        $this->session->set_flashdata('data', $data);
         redirect('/product/request_product');
     }
 
