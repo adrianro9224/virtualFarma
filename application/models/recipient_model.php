@@ -18,12 +18,14 @@ class Recipient_model extends CI_Model {
 		$data = array(
 			'address_line' => $recipient_data->addressLine1,
 			'neighborhood' => $recipient_data->neighborhood,
-			'identification_number' => $recipient_data->id,
 			'names' => $recipient_data->names,
 			'last_names' => $recipient_data->lastNames,
 			//'mobile' => $recipient_data->mobile,
 			'phone' => $recipient_data->phone
 		);
+
+        if( isset($recipient_data->id) )
+            $data['identification_number'] = $recipient_data->id;
 		
 		if ( isset($recipient_data->doctorName) )
 			$data['prescribed_by'] =  $recipient_data->doctorName;

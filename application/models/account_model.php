@@ -98,7 +98,7 @@ class Account_model extends CI_Model {
 	
 	public function get_account_by_id($account_id) {
 		
-		$this->db->select('id, first_name, second_name, last_name, surname, identification_number, phone, mobile, gender, email, terms_and_conditions, points');
+		$this->db->select('id, first_name, account_type_id, second_name, last_name, surname, identification_number, phone, mobile, gender, email, terms_and_conditions, points');
 		
 		$this->db->where('id', $account_id);
 		

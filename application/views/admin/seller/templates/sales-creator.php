@@ -192,13 +192,13 @@
 				</div>			
 					
 				<div class="form-group" ng-class="{'has-error': !SalesForm.shippingDataPhone.$valid && SalesForm.shippingDataPhone.$dirty}" ng-cloak class="ng-cloak">
-					<label for="shippingDataPhone">Teléfono fijo<span class="primary-emphasis">*</span></label>
+					<label for="shippingDataPhone">Teléfono de contacto<span class="primary-emphasis">*</span></label>
 					<div class="input-group">
 						<div class="input-group-addon">#</div>
                         <?php if( isset($client_account) ): ?>
 						<input type="text" name="shippingDataPhone" ng-model="sale.shippingData.phone" ng-init="sale.shippingData.phone='<?= ( isset($client_account->phone) ) ? $client_account->phone : null ?>'" ng-change="putSaveAndSound( sale, SalesForm.shippingDataPhone.$valid )" class="form-control" id="shippingDataPhone" placeholder="Ingresa tu teléfono fijo" ng-maxLength="32" ng-minLength="7" ng-pattern="/[\d-]/" required>
                         <?php else:?>
-                            <input type="text" name="shippingDataPhone" ng-model="sale.shippingData.phone" ng-change="putSaveAndSound( sale, SalesForm.shippingDataPhone.$valid )" class="form-control" id="shippingDataPhone" placeholder="Ingresa tu teléfono fijo" ng-maxLength="32" ng-minLength="7" ng-pattern="/[\d-]/" required>
+                            <input type="text" name="shippingDataPhone" ng-model="sale.shippingData.phone" ng-change="putSaveAndSound( sale, SalesForm.shippingDataPhone.$valid )" class="form-control" id="shippingDataPhone" placeholder="Ingresa un telefono de contacto" ng-maxLength="32" ng-minLength="7" ng-pattern="/[\d-]/" required>
                         <?php endif;?>
 					</div>
 					<!-- tooltip -->
@@ -215,33 +215,6 @@
 					<!-- tooltip -->
 					<!-- helptext -->
 					<span id="helpBlock" class="help-block">Ej: (571) 6742838 ó puedes también poner su número de celular</span>
-					<!-- helptext -->
-				</div>
-					
-				<div class="form-group" ng-class="{'has-error': !SalesForm.ShippingDataMobile.$valid && SalesForm.ShippingDataMobile.$dirty}">
-					<label for="ShippingDataMobile">Teléfono celular<span class="primary-emphasis">*</span></label>
-					<div class="input-group">
-						<div class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></div>
-                        <?php if( isset($client_account) ): ?>
-						    <input type="text" name="ShippingDataMobile" ng-model="sale.shippingData.mobile" ng-init="sale.shippingData.mobile='<?= ( isset($client_account->mobile) ) ? $client_account->mobile : null ?>'" ng-change="putSaveAndSound( sale, SalesForm.ShippingDataMobile.$valid )" class="form-control" id="ShippingDataMobile" placeholder="Ingrese su teléfono celular" ng-maxLength="32" ng-minLength="10" ng-pattern="/[\d-]/" required>
-                        <?php else:?>
-                            <input type="text" name="ShippingDataMobile" ng-model="sale.shippingData.mobile" ng-change="putSaveAndSound( sale, SalesForm.ShippingDataMobile.$valid )" class="form-control" id="ShippingDataMobile" placeholder="Ingrese su teléfono celular" ng-maxLength="32" ng-minLength="10" ng-pattern="/[\d-]/" required>
-                        <?php endif;?>
-					</div>
-					<!-- tooltip -->
-					<div ng-if="SalesForm.ShippingDataMobile.$invalid && SalesForm.ShippingDataMobile.$dirty">
-						<div class="arrow-up-error"> 
-						</div>
-						<div class="farma-tooltip-error">
-							<span ng-if="SalesForm.ShippingDataMobile.$error.required && SalesForm.ShippingDataMobile.$dirty">Tu telefono fijo es obligatorio!</span>
-							<span ng-if="SalesForm.ShippingDataMobile.$error.maxlength && !SalesForm.ShippingDataMobile.$error.pattern && SalesForm.ShippingDataMobile.$dirty">Es muy extenso!</span>
-							<span ng-if="SalesForm.ShippingDataMobile.$error.minlength && !SalesForm.ShippingDataMobile.$error.pattern && SalesForm.ShippingDataMobile.$dirty">Es muy corto, debe contener mínimo 10 dígitos</span>
-							<span ng-if="SalesForm.ShippingDataMobile.$error.pattern && SalesForm.ShippingDataMobile.$dirty">Solo se permiten valores numéricos y el caractér "-"</span>
-						</div>
-					</div>	
-					<!-- tooltip -->
-					<!-- helptext -->
-					<span id="helpBlock" class="help-block">Ej: 3124718075</span>
 					<!-- helptext -->
 				</div>
 			</div>

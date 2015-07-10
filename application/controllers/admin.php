@@ -280,11 +280,12 @@ class Admin extends MY_Controller {
 
                     $account = $this->account_model->get_account_by_id( $order->account_id );
 
-                    if ( isset($account) && isset($order) )
-                        $this->mandrill_lib->send_order_confirmed( $order, $account, $orderInfo->data->date );
-
+                    if ( isset($account) && isset($order) ) {
+                        if ( $account->account_type_id == 2 ) {
+                            $this->mandrill_lib->send_order_confirmed( $order, $account, $orderInfo->data->date );
+                        }
+                    }
                 }
-
 
 				echo 'true';
 			}else {

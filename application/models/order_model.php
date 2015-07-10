@@ -16,7 +16,13 @@ class Order_model extends CI_Model {
 	 * @return NULL or the insert id
 	 */
 	public function insert_order( $order_data, $recipient_id, $account_id ) {
-		
+
+
+        if ( isset($order_data->shippingData->FarmacyNearbyId) )
+            $data['nearby_id'] = $order_data->shippingData->FarmacyNearbyId;
+        else
+            $data['nearby_id'] = 1;
+
 		$data = array(
 				'send_date' => $order_data->date,
 				'value' => $order_data->shoppingcart->total,
@@ -27,7 +33,6 @@ class Order_model extends CI_Model {
 				'recipient_id' => $recipient_id,
 				'account_id' => $account_id,
 				'status' => 'RECEIVED',
-                'nearby_id' => $order_data->shippingData->FarmacyNearbyId,
 				'farmacy_id' => 1,
 				'from_app' => $order_data->from
 		);
