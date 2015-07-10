@@ -82,7 +82,7 @@
 
                         <section id="product-request-form" ng-if="showRequestProductForm" >
                             <div class="well well-lg">
-                                <p class="bg-primary">¡Lo sentimos! No contamos con el producto que estás buscando en estos momentos. Sabemos que tu salud y tu tiempo son muy valiosos, por eso podemos buscar tu producto en el menor tiempo posible. Si deseas este servicio de búsqueda avanzada, por favor diligencia el siguiente formulario:</p>
+                                <!--<p class="bg-primary">¡Lo sentimos! No contamos con el producto que estás buscando en estos momentos. Sabemos que tu salud y tu tiempo son muy valiosos, por eso podemos buscar tu producto en el menor tiempo posible. Si deseas este servicio de búsqueda avanzada, por favor diligencia el siguiente formulario:</p>-->
                                 <form class="form-horizontal" name="productRequestForm" action="<?= base_url() . 'product/send_product_request'?>" method="post" autocomplete="on" novalidate>
                                     <div class="form-group" ng-class="{'has-error': !productRequestForm.productName.$valid && productRequestForm.productName.$dirty}">
                                         <label for="product_name" class="col-md-3 control-label">Nombre del producto: *</label>

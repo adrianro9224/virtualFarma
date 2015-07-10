@@ -794,7 +794,7 @@ class Product extends MY_Controller {
 
     private function _show_products_page_not_found( &$notifications, &$data ) {
 
-        $notifications['info'] = "No existen resultados para la búsqueda. Si no encontraste el medicamento que estabas buscando puedes enviarnos los datos de este y te llamarémos para confirmarte el envío al siguiente día";
+        $notifications['info'] = "No existen resultados para la búsqueda. Si no encontraste el medicamento que estabas buscando puedes enviarnos los datos de este y nos pondremos en contacto para confirmar el envío en el menor tiempo posible";
         $this->session->set_flashdata('notifications', $notifications );
         $this->session->set_flashdata('data', $data);
         redirect('/product/request_product');
