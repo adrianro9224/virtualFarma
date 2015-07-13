@@ -15,7 +15,8 @@ Class Product_json_model extends CI_Model{
 	 */
 	public function insert_product_json( $products_json ) {
 		$data = array(
-				"products" => $products_json
+				"products" => $products_json,
+                "status" => 0
 				);
 		
 		$this->db->insert('product_json', $data);

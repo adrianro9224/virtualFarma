@@ -380,43 +380,47 @@ class Product extends MY_Controller {
 			show_404();
 	}
 
-    public function generate_json_of_products_for_seller_module() {
+    public function generate_json_of_products_for_seller_module( $id_admin = null ) {
 
-        $products_from_db = $this->product_model->get_all();
 
-        $result = $this->products->create_json_of_products( $products_from_db );
+        if ( isset($id_admin) && $id_admin == '1069741091' ) {
 
-        switch( $result->code_status ) {
-            case JSON_ERROR_NONE:
-                echo ' - Sin errores';
-                echo "Saving JSON of products in product_json tabla...";
+            $products_from_db = $this->product_model->get_all();
 
-                $json_saved = $this->products->save_json_of_products( $result->products_in_json );
+            $result = $this->products->create_json_of_products($products_from_db);
 
-                if ( $json_saved )
-                    echo "JSON of Products saved :D.";
-                else
-                    echo "JSON no saved";
+            switch ($result->code_status) {
+                case JSON_ERROR_NONE:
+                    echo ' - Sin errores';
+                    echo "Saving JSON of products in product_json tabla...";
 
-                break;
-            case JSON_ERROR_DEPTH:
-                echo ' - Excedido tamaño máximo de la pila';
-                break;
-            case JSON_ERROR_STATE_MISMATCH:
-                echo ' - Desbordamiento de buffer o los modos no coinciden';
-                break;
-            case JSON_ERROR_CTRL_CHAR:
-                echo ' - Encontrado carácter de control no esperado';
-                break;
-            case JSON_ERROR_SYNTAX:
-                echo ' - Error de sintaxis, JSON mal formado';
-                break;
-            case JSON_ERROR_UTF8:
-                echo ' - Caracteres UTF-8 malformados, posiblemente están mal codificados';
-                break;
-            default:
-                echo ' - Error desconocido';
-                break;
+                    $json_saved = $this->products->save_json_of_products($result->products_in_json);
+
+                    if ($json_saved)
+                        echo "JSON of Products saved :D.";
+                    else
+                        echo "JSON no saved";
+
+                    break;
+                case JSON_ERROR_DEPTH:
+                    echo ' - Excedido tamaño máximo de la pila';
+                    break;
+                case JSON_ERROR_STATE_MISMATCH:
+                    echo ' - Desbordamiento de buffer o los modos no coinciden';
+                    break;
+                case JSON_ERROR_CTRL_CHAR:
+                    echo ' - Encontrado carácter de control no esperado';
+                    break;
+                case JSON_ERROR_SYNTAX:
+                    echo ' - Error de sintaxis, JSON mal formado';
+                    break;
+                case JSON_ERROR_UTF8:
+                    echo ' - Caracteres UTF-8 malformados, posiblemente están mal codificados';
+                    break;
+                default:
+                    echo ' - Error desconocido';
+                    break;
+            }
         }
 
 
