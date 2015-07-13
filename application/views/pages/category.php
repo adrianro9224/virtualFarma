@@ -55,6 +55,7 @@
 
 					<section ng-controller="ProductListCtrl" id="product_list" >
 						<div class="col-md-9">
+                            <?php if ( isset($pagination) ):?>
                             <section id="product_pagination_top">
                                 <div class="row no-margin">
                                     <div class="col-md-12">
@@ -62,6 +63,7 @@
                                     </div>
                                 </div>
                             </section>
+                            <?php endif; ?>
                             <?php if ( isset($subcategories) ):?>
                                 <section id="sub-categories">
                                     <div class="col-md-12">
@@ -74,6 +76,7 @@
 									<?php include_once( __ROOT__TEMPLATES__ . 'product-list.php');?>
 								</div>
 							</section>
+                            <?php if ( isset($pagination) ):?>
                             <section id="product_pagination_bottom">
                                 <div class="row no-margin">
                                     <div class="col-md-12">
@@ -81,6 +84,7 @@
                                     </div>
                                 </div>
                             </section>
+                            <?php endif; ?>
                             <?php if ( isset($related_products) ):?>
                                 <section id="slick_slider">
                                     <div id="slick_slider_container" class="col-md-12">

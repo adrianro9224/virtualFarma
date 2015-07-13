@@ -59,16 +59,33 @@
   				</div>
 			</div>
 		</div>
-        <div class="row" id="search-nav">
+        <div class="row ng-cloak" id="search-nav" ng-cloak>
             <div class="col-md-6 col-md-offset-3">
                 <div id="search-container">
-                    <form name="searchProductForm" class="search-form" role="search" action="<?= base_url() . 'product/search_product'?>" method="post">
+                    <form name="searchProductForm" class="search-form" role="search" action="<?= base_url() . 'product/search_product'?>" method="post" autocomplete="off">
                         <div id="search-module" class="pull-left">
-                            <input popover-placement="top" popover="Escríbe aquí el nombre del producto que deseas!"  popover-trigger="focus" type="text" name="productName" id="productName" ng-change="search( productNameToSearch )" ng-model="productNameToSearch" ng-model="productNameToSearch" class="form-control" placeholder="Busca aquí tus productos" required="required">
+                            <input popover-placement="top" popover="Escríbe aquí el nombre del producto que deseas!"  popover-trigger="focus" type="text" name="productName" id="productName" ng-change="search( productNameToSearch, searchProductForm.productName.$valid )" ng-model="productNameToSearch" ng-model="productNameToSearch" class="form-control" placeholder="Busca aquí tus productos" required="required">
                             <!--<span for="productName" class="form-control-feedback"><i class="fa fa-search"></i></span>-->
                         </div><!-- /input-group -->
                         <input id="vf-button" class="pull-left" type="image" src="<?= base_url() . 'assets/images/logo/button.jpg'?>">
                     </form>
+                    <div id="aux-search-table" class="hidden-xs">
+                        <table class="table table-condensed table-hover table-striped" ng-if="searching">
+                            <thead>
+                            </thead>
+                            <tbody >
+                                <tr ng-if="results" ng-repeat="product in results">
+                                    <td ><a href="<?= base_url() . 'product/show_product_by_id/{{product.id}}'?>"  ng-bind="product.name + ', ' + product.presentation + ', ' + product.lab"></a></td>
+                                </tr>
+                                <tr ng-if="!productsCharged">
+                                    <td>Buscando...</td>
+                                </tr>
+                                <tr ng-if="!results && productsCharged">
+                                    <td>No se encontró ninguna coincidencia</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 

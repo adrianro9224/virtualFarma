@@ -506,16 +506,118 @@ class Product extends MY_Controller {
 		
 		
 	}
-	
-	public function all_products() {
+
+    public function show_product_by_id( $product_id ) {
+
+        //$product_info_to_search = $this->input->post( NULL, TRUE );
+
+
+        $data['title'] = "Resultados";
+
+        $data['user_logged'] = false;
+
+        $session_data = $this->session->all_userdata();
+
+        if( !isset($session_data['account_types']) ) {
+            $account_types = $this->account_types->get_account_types();
+            $this->session->set_userdata('account_types', $account_types);
+        }else{
+            $account_types = $session_data['account_types'];
+            $data['account_types'] = $account_types;
+        }
+
+        if( isset($session_data[$account_types[1] . '_id']) ){
+
+            $account = $this->account_model->get_account_by_id($session_data[$account_types[1] . '_id']);
+
+            if( isset($account) ) {
+                $data['account_id'] = $session_data[$account_types[1] . '_id'];
+                $data['user_logged'] = true;
+            }
+        }
+
+
+        $breadcrumb = new stdClass();
+
+        $breadcrumb->title = "Producto";
+
+        $breadcrumb_item = new stdClass();
+
+        $breadcrumb_item->name = "productos";
+        $breadcrumb_item->url = "/product/show_products_by_category/nuestros_productos";
+        $breadcrumb_item->active = true;
+
+        $breadcrumb_list['register'] = $breadcrumb_item;
+
+        $breadcrumb->items = $breadcrumb_list;
+
+        $data['breadcrumb'] = $breadcrumb;
+
+        $category_id = NULL;
+        $products_by_category_id = NULL;
+        $notifications = array();
+
+        $categories = $this->get_categories();
+        $active_ingredients = $this->get_active_ingredients();
+
+
+        $data['active_ingredients'] = $active_ingredients;
+
+
+        $data['categories'] = $categories;
+
+        if ( !empty($product_id) ) {
+
+            $data['string_to_search'] = $product_id;
+
+            //$breadcrumb->sub_title = $product_info_to_search['productName'];
+
+            $products = $this->product_model->get_by_product_id($product_id);
+
+            //echo $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+            if (isset($products)) {
+
+                if (isset($products[0]->active_ingredient))
+                    $related_products_by_active_ingredient = $this->product_model->get_by_active_ingredient($products[0]->active_ingredient);
+                else
+                    $related_products_by_active_ingredient = NULL;
+
+                if (isset($related_products_by_active_ingredient))
+                    $data['related_products'] = (count($related_products_by_active_ingredient) > 12) ? array_slice($related_products_by_active_ingredient, 0, 11) : $related_products_by_active_ingredient;
+
+                $this->_calculate_product_discount($products);
+
+                //$notifications['warning'] = "Productos encontrádos!!";
+
+                $data['products_by_category_id'] = $products;
+
+                $this->session->set_flashdata('notifications', $notifications);
+
+                $this->load->view('pages/category', $data);
+            } else {
+                $this->_show_products_page_not_found($notifications, $data);
+            }
+
+        }else{
+            redirect('/');
+        }
+
+
+    }
+
+	public function all_products_for_search_input() {
 		
-		$json_string_of_products = $this->products->load_all_products();
-			
-		if( isset($json_string_of_products) ){
-			echo $json_string_of_products;
-		}else
-			echo 'NULL';
-		
+		$products = $this->product_model->get_all_just_names_and_presentation();
+
+        if ( isset($products) ) {
+            $json_string_of_products = json_encode( $products );
+
+            if( isset($json_string_of_products) ){
+                echo $json_string_of_products;
+            }else
+                echo 'NULL';
+        }
 	}
 	
 	public function search_product( $product_info = NULL, $from_items = 0 ) {

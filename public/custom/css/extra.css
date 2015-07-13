@@ -1555,3 +1555,18 @@ a:hover.promelight-button {
 #WA-info i {
     font-size: 1.7em;
 }
+
+#aux-search-table table {
+    position: absolute;
+    z-index: 999;
+    background-color: #FFF;
+    top: 3.4em;
+    width: 83.3%;
+    margin: 0;
+    border: 2px solid #ED2F59;
+    border-top: none;
+}
+#aux-search-table table tr {
+    cursor: pointer;
+}
+
