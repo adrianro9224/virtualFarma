@@ -69,33 +69,33 @@
 	<!-- Angular js over -->
 	
 	<!-- Angular js controllers start -->
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/CarouselCtrl.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/DevicesMenuAccordionCtrl.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/NotificationsCtrl.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/AccountPanelCtrl.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/AccordionCtrl.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/RegisterForm.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/LogInForm.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/EditAccountForm.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/MessageCtrl.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/MyDiagnosticCtrl.js' ?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/PaginationCtrl.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ProductListCtrl.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ShoppingCartCtrl.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/CheckoutPanelCtrl.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ShippingDataFormCtrl.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/AdminLogInForm.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/SalesCreatorCtrl.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/SalesFormCtrl.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/MainCtrl.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/HeaderNavCtrl.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/FarmacyOrdersCtrl.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/FacebookCtrl.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/TermsAndCondCtrl.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ModalInstanceCtrl.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ShoppingCartAxuCtrl.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/RequestProductCtrl.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/HoursOfOperationCtrl.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/CarouselCtrl.min.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/DevicesMenuAccordionCtrl.min.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/NotificationsCtrl.min.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/AccountPanelCtrl.min.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/AccordionCtrl.min.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/RegisterForm.min.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/LogInForm.min.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/EditAccountForm.min.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/MessageCtrl.min.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/MyDiagnosticCtrl.min.js' ?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/PaginationCtrl.min.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ProductListCtrl.min.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ShoppingCartCtrl.min.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/CheckoutPanelCtrl.min.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ShippingDataFormCtrl.min.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/AdminLogInForm.min.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/SalesCreatorCtrl.min.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/SalesFormCtrl.min.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/MainCtrl.min.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/HeaderNavCtrl.min.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/FarmacyOrdersCtrl.min.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/FacebookCtrl.min.js'?>"></script>
+    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/TermsAndCondCtrl.min.js'?>"></script>
+    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ModalInstanceCtrl.min.js'?>"></script>
+    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ShoppingCartAuxCtrl.min.js'?>"></script>
+    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/RequestProductCtrl.min.js'?>"></script>
+    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/HoursOfOperationCtrl.min.js'?>"></script>
 
 	<!-- Angular js controllers over -->
 	
