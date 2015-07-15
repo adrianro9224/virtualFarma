@@ -116,16 +116,24 @@ class Product_model extends CI_Model {
 		
 		foreach ($list_products as $product ) {
 			$data = array(
-					"PLU" => $product->PLU,
-					"barcode" => $product->barcode,
 					"name" => $product->name,
-					"category_id" => $product->category_id,
-					"presentation" => $product->presentation,
 					"description" => $product->presentation,
 					"stock" => $product->stock,
 					"price" => $product->price
 					
 			);
+
+            if ( isset($product->PLU) )
+                $data["PLU"] = $product->PLU;
+
+            if ( isset($product->barcode) )
+                $data["barcode"] = $product->barcode;
+
+            if ( isset($product->category_id) )
+                $data["category_id"] = $product->category_id;
+
+            if ( isset($product->presentation) )
+                $data["presentation"] = $product->presentation;
 			
 			$this->db->insert("product", $data);
 			

@@ -222,6 +222,47 @@ Class Products {
 
     }
 
+    public function read_master_products() {
+
+        $handle = fopen(__ROOT__FILES__ . "csv/MaestroGaleriasJunio302015.csv", 'r');
+
+        if( $handle !== FALSE ) {
+            $result = new stdClass();
+            //$result->categories = array();
+            $result->pos_products = array();
+
+            while ( ($data = fgetcsv($handle, 250, ',')) !== FALSE ){
+                //     $category = new stdClass();
+                $master_product = new stdClass();
+
+                if( (count($data)) >= 10 ){
+
+                    //$category->code_line = utf8_encode(trim($data[6]));
+                    //$category->name =  utf8_encode(ucfirst( strtolower(trim(str_replace('/', '-',$data[7]))) ) );
+
+                    //$copidrogas_product->name = utf8_encode( ucfirst(strtolower(trim(str_replace(' ', '',$data[2])))) );
+                    $master_product->PLU = utf8_encode( strtolower(trim(str_replace('/', '-',(str_replace(' ', '',$data[0])))) ));
+                    $master_product->barcode = utf8_encode( strtolower(trim(str_replace('/', '-',(str_replace(' ', '',$data[1])))) ));
+                    $master_product->name = utf8_encode( strtolower(trim($data[2])) );
+                    $master_product->presentation = utf8_encode( strtolower(trim($data[3])) );
+                    $master_product->description = utf8_encode( strtolower(trim($data[3])) );
+                    $master_product->tax = (trim($data[12]) == "16") ? 1 : 0;
+                    $master_product->price = (trim($data[12]));
+                    $master_product->stock = (trim($data[12]) == "0") ? 0 : 1;
+                    $master_product->lab = utf8_encode( trim($data[5]) );
+
+                    // $result->categories[$category->code_line] = $category;
+                    $result->pos_products[$master_product->PLU] = $master_product;
+                }
+            }
+            fclose( $handle );
+        }
+
+        return $result;
+
+    }
+
+
 	public function search_products_in_vademecum() {
 		//load all products in DB
 		

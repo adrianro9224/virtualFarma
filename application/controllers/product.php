@@ -1105,34 +1105,47 @@ class Product extends MY_Controller {
 
 */
 
-    public function copidrogas_prices() {
+    public function update_products_from_master_POS() {
 
 
         $db_products = $this->product_model->get_all();
-        $result = $this->products->read_copidrogas_products();
 
-        $copidrogas_products = $result->copidrogas_products;
 
-        echo count($copidrogas_products) . ' - ' . count($db_products);
+        foreach ( $db_products as $product ) {
 
-        $cont = 0;
-
-        $products_new_prices = array();
-
-        foreach ( $db_products as $db_product ) {
-
-            foreach ( $copidrogas_products as $copidrogas_product ) {
-
-                if ( lcfirst(str_replace(' ', '', $db_product->name )) == $copidrogas_product->name ) {
-                    $db_product->price = $copidrogas_product->price;
-                    $products_new_prices[] =$db_product;
-                }
-
-            }
+            $db_products_sorted[$product->PLU] = $product;
 
         }
 
-        var_dump($this->product_model->update_prices( $products_new_prices ));
+        $result = $this->products->read_master_products();
+
+        $pos_products = $result->pos_products;
+
+        echo count($pos_products) . ' - ' . count($db_products);
+
+        //var_dump($pos_products[1]);
+
+        $cont = 0;
+
+        $new_products = array();
+
+        foreach ( $pos_products as $pos_product ) {
+
+            $exits = false;
+
+            if ( isset($db_products_sorted[$pos_product->PLU]) ) {
+                $exits = true;
+            }
+
+            if ( !$exits )
+                $new_products[] = $pos_product;
+        }
+
+        var_dump(count($new_products));
+
+        var_dump($this->product_model->create_products_from_csv($new_products));
+
+        //var_dump($this->product_model->update_prices( $products_new_prices ));
 
 
     }
