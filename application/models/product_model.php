@@ -113,7 +113,7 @@ class Product_model extends CI_Model {
 		$product_ids = array();
 		
 		$num_of_products_to_save = count($list_products);
-		
+
 		foreach ($list_products as $product ) {
 			$data = array(
 					"name" => $product->name,
@@ -140,10 +140,11 @@ class Product_model extends CI_Model {
 			if( $this->db->affected_rows() == 1 )
 				$product_ids[] = $this->db->insert_id();
 		}
+
 		
 		if ( $num_of_products_to_save == count($product_ids) )
-			return true;
-		
+			return $product_ids;
+
 		return false;
 		
 	}

@@ -1141,9 +1141,9 @@ class Product extends MY_Controller {
                 $new_products[] = $pos_product;
         }
 
-        var_dump(count($new_products));
+        var_dump($new_products);
 
-        var_dump($this->product_model->create_products_from_csv($new_products));
+        //var_dump($this->product_model->create_products_from_csv($new_products));
 
         //var_dump($this->product_model->update_prices( $products_new_prices ));
 
