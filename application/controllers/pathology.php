@@ -32,6 +32,24 @@ Class Pathology extends MY_Controller {
 		
 	}
 
+    public function get_all_pathologies() {
+
+        $pathologies_db = $this->pathology_model->get_all();
+
+        $result = new stdClass();
+
+        $pathologies = json_encode($pathologies_db);
+
+        $result->error = json_last_error();
+
+        if ( $result->error == "JSON_ERROR_NONE" ) {
+            echo $pathologies;
+        }else {
+            echo "NULL";
+        }
+
+    }
+
     private function _read_categories() {
         $handle = fopen(__ROOT__FILES__ . "csv/pathologies_.csv", 'r');
 

@@ -13,32 +13,20 @@
                     <article>
                         Aquí encontrarás todo tipo de antecedentes clínicos (quirurgicos, patologías)
                     </article>
-                    <div class="dropdown">
-                        <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" >
-                            Enfermedades
-                            <span class="caret"></span>
-                        </button>
-                        <ul id="pathologies-dropdown" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" >
-                            <?php foreach ($pathologies->dropdown_items_ids as $id=>$phatology_info):?>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="showPhatologyDescription('<?= $id?>')"><?= $phatology_info->name?></a></li>
-                            <?php endforeach;?>
-                        </ul>
-                    </div>
+                    <input ng-disabled="!pathologiesCharged" popover-placement="top" popover="Escríbe aquí el nombre de la patología que quieres buscar!"  popover-trigger="focus" type="text" name="pathologyName" id="pathologyName" ng-change="search( pathologyNameToSearch, myDiagnosticForm.pathologyName.$valid )" ng-model="pathologyNameToSearch" class="form-control" placeholder="Buscar patología" required="required">
                 </form>
-                <?php foreach ($pathologies->dropdown_items_ids as $id=>$phatology_info):?>
-                    <div id="<?= $id?>" class="row hidden pathology-description-well">
-                        <div class="col-md-offset-2 col-md-9">
-                            <button id="close-button-patholigy-description" type="button" class="close" ng-click="closePhatologyDescription('<?= $id?>')">
-                                <span class="glyphicon glyphicon-remove"></span>
-                            </button>
-                            <p class="bg-primary pathology-description-well-title"><?= $phatology_info->name?></p>
-                            <p class="bg-primary pathology-description-well-content">
-                                <?= $phatology_info->name?>
-                            </p>
-
-                        </div>
-                    </div>
-                <?php endforeach;?>
+                <table class="table table-condensed table-hover table-striped" ng-if="results.length != 0">
+                    <thead>
+                    </thead>
+                    <tbody >
+                    <tr ng-repeat="pathology in results">
+                        <td ><a href=""  ng-bind="pathology.name"></a></td>
+                    </tr>
+                    <tr ng-if="!results">
+                        <td>No se encontró ninguna coincidencia</td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
         <div class="col-md-6">

@@ -12,12 +12,12 @@
 	    		Mis compras
 	    	</button>
 	  	</div>
-        <!--
+
   		<div class="btn-group" role="group">
 		    <button type="button" class="btn btn-default" ng-click="openSection('myDiagnostic')" ng-class="{active: myDiagnosticSelected}">
 				<i class="fa fa-list-alt"></i>
 			    Mi diagnóstico
 		    </button>
-	  	</div> -->
+	  	</div>
 	</div>
 </div>

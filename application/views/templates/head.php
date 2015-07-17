@@ -59,17 +59,17 @@
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/CarouselCtrl.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/DevicesMenuAccordionCtrl.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/NotificationsCtrl.min.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/AccountPanelCtrl.min.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/AccountPanelCtrl.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/AccordionCtrl.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/RegisterForm.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/LogInForm.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/EditAccountForm.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/MessageCtrl.min.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/MyDiagnosticCtrl.min.js' ?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/MyDiagnosticCtrl.js' ?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/PaginationCtrl.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ProductListCtrl.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ShoppingCartCtrl.min.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/CheckoutPanelCtrl.min.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/CheckoutPanelCtrl.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ShippingDataFormCtrl.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/AdminLogInForm.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/SalesCreatorCtrl.min.js'?>"></script>
@@ -131,6 +131,15 @@
     <!-- Google Maps API -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBS01MZwvdqFbIdS6SWb3ccjyech0o1WuM"></script>
     <!-- Google Maps API -->
+
+    <!-- Histats.com  START (hidden counter)-->
+    <script type="text/javascript">document.write(unescape("%3Cscript src=%27http://s10.histats.com/js15.js%27 type=%27text/javascript%27%3E%3C/script%3E"));</script>
+    <a href="http://www.histats.com" target="_blank" title="contador pagina web" ><script  type="text/javascript" >
+            try {Histats.start(1,3097090,4,0,0,0,"");
+                Histats.track_hits();} catch(err){};
+        </script></a>
+    <noscript><a href="http://www.histats.com" target="_blank"><img  src="http://sstatic1.histats.com/0.gif?3097090&101" alt="contador pagina web" border="0"></a></noscript>
+    <!-- Histats.com  END  -->
 
     <!-- Goole Analitics -->
     <script type="text/javascript" src="<?= base_url() . 'public/Google-Analitics/analyticstracking.js'?>"></script>

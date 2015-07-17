@@ -4,7 +4,7 @@
 
 
 
-farmapp.controller('AccountPanelCtrl', ['$scope', '$http', function( $scope, $http ) {
+farmapp.controller('AccountPanelCtrl', ['$scope', '$rootScope', 'ConstantsService', function( $scope, $rootScope, ConstantsService ) {
 
     "use strict";
 
@@ -31,6 +31,9 @@ farmapp.controller('AccountPanelCtrl', ['$scope', '$http', function( $scope, $ht
             break;
             case 'myDiagnostic':
                 if(!$scope.myDiagnosticSelected) {
+
+                    $rootScope.$broadcast(ConstantsService.CHARGE_ALL_VF_PATHOLOGIES);
+
                     $scope.myDiagnosticSelected = true;
                     $scope.myPurchasesSelected = false;
                     $scope.myAccountSelected = false;

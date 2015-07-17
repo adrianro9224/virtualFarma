@@ -16,6 +16,7 @@ farmapp.factory( 'ConstantsService', function(){ // no inject $scope dependency,
         SALE_CHANGED : "SALE_CHANGED",
         POINTS_BASE : 0.01,
         PRODUCTS_CHARGED : 'PRODUCTS_CHARGED',
+        CHARGE_ALL_VF_PATHOLOGIES : 'CHARGE_ALL_VF_PATHOLOGIES',
         GALERIAS_GEOMETRY_LOCATION :{ lat: 4.642956, lng: -74.0734688 },// id 0
         CAMPIN_GEOMETRY_LOCATION : { lat: 4.6436076, lng: -74.0763303 },// id 1
         PORCIUNCULA_GEOMETRY_LOCATION : { lat: 4.6592169, lng: -74.0567377 },// id 2
