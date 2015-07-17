@@ -119,7 +119,10 @@ class Product_model extends CI_Model {
 					"name" => $product->name,
 					"description" => $product->presentation,
 					"stock" => $product->stock,
-					"price" => $product->price
+                    "tax" => $product->tax,
+					"price" => $product->price,
+                    "uri_img" => "productwithoutimage",
+                    "image_format_id" => ".jpg"
 					
 			);
 
@@ -134,7 +137,11 @@ class Product_model extends CI_Model {
 
             if ( isset($product->presentation) )
                 $data["presentation"] = $product->presentation;
-			
+
+            if ( isset($product->lab) )
+                $data["lab"] = $product->lab;
+
+
 			$this->db->insert("product", $data);
 			
 			if( $this->db->affected_rows() == 1 )

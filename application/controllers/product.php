@@ -1105,48 +1105,65 @@ class Product extends MY_Controller {
 
 */
 
-    public function update_products_from_master_POS() {
+    public function save_copi_products( $admin_id ) {
 
 
-        $db_products = $this->product_model->get_all();
+        if( $admin_id == '1069741091' ) {
 
+            $copi_products = $this->products->read_copidrogas_products()->copidrogas_products;
 
-        foreach ( $db_products as $product ) {
-
-            $db_products_sorted[$product->PLU] = $product;
+            //var_dump($copi_products);
+            var_dump($this->product_model->create_products_from_csv( $copi_products ));
 
         }
+    }
 
-        $result = $this->products->read_master_products();
 
-        $pos_products = $result->pos_products;
+    public function update_products_from_master_POS( $admin_id ) {
 
-        echo count($pos_products) . ' - ' . count($db_products);
 
-        //var_dump($pos_products[1]);
+        if( $admin_id == '1069741091' ) {
 
-        $cont = 0;
 
-        $new_products = array();
+            $db_products = $this->product_model->get_all();
 
-        foreach ( $pos_products as $pos_product ) {
 
-            $exits = false;
+            foreach ($db_products as $product) {
 
-            if ( isset($db_products_sorted[$pos_product->PLU]) ) {
-                $exits = true;
+                $db_products_sorted[$product->PLU] = $product;
+
             }
 
-            if ( !$exits )
-                $new_products[] = $pos_product;
+            $result = $this->products->read_master_products();
+
+            $pos_products = $result->pos_products;
+
+            echo count($pos_products) . ' - ' . count($db_products);
+
+            //var_dump($pos_products[1]);
+
+            $cont = 0;
+
+            $new_products = array();
+
+            foreach ($pos_products as $pos_product) {
+
+                $exits = false;
+
+                if (isset($db_products_sorted[$pos_product->PLU])) {
+                    $exits = true;
+                }
+
+                if (!$exits)
+                    $new_products[] = $pos_product;
+            }
+
+            var_dump($new_products);
+
+            //var_dump($this->product_model->create_products_from_csv($new_products));
+
+            //var_dump($this->product_model->update_prices( $products_new_prices ));
         }
-
-        var_dump($new_products);
-
-        //var_dump($this->product_model->create_products_from_csv($new_products));
-
-        //var_dump($this->product_model->update_prices( $products_new_prices ));
-
 
     }
 

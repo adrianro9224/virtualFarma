@@ -207,9 +207,13 @@ Class Products {
 
                     //$copidrogas_product->name = utf8_encode( ucfirst(strtolower(trim(str_replace(' ', '',$data[2])))) );
 
-                    $copidrogas_product->name = utf8_encode( strtolower(trim(str_replace('/', '-',(str_replace(' ', '',$data[2])))) ));
-                    $copidrogas_product->price = (trim($data[4]) < trim($data[5])) ? trim($data[4]): trim($data[5]);
+                    $copidrogas_product->name = ucfirst(utf8_encode( strtolower(trim(($data[2]))) ));
+                    $copidrogas_product->price = (trim($data[4]) < trim($data[5])) ? trim($data[5]): trim($data[4]);
                     $copidrogas_product->presentation = trim($data[3]);
+                    $copidrogas_product->description = trim($data[3]);
+                    $copidrogas_product->lab = trim($data[7]);
+                    $copidrogas_product->stock = ($copidrogas_product->price > 0 ) ? 1 : 0;
+                    $copidrogas_product->tax = (trim($data[6]) == "0.16") ? 1 : 0;
 
                    // $result->categories[$category->code_line] = $category;
                     $result->copidrogas_products[] = $copidrogas_product;
