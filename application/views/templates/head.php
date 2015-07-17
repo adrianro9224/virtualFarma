@@ -37,7 +37,7 @@
 	<!-- Jquery over -->
 	
 	<!-- Bootstrap js start -->
-	<!--<script type="text/javascript" src=" public/bootstrap-3.3.0-dist/dist/js/bootstrap.min.js?>"></script>-->
+	<script type="text/javascript" src="<?= base_url() . 'public/bootstrap-3.3.0-dist/dist/js/bootstrap.min.js'?>"></script>
 	<!-- Bootstrap js over -->
 	
 	<!-- Angular js start -->

@@ -397,7 +397,7 @@ class Account extends MY_Controller {
 						
 						$data['address'] = $address;
 						
-						$account_password_decrypted = _password_account_h2o( $account->password, $userEmail);;
+						$account_password_decrypted = _password_account_h2o( $account->password, $userEmail);
 						$user_password = md5( $log_in_form['userPassword'] );
 						
 						if( $account_password_decrypted === $user_password ) {

@@ -52,10 +52,10 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
             $scope.shoppingcart.shippingCharge = shippingCharge;
 
             if (angular.isString(shippingCharge)) {
-                $scope.shoppingcart.total = $scope.shoppingcart.subtotal + $scope.shoppingcart.tax;
+                $scope.shoppingcart.total = $scope.shoppingcart.subtotal;
                 $scope.shoppingcart.shippingFree = true;
             } else {
-                $scope.shoppingcart.total = $scope.shoppingcart.subtotal + $scope.shoppingcart.tax + $scope.shoppingcart.shippingCharge;
+                $scope.shoppingcart.total = $scope.shoppingcart.subtotal + $scope.shoppingcart.shippingCharge;
                 $scope.shoppingcart.shippingFree = false;
             }
 

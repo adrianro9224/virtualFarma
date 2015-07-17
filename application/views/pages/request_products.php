@@ -70,7 +70,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="list-group" ng-click="showForm()">
-                                        <a href="#" class="list-group-item active">
+                                        <a class="list-group-item active">
                                             <h4 class="list-group-item-heading">Solicitar producto</h4>
                                             <p class="list-group-item-text">¿No encontraste tu producto?, permitenos ayudarte, haz click y sigue los pasos</p>
                                         </a>
@@ -104,9 +104,9 @@
                                         </div>
                                     </div>
                                     <div class="form-group" ng-class="{'has-error': !productRequestForm.productLab.$valid && productRequestForm.productLab.$dirty}">
-                                        <label for="product_lab" class="col-md-3 control-label" >Nombre del laboratorio del producto: *</label>
+                                        <label for="product_lab" class="col-md-3 control-label" >Nombre del laboratorio del producto: </label>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control"  name="productLab" ng-model="productLab" id="product_lab" placeholder="Escribe el laboratorio del producto" ng-disabled="<?= $user_logged ? 0 : 1?>" ng-maxLength="63" required>
+                                            <input type="text" class="form-control"  name="productLab" ng-model="productLab" id="product_lab" placeholder="Escribe el laboratorio del producto" ng-disabled="<?= $user_logged ? 0 : 1?>" ng-maxLength="63">
                                             <!-- tooltip -->
                                             <div ng-if="productRequestForm.productLab.$invalid && productRequestForm.productLab.$dirty">
                                                 <div class="arrow-up-error">
@@ -137,7 +137,7 @@
                                             </div>
                                             <!-- tooltip -->
                                             <!-- helptext -->
-                                            <span id="helpBlock" class="help-block">Ejemplo: 50mg</span>
+                                            <span id="helpBlock" class="help-block">Ejemplo: Tabletas de 100 mg - Jarabe 300 ml</span>
                                             <!-- helptext -->
                                         </div>
                                     </div>

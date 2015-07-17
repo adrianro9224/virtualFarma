@@ -194,14 +194,15 @@
                         <p class="help-block">Sube una foto de tu orden médica.</p>
                     </div>
                 </div>
-			</div>
-            <div class="col-md-12 margin-bottom-5" >
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox"> Ó marca aquí si deseas hacerlo al momento de la entréga
-                    </label>
+                <div class="col-md-12 margin-bottom-5" >
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Ó marca aquí si deseas hacerlo al momento de la entréga
+                        </label>
+                    </div>
                 </div>
-            </div>
+			</div>
+
 			<div class="col-md-12 margin-bottom-5" >
 				<label for="ShippingDataNotes" >Notas</label>
 				<textarea name="ShippingDataNotes" class="form-control" ng-model="order.shippingData.notes" rows="3"></textarea>

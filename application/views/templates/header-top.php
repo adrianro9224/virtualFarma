@@ -32,7 +32,7 @@
                         <div class="btn-group" >
                             <?php if( $user_logged ):?>
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                    Mi cuenta <i class="fa fa-user"></i>
+                                    Opciones <i class="fa fa-user"></i>
                                 </button>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="/account/log_in"><i class="fa fa-cog"></i> Panel</a></li>
