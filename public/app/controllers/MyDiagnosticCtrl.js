@@ -4,6 +4,21 @@
 
 farmapp.controller('MyDiagnosticCtrl' , ['$scope', '$http', '$rootScope', 'ConstantsService', '$filter', function( $scope, $http, $rootScope, ConstantsService, $filter ){
 
+    'use strict';
+
+
+    function selectPlaceHolder () {
+
+        if ($scope.pathologiesCharged)
+            $scope.searchPathologyPlaceHolder = "Buscar patología";
+        else
+            $scope.searchPathologyPlaceHolder = "Cargando patologías";
+
+    }
+
+
+    selectPlaceHolder();
+
     $scope.showPhatologyDescription = function( pathologyDescriptionId) {
 
         var el  = document.getElementById( pathologyDescriptionId );
@@ -32,20 +47,25 @@ farmapp.controller('MyDiagnosticCtrl' , ['$scope', '$http', '$rootScope', 'Const
         //var isObject = angular.isObject(data.searchInfo.textToSearch);
 
         if ( isValid && textToSearch.length > 2 ) {
+            $scope.searching = true;
+
             var result = $filter('filter')($scope.pathologies, textToSearch, undefined);
 
             if ( result.length > 0 ) {
 
-                var limit = 11;
+                //var limit = 11;
 
-                if (result.length > limit)
-                    $scope.results = result.slice(0, limit);
-                else
+                //if (result.length > limit)
+                  //  $scope.results = result.slice(0, limit);
+                //else
                     $scope.results = result;
 
             }else
                 $scope.results = false;
+                $scope.results = result;
+                console.info();
         } else {
+            $scope.searching = false;
             $scope.results = false;
         }
 
@@ -65,6 +85,8 @@ farmapp.controller('MyDiagnosticCtrl' , ['$scope', '$http', '$rootScope', 'Const
 
                     $scope.pathologies = data;
 
+                    selectPlaceHolder();
+
                 }else {
                     $scope.reload = true;
                 }
@@ -75,6 +97,13 @@ farmapp.controller('MyDiagnosticCtrl' , ['$scope', '$http', '$rootScope', 'Const
                 console.info(data + ":(");
             });
     }
+
+
+    $scope.addPathology = function () {
+
+        alert(arguments[0]);
+    };
+
 
 
 

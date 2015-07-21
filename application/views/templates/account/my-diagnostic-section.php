@@ -13,20 +13,22 @@
                     <article>
                         Aquí encontrarás todo tipo de antecedentes clínicos (quirurgicos, patologías)
                     </article>
-                    <input ng-disabled="!pathologiesCharged" popover-placement="top" popover="Escríbe aquí el nombre de la patología que quieres buscar!"  popover-trigger="focus" type="text" name="pathologyName" id="pathologyName" ng-change="search( pathologyNameToSearch, myDiagnosticForm.pathologyName.$valid )" ng-model="pathologyNameToSearch" class="form-control" placeholder="Buscar patología" required="required">
+                    <input ng-disabled="!pathologiesCharged" popover-placement="top" popover="Escríbe aquí el nombre de la patología que quieres buscar!"  popover-trigger="focus" type="text" name="pathologyName" id="pathologyName" ng-change="search( pathologyNameToSearch, myDiagnosticForm.pathologyName.$valid )" ng-model="pathologyNameToSearch" class="form-control" placeholder="{{searchPathologyPlaceHolder}}" required="required">
                 </form>
-                <table class="table table-condensed table-hover table-striped" ng-if="results.length != 0">
-                    <thead>
-                    </thead>
-                    <tbody >
-                    <tr ng-repeat="pathology in results">
-                        <td ><a href=""  ng-bind="pathology.name"></a></td>
-                    </tr>
-                    <tr ng-if="!results">
-                        <td>No se encontró ninguna coincidencia</td>
-                    </tr>
-                    </tbody>
-                </table>
+                <div id="showing-pathologies">
+                    <table class="table table-condensed table-hover table-striped">
+                        <thead>
+                        </thead>
+                        <tbody >
+                        <tr ng-repeat="pathology in results" ng-click="addPathology( pathology.id )" class="handy">
+                            <td ><a ng-bind="pathology.name" ></a></td>
+                        </tr>
+                        <tr ng-if="results.length == 0">
+                            <td>No se encontró ninguna coincidencia</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <div class="col-md-6">

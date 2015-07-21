@@ -24,7 +24,7 @@
     <!-- Angular 1.4.0 snapshot start -->
 	<!-- Custom css start -->
 
-	<link rel="stylesheet" type="text/css" href="<?= base_url() . 'public/custom/css/extra.min.css'?>">
+	<link rel="stylesheet" type="text/css" href="<?= base_url() . 'public/custom/css/extra.css'?>">
 	<!-- Custom css over -->
 	
 	<!-- Font awesome css start -->

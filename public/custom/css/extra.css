@@ -1570,3 +1570,7 @@ a:hover.promelight-button {
     cursor: pointer;
 }
 
+#showing-pathologies {
+    max-height: 365px;
+    overflow-y: scroll;
+}
