@@ -45,6 +45,10 @@ Class Products {
             foreach( $products as $product ) {
                 $sortedProducts[] = $product;
             }
+
+            $num_of_poducts = count($sortedProducts);
+
+            unset($sortedProducts[$num_of_poducts - 1]);
         }
 
         return $sortedProducts;

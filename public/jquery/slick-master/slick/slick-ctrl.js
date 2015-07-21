@@ -5,8 +5,8 @@
 $(document).ready(function(){
     $('#slick').slick({
         dots: true,
-        speed: 500,
+        speed: 2000,
         autoplay: true,
-        autoplaySpeed: 2000
+        autoplaySpeed: 8000
 });
 });
