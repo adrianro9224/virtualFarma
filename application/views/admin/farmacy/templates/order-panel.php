@@ -38,6 +38,9 @@
 				<p><strong>Destinatario:</strong> 
 					<?= $order->names . ' ' . $order->last_names?>
 				</p>
+                <p><strong>Teléfono:</strong>
+                    <?= $order->phone?>
+                </p>
 			</div>
 			<!-- Table -->
 			<table class="table table-striped">
