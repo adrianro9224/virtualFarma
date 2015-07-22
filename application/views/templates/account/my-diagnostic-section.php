@@ -21,10 +21,10 @@
                         </thead>
                         <tbody >
                         <tr ng-repeat="pathology in results" ng-click="addPathology( pathology.id )" class="handy">
-                            <td ><a ng-bind="pathology.name" ></a></td>
+                            <td ><span ng-bind="pathology.name" ></span></td>
                         </tr>
                         <tr ng-if="results.length == 0">
-                            <td>No se encontró ninguna coincidencia</td>
+                            <td><span>No se encontró ninguna coincidencia</span></td>
                         </tr>
                         </tbody>
                     </table>

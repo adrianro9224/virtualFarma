@@ -12,7 +12,7 @@ farmapp.controller('MyDiagnosticCtrl' , ['$scope', '$http', '$rootScope', 'Const
         if ($scope.pathologiesCharged)
             $scope.searchPathologyPlaceHolder = "Buscar patología";
         else
-            $scope.searchPathologyPlaceHolder = "Cargando patologías";
+            $scope.searchPathologyPlaceHolder = "Cargando patologías...";
 
     }
 
@@ -44,20 +44,12 @@ farmapp.controller('MyDiagnosticCtrl' , ['$scope', '$http', '$rootScope', 'Const
 
     $scope.search = function( textToSearch, isValid ) {
 
-        //var isObject = angular.isObject(data.searchInfo.textToSearch);
-
         if ( isValid && textToSearch.length > 2 ) {
-            $scope.searching = true;
 
             var result = $filter('filter')($scope.pathologies, textToSearch, undefined);
 
             if ( result.length > 0 ) {
 
-                //var limit = 11;
-
-                //if (result.length > limit)
-                  //  $scope.results = result.slice(0, limit);
-                //else
                     $scope.results = result;
 
             }else
@@ -65,7 +57,6 @@ farmapp.controller('MyDiagnosticCtrl' , ['$scope', '$http', '$rootScope', 'Const
                 $scope.results = result;
                 console.info();
         } else {
-            $scope.searching = false;
             $scope.results = false;
         }
 
@@ -101,7 +92,21 @@ farmapp.controller('MyDiagnosticCtrl' , ['$scope', '$http', '$rootScope', 'Const
 
     $scope.addPathology = function () {
 
-        alert(arguments[0]);
+        var pathologyIdToAdd = arguments[0];
+
+        var dataDoPost = { pathologyId : pathologyIdToAdd };
+
+        $http.post("http://virtualfarma.com.co/user_pathology/add_pathology", dataDoPost)
+            .success(function(data, status, headers, config) {
+
+
+            console.info(data);
+
+            }).
+            error(function(data, status, headers, config) {
+
+                console.info(data + ":(");
+            });
     };
 
 

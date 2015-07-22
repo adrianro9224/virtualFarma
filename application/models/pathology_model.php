@@ -43,4 +43,18 @@
          return NULL;
 
      }
+
+     public function get_by_id( $id_to_search ) {
+
+
+         $this->db->where( 'id', $id_to_search );
+         $query = $this->db->get('pathology');
+
+         if ( $query->num_rows > 0 )
+             return $query->result();
+
+         return NULL;
+
+
+     }
  }

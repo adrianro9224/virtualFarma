@@ -1574,3 +1574,7 @@ a:hover.promelight-button {
     max-height: 365px;
     overflow-y: scroll;
 }
+
+#showing-pathologies table.table-hover>tbody>tr:hover {
+    background-color: #D7D7D7;
+}

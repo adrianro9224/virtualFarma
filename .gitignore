@@ -9,3 +9,6 @@ public/app/.idea/workspace.xml
 #files of config eclipse IDE
 .project
 .settings/
+
+#logs
+application/logs/
