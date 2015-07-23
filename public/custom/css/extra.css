@@ -1578,3 +1578,12 @@ a:hover.promelight-button {
 #showing-pathologies table.table-hover>tbody>tr:hover {
     background-color: #D7D7D7;
 }
+
+.loading {
+    background-color: #006aeb;
+    min-height: 80%;
+    min-width: 88%;
+    position: absolute;
+    background-color: rgba(239, 233, 233, 0.64);
+    overflow: hidden;
+}

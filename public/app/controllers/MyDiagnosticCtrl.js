@@ -96,11 +96,16 @@ farmapp.controller('MyDiagnosticCtrl' , ['$scope', '$http', '$rootScope', 'Const
 
         var dataDoPost = { pathologyId : pathologyIdToAdd };
 
+        $scope.addingPathology = true;
+
         $http.post("http://virtualfarma.com.co/user_pathology/add_pathology", dataDoPost)
             .success(function(data, status, headers, config) {
 
+            /*if ( data == 'REGISTERED' )
 
-            console.info(data);
+            if ( data == 'EXISTING' )*/
+
+            $scope.addingPathology = false;
 
             }).
             error(function(data, status, headers, config) {

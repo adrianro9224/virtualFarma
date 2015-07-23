@@ -15,7 +15,9 @@
                     </article>
                     <input ng-disabled="!pathologiesCharged" popover-placement="top" popover="Escríbe aquí el nombre de la patología que quieres buscar!"  popover-trigger="focus" type="text" name="pathologyName" id="pathologyName" ng-change="search( pathologyNameToSearch, myDiagnosticForm.pathologyName.$valid )" ng-model="pathologyNameToSearch" class="form-control" placeholder="{{searchPathologyPlaceHolder}}" required="required">
                 </form>
+                <div class="loading" ng-if="addingPathology"><i class="fa fa-circle-o-notch fa-spin"></i></div>
                 <div id="showing-pathologies">
+
                     <table class="table table-condensed table-hover table-striped">
                         <thead>
                         </thead>
