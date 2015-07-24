@@ -1580,10 +1580,16 @@ a:hover.promelight-button {
 }
 
 .loading {
-    background-color: #006aeb;
-    min-height: 80%;
-    min-width: 88%;
+    padding: 7% 0;
+    min-height: 95%;
+    min-width: 95%;
     position: absolute;
     background-color: rgba(239, 233, 233, 0.64);
     overflow: hidden;
+    text-align: center;
+}
+
+.loading i {
+    color: #ED2F59;
+    font-size: 3em;
 }

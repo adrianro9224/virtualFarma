@@ -50,4 +50,22 @@ class User_pathology_model extends CI_Model{
         return NULL;
     }
 
+    public function get_all_by_account_id( $account_id ) {
+
+        $this->db->join( 'pathology', 'pathology.id = user_pathology.pathology_id','left' );
+
+        $this->db->where('account_id', $account_id);
+
+        $this->db->order_by('name', 'desc');
+
+        $query =  $this->db->get('user_pathology');
+
+
+        if ( $query->num_rows > 0 )
+            return $query->result();
+
+        return NULL;
+
+    }
+
 }

@@ -7,6 +7,8 @@ farmapp.controller('MyDiagnosticCtrl' , ['$scope', '$http', '$rootScope', 'Const
     'use strict';
 
 
+    //$scope.infoStatusText = "No tienes antecedentes ni patologías registrádas";
+
     function selectPlaceHolder () {
 
         if ($scope.pathologiesCharged)
@@ -39,6 +41,9 @@ farmapp.controller('MyDiagnosticCtrl' , ['$scope', '$http', '$rootScope', 'Const
         if ( $scope.pathologies == undefined )
             get_all_vf_pathologies();
 
+        if( $scope.userPathologies == undefined )
+            get_all_user_pathologies();
+
     });
 
 
@@ -60,9 +65,31 @@ farmapp.controller('MyDiagnosticCtrl' , ['$scope', '$http', '$rootScope', 'Const
             $scope.results = false;
         }
 
-    }
+    };
 
+    function get_all_user_pathologies () {
 
+        $http.get("http://virtualfarma.com.co/user_pathology/get_all_pathologies")
+            .success(function(data, status, headers, config) {
+
+                $scope.userPathologiesCharged = false;
+
+                if ( data != "EMPTY" ) {
+                    if ( data != "JSON_ERROR" ) {
+                        $scope.userPathologiesCharged = true;
+                        $scope.userPathologies = data;
+                        console.info(data);
+                    }else {
+                        //notify error
+                    }
+                }
+            }).
+            error(function(data, status, headers, config) {
+
+                console.info(data + ":(");
+            });
+
+    };
 
     function get_all_vf_pathologies() {
 
@@ -87,7 +114,7 @@ farmapp.controller('MyDiagnosticCtrl' , ['$scope', '$http', '$rootScope', 'Const
 
                 console.info(data + ":(");
             });
-    }
+    };
 
 
     $scope.addPathology = function () {
@@ -97,13 +124,22 @@ farmapp.controller('MyDiagnosticCtrl' , ['$scope', '$http', '$rootScope', 'Const
         var dataDoPost = { pathologyId : pathologyIdToAdd };
 
         $scope.addingPathology = true;
+        $scope.infoStatusText = "Procesando...";
+        $scope.typeOfinfo = "warning";
 
         $http.post("http://virtualfarma.com.co/user_pathology/add_pathology", dataDoPost)
             .success(function(data, status, headers, config) {
 
-            /*if ( data == 'REGISTERED' )
+            if ( data == 'REGISTERED' ) {
+                $scope.typeOfinfo = "success";
+                $scope.infoStatusText = "Tu patología a sido agregada!";
+                get_all_user_pathologies();
+            }
 
-            if ( data == 'EXISTING' )*/
+            if ( data == 'EXISTING' ) {
+                $scope.typeOfinfo = "info";
+                $scope.infoStatusText = "La patología que estás intentando agregar ya está en tu lista!";
+            }
 
             $scope.addingPathology = false;
 

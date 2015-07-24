@@ -79,6 +79,43 @@ class User_pathology extends MY_Controller {
 
     }
 
+    public function get_all_pathologies() {
+
+        $session_data = $this->session->all_userdata();
+
+        if( !isset($session_data['account_types']) ) {
+            $account_types = $this->account_types->get_account_types();
+            $this->session->set_userdata('account_types', $account_types);
+        }else{
+            $account_types = $session_data['account_types'];
+            $data['account_types'] = $account_types;
+        }
+
+
+        if( isset($session_data[$account_types[1] . '_id']) ) {
+
+            $account = $this->account_model->get_account_by_id($session_data[$account_types[1] . '_id']);
+
+            if (isset($account)) {
+                $data['account_id'] = $session_data[$account_types[1] . '_id'];
+                $user_pathologies = $this->user_pathology_model->get_all_by_account_id( $account->id );
+
+                if( isset($user_pathologies) ){
+                    $json_of_user_pathologies = json_encode( $user_pathologies );
+                    $json_error = json_last_error();
+
+                    if ( $json_error != JSON_ERROR_NONE )
+                        echo 'JSON_ERROR';
+                    else
+                        echo $json_of_user_pathologies;
+                }else
+                    echo "EMPTY";
+
+            }
+        }
+
+    }
+
     private function _check_if_pathology_registered( $account_id, $pathology_id ) {
 
         $result = $this->user_pathology_model->get_by_account_id_and_pathology_id( $account_id, $pathology_id );
