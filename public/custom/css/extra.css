@@ -1587,9 +1587,53 @@ a:hover.promelight-button {
     background-color: rgba(239, 233, 233, 0.64);
     overflow: hidden;
     text-align: center;
+    vertical-align: middle;
+    z-index: 999999;
 }
 
 .loading i {
     color: #ED2F59;
     font-size: 3em;
+}
+
+.pathology-btn {
+    background-color: rgba(237, 47, 89, 0.71);;
+    color: #FFF;
+    display: inline-block;
+    padding: 4px 12px;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: default;
+    margin: 3px 3px 3px 0;
+}
+
+a:hover.pathology-btn {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.pathology-btn i.fa.fa-times {
+    cursor: pointer;
+}
+
+.pathology-btn i.fa.fa-times:hover {
+    color: #D1D1D1;
+}
+
+#pathology-section p.bg-primary {
+    font-size: 19px;
 }

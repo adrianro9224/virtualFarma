@@ -68,4 +68,10 @@ class User_pathology_model extends CI_Model{
 
     }
 
+    public function delete_by_pathology_id( $info ) {
+
+        return $this->db->delete('user_pathology', array('account_id' => $info->account_id, 'pathology_id' => $info->pathology_id));;
+
+    }
+
 }
