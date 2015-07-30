@@ -59,13 +59,13 @@
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/CarouselCtrl.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/DevicesMenuAccordionCtrl.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/NotificationsCtrl.min.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/AccountPanelCtrl.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/AccountPanelCtrl.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/AccordionCtrl.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/RegisterForm.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/LogInForm.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/EditAccountForm.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/MessageCtrl.min.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/MyDiagnosticCtrl.js' ?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/MyDiagnosticCtrl.min.js' ?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/PaginationCtrl.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ProductListCtrl.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ShoppingCartCtrl.min.js'?>"></script>

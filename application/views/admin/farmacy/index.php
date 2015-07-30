@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="farmapp">
-<?php include_once(__ROOT__TEMPLATES__ . 'head.php');?>
+<?php include_once(__ROOT__ADMIN__TEMPLATES__ . 'head.php');?>
 
 <body>
 	<div id="wrapper">
