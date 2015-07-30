@@ -287,10 +287,10 @@ class Product_model extends CI_Model {
 
                 if( $product->price < 100000 ) {
 
-                    $IVA = bcmul($product->price, 0.16, 3);
+                    //$IVA = bcmul($product->price, 0.16, 3);
 
                     if ( $product->tax )
-                        $product->price = round(ceil( (bcmul( $product->price, 1.40, 3 ) + $IVA) ), -2);
+                        $product->price = round(ceil( (bcmul( $product->price, 1.40, 3 ) ) ), -2);
                     else
                         $product->price = round(ceil( bcmul( $product->price, 1.10, 3 ) ), -2);
 
