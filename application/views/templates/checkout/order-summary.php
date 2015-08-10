@@ -110,7 +110,7 @@
 		<div class="well" ng-show="order.sended">
 		<p class="bg-primary">
 			Tu orden a sido realizada con éxito, en este momento uno de nuestro mensajeros va en camino con tu pedido en la dirrecíon {{order.shippingData.addressLine1}}. 
-			Tu pedido estará allí en menos de 80 minutos, gracias por tu compra!.
+			Tu pedido estará allí en el menor tiempo posible, gracias por tu compra!.
 		</p>
         <p class="bg-primary">
             Acumulaste {{order.points}}
