@@ -79,7 +79,7 @@
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/FarmacyOrdersCtrl.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/FacebookCtrl.min.js'?>"></script>
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/TermsAndCondCtrl.min.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ModalInstanceCtrl.min.js'?>"></script>
+    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ModalInstanceCtrl.js'?>"></script>
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ShoppingCartAuxCtrl.min.js'?>"></script>
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/RequestProductCtrl.min.js'?>"></script>
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/HoursOfOperationCtrl.min.js'?>"></script>
