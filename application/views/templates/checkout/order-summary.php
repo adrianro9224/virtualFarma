@@ -1,6 +1,6 @@
 <div class="panel panel-default">
 	<div class="panel-heading handy" ng-click="openSection('orderSummary')" ng-class="{ 'disabled-panel-heading' : !order.shippingData.status || !order.paymentMethod.status }">
-		<h4><i class="fa fa-shopping-cart"></i> Resumen de la orden</h4>
+		<h4><i class="fa fa-shopping-cart"></i> Paso 3: confirmar orden</h4>
 	</div>
 	<div class="panel-body" ng-if="orderSummary">
 		<div id="order-summary-container" ng-hide="order.sended">

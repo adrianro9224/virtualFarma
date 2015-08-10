@@ -2,7 +2,7 @@
  * Created by Adrian on 17/02/2015.
  */
 
-farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cookies', '$http', 'ConstantsService', '$window', 'UtilService', function( $scope ,$rootScope ,$log ,$cookies, $http, ConstantsService, $window, UtilService) {
+farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cookies', '$http', 'ConstantsService', '$window', 'UtilService', '$anchorScroll', '$location', function( $scope ,$rootScope ,$log ,$cookies, $http, ConstantsService, $window, UtilService, $anchorScroll, $location) {
 
     "use strict";
 
@@ -56,6 +56,7 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
                     $scope.shippingData = true;
                     $scope.paymentMethod = false;
                     $scope.orderSummary = false;
+                    gotoAnchor();
                 }
                 break;
             case "paymentMethod":
@@ -63,6 +64,7 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
                     $scope.paymentMethod = true;
                     $scope.shippingData = false;
                     $scope.orderSummary = false;
+                    gotoAnchor();
                 }
                 break;
             case "orderSummary":
@@ -70,6 +72,7 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
                     $scope.orderSummary = true;
                     $scope.paymentMethod = false;
                     $scope.shippingData = false;
+                    gotoAnchor();
                 }
                 break;
         }
@@ -399,4 +402,9 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
 
         }
     }
+
+    function gotoAnchor() {
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+    }
+
 }]);

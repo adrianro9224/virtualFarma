@@ -173,8 +173,6 @@ class Account extends MY_Controller {
                 $messages = $this->messages->get_every_messages($account->email);
                 $account_pathologies = $this->accounts->get_pathologies( $insert_id );
 
-                $pathologies_DB = $this->pathologies->get_all_pathologies();
-
                 $account_pathologies_dropdown_items_ids = $this->accounts->generate_pathologies_dropdown_items_ids( $categories );
                 $pathologies->dropdown_items_ids = $account_pathologies_dropdown_items_ids;
 
