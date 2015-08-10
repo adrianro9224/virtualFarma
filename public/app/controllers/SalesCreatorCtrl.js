@@ -226,6 +226,7 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
                 $scope.sale.paymentMethod = {};
                 $scope.sale.paymentMethod.selectedPaymentMethod = 1;
                 $scope.sale.shoppingcart = {};
+                $scope.sale.shoppingcart.manual = false;
                 $scope.sale.shoppingcart.products = [{}];
                 $scope.sale.shoppingcart.subtotal = 0;
                 $scope.sale.shoppingcart.shippingCharge = 0;
@@ -290,10 +291,10 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
 
         var currentProduct = new Object();
 
-        currentProduct.PLU = productToAdd.PLU;
+        currentProduct.PLU = (productToAdd.PLU == undefined) ? 123456 : productToAdd.PLU;
         currentProduct.name = productToAdd.name;
-        currentProduct.barcode = productToAdd.barcode;
-        currentProduct.categoryId = productToAdd.category_id;
+        currentProduct.barcode = ( productToAdd.barcode == undefined) ? 123456789 : productToAdd.barcode;
+        currentProduct.categoryId = ( productToAdd.category_id == undefined ) ? 123456789 : productToAdd.category_id;
         currentProduct.presentation = productToAdd.presentation;
         currentProduct.cant = productToAdd.cant;
         currentProduct.tax = taxUnit == 0 ? 0 : taxUnit;
@@ -313,7 +314,7 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
         $scope.sale.shoppingcart.subtotal = shoppingCartSubtotals.productsSubtotal;
         $scope.sale.shoppingcart.tax = shoppingCartSubtotals.productsTaxTotal;
 
-        var auxSubtotal = $scope.sale.shoppingcart.subtotal
+        var auxSubtotal = $scope.sale.shoppingcart.subtotal;
 
         if ( $scope.sale.shoppingcart.hasDiscount ) {
             $scope.sale.shoppingcart.subtotal -= $scope.sale.shoppingcart.pointsDoDiscount;
@@ -595,6 +596,8 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
 
             return result;
         }
+
+
 
 /*
         var lats = origin.lat - destination.lat;

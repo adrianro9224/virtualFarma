@@ -2,7 +2,7 @@
 <html lang="en" ng-app="farmapp">
 <?php include_once(__ROOT__ADMIN__TEMPLATES__ . 'head.php');?>
 
-<body>
+<body ng-controller="MainCtrl">
 	<div id="wrapper">
 		<!-- Header start -->
 		<section id="admin-header" class="primary-background" ng-controller="HeaderNavCtrl">

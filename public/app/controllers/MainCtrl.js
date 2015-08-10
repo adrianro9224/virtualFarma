@@ -2,7 +2,19 @@
  * Created by Adrian on 23/04/2015.
  */
 
-farmapp.controller('MainCtrl', ['$scope' ,'$http', '$filter' , function( $scope, $http, $filter ){
+farmapp.controller('MainCtrl', ['$scope' ,'$rootScope', 'ConstantsService', function( $scope, $rootScope, ConstantsService ){
+
+
+
+    $scope.changeToOrderManualMode = function () {
+
+        var checked = arguments[0];
+
+        $scope.orderManual = checked;
+
+    };
+
+
 /*
     $scope.search = function( searchText ) {
 

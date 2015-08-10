@@ -53,6 +53,40 @@
     </div>
 </div>
 
+<div class="well well-sm col-md-12" ng-if="orderManual">
+    <h4>Formulario para añadir productos:{{product}}</h4>
+    <div class="panel-body">
+        <table class="table table-condensed ng-cloak table-striped" ng-cloak >
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Laboratorio</th>
+                <th>Presentación</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <form name="addProductManuallyForm">
+                <tr>
+                    <td><input type="text" class="form-control" name="productName" ng-model="product.name" required></td>
+                    <td><input type="text" class="form-control" name="productLab" ng-model="product.lab" required></td>
+                    <td><input type="text" class="form-control" name="productPresentation" ng-model="product.presentation" required></td>
+                    <td><input type="text" class="form-control" name="productPresentation" ng-model="product.price" required></td>
+                    <th>
+                        <input type="number" class="form-control" name="cant" ng-model="product.cant" ng-init="product.cant = 1">
+                    </th>
+                    <th>
+                        <a class="btn btn-primary btn-xs" ng-click="addToShoppingCart( product )" ng-disabled="addProductManuallyForm.$invalid">Añadir</a>
+                    </th>
+                </tr>
+            </form>
+            </tbody>
+        </table>
+    </div>
+</div>
+
 <div class="well well-lg col-md-12" >
 	<div ng-show="shippingData || (sale.currentStep == 'shippingData') " ng-hide="!shippingData">
 		<span>Completa toda la información requerida para el envío:</span>
