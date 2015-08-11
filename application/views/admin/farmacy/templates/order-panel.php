@@ -28,6 +28,23 @@
                         <em>Orden sin nerby_id</em>
                     <?php endif;?>
                 </p>
+                <p><strong>Método de pago:</strong>
+                    <?php if ( isset($order->payment_method_id) ):?>
+                        <?php switch( $order->payment_method_id ):
+                            case'3':?>
+                                <em>Efectivo</em>
+                                <?php break;?>
+                            <?php case'4':?>
+                                <em>Tarjeta Débito ó Crédito</em>
+                                <?php break;?>
+                            <?php default:?>
+                                <em>No especificado</em>
+                            <?php break;?>
+                            <?php endswitch;?>
+                    <?php else:?>
+                        <em>Orden sin nerby_id</em>
+                    <?php endif;?>
+                </p>
 				<p><strong>Notas:</strong> 
 					<?php if ( isset($order->note) ):?>
 					<?= $order->note?>

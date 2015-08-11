@@ -6,7 +6,7 @@
         <section>
             <article>
                 <p>
-                    <strong>Horario de atención:</strong> Lunes a Viernes 8am a 8pm / Sábados de 8am a 6pm y Domingos y Festivos servicio solo virtual (no Callcenter) de 9am a 6pm‏
+                    <strong>Horario de atención:</strong> Lunes a Viernes 8am a 8pm / Sábados de 8am a 8pm y Domingos y Festivos pedidos solo a traves de la página web de 9am a 6pm‏
                 </p>
             </article>
         </section>

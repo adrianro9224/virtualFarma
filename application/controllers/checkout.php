@@ -67,18 +67,16 @@ class Checkout extends MY_Controller {
 			$payment_methods = $this->Payment_method_model->get_enabled_payment_methods();
 			
 			if ( isset($payment_methods) )
-				$data['payment_methods'] = $payment_methods;
-			
-			if ( isset($address) && isset($account_data)){
-				$shipping_data = $this->_check_if_shipping_data_completed($account_data, $address);
-				
-				$data['shipping_data'] = null;
-				
-				if( isset($shipping_data) )
-					$data['shipping_data'] = $shipping_data;
+            $data['payment_methods'] = $payment_methods;
+
+            $shipping_data = $this->_check_if_shipping_data_completed($account_data, $address);
+
+            $data['shipping_data'] = null;
+
+            if( isset($shipping_data) )
+                $data['shipping_data'] = $shipping_data;
 					
-				
-			}//create else with info for complete the account info
+			//create else with info for complete the account info
 			
 		}else {
 			$notifications['info'][] = "Por favor regístrate ó inicia sesión para continuar con tu compra";
@@ -90,32 +88,42 @@ class Checkout extends MY_Controller {
 		$this->load->view("pages/" . $page, $data);
 	}
 	
-	private function _check_if_shipping_data_completed($account_data, $addres_sign_up) {
-		$shipping_data = null;
-		if ( isset($account_data->first_name) 
-				&& isset($account_data->second_name) 
-				&& isset($account_data->last_name) 
-				&& isset($account_data->surname) 
-				&& isset($account_data->email) 
-				&& isset($account_data->identification_number)
-				&& isset($account_data->phone)
-				&& isset($account_data->mobile)
-				&& isset($addres_sign_up->address_line)
-				&& isset($addres_sign_up->neighborhood)
-			) {
-			$shipping_data = new stdClass();
-			
-			$shipping_data->names = $account_data->first_name . ' ' . $account_data->second_name;
-			$shipping_data->last_names = $account_data->last_name . ' ' . $account_data->surname;
-			$shipping_data->email = $account_data->email;
-			$shipping_data->identification_number = $account_data->identification_number;
-			$shipping_data->address_line1 = $addres_sign_up->address_line;
-			$shipping_data->neighborhood = $addres_sign_up->neighborhood;
-			$shipping_data->phone = $account_data->phone;
-			$shipping_data->mobile  = $account_data->mobile;
-			
-		}
-		
+	private function _check_if_shipping_data_completed( $account_data, $address_sign_up ) {
+
+        $shipping_data = null;
+        $shipping_data = new stdClass();
+
+        if ( isset($account_data->first_name) )
+            $shipping_data->names = $account_data->first_name;
+
+        if ( isset($account_data->second_name) )
+            $shipping_data->names = $shipping_data->names . ' ' . $account_data->second_name;
+
+        if ( isset($account_data->last_name) )
+            $shipping_data->last_names = $account_data->last_name;
+
+        if ( isset($account_data->surname) )
+            $shipping_data->last_names = $shipping_data->last_names . ' ' . $account_data->surname;
+
+        if ( isset($account_data->email) )
+            $shipping_data->email = $account_data->email;
+
+        if ( isset($account_data->identification_number) )
+            $shipping_data->identification_number = $account_data->identification_number;
+
+        if ( isset($account_data->phone) )
+            $shipping_data->phone = $account_data->phone;
+
+        if ( isset($account_data->mobile) )
+            $shipping_data->mobile  = $account_data->mobile;
+
+        if ( isset($address_sign_up->address_line) )
+            $shipping_data->address_line1 = $address_sign_up->address_line;
+
+        if ( isset($address_sign_up->neighborhood) )
+            $shipping_data->neighborhood = $address_sign_up->neighborhood;
+
+
 		return $shipping_data;
 	}
 	
