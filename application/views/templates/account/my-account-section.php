@@ -209,7 +209,7 @@
             </div>
             <!-- first section -->
             <!-- second section -->
-            <div class="col-md-4">
+            <div class="col-md-4" ng-controller="ManageAddressesCtrl">
                 <accordion-group is-open="status.isFirstOpen">
                     <accordion-heading>
                         Mis direcciones
@@ -220,12 +220,14 @@
                     <span id="helpBlock" class="help-block">Los campos con <span class="primary-emphasis">*</span> son obligatorios.</span>
                     <!-- helptext -->
 
+                    <span ng-if="panelDirty" ng-bind="infoStatusText"><i class="fa fa-refresh fa-spin"></i></span>
+
                     <h4><span class="label label-primary">Nueva dirección:</span></h4>
                     <!-- wrapper -->
                     <div class="well well-sm">
                         <div class="row">
                             <div class="col-md-12">
-                                <form id="addresses-form" name="addressesForm" class="horizontal-form" ng-controller="manageAddressesCtrl" novalidate>
+                                <form id="addresses-form" name="addressesForm" class="horizontal-form" novalidate>
                                     <div class="form-group form-group-sm" ng-class="{'has-error': !addressesForm.addressName.$valid && addressesForm.addressName.$dirty}">
                                         <label class="control-label col-md-3" for="addressName">Nombre<span class="primary-emphasis">*</span></label>
 
@@ -266,6 +268,9 @@
                                             <!-- helptext -->
                                         </div>
                                     </div>
+                                    <div class="col-md-12">
+                                        <a class="btn btn-warning center-horizontaly" ng-click="saveAddress(address)" ng-disabled="addressesForm.$invalid || savingAddress" ng-bind="buttonText"></a>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -276,7 +281,58 @@
                     <div class="well well-sm">
                         <div class="row">
                             <div class="col-md-12">
-                                
+                                <span ng-if="loadingAddresses">Cargando <i class="fa fa-refresh fa-spin" ></i></span>
+                                <accordion-group is-open="status.isFirstOpenAddress" ng-if="addressesCharged" ng-repeat="(key, userAddress) in addresses">
+                                    <accordion-heading >
+                                        {{userAddress.name + ' ' + key}}
+                                         <span class="pull-right">Editar <i class="fa fa-pencil-square-o"></i></span>
+                                    </accordion-heading>
+                                    <form id="edit-addresses-form" name="editAddressesForm" class="horizontal-form" novalidate>
+                                        <div class="form-group form-group-sm" ng-class="{'has-error': !editAddressesForm.addressName.$valid && editAddressesForm.addressName.$dirty}">
+                                            <label class="control-label col-md-3" for="addressName">Nombre<span class="primary-emphasis">*</span></label>
+
+                                            <div class="col-md-9">
+                                                <input type="text" name="addressName" ng-model="address.name" ng-init="address.name = userAddress.name" class="form-control"  id="addressName" placeholder="Nombre para tu dirección"  ng-maxLength="64" required>
+                                                <!-- tooltip -->
+                                                <div ng-if="editAddressesForm.addressName.$invalid && editAddressesForm.addressName.$dirty">
+                                                    <div class="arrow-up-error">
+                                                    </div>
+                                                    <div class="farma-tooltip-error">
+                                                        <span ng-if="editAddressesForm.addressName.$error.required && editAddressesForm.addressName.$dirty">Por favor escribe un nombre para tu dirección!</span>
+                                                        <span ng-if="editAddressesForm.addressName.$error.maxlength">Es muy extenso!</span>
+                                                    </div>
+                                                </div>
+                                                <!-- tooltip -->
+                                                <!-- helptext -->
+                                                <span id="helpBlock" class="help-block">Ej: Casa, Oficina, etc</span>
+                                                <!-- helptext -->
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-group-sm" ng-class="{'has-error': !editAddressesForm.addressLine1.$valid && editAddressesForm.addressLine1.$dirty}">
+                                            <label class="control-label col-md-3" for="addressLine1">Dirección<span class="primary-emphasis">*</span></label>
+
+                                            <div class="col-md-9">
+                                                <input type="text" name="addressLine1" ng-model="address.line1" ng-init="address.line1 = userAddress.address_line" class="form-control"  id="addressLine1" placeholder="Dirección de destino"  ng-maxLength="64" required>
+                                                <!-- tooltip -->
+                                                <div ng-if="editAddressesForm.addressLine1.$invalid && editAddressesForm.addressLine1.$dirty">
+                                                    <div class="arrow-up-error">
+                                                    </div>
+                                                    <div class="farma-tooltip-error">
+                                                        <span ng-if="editAddressesForm.addressLine1.$error.required && editAddressesForm.addressLine1.$dirty">Por favor escribe la dirección!</span>
+                                                        <span ng-if="editAddressesForm.addressLine1.$error.maxlength">Es muy extensa!</span>
+                                                    </div>
+                                                </div>
+                                                <!-- tooltip -->
+                                                <!-- helptext -->
+                                                <span id="helpBlock" class="help-block">Ej: Carrera 73 # 96 - 75 apto 206</span>
+                                                <!-- helptext -->
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <a class="btn btn-warning center-horizontaly" ng-click="saveAddress(address)" ng-disabled="editAddressesForm.$invalid || savingAddress" ng-bind="buttonText"></a>
+                                        </div>
+                                    </form>
+                                </accordion-group>
                             </div>
                         </div>
                     </div>

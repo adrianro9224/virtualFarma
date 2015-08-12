@@ -17,6 +17,9 @@ farmapp.controller('AccountPanelCtrl', ['$scope', '$rootScope', 'ConstantsServic
         switch (panelSelection) {
             case 'myAccount':
                 if(!$scope.myAccountSelected) {
+
+                    $rootScope.$broadcast(ConstantsService.CHARGE_EVERY_USER_ADDRESSES);
+
                     $scope.myAccountSelected = true;
                     $scope.myPurchasesSelected = false;
                     $scope.myDiagnosticSelected = false;
