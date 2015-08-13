@@ -10,8 +10,13 @@ farmapp.controller('ManageAddressesCtrl', ['$scope', '$http', '$rootScope', 'Con
     $scope.panelDirty = false;
     $scope.loadingAddresses = false;
     $scope.addressesCharged = false;
+    $scope.updatingAddress = false;
+    $scope.deletingAddress = false;
+    $scope.addressesEmpty = false;
 
     selectTextForButtonToSave();
+    selectTextForButtonToUpdate();
+    selectTextForButtonToDelete();
 
     $rootScope.$on(ConstantsService.CHARGE_EVERY_USER_ADDRESSES, function(event, data){
         load_addresses();
@@ -42,7 +47,7 @@ farmapp.controller('ManageAddressesCtrl', ['$scope', '$http', '$rootScope', 'Con
                 }
 
                 if ( data == 'SESSION_EXPIRED' ) {
-                    //TODO
+                    window.location = "/account";
                 }
                     console.info(data);
 
@@ -53,6 +58,99 @@ farmapp.controller('ManageAddressesCtrl', ['$scope', '$http', '$rootScope', 'Con
                 console.info(data + ":(");
             });
     };
+
+    $scope.updateAddress = function ( newAddress, internalAddressData ) {
+
+        var addressToSend = create_new_address( newAddress, internalAddressData );
+
+        $scope.panelDirty = true;
+        $scope.updatingAddress = true;
+        $scope.infoStatusText = "Actualizando!";
+
+        $http.post("http://virtualfarma.com.co/address/update_address", {data: addressToSend})
+            .success(function(data, status, headers, config){
+
+                $scope.updatingAddress = false;
+                selectTextForButtonToUpdate();
+
+                if( data == 'UPDATED' ) {
+                    $scope.infoStatusText = "Tu dirección a sido actualizada!";
+                    load_addresses();
+                }
+
+                if( data == 'RETRY' )
+                    $scope.infoStatusText = "Por favor intentalo de nuevo!";
+                
+                if( data == 'SESSION_EXPIRED' )
+                    window.location = "/account";
+
+            }).
+            error(function(data, status, headers, config){
+                console.info(data + ":(");
+
+            });
+    };
+
+    $scope.deleteAddress = function ( addressIdToDelete ) {
+
+        $scope.panelDirty = true;
+        $scope.deletingAddress = true;
+        $scope.infoStatusText = "Borrando!";
+
+        $http.post("http://virtualfarma.com.co/address/delete_address", {data: addressIdToDelete})
+            .success(function(data, status, headers, config){
+
+                $scope.deletingAddress = false;
+                selectTextForButtonToDelete();
+
+                if( data == 'DELETED' ) {
+                    $scope.infoStatusText = "Tu dirección a sido borrada!";
+                    load_addresses();
+                }
+
+                if( data == 'RETRY' )
+                    $scope.infoStatusText = "Por favor intentalo de nuevo!";
+
+                if( data == 'SESSION_EXPIRED' )
+                    window.location = "/account";
+
+            }).
+            error(function(data, status, headers, config){
+                console.info(data + ":(");
+
+            });
+
+    };
+
+    function create_new_address( newAddress, internalAddressData ) {
+
+        var address = {
+            id: internalAddressData.id,
+            from: internalAddressData.from,
+            address_line: newAddress.line1, name: newAddress.name
+        };
+
+        return address;
+
+    }
+
+    function selectTextForButtonToDelete() {
+
+        if( $scope.deletingAddress )
+            $scope.buttonDeleteText = "Borrando";
+        else
+            $scope.buttonDeleteText = "Borrar";
+
+    }
+
+    function selectTextForButtonToUpdate() {
+
+        if( $scope.updatingAddress )
+            $scope.buttonUpdateText = "Actualizando";
+        else
+            $scope.buttonUpdateText = "Actualizar";
+
+    }
 
     function selectTextForButtonToSave() {
 
@@ -84,18 +182,18 @@ farmapp.controller('ManageAddressesCtrl', ['$scope', '$http', '$rootScope', 'Con
                     console.info($scope.addresses);
                 }
 
-                if ( data == 'EMPTY' ) {
-                    //
+                if ( result.status == 'EMPTY' ) {
+                    $scope.addressesEmpty = true;
                 }
 
-                if ( data == 'SESSION_EXPIRED' ) {
-                    //TODO
+                if ( result.status == 'SESSION_EXPIRED' ) {
+                    window.location = "/account";
                 }
 
 
             }).
             error(function (data, status, headers, config) {
-                $window.location.reload();
+                //$window.location.reload();
                 console.info(data + ":(");
             });
     }

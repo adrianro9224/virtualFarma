@@ -67,5 +67,32 @@ class Address_model extends CI_Model {
 		return NULL;
 		
 	}
+
+    public function update_address_by_account_id( $new_address, $account_id ) {
+
+        $this->db->where('id', $new_address->id);
+        $this->db->where('account_id', $account_id);
+
+        $this->db->update('address', $new_address);
+
+        if( $this->db->affected_rows() == 1 ) {
+            return true;
+        }
+
+        return false;
+
+    }
+
+    public function delete_address_by_id( $address_id, $account_id ) {
+
+        $this->db->where('id', $address_id);
+        $this->db->delete('address');
+
+        if( $this->db->affected_rows() == 1 )
+            return true;
+
+        return false;
+
+    }
 	
 } 

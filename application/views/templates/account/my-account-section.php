@@ -281,10 +281,11 @@
                     <div class="well well-sm">
                         <div class="row">
                             <div class="col-md-12">
-                                <span ng-if="loadingAddresses">Cargando <i class="fa fa-refresh fa-spin" ></i></span>
-                                <accordion-group is-open="status.isFirstOpenAddress" ng-if="addressesCharged" ng-repeat="(key, userAddress) in addresses">
+                                <span ng-if="updatingAddress">Actualizando <i class="fa fa-refresh fa-spin" ></i></span>
+                                <h5 ng-if="addressesEmpty">No has agregado direcciones</h5>
+                                <accordion-group is-open="" ng-if="addressesCharged && !addressesEmpty" ng-repeat="(key, userAddress) in addresses">
                                     <accordion-heading >
-                                        {{userAddress.name + ' ' + key}}
+                                        {{userAddress.name}}
                                          <span class="pull-right">Editar <i class="fa fa-pencil-square-o"></i></span>
                                     </accordion-heading>
                                     <form id="edit-addresses-form" name="editAddressesForm" class="horizontal-form" novalidate>
@@ -329,7 +330,8 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <a class="btn btn-warning center-horizontaly" ng-click="saveAddress(address)" ng-disabled="editAddressesForm.$invalid || savingAddress" ng-bind="buttonText"></a>
+                                            <a class="btn btn-warning btn-xs" ng-click="updateAddress(address, userAddress)" ng-disabled="editAddressesForm.$invalid || updatingAddress || !editAddressesForm.$dirty" >{{buttonUpdateText}} <i class="fa fa-circle-o-notch fa-spin" ng-if="updatingAddress"></i></a>
+                                            <a class="btn btn-danger btn-xs pull-right" ng-click="deleteAddress( userAddress.id )" >{{buttonDeleteText}} <i class="fa fa-circle-o-notch fa-spin" ng-if="deletingAddress"></i></a>
                                         </div>
                                     </form>
                                 </accordion-group>
