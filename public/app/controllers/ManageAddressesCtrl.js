@@ -19,7 +19,7 @@ farmapp.controller('ManageAddressesCtrl', ['$scope', '$http', '$rootScope', 'Con
     selectTextForButtonToDelete();
 
     $rootScope.$on(ConstantsService.CHARGE_EVERY_USER_ADDRESSES, function(event, data){
-        load_addresses();
+        loadAddresses();
     });
 
     $scope.saveAddress = function( address ) {
@@ -39,7 +39,7 @@ farmapp.controller('ManageAddressesCtrl', ['$scope', '$http', '$rootScope', 'Con
 
                 if ( data == 'SAVED' ) {
                     $scope.infoStatusText = "Tu dirección a sido agregada!";
-                    load_addresses();
+                    loadAddresses();
                 }
 
                 if ( data == 'RETRY' ) {
@@ -75,7 +75,7 @@ farmapp.controller('ManageAddressesCtrl', ['$scope', '$http', '$rootScope', 'Con
 
                 if( data == 'UPDATED' ) {
                     $scope.infoStatusText = "Tu dirección a sido actualizada!";
-                    load_addresses();
+                    loadAddresses();
                 }
 
                 if( data == 'RETRY' )
@@ -105,7 +105,7 @@ farmapp.controller('ManageAddressesCtrl', ['$scope', '$http', '$rootScope', 'Con
 
                 if( data == 'DELETED' ) {
                     $scope.infoStatusText = "Tu dirección a sido borrada!";
-                    load_addresses();
+                    loadAddresses();
                 }
 
                 if( data == 'RETRY' )
@@ -160,7 +160,7 @@ farmapp.controller('ManageAddressesCtrl', ['$scope', '$http', '$rootScope', 'Con
             $scope.buttonText = "Guardar";
     }
 
-    function load_addresses() {
+    function loadAddresses() {
 
         $scope.loadingAddresses = true;
 

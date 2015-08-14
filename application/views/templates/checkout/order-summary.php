@@ -129,6 +129,6 @@
 		</div>		
 		</div>
 		<a href="/account/log_in" ng-show="order.sended" id="go-to-orders-button" class="btn btn-success btn-lg" role="button">Compra completada, ir a mi cuenta</a>
-		<a ng-click="stepCompleted( order, 'orderSummary' )" ng-hide="order.sended" ng-disabled="( !(order.shippingData.status && order.paymentMethod.status) || sendingOrder ) || order.shoppingcart.minimumOrderValueInvalid" id="confirm-order-button" class="btn btn-warning btn-lg" role="button">Confirmar Orden</a>
+		<a ng-click="stepCompleted( order, 'orderSummary' )" ng-hide="order.sended" ng-disabled="( !(order.shippingData.status && order.paymentMethod.status) || sendingOrder ) || order.shoppingcart.minimumOrderValueInvalid" id="confirm-order-button" class="btn btn-warning btn-lg" role="button">Confirmar Orden <i ng-if="sendingOrder" class="fa fa-spinner fa-pulse"></i></a>
 	</div>
 </div>
