@@ -59,7 +59,7 @@
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/CarouselCtrl.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/DevicesMenuAccordionCtrl.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/NotificationsCtrl.min.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/AccountPanelCtrl.js'?>"></script><!-- minify-->
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/AccountPanelCtrl.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/AccordionCtrl.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/RegisterForm.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/LogInForm.min.js'?>"></script>
@@ -83,7 +83,7 @@
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ShoppingCartAuxCtrl.min.js'?>"></script>
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/RequestProductCtrl.min.js'?>"></script>
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/HoursOfOperationCtrl.min.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ManageAddressesCtrl.js'?>"></script><!-- minify-->
+    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ManageAddressesCtrl.min.js'?>"></script>
 
 	<!-- Angular js controllers over -->
 	
