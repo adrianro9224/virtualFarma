@@ -74,10 +74,10 @@
       <file leaf-file-name="head.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/views/templates/head.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.36872813" vertical-offset="1761" max-vertical-offset="2618">
-              <caret line="85" column="104" selection-start-line="85" selection-start-column="104" selection-end-line="85" selection-end-column="104" />
+            <state vertical-scroll-proportion="0.82147026" vertical-offset="1761" max-vertical-offset="2618">
+              <caret line="145" column="42" selection-start-line="145" selection-start-column="42" selection-end-line="145" selection-end-column="42" />
               <folding>
-                <marker date="1439579827206" expanded="true" signature="117:128" placeholder="..." />
+                <marker date="1439580359305" expanded="true" signature="117:128" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -886,10 +886,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/templates/head.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.36872813" vertical-offset="1761" max-vertical-offset="2618">
-          <caret line="85" column="104" selection-start-line="85" selection-start-column="104" selection-end-line="85" selection-end-column="104" />
+        <state vertical-scroll-proportion="0.82147026" vertical-offset="1761" max-vertical-offset="2618">
+          <caret line="145" column="42" selection-start-line="145" selection-start-column="42" selection-end-line="145" selection-end-column="42" />
           <folding>
-            <marker date="1439579827206" expanded="true" signature="117:128" placeholder="..." />
+            <marker date="1439580359305" expanded="true" signature="117:128" placeholder="..." />
           </folding>
         </state>
       </provider>
