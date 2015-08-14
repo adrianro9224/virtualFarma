@@ -54,7 +54,7 @@
       <file leaf-file-name="head.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/templates/head.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-27.076923" vertical-offset="1761" max-vertical-offset="2618">
+            <state vertical-scroll-proportion="-40.807693" vertical-offset="1404" max-vertical-offset="2618">
               <caret line="145" column="42" selection-start-line="145" selection-start-column="42" selection-end-line="145" selection-end-column="42" />
               <folding>
                 <marker date="1439581811411" expanded="true" signature="117:128" placeholder="..." />
@@ -103,10 +103,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ManageAddressesCtrl.min.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ManageAddressesCtrl.min.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/app/controllers/ManageAddressesCtrl.min.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="136">
+            <state vertical-scroll-proportion="0.019252548" vertical-offset="0" max-vertical-offset="883">
               <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
               <folding>
                 <element signature="e#0#43#0" expanded="false" />
@@ -118,18 +118,8 @@
       <file leaf-file-name="header-nav.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/templates/header-nav.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="11.769231" vertical-offset="306" max-vertical-offset="1683">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5066964" vertical-offset="14761" max-vertical-offset="15657">
-              <caret line="895" column="14" selection-start-line="895" selection-start-column="14" selection-end-line="895" selection-end-column="14" />
+            <state vertical-scroll-proportion="-6.8076925" vertical-offset="622" max-vertical-offset="1683">
+              <caret line="47" column="153" selection-start-line="47" selection-start-column="153" selection-end-line="47" selection-end-column="153" />
               <folding />
             </state>
           </provider>
@@ -191,6 +181,8 @@
         <option value="$PROJECT_DIR$/public/app/controllers/AccountPanelCtrl.min.js" />
         <option value="$PROJECT_DIR$/public/app/controllers/ManageAddressesCtrl.min.js" />
         <option value="$PROJECT_DIR$/application/views/templates/head.php" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
+        <option value="$PROJECT_DIR$/application/views/templates/header-nav.php" />
       </list>
     </option>
   </component>
@@ -447,7 +439,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32683983" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -860,19 +852,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/controllers/ManageAddressesCtrl.min.js">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="136">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#43#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.5066964" vertical-offset="14744" max-vertical-offset="15640">
+          <caret line="894" column="14" selection-start-line="894" selection-start-column="14" selection-end-line="894" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/templates/header-nav.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.8076925" vertical-offset="622" max-vertical-offset="1683">
+          <caret line="47" column="153" selection-start-line="47" selection-start-column="153" selection-end-line="47" selection-end-column="153" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/templates/head.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-27.076923" vertical-offset="1761" max-vertical-offset="2618">
+        <state vertical-scroll-proportion="-40.807693" vertical-offset="1404" max-vertical-offset="2618">
           <caret line="145" column="42" selection-start-line="145" selection-start-column="42" selection-end-line="145" selection-end-column="42" />
           <folding>
             <marker date="1439581811411" expanded="true" signature="117:128" placeholder="..." />
@@ -880,19 +878,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/templates/header-nav.php">
+    <entry file="file://$PROJECT_DIR$/public/app/controllers/ManageAddressesCtrl.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="11.769231" vertical-offset="306" max-vertical-offset="1683">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5066964" vertical-offset="14761" max-vertical-offset="15657">
-          <caret line="895" column="14" selection-start-line="895" selection-start-column="14" selection-end-line="895" selection-end-column="14" />
-          <folding />
+        <state vertical-scroll-proportion="0.019252548" vertical-offset="0" max-vertical-offset="883">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#43#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
