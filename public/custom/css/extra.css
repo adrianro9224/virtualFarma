@@ -1648,3 +1648,9 @@ a:hover.pathology-btn {
     margin-bottom: 4px;
     color: #FFF;
 }
+
+#myAddressesWrapper {
+    border: 2px solid #05A8AA;
+    padding-left: 8px;
+    margin-bottom: 10px;
+}

@@ -8,7 +8,7 @@ class Checkout extends MY_Controller {
 	 */
 	function __construct() {
 		parent::__construct();
-		$this->load->library( array('address', 'orders', 'account_types', 'accounts', 'mandrill_lib') );
+		$this->load->library( array('addresses', 'orders', 'account_types', 'accounts', 'mandrill_lib') );
 		$this->load->model("Payment_method_model");
 	}
 	
@@ -58,7 +58,8 @@ class Checkout extends MY_Controller {
 		if( isset($session_data[$account_types[1] . '_id']) ){
 			$data['user_logged'] = true;
 			
-			$address = $this->address->get_all_address( $session_data[$account_types[1]. '_id'] );
+			//$address = $this->addresses->get_sign_up_address( $session_data[$account_types[1]. '_id'] ); all addresses are called from angular controller
+
 			$account_data = $this->get_account($session_data[$account_types[1] . '_id']);
 
             if ( isset($account_data->points) )
@@ -69,7 +70,7 @@ class Checkout extends MY_Controller {
 			if ( isset($payment_methods) )
             $data['payment_methods'] = $payment_methods;
 
-            $shipping_data = $this->_check_if_shipping_data_completed($account_data, $address);
+            $shipping_data = $this->_check_if_shipping_data_completed( $account_data );
 
             $data['shipping_data'] = null;
 
@@ -88,7 +89,7 @@ class Checkout extends MY_Controller {
 		$this->load->view("pages/" . $page, $data);
 	}
 	
-	private function _check_if_shipping_data_completed( $account_data, $address_sign_up ) {
+	private function _check_if_shipping_data_completed( $account_data ) {
 
         $shipping_data = null;
         $shipping_data = new stdClass();
@@ -116,13 +117,6 @@ class Checkout extends MY_Controller {
 
         if ( isset($account_data->mobile) )
             $shipping_data->mobile  = $account_data->mobile;
-
-        if ( isset($address_sign_up->address_line) )
-            $shipping_data->address_line1 = $address_sign_up->address_line;
-
-        if ( isset($address_sign_up->neighborhood) )
-            $shipping_data->neighborhood = $address_sign_up->neighborhood;
-
 
 		return $shipping_data;
 	}
