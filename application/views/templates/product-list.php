@@ -3,6 +3,12 @@
 		<div class="row hidden-xs">
 			<div class="col-lg-3 col-md-4 col-xs-5">
 	        	<img src="<?= base_url() . 'assets/images/products/' . $product->uri_img . $product->image_format_id ?>" class="img-responsive" alt="<?= $product->name?>">
+                <?php if( $product->has_discount ): ?>
+                     <span class="fa-stack fa-lg">
+                        <i id="promotionWrapper" class="fa fa-circle"></i>
+                        <span id="promotionText">-10%</span>
+                    </span>
+                <?php endif; ?>
 			</div>
 			<div class="col-lg-9 col-md-8 col-xs-7">
 	        	<div class="product-body">

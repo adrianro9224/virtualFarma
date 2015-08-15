@@ -1654,3 +1654,19 @@ a:hover.pathology-btn {
     padding-left: 8px;
     margin-bottom: 10px;
 }
+#promotionWrapper {
+    font-size: 102px;
+    position: absolute;
+    right: -1.5em;
+    top: -1em;
+    color: #FFCC00;
+}
+
+#promotionText {
+    position: absolute;
+    font-size: 35px;
+    font-weight: bold;
+    right: -4.3em;
+    top: -2.01em;
+    color: #FF0000;
+}

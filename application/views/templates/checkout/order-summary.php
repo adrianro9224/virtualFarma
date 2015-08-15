@@ -5,7 +5,7 @@
 	<div class="panel-body" ng-if="orderSummary">
 		<div id="order-summary-container" ng-hide="order.sended">
 			<p>Acá esta toda la información relacionada con tu compra:</p>
-            <p class="bg-info">Por cada $1000 pesos en compras recibirás 10 puntos :D <i class="fa fa-gift"></i></p>
+            <p class="bg-info">Por cada $1000 pesos en compras recibirás 20 puntos :D <i class="fa fa-gift"></i></p>
             <!-- Use points -->
             <?php if ( isset($points) ): ?>
             <div class="checkbox">
@@ -93,7 +93,7 @@
                             <span class="title">Puntos que ganarás</span>
                         </div>
                         <div class="order-summary-item-content">
-                            <span class="pull-right value" ng-bind="order.shoppingcart.subtotal * 0.01"></span>
+                            <span class="pull-right value" ng-bind="order.shoppingcart.subtotal * 0.02"></span>
                         </div>
                     </div>
 					<div id="total-products" class="order-summary-item">
