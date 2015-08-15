@@ -24,7 +24,7 @@
     <!-- Angular 1.4.0 snapshot start -->
 	<!-- Custom css start -->
 
-	<link rel="stylesheet" type="text/css" href="<?= base_url() . 'public/custom/css/extra.css'?>">
+	<link rel="stylesheet" type="text/css" href="<?= base_url() . 'public/custom/css/extra.css'?>"><!-- minify -->
 	<!-- Custom css over -->
 	
 	<!-- Font awesome css start -->
@@ -59,7 +59,7 @@
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/CarouselCtrl.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/DevicesMenuAccordionCtrl.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/NotificationsCtrl.min.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/AccountPanelCtrl.min.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/AccountPanelCtrl.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/AccordionCtrl.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/RegisterForm.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/LogInForm.min.js'?>"></script>
@@ -83,6 +83,7 @@
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ShoppingCartAuxCtrl.min.js'?>"></script>
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/RequestProductCtrl.min.js'?>"></script>
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/HoursOfOperationCtrl.min.js'?>"></script>
+    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ManageAddressesCtrl.min.js'?>"></script>
 
 	<!-- Angular js controllers over -->
 	
@@ -127,21 +128,21 @@
     <!-- Jquery slick-->
 
     <!-- Zopim-->
-    <!--<script type="text/javascript" src="<?//= base_url() . 'public/zopim/zopim-chat.js'?>"></script>-->
+    <script type="text/javascript" src="<?= base_url() . 'public/zopim/zopim-chat.js'?>"></script>
     <!-- Google Maps API -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBS01MZwvdqFbIdS6SWb3ccjyech0o1WuM"></script>
     <!-- Google Maps API -->
 
     <!-- Histats.com  START (hidden counter)-->
-    <!--<script type="text/javascript">document.write(unescape("%3Cscript src=%27http://s10.histats.com/js15.js%27 type=%27text/javascript%27%3E%3C/script%3E"));</script>
+    <script type="text/javascript">document.write(unescape("%3Cscript src=%27http://s10.histats.com/js15.js%27 type=%27text/javascript%27%3E%3C/script%3E"));</script>
     <a href="http://www.histats.com" target="_blank" title="contador pagina web" ><script  type="text/javascript" >
             try {Histats.start(1,3097090,4,0,0,0,"");
                 Histats.track_hits();} catch(err){};
-        </script></a>-->
-    <!--<noscript><a href="http://www.histats.com" target="_blank"><img  src="http://sstatic1.histats.com/0.gif?3097090&101" alt="contador pagina web" border="0"></a></noscript>-->
+        </script></a>
+    <noscript><a href="http://www.histats.com" target="_blank"><img  src="http://sstatic1.histats.com/0.gif?3097090&101" alt="contador pagina web" border="0"></a></noscript>
     <!-- Histats.com  END  -->
 
     <!-- Goole Analitics -->
-    <!--script type="text/javascript" src="<?//= base_url() . 'public/Google-Analitics/analyticstracking.js'?>"></script>-->
+    <script type="text/javascript" src="<?= base_url() . 'public/Google-Analitics/analyticstracking.js'?>"></script>
     <!-- Goole Analitics -->
 </head>

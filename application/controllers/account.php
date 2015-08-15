@@ -11,7 +11,7 @@ class Account extends MY_Controller {
 		parent::__construct();
 		$this->load->helper(array('form', 'url', 'account_helper'));
 		
-		$this->load->library(array('form_validation', 'messages', 'accounts', 'address', 'account_types', 'orders', 'mandrill_lib', 'pathologies'));
+		$this->load->library(array('form_validation', 'messages', 'accounts', 'addresses', 'account_types', 'orders', 'mandrill_lib', 'pathologies'));
 		$this->load->model('account_model');// add second param for add a "alias" ex: $this->load->model('Account', 'user')
 	}
 	
@@ -181,6 +181,10 @@ class Account extends MY_Controller {
                     $data['messages'] = $messages_sorted;
                 }
 
+                $address = $this->address->get_sign_up_address( $account->id );
+
+                $data['address'] = $address;
+
                 if( isset($account_pathologies) ) {
                     $pathologies->account_pathologies = $account_pathologies;
 
@@ -324,7 +328,7 @@ class Account extends MY_Controller {
 				
 				$data['pathologies'] = $pathologies;
 				
-				$address = $this->address->get_all_address( $account->id );
+				$address = $this->addresses->get_sign_up_address( $account->id );
 				
 				if( isset($_COOKIE['shoppingcart']) ) {
 					$data['shoppingcart'] = json_decode($_COOKIE['shoppingcart']);
@@ -391,7 +395,7 @@ class Account extends MY_Controller {
 						
 						$data['pathologies'] = $pathologies;
 						
-						$address = $this->address->get_all_address( $account->id );
+						$address = $this->addresses->get_sign_up_address( $account->id );
 						
 						$data['address'] = $address;
 						
@@ -514,7 +518,7 @@ class Account extends MY_Controller {
 					$address->neighborhood = $update_account_form['userNeighborhood'];
 					$address->from = "ACCOUNT_SING_UP";
 					
-					$address_registered_status = $this->address->write_account_sign_up_address( $address, $account_id );
+					$address_registered_status = $this->addresses->write_account_sign_up_address( $address, $account_id );
 					
 					$result = $this->account_model->update_account($update_account_form, $account_id);
 					

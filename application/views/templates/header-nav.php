@@ -45,7 +45,7 @@
                                             <?php endforeach;?>
                                         </ul>
                                     </li>
-									<!--<li><a href="/product/show_products_by_category/sex_shop" title="Todo lo que necesitas" >Salud sexual</a></li> -->
+									<!--<li><a href="/product/show_products_by_category/sex_shop" title="Todo lo que necesitas" >Salud sexual</a></li>-->
                                     <li><a href="/wordpress" title="Blog de noticias" target="_blank">Noticias</a></li>
                                     <li ng-controller="HoursOfOperationCtrl">
                                         <?php include_once( __ROOT__TEMPLATES__ . 'hours_of_operation_modal.php' )?>

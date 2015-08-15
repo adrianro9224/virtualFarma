@@ -103,9 +103,21 @@
                 <div class="col-md-6">
                     <h3><span class="label label-primary">Lugar de destino:</span></h3>
                     <div class="well well-sm">
+                        <h3 ng-if="addressesCharged"><span class="label label-warning">Mis direcciones:</span></h3>
+                        <div id="myAddressesWrapper" ng-if="addressesCharged">
+                            <!-- helptext -->
+                            <span id="helpBlock" class="help-block">Puedes selecionar una de las direcciones que has guardado :)</span>
+                            <!-- helptext -->
+                            <div class="radio" ng-repeat="(key, address) in addresses">
+                                <label>
+                                    <input type="radio" name="addressOptions" id="addressOption{{key}}" ng-model="order.shippingData.addressLine1" ng-value="address.address_line">
+                                    <strong>{{address.name}}</strong> &mdash; {{address.address_line}}
+                                </label>
+                            </div>
+                        </div>
                         <div class="form-group form-group-sm" ng-class="{'has-error': !ShippingDataForm.shippingDataAddressLine1.$valid && ShippingDataForm.shippingDataAddressLine1.$dirty}">
                             <label for="shippingDataAddressLine1">Dirección<span class="primary-emphasis">*</span></label>
-                            <input type="text" name="shippingDataAddressLine1" ng-model="order.shippingData.addressLine1" class="form-control" id="shippingDataAddressLine1" placeholder="Ingresa tu dirección" ng-init="order.shippingData.addressLine1='<?= ( isset($shipping_data->address_line1) ) ? $shipping_data->address_line1 : null ?>'" ng-maxLength="50" required>
+                            <input type="text" name="shippingDataAddressLine1" ng-model="order.shippingData.addressLine1" class="form-control" id="shippingDataAddressLine1" placeholder="Ingresa tu dirección" ng-maxLength="50" required>
                             <!-- tooltip -->
                             <div ng-if="ShippingDataForm.shippingDataAddressLine1.$invalid && ShippingDataForm.shippingDataAddressLine1.$dirty">
                                 <div class="arrow-up-error">
@@ -122,7 +134,7 @@
                         </div>
                         <div class="form-group form-group-sm" ng-class="{'has-error': !ShippingDataForm.shippingDataNeighborhood.$valid && ShippingDataForm.shippingDataNeighborhood.$dirty}">
                             <label for="shippingDataNeighborhood">Barrio</label>
-                            <input type="text" name="shippingDataNeighborhood" ng-model="order.shippingData.neighborhood" class="form-control" id="shippingDataNeighborhood" placeholder="Ingresa tu dirección" ng-init="order.shippingData.neighborhood='<?= ( isset($shipping_data->neighborhood) ) ? $shipping_data->neighborhood : null ?>'" ng-maxLength="50">
+                            <input type="text" name="shippingDataNeighborhood" ng-model="order.shippingData.neighborhood" class="form-control" id="shippingDataNeighborhood" placeholder="Ingresa tu dirección" ng-maxLength="50">
                             <!-- tooltip -->
                             <div ng-if="ShippingDataForm.shippingDataNeighborhood.$invalid && ShippingDataForm.shippingDataNeighborhood.$dirty">
                                 <div class="arrow-up-error">

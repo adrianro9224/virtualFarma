@@ -2,7 +2,7 @@
  * Created by Adrian on 17/02/2015.
  */
 
-farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cookies', '$http', 'ConstantsService', '$window', 'UtilService', '$anchorScroll', '$location', function( $scope ,$rootScope ,$log ,$cookies, $http, ConstantsService, $window, UtilService, $anchorScroll, $location) {
+farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cookies', '$http', 'ConstantsService', '$window', 'UtilService', function( $scope ,$rootScope ,$log ,$cookies, $http, ConstantsService, $window, UtilService ) {
 
     "use strict";
 
@@ -15,6 +15,10 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
     $scope.orderSummaryEnable = false;
 
     $scope.checkoutCurrentStep = "shippingData";
+
+    $scope.loadingAddresses = false;
+    $scope.addressesCharged = false;
+    $scope.addressesEmpty = false;
 
     var orderInCookie = $cookies.getObject("order");
     var shoppingcartInCookie = $cookies.getObject("shoppingcart");
@@ -32,12 +36,19 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
             orderInCookie.shoppingcart = shoppingcartInCookie;
             $scope.order = orderInCookie;
 
+            if ( orderInCookie.currentStep == undefined )
+                orderInCookie.currentStep = $scope.checkoutCurrentStep;
+
             $scope.checkoutCurrentStep = orderInCookie.currentStep;
+
             updateOrder( orderInCookie );
 
             switchCheckoutPanelSection( $scope.checkoutCurrentStep );
     }else {
         $scope.order = {};
+
+        loadAddresses();
+
         if ( shoppingcartInCookie != undefined )
             $scope.order.shoppingcart = shoppingcartInCookie;
         else
@@ -52,6 +63,7 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
 
         switch (panelSelection) {
             case "shippingData":
+                loadAddresses();
                 if(!$scope.shippingData) {
                     $scope.shippingData = true;
                     $scope.paymentMethod = false;
@@ -121,6 +133,7 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
                             newOrder.sended = true;
                             $scope.sendingOrder = false;
                             $cookies.remove('shoppingcart');
+                            gotoAnchor();
                             updateOrder( newOrder );
                         }else{
                             $scope.sendingOrder = false;
@@ -405,6 +418,41 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
 
     function gotoAnchor() {
         document.body.scrollTop = document.documentElement.scrollTop = 0;
+    }
+
+    function loadAddresses() {
+
+        $scope.loadingAddresses = true;
+
+        $http.get("http://virtualfarma.com.co/address/get_all")
+            .success(function (data, status, headers, config) {
+
+                $scope.loadingAddresses = false;
+
+                var result = angular.fromJson(data);
+
+                if ( result.status == 'CHARGED' ) {
+                    $scope.addressesCharged = true;
+
+                    $scope.addresses = angular.fromJson(result.addresses);
+
+                    console.info($scope.addresses);
+                }
+
+                if ( result.status == 'EMPTY' ) {
+                    $scope.addressesEmpty = true;
+                }
+
+                if ( result.status == 'SESSION_EXPIRED' ) {
+                    window.location = "/account";
+                }
+
+
+            }).
+            error(function (data, status, headers, config) {
+                //$window.location.reload();
+                console.info(data + ":(");
+            });
     }
 
 }]);
