@@ -11,7 +11,7 @@ class Admin extends MY_Controller {
 		
 		$this->load->model('account_model');
 		$this->load->helper(array('form', 'account_helper'));
-		$this->load->library( array('form_validation', 'account_types', 'products', 'orders', 'accounts', 'address', 'mandrill_lib') );
+		$this->load->library( array('form_validation', 'account_types', 'products', 'orders', 'accounts', 'addresses', 'mandrill_lib') );
 		
 	}
 	
