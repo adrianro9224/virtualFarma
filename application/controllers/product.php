@@ -443,9 +443,9 @@ class Product extends MY_Controller {
 			if( isset($product->discount) ) {
 				
 				$product->has_discount = true;
-				$discount = bcdiv($product->price, $product->discount); 
+				$discount = bcdiv($product->price, $product->discount);
 				$product->old_price = $product->price;
-				$product->new_price = bcsub($product->price, $discount, 4);
+				$product->new_price = bcsub($product->price, $discount);
 				
 			}
 		}
