@@ -9,7 +9,7 @@
                         </label>
                     </div>
                 <?php endif;?>
-            <?php endif;?>;
+            <?php endif;?>
         </div>
         <div class="col-md-6">
             <div class="btn-group pull-right">
