@@ -1,7 +1,7 @@
 /**
  * Created by Adrian on 05/05/2015.
  */
-farmapp.controller( 'FarmacyOrdersCtrl', ['$scope', '$http', '$window', 'UtilService', function( $scope, $http, $window, UtilService ){
+farmapp.controller( 'FarmacyOrdersCtrl', ['$scope', '$http', '$window', 'UtilService', '$timeout', '$cookies', function( $scope, $http, $window, UtilService, $timeout, $cookies ){
 
     'use strict';
 
@@ -90,6 +90,7 @@ farmapp.controller( 'FarmacyOrdersCtrl', ['$scope', '$http', '$window', 'UtilSer
                 console.info(data);
 
                 if ( data == 'true' ) {
+                    doIt();
                     $scope.UpdatingOrderToSended = false;
                     $window.location.reload();
                 }else {
@@ -102,5 +103,48 @@ farmapp.controller( 'FarmacyOrdersCtrl', ['$scope', '$http', '$window', 'UtilSer
 
                 console.info(data + ":(");
             });
+    };
+
+    angular.element(document).ready(function () {
+
+        if ( $scope.numOfordersWithoutSend > 0 )
+            initAlert();
+
+        check_if_new_orders();
+
+    });
+
+
+    function initAlert() {
+        $timeout( playSound, 1000);
     }
+
+    function playSound() {
+        var sound = document.getElementById("newOrderAlert");
+
+        sound.play();
+
+        if( !$scope.seeingStatusCheckbox )
+            $timeout( playSound, 1000);
+    }
+
+    function check_if_new_orders() {
+        $timeout( reload , 60000 );
+    }
+
+    function reload (){
+        $window.location.reload();
+    }
+
+    $scope.changeSeeingStatus = doIt();
+
+
+    function doIt(){
+
+        if ( $scope.seeingStatusCheckbox )
+            $scope.seeingStatusCheckbox = false;
+        else
+            $scope.seeingStatusCheckbox = true;
+    }
+
 }]);

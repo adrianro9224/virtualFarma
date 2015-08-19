@@ -1670,3 +1670,8 @@ a:hover.pathology-btn {
     top: -2.01em;
     color: #FF0000;
 }
+
+#farmacy-subtitle span#num-of-orders {
+
+    color: #ffff00;
+}

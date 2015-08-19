@@ -57,34 +57,11 @@
 
     <!-- Angular js controllers start -->
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/CarouselCtrl.min.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/DevicesMenuAccordionCtrl.min.js'?>"></script>
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/NotificationsCtrl.min.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/AccountPanelCtrl.min.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/AccordionCtrl.min.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/RegisterForm.min.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/LogInForm.min.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/EditAccountForm.min.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/MessageCtrl.min.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/MyDiagnosticCtrl.min.js' ?>"></script>
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/PaginationCtrl.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ProductListCtrl.min.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ShoppingCartCtrl.min.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/CheckoutPanelCtrl.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ShippingDataFormCtrl.min.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/AdminLogInForm.min.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/SalesCreatorCtrl.js'?>"></script><!-- minify -->
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/SalesFormCtrl.min.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/MainCtrl.js'?>"></script><!-- minify -->
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/HeaderNavCtrl.min.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/FarmacyOrdersCtrl.min.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/FacebookCtrl.min.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/TermsAndCondCtrl.min.js'?>"></script>
+    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/FarmacyOrdersCtrl.js'?>"></script><!-- minify-->
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ModalInstanceCtrl.min.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ShoppingCartAuxCtrl.min.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/RequestProductCtrl.min.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/HoursOfOperationCtrl.min.js'?>"></script>
-    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/SaleOptionsCtrl.js'?>"></script><!-- minify -->
-
     <!-- Angular js controllers over -->
 
     <!-- Angular js services start -->

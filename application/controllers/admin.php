@@ -192,13 +192,27 @@ class Admin extends MY_Controller {
 				
 				if( isset($orders) ){
 					$data['orders'] = $orders;
+                    $data['numOfordersWithoutSend'] = $this->count_orders_without_send( $orders );
 				}
 				
 				$this->_admin_do_login( $account_types[4], $admin_account, $account_types, $data );
 				$this->load->view('admin/farmacy/index', $data);
 				break;
 		}
-	} 
+	}
+
+    private function count_orders_without_send( $orders ) {
+
+        $num_of_orders_without = 0;
+
+        foreach( $orders as $order ) {
+            if( $order->status == 'RECEIVED' )
+                $num_of_orders_without++;
+        }
+
+        return $num_of_orders_without;
+
+    }
 	
 	public function all_products() {
 		$session_data = $this->session->all_userdata();

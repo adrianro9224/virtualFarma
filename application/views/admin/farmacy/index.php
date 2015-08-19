@@ -25,12 +25,21 @@
 		<!-- Content start -->
 		
 		<section id="content">
-			<div  class="container">
-				<div class="row">
-					<p class="bg-primary"><i class="fa fa-user-md"></i> <?= $FARMACY_account->first_name . ' ' . $FARMACY_account->last_name?> </p>
+			<div  class="container" ng-controller="FarmacyOrdersCtrl">
+                <audio id="newOrderAlert" src="/assets/sounds/sounds-715-nasty-error-long.mp3" hidden="true" controls preload="auto" autobuffer ></audio>
+                <input type="hidden" name="numOfOrders" ng-model="numOfordersWithoutSend" ng-init="numOfordersWithoutSend = <?= '(' . $numOfordersWithoutSend . ')'; ?>">
+				<div class="row" id="farmacy-subtitle">
+					<p class="bg-primary"><i class="fa fa-user-md"></i> <?= $FARMACY_account->first_name . ' ' . $FARMACY_account->last_name?>
+                    <?php if( $numOfordersWithoutSend > 0 ):?>
+                        <label class="pull-right">
+                            <input type="checkbox" name="seeying" ng-model="seeingStatusCheckbox" ng-change="changeSeeingStatus()" ng-init="seeingStatusCheckbox = 0"> Revisando
+                        </label>
+                        <span class="pull-right" id="num-of-orders">Ordenes sin enviar <?= '(' . $numOfordersWithoutSend . ')'; ?></span>
+                    <?php endif; ?>
+                    </p>
 				</div>
 				<div class="row">
-					<section id="orders-panel" ng-controller="FarmacyOrdersCtrl">
+					<section id="orders-panel" >
 						<div class="col-md-12">
 							<?php include_once( __ROOT__FARMACY__TEMPLATES . 'order-panel.php');?>
 						</div>
