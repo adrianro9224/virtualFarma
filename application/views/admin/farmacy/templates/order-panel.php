@@ -77,9 +77,24 @@
 				<?php foreach ( json_decode($order->products) as $key=>$product ):?>
 					<tr>
 					  <th><?= $key + 1?></th>
-                      <td><?= $product->PLU?></td>
-					  <td><?= $product->name?></td>
-					  <td><?= $product->presentation?></td>
+                      <td><?php
+                          if(isset($product->PLU))
+                            echo $product->PLU;
+                          else
+                            echo "PLU desc";
+                          ?></td>
+					  <td><?php
+                          if(isset($product->name))
+                            echo $product->name;
+                          else
+                          echo "Nombre desc"
+                          ?></td>
+					  <td><?php
+                          if( isset($product->presentation) )
+                            echo $product->presentation;
+                          else
+                            echo "Presentación desc";
+                          ?></td>
 					  <td><?= $product->tax?></td>
 					  <td><?= $product->price?></td>
 					  <td><?= $product->cant?></td>

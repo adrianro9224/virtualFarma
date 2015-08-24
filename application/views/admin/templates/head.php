@@ -57,8 +57,11 @@
 
     <!-- Angular js controllers start -->
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/CarouselCtrl.min.js'?>"></script>
+    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/MainCtrl.min.js'?>"></script>
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/AdminLogInForm.min.js'?>"></script>
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/NotificationsCtrl.min.js'?>"></script>
+    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/SalesCreatorCtrl.js'?>"></script>
+    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/SalesFormCtrl.min.js'?>"></script>
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/PaginationCtrl.js'?>"></script>
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/HeaderNavCtrl.min.js'?>"></script>
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/FarmacyOrdersCtrl.js'?>"></script><!-- minify-->
