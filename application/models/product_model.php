@@ -287,8 +287,6 @@ class Product_model extends CI_Model {
 
                 if( $product->price < 100000 ) {
 
-                    //$IVA = bcmul($product->price, 0.16, 3);
-
                     if ( $product->tax )
                         $product->price = round(ceil( (bcmul( $product->price, 1.40, 3 ) ) ), -2);
                     else
@@ -297,7 +295,10 @@ class Product_model extends CI_Model {
                 }else {
                     $product->price = round(ceil( $product->price ), -2);
                 }
+
             }
+
+            $product->joker = $product->price + (bcmul($product->price, 0.05));
         }
     }
 

@@ -24,7 +24,7 @@
 	                	    	<span class="old-price" ng-bind="<?= $product->old_price ?> | currency : '$' : 0"></span>
 	                	    	<span class="new-price" ng-bind="<?= $product->new_price ?> | currency : '$' : 0"></span>
 	                	    <?php else: ?>
-                                <span class="old-price" ng-bind="<?= $product->price + (bcmul($product->price, 0.05)) ?> | currency : '$' : 0"></span>
+                                <span class="old-price" ng-bind="<?= $product->joker ?> | currency : '$' : 0"></span>
 	                	    	<span class="new-price" ng-bind="<?= $product->price ?> | currency : '$' : 0"></span>
 	                	    <?php endif; ?>
 						</div>

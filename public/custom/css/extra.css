@@ -836,10 +836,19 @@ fieldset[disabled] .btn-primary.active {
 	font-size: 26px;
 }
 
-#product_list .product-product .product-price {
+#product_list .product-product .product-price,#home_product_list .product-product .product-price  {
 	background-color: #F9F9F9;
 	border: 2px dashed #E0E0E0;
 	padding: 5px 12px;
+}
+
+#home_product_list .product-product .product-price {
+    text-align: center;
+}
+
+#home_product_list .product-product a{
+    width: 100%;
+    margin-top: 30px;
 }
 
 .product-product .product-price .old-price {
@@ -854,6 +863,8 @@ fieldset[disabled] .btn-primary.active {
 	color: #C0392B;
 	margin-left: 5px;
 }
+
+
 
 /**
 * product list over
