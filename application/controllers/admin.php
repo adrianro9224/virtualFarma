@@ -309,6 +309,14 @@ class Admin extends MY_Controller {
 		}
 		
 	}
+
+	public function video_presentacion () {
+
+		$data['title'] = "Presentacion";
+		
+		
+		$this->load->view('admin/video_presentacion', $data);
+	}
 	
 	/**
 	 * Delete the account_id of the session for terminate the log_in
