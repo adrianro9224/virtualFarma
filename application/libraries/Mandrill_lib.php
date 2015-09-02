@@ -123,10 +123,10 @@ class Mandrill_lib {
             );
             $async = false;
             $ip_pool = 'Register';
-           // $send_at = 'example send_at';
+            //$send_at = 'example send_at';
             $result = $CI->mandrill->messages->sendTemplate($template_name, $template_content, $message, $async, $ip_pool);
-         //   print_r($result);
-
+            //print_r($result);
+            
 
 
         } catch(Mandrill_Error $e) {
@@ -139,7 +139,137 @@ class Mandrill_lib {
 		return FALSE;
 		
 	}
+    public function send_thanks_email( $account, $to, $send_at = false ){
+        
+        $list_id = 'e7d9615355';
+        $language = 'es_ES';
+        
 
+        
+        $merge_vars = array('FNAME' => $account['name'],
+                            //'LNAME' => $account->last_name,
+                            'MC_LANGUAGE' => $language 
+        );
+
+        $campaign_id = "ea588c4f49";
+
+        try {
+
+            $CI =& get_instance();
+
+            $CI->load->library('mandrill');
+
+/*
+            $result = $CI->$mandrill->users->ping();
+            print_r($result);
+*/
+
+
+            // template name ->string, $message->array
+
+            $template_name = 'EmailThank';
+            $template_content = array(
+                array(
+                    'name' => 'example name',
+                    'content' => 'example content'
+                )
+            );
+            $message = array(
+                //'html' => '<p>Example HTML content</p>',
+                //'text' => 'Example text content',
+                'subject' => 'Gracias por comprar con Virtaualfarma',
+                'from_email' => 'contacto@virtualfarma.com.co',
+                'from_name' => 'Equipo Virtualfarma.com.co',
+                'to' => $to,
+                //'headers' => array('Reply-To' => 'registro@virtualfarma.com.co'),
+                'important' => false,
+                //'track_opens' => null,
+               //track_clicks' => null,
+                //'auto_text' => null,
+                //'auto_html' => null,
+                //'inline_css' => null,
+                //'url_strip_qs' => null,
+                //'preserve_recipients' => null,
+                'view_content_link' => null,
+                //'bcc_address' => 'adrian.romero9224@gmail.com',
+                //'tracking_domain' => null,
+                //'signing_domain' => null,
+               // 'return_path_domain' => null,
+                //'merge' => true,
+                'merge_language' => 'mailchimp',
+                'global_merge_vars' => array(
+                    array(
+                        'name' => 'COMPANY',
+                        'content' => 'virtuafarma.com.co'
+                    )
+                ),
+                'merge_vars' => array(
+                    array(
+                        //'rcpt' => $account->email,
+                        'vars' => array(
+                            array(
+                                'name' => 'FNAME',
+                                'content' => $account['name'],
+                            ),
+                            array(
+                                'name' => 'COMPANY',
+                                'content' => "virtuafarma.com.co"
+                            )
+                        )
+                    )
+                ),
+                'tags' => array('thanks'),
+               // 'subaccount' => 'customer-123',
+              //  'google_analytics_domains' => array('example.com'),
+               // 'google_analytics_campaign' => 'message.from_email@example.com',
+                //'metadata' => array('website' => 'www.virtualfarma.com.co'),
+                //'recipient_metadata' => array(
+                  //  array(
+                    //    'rcpt' => $account->email,
+                      //  'values' => array('user_id' => 123456)
+                    //)
+                /*),
+                'attachments' => array(
+                    array(
+                        'type' => 'text/plain',
+                        'name' => 'myfile.txt',
+                        'content' => 'ZXhhbXBsZSBmaWxl'
+                    )
+                ),
+                'images' => array(
+                    array(
+                        'type' => 'image/png',
+                        'name' => 'IMAGECID',
+                        'content' => 'ZXhhbXBsZSBmaWxl'
+                    )
+                )*/
+
+
+
+
+            );
+            $async = false;
+            $ip_pool = 'Thanks';
+            if ( $send_at )
+                $send_at = $send_at;
+
+            $result = $CI->mandrill->messages->sendTemplate($template_name, $template_content, $message, $async, $ip_pool, $send_at);
+            echo "---------------------------";
+            print_r($result);
+
+
+
+
+        } catch(Mandrill_Error $e) {
+            // Mandrill errors are thrown as exceptions
+            echo 'A mandrill error occurred: ' . get_class($e) . ' - ' . $e->getMessage();
+            // A mandrill error occurred: Mandrill_Unknown_Subaccount - No subaccount exists with the id 'customer-123'
+            throw $e;
+        }
+
+        return FALSE;
+        
+    }
 
     public function send_pqrs( $account ){
 

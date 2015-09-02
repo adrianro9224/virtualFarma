@@ -124,5 +124,24 @@ class Order_model extends CI_Model {
 		return false;
 		
 	}
+
+	public function get_orders_by_date( $date_to_search ) {
+
+        $this->db->select('order.id as orderId , order.status, order.send_date, order.from_app, account.id as accountId, account.email, account.first_name');
+        $this->db->from('order');
+
+        $this->db->join( 'account ', 'account.id = order.account_id');
+
+        $this->db->where( 'DATE(order.send_date)', $date_to_search );
+        $this->db->where( 'order.status', 'SENDED' );
+        $this->db->group_by('account.email');
+
+        $query = $this->db->get();
+
+        if ( $query->num_rows() > 0 )
+			return $query->result();
+		
+		return NULL;
+	}
 	
 }
