@@ -93,7 +93,7 @@
                             <span class="title">Puntos que ganarás</span>
                         </div>
                         <div class="order-summary-item-content">
-                            <span class="pull-right value" ng-bind="order.shoppingcart.subtotal * 0.02"></span>
+                            <span class="pull-right value" ng-bind="order.shoppingcart.subtotal * 0.01"></span>
                         </div>
                     </div>
 					<div id="total-products" class="order-summary-item">
