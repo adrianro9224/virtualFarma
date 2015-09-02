@@ -25,7 +25,7 @@
 		<!-- Errors over -->
 		
 		<!-- Content start -->
-		<section id="carousel">
+		<section id="carousel" class="hidden-xs">
 			<?php include_once( __ROOT__TEMPLATES__ . 'carousel.php');?>
 		</section>
 		<div class="container" >

@@ -134,6 +134,7 @@ class Order_model extends CI_Model {
 
         $this->db->where( 'DATE(order.send_date)', $date_to_search );
         $this->db->where( 'order.status', 'SENDED' );
+        $this->db->where( 'order.from', 'WEB' );
         $this->db->group_by('account.email');
 
         $query = $this->db->get();
