@@ -74,7 +74,7 @@ a#button-payment.btn-primary {
 }
 
 #header-nav {
-	/*height: 70px;*/
+	margin-top: 10px;
 }
 
 .handy {
@@ -112,7 +112,7 @@ a#button-payment.btn-primary {
 }
 
 .navbar-default {
-	background-color: #FFFFFF;
+	background-color: transparent;
 }
 
 #primary-nav .navbar-form .input-group .input-group-btn {
@@ -130,7 +130,7 @@ a#button-payment.btn-primary {
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
 	color: #ED2F59;
-	background-color: #ED2F59;
+	background-color: transparent;
 }
 
 .navbar-default .navbar-nav>li>a:hover {
@@ -143,7 +143,7 @@ a#button-payment.btn-primary {
 }
 
 .navbar-default .navbar-nav>li>a {
-	background-color: #ED2F59;
+	background-color: transparent;
 }
 
 
@@ -213,7 +213,7 @@ a#button-payment.btn-primary {
 
 .navbar-default .navbar-nav>li>a, .navbar-default .navbar-nav>li.active>a  {
 	border-radius: 3px;
-	color: #FFF;
+	color: #ED2F59;
 }
 span.caret {
 	color: #FFF;
@@ -222,7 +222,7 @@ span.caret {
 .nav>li>a:hover, .nav>li>div>a:hover, .nav>li>a:active, .nav>li>div>a:active, .nav .open>a:focus, .nav div>.open>a:active {
 	color:#ED2F59 !important;
 	text-decoration:none;
-	background-color: rgba(5, 168, 170, 0.37) !important;
+	background-color: rgba(243, 251, 251, 0.51) !important;
 }
 
 #left_sidebar li.list-group-item a:hover {
@@ -233,19 +233,25 @@ span.caret {
 	margin-bottom: 0;
 }
 
-#sticky.stick {
+#search-nav.stick {
 	width: 100%;
 	padding-left: 15px;
 	padding-right: 15px;
     position: fixed;
     top: 0;
     z-index: 1000;
-    background-color: #FFF;
+    /*background-color: #FFF;*/
     max-height: 50px;
 	border-bottom: 2px solid transparent;
 	box-shadow: 0 1px 14px #888888;
 }
-
+.container-fluid .row #primary-nav-container {
+	background-color: rgba(237, 47, 89, 0.29);
+}
+.container-fluid #nav.row{
+	padding-top: 5px;
+}
+    
 
 .breadcrumb-wrapper {
 	background-color: #E5E5E5;
@@ -367,7 +373,7 @@ a , .emphasis, span {
 }
 
 .btn-default:first-child {
-	border-right: 1px solid #05A8AA !important;
+	border-right: 1px solid #ED2F59 !important;
 }
 
 .btn-default:hover, .btn-default:focus, .btn-default.focus, .btn-default:active, .btn-default.active, .open>.dropdown-toggle.btn-default {
@@ -382,7 +388,7 @@ a , .emphasis, span {
 
 button.btn.btn-default, a.btn.btn-default {
 	/*color: #FFFFFF;*/
-	color: #05A8AA;
+	color: #ED2F59;
 	
 }
 

@@ -47,12 +47,12 @@ farmapp.controller('DevicesMenuAccordionCtrl', ['$scope', '$rootScope', '$http',
         var window_top = $(window).scrollTop();
         var div_top = $('#sticky-anchor').offset().top;
         if (window_top > div_top) {
-            $('#sticky').addClass('stick');
+            $('#search-nav').addClass('stick');
 
             $rootScope.$broadcast("IS_STICKY");
 
         } else {
-            $('#sticky').removeClass('stick');
+            $('#search-nav').removeClass('stick');
 
             $rootScope.$broadcast("NO_STICKY");
         }

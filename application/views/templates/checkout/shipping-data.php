@@ -180,19 +180,31 @@
                                 <input type="checkbox"> Ó marca aquí si deseas hacerlo al momento de la entréga
                             </label>
                         </div>
-                </div>
+                    </div>
                 </div>
             </div>
+            <!--
+            <div class="row">
+                <div class="col-md-12">
+                    <h3><span class="label label-primary">Programar Fecha y Hora de envío:</span></h3>
+                    <span id="helpBlock" class="help-block">Podrás pogramar tu envío dentro del rango de nuestros horarios: 
+                         Lunes a Viernes 8am a 8pm / Sábados de 8am a 8pm y Domingos y Festivos pedidos solo a traves de la página web de 9am a 6pm‏
+                    </span>
+                    <div class="well well-sm">
+                    </div>
+                </div>
+            </div>
+            -->
 
-
-
-			<div class="col-md-12 margin-bottom-5" >
-				<label for="ShippingDataNotes" >Notas</label>
-				<textarea name="ShippingDataNotes" class="form-control" ng-model="order.shippingData.notes" rows="3"></textarea>
-				<!-- helptext -->
-					<span id="helpBlock" class="help-block">Instrucciones especiales</span>
-				<!-- helptext -->
-			</div>
+            <div class="row">
+    			<div class="col-md-12 margin-bottom-5" >
+    				<label for="ShippingDataNotes" >Notas</label>
+    				<textarea name="ShippingDataNotes" class="form-control" ng-model="order.shippingData.notes" rows="3"></textarea>
+    				<!-- helptext -->
+    					<span id="helpBlock" class="help-block">Instrucciones especiales</span>
+    				<!-- helptext -->
+    			</div>
+            </div>
 
 			<div class="col-md-12" ng-mouseover="showSubmitButtonTooltip()" ng-mouseleave="hideSubmitButtonTooltip()" >
 				<a class="btn btn-primary center-horizontaly pull-right" ng-click="stepCompleted( order, 'shippingData' )" ng-disabled="ShippingDataForm.$invalid">Continuar</a>
