@@ -39,32 +39,32 @@ class Order extends MY_Controller {
 
 			//echo $scheduled_to_test;
 
-			$orders = $this->order_model->get_orders_by_date( $yerterday );
+			//$orders = $this->order_model->get_orders_by_date( $yerterday );
 
 			//var_dump($orders);
 			//print_r($orders);
 
 			
-			/*
+			
 			$accounts = array();
-			$accounts[0]['email'] = "adrian.romero9224@gmail.com";
-			$accounts[0]['name'] = "Adrian1";
+			$accounts[0]['email'] = "tuto13@gmail.com";
+			$accounts[0]['name'] = "Carlos";
 			$accounts[0]['type'] = "to";
 
 			$accounts[1]['email'] = "adrianro9224@hotmail.com";
 			$accounts[1]['name'] = "Adrian2";
 			$accounts[1]['type'] = "to";
-			*/
+			
 			//print_r($accounts);
-			if ( count($orders) > 0 ){
-				$accounts = $this->_construct_to_for_mandrill( $orders );
+			//if ( count($orders) > 0 ){
+				//$accounts = $this->_construct_to_for_mandrill( $orders );
 
 				print_r($accounts);
 
 			//$send_at_format = '20120-06-01 08:15:01';
 
 				$this->mandrill_lib->send_thanks_email( $accounts[0], $accounts );
-			}
+			//}
 		}
 
 	}

@@ -103,7 +103,11 @@ class Product_model extends CI_Model {
         $query = $this->db->get('product');
 
         if( $query->num_rows() > 0 ) {
-            return $query->result();
+
+            $products = $query->result()
+            $this->calculate_prices_to_client( $products );
+
+            return $products;
         }
 
         return null;
