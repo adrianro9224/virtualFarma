@@ -104,7 +104,7 @@ class Product_model extends CI_Model {
 
         if( $query->num_rows() > 0 ) {
 
-            $products = $query->result()
+            $products = $query->result();
             $this->calculate_prices_to_client( $products );
 
             return $products;

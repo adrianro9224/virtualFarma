@@ -327,10 +327,10 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
         $scope.sale.shoppingcart.shippingCharge = shippingCharge;
 
         if( angular.isString( shippingCharge ) ) {
-            $scope.sale.shoppingcart.total = $scope.sale.shoppingcart.subtotal + $scope.sale.shoppingcart.tax;
+            $scope.sale.shoppingcart.total = $scope.sale.shoppingcart.subtotal;
             $scope.sale.shoppingcart.shippingFree = true;
         }else {
-            $scope.sale.shoppingcart.total = $scope.sale.shoppingcart.subtotal + $scope.sale.shoppingcart.tax + $scope.sale.shoppingcart.shippingCharge;
+            $scope.sale.shoppingcart.total = $scope.sale.shoppingcart.subtotal + $scope.sale.shoppingcart.shippingCharge;
             $scope.sale.shoppingcart.shippingFree = false;
         }
 
