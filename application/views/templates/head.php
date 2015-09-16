@@ -128,7 +128,10 @@
     <!-- Jquery slick-->
 
     <!-- Zopim-->
-    <script type="text/javascript" src="<?= base_url() . 'public/zopim/zopim-chat.js'?>"></script>
+    <!--<script type="text/javascript" src="<?//= base_url() . 'public/zopim/zopim-chat.js'?>"></script>-->
+
+    <!-- SmartSupp-->
+    <script type="text/javascript" src="<?= base_url() . 'public/smartsupp/smartSupp.js'?>"></script>
     <!-- Google Maps API -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBS01MZwvdqFbIdS6SWb3ccjyech0o1WuM"></script>
     <!-- Google Maps API -->
