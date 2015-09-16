@@ -136,6 +136,31 @@
 					<span id="helpBlock" class="help-block">Ej: Perez Rodriguez</span>
 					<!-- helptext -->
 				</div>
+
+                <div class="form-group" ng-class="{'has-error': !SalesForm.shippingDataEmail.$valid && SalesForm.shippingDataEmail.$dirty}" ng-cloak class="ng-cloak">
+                    <label for="userEmail">Correo electrónico:</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">@</div>
+                        <?php if( isset($client_account) ): ?>
+                            <input type="text" name="shippingDataEmail" ng-model="sale.shippingData.email" ng-change="putSaveAndSound( sale, SalesForm.shippingDataEmail.$valid )" ng-init="sale.shippingData.email='<?= ( isset($client_account->email) ) ? $client_account->email : null ?>'" class="form-control" id="shippingDataEmail" placeholder="Ingrese su correo electrónico" ng-pattern="/[\w.]+?\@{1}[\w.]+(\.+[\w.]+)/" ng-maxLength="90">
+                        <?php else:?>
+                            <input type="text" name="shippingDataEmail" ng-model="sale.shippingData.email" ng-change="putSaveAndSound( sale, SalesForm.shippingDataEmail.$valid )" class="form-control" id="shippingDataEmail" placeholder="Ingrese su correo electrónico" ng-pattern="/[\w.]+?\@{1}[\w.]+(\.+[\w.]+)/" ng-maxLength="90">
+                        <?php endif;?>
+                    </div>
+                    <!-- tooltip -->
+                    <div ng-if="SalesForm.userEmail.$invalid && SalesForm.userEmail.$dirty">
+                        <div class="arrow-up-error">
+                        </div>
+                        <div class="farma-tooltip-error">
+                            <span ng-if="(SalesForm.shippingDataEmail.$error.maxlength && SalesForm.shippingDataEmail.$dirty) && !(SalesForm.shippingDataEmail.$error.pattern || SalesForm.shippingDataEmail.$error.email)">Es demaciado extenso!</span>
+                            <span ng-if="SalesForm.shippingDataEmail.$error.pattern || SalesForm.shippingDataEmail.$error.email">Por favor ingresa un correo electrónico válido!</span>
+                        </div>
+                    </div>
+                    <!-- tooltip -->
+                    <!-- helptext -->
+                    <span id="helpBlock" class="help-block">Ej: example@example.com</span>
+                    <!-- helptext -->
+                </div>
 					
 				<div class="form-group" ng-class="{'has-error': !SalesForm.shippingDataCompany.$valid && SalesForm.shippingDataCompany.$dirty}">
 					<label for="shippingDataCompany">Compañia</label>

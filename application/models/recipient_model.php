@@ -26,6 +26,9 @@ class Recipient_model extends CI_Model {
         if ( isset($recipient_data->neighborhood) )
             $data['neighborhood'] = $recipient_data->neighborhood;
 
+        if ( isset($recipient_data->email) )
+            $data['email'] = $recipient_data->email;
+
         if( isset($recipient_data->id) )
             $data['identification_number'] = $recipient_data->id;
 		
