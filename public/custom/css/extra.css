@@ -453,7 +453,7 @@ input.form-control {
 	margin-bottom: 5px;
 }
 
-#checkout-panel-content #payment-method-accordion .panel.panel-default .panel-body payment-method-description span {
+#checkout-panel-content #payment-method-accordion .panel.panel-default .panel-body .payment-method-description span {
 	
 }
 
@@ -1526,7 +1526,7 @@ ICONS START
 }
 
 .argel-button {
-    background-color: #FF6501;
+	background-color: #FF6501;
     padding: 3px 54px;
     text-decoration: none;
     color: #FFF;
@@ -1636,7 +1636,7 @@ a:hover.promelight-button {
 }
 
 .pathology-btn {
-    background-color: rgba(237, 47, 89, 0.71);;
+    background-color: rgba(237, 47, 89, 0.71);
     color: #FFF;
     display: inline-block;
     padding: 4px 12px;

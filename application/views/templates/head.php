@@ -56,7 +56,7 @@
 	<!-- Angular js over -->
 	
 	<!-- Angular js controllers start -->
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/CarouselCtrl.min.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/CarouselCtrl.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/DevicesMenuAccordionCtrl.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/NotificationsCtrl.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/AccountPanelCtrl.js'?>"></script>
@@ -128,7 +128,10 @@
     <!-- Jquery slick-->
 
     <!-- Zopim-->
-    <script type="text/javascript" src="<?= base_url() . 'public/zopim/zopim-chat.js'?>"></script>
+    <!--<script type="text/javascript" src="<?//= base_url() . 'public/zopim/zopim-chat.js'?>"></script>-->
+
+    <!-- SmartSupp-->
+    <script type="text/javascript" src="<?= base_url() . 'public/smartsupp/smartSupp.js'?>"></script>
     <!-- Google Maps API -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBS01MZwvdqFbIdS6SWb3ccjyech0o1WuM"></script>
     <!-- Google Maps API -->
