@@ -1526,17 +1526,17 @@ ICONS START
 }
 
 .argel-button {
-    background-color: #FF6501;
+	background-color: #FF6501;
     padding: 3px 54px;
     text-decoration: none;
     color: #FFF;
     font-weight: bold;
-    font-size: 2.35em;
+    font-size: 1.4em;
     position: absolute;
-    top: 61%;
-    right: 30.5%;
+    top: 55%;
+    right: 44%;
     border-radius: 13px;
-    border: 2px solid
+    border: 2px solid;
 }
 
 a:hover.argel-button {
@@ -1551,12 +1551,12 @@ a:hover.argel-button {
     text-decoration: none;
     color: #09A7AA;
     font-weight: bold;
-    font-size: 2.35em;
+    font-size: 1.4em;
     position: absolute;
-    top: 68%;
-    left: 17.5%;
+    top: 67%;
+    left: 20.5%;
     border-radius: 13px;
-    border: 2px solid
+    border: 2px solid;
 }
 
 a:hover.entrenador-vaginal-button {
@@ -1572,10 +1572,10 @@ a:hover.entrenador-vaginal-button {
     text-decoration: none;
     color: black;
     font-weight: bold;
-    font-size: 2.35em;
+    font-size: 1.4em;
     position: absolute;
-    top: 77%;
-    right: 15%;
+    top: 71%;
+    right: 24%;
     border-radius: 13px;
     border: 2px solid black;
 }
