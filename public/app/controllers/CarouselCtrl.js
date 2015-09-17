@@ -15,7 +15,7 @@ farmapp.controller('CarouselCtrl', ['$scope', function($scope) {
                 format = '.png';*/
         slides.push({
             image: 'http://virtualfarma.com.co/assets/images/slides/' + i + format,
-            button: ['','http://virtualfarma.com.co/product/search_product/argel','http://virtualfarma.com.co/product/search_product/promelight'][slides.length % 4],
+            button: ['', 'http://virtualfarma.com.co/product/search_product/entrenador','http://virtualfarma.com.co/product/search_product/argel','http://virtualfarma.com.co/product/search_product/promelight'][slides.length % 4],
             class : ['hidden', 'entrenador-vaginal-button', 'argel-button', 'promelight-button'][slides.length % 4]
         });
     };
