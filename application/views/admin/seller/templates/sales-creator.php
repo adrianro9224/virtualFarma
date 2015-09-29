@@ -29,7 +29,7 @@
         <div class="col-md-6">
             <div class="form-group" ng-class="{'has-error': !searchClientForm.clientPhone.$valid && searchClientForm.clientPhone.$dirty}">
                 <label for="clientPhone">Número de de teléfono (Cliente):<span class="primary-emphasis">*</span><span ng-if="userNotFound">Cliente no encontrado</span></label>
-                <input type="number" name="clientPhone" ng-model="clientPhone" class="form-control"  id="clientPhone" placeholder="Teléfono" ng-maxLength="16" required>
+                <input type="number" name="clientPhone" ng-model="clientPhone" class="form-control"  id="clientPhone" placeholder="Teléfono" ng-maxLength="16" required ng-disabled="searchingClient">
                 <!-- tooltip -->
                 <div ng-if="searchClientForm.clientPhone.$invalid && searchClientForm.clientPhone.$dirty">
                     <div class="arrow-up-error">
@@ -45,7 +45,10 @@
                 <span id="helpBlock" class="help-block">Búsqueda de clientes</span>
                 <!-- helptext -->
             </div>
-            <button class="btn btn-warning" type="button" ng-disabled="searchClientForm.$invalid" ng-click="searchRecipient( clientPhone )">Buscar</button>
+            <button class="btn btn-warning" type="button" ng-disabled="searchClientForm.$invalid || searchingClient" ng-click="searchRecipient( clientPhone )">
+                <span ng-if="searchingClient"><i class="fa fa-cog fa-spin"></i> Buscando</span>
+                <span ng-if="!searchingClient">Buscar</span>
+            </button>
         </div>
     </form>
     <div id="my-map" style="height: 250px">
