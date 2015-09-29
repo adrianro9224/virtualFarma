@@ -45,5 +45,22 @@ class Recipient_model extends CI_Model {
 		
 		
 		return NULL;
-	} 
+	}
+
+    public function get_last_by_phone( $phone_to_search ) {
+
+        $this->db->where( 'phone', $phone_to_search );
+
+        $this->db->order_by('id', 'asc');
+
+        $query = $this->db->get('recipient');
+
+        if ( $query->num_rows() == 1 )
+            return $query->row();
+        else {
+            if( $query->num_rows() > 1 )
+                return end($query->result());
+        }
+
+    }
 }

@@ -11,7 +11,7 @@ class Admin extends MY_Controller {
 		
 		$this->load->model('account_model');
 		$this->load->helper(array('form', 'account_helper'));
-		$this->load->library( array('form_validation', 'account_types', 'products', 'orders', 'accounts', 'addresses', 'mandrill_lib') );
+		$this->load->library( array('form_validation', 'account_types', 'products', 'orders', 'accounts', 'addresses', 'mandrill_lib', 'recipients') );
 		
 	}
 	
@@ -92,7 +92,12 @@ class Admin extends MY_Controller {
 
     public function search_client() {
 
-        $post = $this->input->post();
+
+
+        if( isset($_POST) && empty($_POST) ) {
+
+            $post = json_decode(file_get_contents('php://input'), true);
+        }
 
         $session_data = $this->session->all_userdata();
 
@@ -110,15 +115,17 @@ class Admin extends MY_Controller {
 
             $admin_account = $this->account_model->get_admin_account_by_id($admin_id);
 
-            if ($post) {
+            if ( $post ) {
 
-                $client_identification_number = $post['clientId'];
+                $client_phone_number = $post['clientPhone'];
 
-                $account = $this->accounts->search_account_by_identification_number($client_identification_number);
+                $recipient = $this->recipients->get_recipient_by_phone( $client_phone_number );
 
-                if ( isset($account) ){
+                $result = new stdClass();
 
-                    $data['client_account'] = $account;
+                if ( isset($recipient) ){
+
+                    /*$data['client_account'] = $account;
 
                     $address = $this->address->get_all_address( $account->id );;
 
@@ -130,11 +137,15 @@ class Admin extends MY_Controller {
 
                     $notifications['success'] = "Cliente encontrádo!!";
 
-                    $this->_choose_admin_account($admin_account, $account_types, $notifications, $data);
+                    $this->_choose_admin_account($admin_account, $account_types, $notifications, $data);*/
+
+                    $result->status = "FOUND";
+                    $result->data = $recipient;
                 }else {
-                    $notifications['danger'] = "El cliente no existe!!";
-                    $this->_choose_admin_account($admin_account, $account_types, $notifications);
+                    $result->status = "NOT_FOUND";
                 }
+
+                echo json_encode( $result );
 
             } else {
                 redirect('/admin');

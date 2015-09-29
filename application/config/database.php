@@ -49,18 +49,18 @@ $active_group = 'default';
 $active_record = TRUE;
 
 //home
-
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = 'naci1992';
-$db['default']['database'] = 'l9000182_vfarma';
-
-//job
 /*
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
-$db['default']['password'] = 'ZmqcHAswFQXSCE5X';
+$db['default']['password'] = 'naci1992';
 $db['default']['database'] = 'l9000182_vfarma';*/
+
+//job
+
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'root';
+$db['default']['password'] = 'ZmqcHAswFQXSCE5X';
+$db['default']['database'] = 'l9000182_vfarma';
 
 //remote
 /*

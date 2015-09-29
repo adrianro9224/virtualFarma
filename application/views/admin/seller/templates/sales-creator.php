@@ -25,19 +25,19 @@
 <div class="well well-sm col-md-12">
     <span>Buscar cliente: </span>
 
-    <form name="searchClientForm" method="post" action="<?= base_url(). "admin/search_client"?>" novalidate>
+    <form name="searchClientForm" method="post" novalidate>
         <div class="col-md-6">
-            <div class="form-group" ng-class="{'has-error': !searchClientForm.clientId.$valid && searchClientForm.clientId.$dirty}">
-                <label for="clientId">Número de identificación:<span class="primary-emphasis">*</span></label>
-                <input type="number" name="clientId" ng-model="clientId" class="form-control"  id="clientId" placeholder="Numero de cédula" ng-maxLength="16" required>
+            <div class="form-group" ng-class="{'has-error': !searchClientForm.clientPhone.$valid && searchClientForm.clientPhone.$dirty}">
+                <label for="clientPhone">Número de de teléfono (Cliente):<span class="primary-emphasis">*</span><span ng-if="userNotFound">Cliente no encontrado</span></label>
+                <input type="number" name="clientPhone" ng-model="clientPhone" class="form-control"  id="clientPhone" placeholder="Teléfono" ng-maxLength="16" required>
                 <!-- tooltip -->
-                <div ng-if="searchClientForm.clientId.$invalid && searchClientForm.clientId.$dirty">
+                <div ng-if="searchClientForm.clientPhone.$invalid && searchClientForm.clientPhone.$dirty">
                     <div class="arrow-up-error">
                     </div>
                     <div class="farma-tooltip-error">
-                        <span ng-if="searchClientForm.clientId.$error.required && searchClientForm.clientId.$dirty">El numero de cédula es necesario para realizar la búsqueda!</span>
-                        <span ng-if="searchClientForm.clientId.$error.maxlength">Es muy extenso!</span>
-                        <span ng-if="searchClientForm.clientId.$error.number">Solo ingresa números!</span>
+                        <span ng-if="searchClientForm.clientPhone.$error.required && searchClientForm.clientPhone.$dirty">El numero de teléfono es necesario para realizar la búsqueda!</span>
+                        <span ng-if="searchClientForm.clientPhone.$error.maxlength">Es muy extenso!</span>
+                        <span ng-if="searchClientForm.clientPhone.$error.number">Solo ingresa números!</span>
                     </div>
                 </div>
                 <!-- tooltip -->
@@ -45,7 +45,7 @@
                 <span id="helpBlock" class="help-block">Búsqueda de clientes</span>
                 <!-- helptext -->
             </div>
-            <button class="btn btn-warning" type="submit" ng-disabled="searchClientForm.$invalid">Buscar</button>
+            <button class="btn btn-warning" type="button" ng-disabled="searchClientForm.$invalid" ng-click="searchRecipient( clientPhone )">Buscar</button>
         </div>
     </form>
     <div id="my-map" style="height: 250px">
@@ -96,11 +96,7 @@
 			<div class="col-md-6">
 				<div class="form-group" ng-class="{'has-error': !SalesForm.shippingDataNames.$valid && SalesForm.shippingDataNames.$dirty}">
 					<label for="shippingDataNames">Nombres<span class="primary-emphasis">*</span></label>
-                    <?php if( isset($client_account) ): ?>
-					    <input type="text" name="shippingDataNames" ng-model="sale.shippingData.names"  ng-init="sale.shippingData.names='<?= ( isset($client_account->first_name) && isset($client_account->second_name)  ) ? $client_account->first_name . ' ' . $client_account->second_name : ( isset($client_account->first_name) ? $client_account->first_name : null )?>'" ng-change="putSaveAndSound( sale, SalesForm.shippingDataNames.$valid )" class="form-control"  id="shippingDataNames" placeholder="Ingresa tus nombres" ng-maxLength="50" required>
-                    <?php else: ?>
                         <input type="text" name="shippingDataNames" ng-model="sale.shippingData.names" ng-change="putSaveAndSound( sale, SalesForm.shippingDataNames.$valid )" class="form-control"  id="shippingDataNames" placeholder="Ingresa tus nombres" ng-maxLength="50" required>
-                    <?php endif;?>
 					<!-- tooltip -->
 					<div ng-if="SalesForm.shippingDataNames.$invalid && SalesForm.shippingDataNames.$dirty">
 						<div class="arrow-up-error"> 
@@ -117,11 +113,7 @@
 				</div>
 				<div class="form-group" ng-class="{'has-error': !SalesForm.shippingDataLastNames.$valid && SalesForm.shippingDataLastNames.$dirty}">
 					<label for="shippingDataLastNames">Apellidos<span class="primary-emphasis">*</span></label>
-                    <?php if( isset($client_account) ): ?>
-					    <input type="text" name="shippingDataLastNames" ng-model="sale.shippingData.lastNames" ng-init="sale.shippingData.lastNames='<?= ( isset($client_account->last_name) && isset($client_account->surname)  ) ? $client_account->last_name . ' ' . $client_account->surname : ( isset($client_account->last_name) ? $client_account->last_name : null )?>'" ng-change="putSaveAndSound( sale, SalesForm.shippingDataLastNames.$valid )" class="form-control" id="shippingDataLastNames" placeholder="Ingresea tus apellidos" ng-maxLength="50" required>
-                    <?php else: ?>
                         <input type="text" name="shippingDataLastNames" ng-model="sale.shippingData.lastNames" ng-change="putSaveAndSound( sale, SalesForm.shippingDataLastNames.$valid )" class="form-control" id="shippingDataLastNames" placeholder="Ingresea tus apellidos" ng-maxLength="50" required>
-                    <?php endif; ?>
 					<!-- tooltip -->
 					<div ng-if="SalesForm.shippingDataLastNames.$invalid && SalesForm.shippingDataLastNames.$dirty">
 						<div class="arrow-up-error"> 
@@ -141,11 +133,7 @@
                     <label for="userEmail">Correo electrónico:</label>
                     <div class="input-group">
                         <div class="input-group-addon">@</div>
-                        <?php if( isset($client_account) ): ?>
-                            <input type="text" name="shippingDataEmail" ng-model="sale.shippingData.email" ng-change="putSaveAndSound( sale, SalesForm.shippingDataEmail.$valid )" ng-init="sale.shippingData.email='<?= ( isset($client_account->email) ) ? $client_account->email : null ?>'" class="form-control" id="shippingDataEmail" placeholder="Ingrese su correo electrónico" ng-pattern="/[\w.]+?\@{1}[\w.]+(\.+[\w.]+)/" ng-maxLength="90">
-                        <?php else:?>
                             <input type="text" name="shippingDataEmail" ng-model="sale.shippingData.email" ng-change="putSaveAndSound( sale, SalesForm.shippingDataEmail.$valid )" class="form-control" id="shippingDataEmail" placeholder="Ingrese su correo electrónico" ng-pattern="/[\w.]+?\@{1}[\w.]+(\.+[\w.]+)/" ng-maxLength="90">
-                        <?php endif;?>
                     </div>
                     <!-- tooltip -->
                     <div ng-if="SalesForm.userEmail.$invalid && SalesForm.userEmail.$dirty">
@@ -164,11 +152,7 @@
 					
 				<div class="form-group" ng-class="{'has-error': !SalesForm.shippingDataCompany.$valid && SalesForm.shippingDataCompany.$dirty}">
 					<label for="shippingDataCompany">Compañia</label>
-                    <?php if( isset($client_account) ): ?>
-					    <input type="text" name="shippingDataCompany" ng-model="sale.shippingData.company" ng-change="putSaveAndSound( sale, SalesForm.shippingDataCompany.$valid )" class="form-control" id="shippingDataCompany" placeholder="Ingresa el nombre de tu compañia" ng-maxLength="50">
-                    <?php else: ?>
                         <input type="text" name="shippingDataCompany" ng-model="sale.shippingData.company" ng-change="putSaveAndSound( sale, SalesForm.shippingDataCompany.$valid )" class="form-control" id="shippingDataCompany" placeholder="Ingresa el nombre de tu compañia" ng-maxLength="50">
-                    <?php endif; ?>
 					<!-- tooltip -->
 					<div ng-if="SalesForm.shippingDataCompany.$invalid">
 						<div class="arrow-up-error"> 
@@ -184,11 +168,7 @@
 				</div>
 				<div class="form-group" ng-class="{'has-error': !SalesForm.shippingDataId.$valid && SalesForm.shippingDataId.$dirty}">
 					<label for="shippingDataId">Número de identificación</label>
-                    <?php if( isset($client_account) ): ?>
-					    <input type="text" name="shippingDataId" ng-model="sale.shippingData.id" ng-init="sale.shippingData.id='<?= ( isset($client_account->identification_number) ) ? $client_account->identification_number : null ?>'" ng-change="putSaveAndSound( sale, SalesForm.shippingDataId.$valid )" class="form-control" id="shippingDataId" placeholder="Ingrese su numero de identificación" ng-pattern="/[\d-.]/">
-                    <?php else: ?>
                         <input type="text" name="shippingDataId" ng-model="sale.shippingData.id" ng-change="putSaveAndSound( sale, SalesForm.shippingDataId.$valid )" class="form-control" id="shippingDataId" placeholder="Ingrese su numero de identificación" ng-pattern="/[\d-.]/">
-                    <?php endif;?>
 					<!-- tooltip -->
 					<div ng-if="SalesForm.shippingDataId.$invalid && SalesForm.shippingDataId.$dirty">
 						<div class="arrow-up-error"> 
@@ -207,12 +187,7 @@
 			<div class="col-md-6">
 				<div class="form-group" ng-class="{'has-error': !SalesForm.shippingDataAddressLine1.$valid && SalesForm.shippingDataAddressLine1.$dirty}">
 					<label for="shippingDataAddressLine1">Dirección<span class="primary-emphasis">*</span></label>
-                    <?php if( isset($client_account) ): ?>
-					    <input type="text" name="shippingDataAddressLine1" ng-model="sale.shippingData.addressLine1" ng-change="DoGeoCoding(sale.shippingData.addressLine1)" ng-init="sale.shippingData.addressLine1='<?= ( isset($address->address_line) ) ? $address->address_line : null ?>'" ng-change="putSaveAndSound( sale, SalesForm.shippingDataAddressLine1.$valid )" class="form-control" id="shippingDataAddressLine1" placeholder="Ingresa tu dirección" ng-maxLength="50" required>
-                    <?php else: ?>
                         <input type="text" name="shippingDataAddressLine1" ng-model="sale.shippingData.addressLine1" ng-change="DoGeoCoding(sale.shippingData.addressLine1)" ng-change="putSaveAndSound( sale, SalesForm.shippingDataAddressLine1.$valid )" class="form-control" id="shippingDataAddressLine1" placeholder="Ingresa tu dirección" ng-maxLength="50" required>
-                    <?php endif; ?>
-
 					<!-- tooltip -->
 					<div ng-if="SalesForm.shippingDataAddressLine1.$invalid && SalesForm.shippingDataAddressLine1.$dirty">
 						<div class="arrow-up-error"> 
@@ -230,11 +205,7 @@
 			
 				<div class="form-group" ng-class="{'has-error': !SalesForm.shippingDataNeighborhood.$valid && SalesForm.shippingDataNeighborhood.$dirty}">
 					<label for="shippingDataNeighborhood">Barrio<span class="primary-emphasis">*</span></label>
-                    <?php if( isset($client_account) ): ?>
-					    <input type="text" name="shippingDataNeighborhood" ng-model="sale.shippingData.neighborhood" ng-init="sale.shippingData.neighborhood='<?= ( isset($address->neighborhood) ) ? $address->neighborhood : null ?>'" ng-change="putSaveAndSound( sale, SalesForm.shippingDataNeighborhood.$valid )" class="form-control" id="shippingDataNeighborhood" placeholder="Ingresa tu dirección" ng-maxLength="50" required>
-                    <?php else: ?>
                         <input type="text" name="shippingDataNeighborhood" ng-model="sale.shippingData.neighborhood" ng-change="putSaveAndSound( sale, SalesForm.shippingDataNeighborhood.$valid )" class="form-control" id="shippingDataNeighborhood" placeholder="Ingresa tu dirección" ng-maxLength="50" required>
-                    <?php endif;?>
 					<!-- tooltip -->
 					<div ng-if="SalesForm.shippingDataNeighborhood.$invalid && SalesForm.shippingDataNeighborhood.$dirty">
 						<div class="arrow-up-error"> 
@@ -254,11 +225,7 @@
 					<label for="shippingDataPhone">Teléfono de contacto<span class="primary-emphasis">*</span></label>
 					<div class="input-group">
 						<div class="input-group-addon">#</div>
-                        <?php if( isset($client_account) ): ?>
-						<input type="text" name="shippingDataPhone" ng-model="sale.shippingData.phone" ng-init="sale.shippingData.phone='<?= ( isset($client_account->phone) ) ? $client_account->phone : null ?>'" ng-change="putSaveAndSound( sale, SalesForm.shippingDataPhone.$valid )" class="form-control" id="shippingDataPhone" placeholder="Ingresa tu teléfono fijo" ng-maxLength="32" ng-minLength="7" ng-pattern="/[\d-]/" required>
-                        <?php else:?>
                             <input type="text" name="shippingDataPhone" ng-model="sale.shippingData.phone" ng-change="putSaveAndSound( sale, SalesForm.shippingDataPhone.$valid )" class="form-control" id="shippingDataPhone" placeholder="Ingresa un telefono de contacto" ng-maxLength="32" ng-minLength="7" ng-pattern="/[\d-]/" required>
-                        <?php endif;?>
 					</div>
 					<!-- tooltip -->
 					<div ng-if="SalesForm.shippingDataPhone.$invalid && SalesForm.shippingDataPhone.$dirty">
