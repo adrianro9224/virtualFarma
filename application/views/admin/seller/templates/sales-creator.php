@@ -246,6 +246,26 @@
 					<span id="helpBlock" class="help-block">Ej: (571) 6742838 ó puedes también poner su número de celular</span>
 					<!-- helptext -->
 				</div>
+                <div class="form-group" ng-class="{'has-error': !SalesForm.shippingDataDoctorName.$valid && SalesForm.shippingDataDoctorName.$dirty}" ng-cloak class="ng-cloak">
+                    <label for="shippingDataDoctorName">Doctor que le prescribío:</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">#</div>
+                        <input type="text" name="shippingDataDoctorName" ng-model="sale.shippingData.doctorName" ng-change="putSaveAndSound( sale, SalesForm.shippingDataDoctorName.$valid )" class="form-control" id="shippingDataDoctorName" placeholder="Nombre del doctor que recetó" ng-maxLength="64" ng-minLength="3" required>
+                    </div>
+                    <!-- tooltip -->
+                    <div ng-if="SalesForm.shippingDataDoctorName.$invalid && SalesForm.shippingDataDoctorName.$dirty">
+                        <div class="arrow-up-error">
+                        </div>
+                        <div class="farma-tooltip-error">
+                            <span ng-if="SalesForm.shippingDataDoctorName.$error.maxlength && !SalesForm.shippingDataDoctorName.$error.pattern && SalesForm.shippingDataDoctorName.$dirty">Es muy extenso!</span>
+                            <span ng-if="SalesForm.shippingDataDoctorName.$error.minlength && !SalesForm.shippingDataDoctorName.$error.pattern && SalesForm.shippingDataDoctorName.$dirty">Es muy corto, debe contener mínimo 3 dígitos</span>
+                        </div>
+                    </div>
+                    <!-- tooltip -->
+                    <!-- helptext -->
+                    <span id="helpBlock" class="help-block">Ej: Doctor X</span>
+                    <!-- helptext -->
+                </div>
 			</div>
 			<div class="col-md-12 margin-bottom-5" >
 				<label for="ShippingDataNotes" >Notas</label>
