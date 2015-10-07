@@ -28,7 +28,7 @@
     <form name="searchClientForm" method="post" novalidate>
         <div class="col-md-6">
             <div class="form-group" ng-class="{'has-error': !searchClientForm.clientPhone.$valid && searchClientForm.clientPhone.$dirty}">
-                <label for="clientPhone">Número de de teléfono (Cliente):<span class="primary-emphasis">*</span><span ng-if="userNotFound">Cliente no encontrado</span></label>
+                <label for="clientPhone">Número de teléfono (Cliente):<span class="primary-emphasis">*</span><span ng-if="userNotFound">Cliente no encontrado</span></label>
                 <input type="number" name="clientPhone" ng-model="clientPhone" class="form-control"  id="clientPhone" placeholder="Teléfono" ng-maxLength="16" required ng-disabled="searchingClient">
                 <!-- tooltip -->
                 <div ng-if="searchClientForm.clientPhone.$invalid && searchClientForm.clientPhone.$dirty">
