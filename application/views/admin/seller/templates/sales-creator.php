@@ -250,7 +250,7 @@
                     <label for="shippingDataDoctorName">Doctor que le prescribío:</label>
                     <div class="input-group">
                         <div class="input-group-addon">#</div>
-                        <input type="text" name="shippingDataDoctorName" ng-model="sale.shippingData.doctorName" ng-change="putSaveAndSound( sale, SalesForm.shippingDataDoctorName.$valid )" class="form-control" id="shippingDataDoctorName" placeholder="Nombre del doctor que recetó" ng-maxLength="64" ng-minLength="3" required>
+                        <input type="text" name="shippingDataDoctorName" ng-model="sale.shippingData.doctorName" ng-change="putSaveAndSound( sale, SalesForm.shippingDataDoctorName.$valid )" class="form-control" id="shippingDataDoctorName" placeholder="Nombre del doctor que recetó" ng-maxLength="64" ng-minLength="3">
                     </div>
                     <!-- tooltip -->
                     <div ng-if="SalesForm.shippingDataDoctorName.$invalid && SalesForm.shippingDataDoctorName.$dirty">
