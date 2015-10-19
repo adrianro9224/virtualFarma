@@ -84,6 +84,7 @@
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/RequestProductCtrl.min.js'?>"></script>
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/HoursOfOperationCtrl.min.js'?>"></script>
     <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ManageAddressesCtrl.min.js'?>"></script>
+    <script type="text/javascript" src="<?= base_url() . 'public/app/controllers/agreementCtrl.js'?>"></script>
 
 	<!-- Angular js controllers over -->
 	

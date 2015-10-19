@@ -134,7 +134,7 @@
                         </div>
                         <div class="form-group form-group-sm" ng-class="{'has-error': !ShippingDataForm.shippingDataNeighborhood.$valid && ShippingDataForm.shippingDataNeighborhood.$dirty}">
                             <label for="shippingDataNeighborhood">Barrio</label>
-                            <input type="text" name="shippingDataNeighborhood" ng-model="order.shippingData.neighborhood" class="form-control" id="shippingDataNeighborhood" placeholder="Ingresa tu dirección" ng-maxLength="50">
+                            <input type="text" name="shippingDataNeighborhood" ng-model="order.shippingData.neighborhood" class="form-control" id="shippingDataNeighborhood" placeholder="Ingresa tu barrio" ng-maxLength="50">
                             <!-- tooltip -->
                             <div ng-if="ShippingDataForm.shippingDataNeighborhood.$invalid && ShippingDataForm.shippingDataNeighborhood.$dirty">
                                 <div class="arrow-up-error">
