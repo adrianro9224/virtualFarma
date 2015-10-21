@@ -23,7 +23,8 @@ farmapp.factory( 'ConstantsService', function(){ // no inject $scope dependency,
         CAMPIN_GEOMETRY_LOCATION : { lat: 4.6436076, lng: -74.0763303 },// id 1
         PORCIUNCULA_GEOMETRY_LOCATION : { lat: 4.6592169, lng: -74.0567377 },// id 2
         ANDES_GEOMETRY_LOCATION : { lat:4.6871349, lng: -74.0692006 },// id 3
-        CASTELLANA_GEOMETRY_LOCATION : { lat: 4.684235, lng: -74.060316 }// id 4
+        CASTELLANA_GEOMETRY_LOCATION : { lat: 4.684235, lng: -74.060316 },// id 4
+        LOAD_NEW_SHOPPINGCART_COOKIE : 'LOAD_NEW_SHOPPINGCART_COOKIE'
     };
 
     return constantService;

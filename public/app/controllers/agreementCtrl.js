@@ -2,9 +2,11 @@
  * Created by Adrian on 14/10/2015.
  */
 
-farmapp.controller('agreementCtrl', ['$scope', '$http', '$cookies', '$window', '$timeout', function( $scope, $http, $cookies, $window, $timeout ){
+farmapp.controller('agreementCtrl', ['$scope', '$http', '$cookies', '$window', '$timeout', '$rootScope', 'ConstantsService', function( $scope, $http, $cookies, $window, $timeout, $rootScope, ConstantsService ){
 
     "use strict";
+
+    var shoppingCartInCookie = $cookies.getObject( 'shoppingcart' );
 
     $scope.sendCodeToUse = function( codeToUse ) {
         console.log( "code to use is: " + codeToUse );
@@ -30,11 +32,20 @@ farmapp.controller('agreementCtrl', ['$scope', '$http', '$cookies', '$window', '
 
                 switch ( result.status ) {
                     case 'CODE_NOT_FOUND':
-                        console.log("Agreement not found");
+                        console.log("Agreement not exist");
                         break;
                     case 'ENCODING_ERROR':
                         console.log("Encoding error : " + data.data);
                         $window.location.reload();
+                        break;
+                    case 'PRODUCT_AGREEMENT_FOUNDED':
+                        console.log("Product with agreement discount founded : " + data.data);
+                        applyDiscount( data.data );
+                        //$window.location.reload();
+                        break;
+                    case 'PRODUCT_AGREEMENT_NOT_FOUND':
+                        console.log("Products without agreement discount: " + data.data);
+                        //$window.location.reload();
                         break;
 
                 }
@@ -59,6 +70,29 @@ farmapp.controller('agreementCtrl', ['$scope', '$http', '$cookies', '$window', '
         });
 
         return ids;
+    }
+
+    function applyDiscount( productIdsFounded ) {
+
+        var orderInCookie = $cookies.getObject( 'order' );
+        var shoppingCartInCookie = orderInCookie.shoppingcart;
+
+        console.info( shoppingCartInCookie );
+
+        angular.forEach( productIdsFounded, function( productFounded, key1 ){
+
+            angular.forEach( shoppingCartInCookie.products, function( productShoppingcart, key2 ){
+
+                if( productFounded.product_id == productShoppingcart.id ) {
+                    shoppingCartInCookie.products[key2].discount = productFounded.discount;
+                    shoppingCartInCookie.products[key2].hasAgreementDiscount = true;
+                    shoppingCartInCookie.hasproductWithAgreementDiscount = true;
+                }
+            });
+
+        });
+
+        $rootScope.$broadcast( ConstantsService.SHOPPINGCART_CHANGED, shoppingCartInCookie );
     }
 
 }]);

@@ -67,8 +67,8 @@
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/MessageCtrl.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/MyDiagnosticCtrl.min.js' ?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/PaginationCtrl.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ProductListCtrl.min.js'?>"></script>
-	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ShoppingCartCtrl.min.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ProductListCtrl.js'?>"></script>
+	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ShoppingCartCtrl.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/CheckoutPanelCtrl.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/ShippingDataFormCtrl.min.js'?>"></script>
 	<script type="text/javascript" src="<?= base_url() . 'public/app/controllers/AdminLogInForm.min.js'?>"></script>
