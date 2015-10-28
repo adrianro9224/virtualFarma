@@ -13,49 +13,54 @@ farmapp.controller('agreementCtrl', ['$scope', '$http', '$cookies', '$window', '
 
         var shoppingCartInCookie = $cookies.getObject( 'shoppingcart' );
 
-        console.info(shoppingCartInCookie);
+        if( shoppingCartInCookie.hasproductWithAgreementDiscount ) {
 
-        var post = {};
+            console.info(shoppingCartInCookie);
 
-        post.code = codeToUse;
-        post.productIds = getProductsIds( shoppingCartInCookie.products );
+            var post = {};
 
-        console.log("info do post:");
-        console.info(post);
+            post.code = codeToUse;
+            post.productIds = getProductsIds(shoppingCartInCookie.products);
 
-        $http.post("http://virtualfarma.com.co/agreement/use_agreement_code", post )
-            .success(function(data, status, headers, config) {
+            console.log("info do post:");
+            console.info(post);
 
-                console.info(data);
+            $http.post("http://virtualfarma.com.co/agreement/use_agreement_code", post)
+                .success(function (data, status, headers, config) {
 
-                var result = angular.fromJson( data );
+                    console.info(data);
 
-                switch ( result.status ) {
-                    case 'CODE_NOT_FOUND':
-                        console.log("Agreement not exist");
-                        break;
-                    case 'ENCODING_ERROR':
-                        console.log("Encoding error : " + data.data);
-                        $window.location.reload();
-                        break;
-                    case 'PRODUCT_AGREEMENT_FOUNDED':
-                        console.log("Product with agreement discount founded : " + data.data);
-                        applyDiscount( data.data );
-                        //$window.location.reload();
-                        break;
-                    case 'PRODUCT_AGREEMENT_NOT_FOUND':
-                        console.log("Products without agreement discount: " + data.data);
-                        //$window.location.reload();
-                        break;
+                    var result = angular.fromJson(data);
 
-                }
+                    switch (result.status) {
+                        case 'CODE_NOT_FOUND':
+                            console.log("Agreement not exist");
+                            break;
+                        case 'ENCODING_ERROR':
+                            console.log("Encoding error : " + data.data);
+                            $window.location.reload();
+                            break;
+                        case 'PRODUCT_AGREEMENT_FOUNDED':
+                            console.log("Product with agreement discount founded : " + data.data);
+                            applyDiscount(data.data);
+                            //$window.location.reload();
+                            break;
+                        case 'PRODUCT_AGREEMENT_NOT_FOUND':
+                            console.log("Products without agreement discount: " + data.data);
+                            //$window.location.reload();
+                            break;
+
+                    }
 
 
-            }).
-            error(function(data, status, headers, config) {
+                }).
+                error(function (data, status, headers, config) {
 
-                console.info(data + ":(");
-            });
+                    console.info(data + ":(");
+                });
+        }else {
+
+        }
     }
 
     function getProductsIds( products ) {
@@ -83,9 +88,8 @@ farmapp.controller('agreementCtrl', ['$scope', '$http', '$cookies', '$window', '
 
             angular.forEach( shoppingCartInCookie.products, function( productShoppingcart, key2 ){
 
-                if( productFounded.product_id == productShoppingcart.id ) {
+                if( productFounded.product_id == productShoppingcart.id && !productShoppingcart.hasAgreementDiscount ) {
                     shoppingCartInCookie.products[key2].discount = productFounded.discount;
-                    shoppingCartInCookie.products[key2].hasAgreementDiscount = true;
                     shoppingCartInCookie.hasproductWithAgreementDiscount = true;
                 }
             });
