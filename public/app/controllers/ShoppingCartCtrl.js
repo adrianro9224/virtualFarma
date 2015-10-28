@@ -32,12 +32,15 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
 
             var shoppingCartSubtotals;
 
-            shoppingCartSubtotals = calculateShoppingcartSubtotals($scope.shoppingcart.products);
+            var result = calculateShoppingcartSubtotals( $scope.shoppingcart.products );
+
+            shoppingCartSubtotals = result.shoppingCartSubtotals;
+            $scope.shoppingcart.products = result.products;
 
             $scope.shoppingcart.subtotal = shoppingCartSubtotals.productsSubtotal;
             $scope.shoppingcart.tax = shoppingCartSubtotals.productsTaxTotal;
 
-            var auxSubtotal = $scope.shoppingcart.subtotal
+            var auxSubtotal = $scope.shoppingcart.subtotal;
 
             if ( $scope.shoppingcart.hasDiscount ) {
                 $scope.shoppingcart.subtotal -= $scope.shoppingcart.pointsDoDiscount;
@@ -91,6 +94,8 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
             $scope.total = $scope.shoppingcart.total;
 
             $cookies.putObject('shoppingcart', $scope.shoppingcart, cookiesOptions);
+
+            $rootScope.$broadcast( ConstantsService.LOAD_NEW_SHOPPINGCART_COOKIE, $scope.shoppingcart );
         }
 
 
@@ -110,17 +115,28 @@ farmapp.controller('ShoppingCartCtrl', ['$scope' ,'$rootScope', '$log' ,'$cookie
 
     function calculateShoppingcartSubtotals( products ) {
 
+        var result = {};
         var subtotal = 0;
         var tax = 0;
 
         angular.forEach( products, function(value ,key) {
+
+            if( value.discount > 0 && !value.hasAgreementDiscount ){
+                subtotal += ( value.price * value.cant ) - ( value.price * (value.discount * 0.01) );
+                tax += ( value.tax * value.price );
+                products[key].hasAgreementDiscount = true;
+            }else {
                 subtotal += ( value.price * value.cant );
                 tax += ( value.tax * value.price );
+            }
+
         });
 
-        var shoppingCartSubtotals = { productsSubtotal : subtotal,  productsTaxTotal : tax };
 
-        return shoppingCartSubtotals;
+        result.shoppingCartSubtotals = { productsSubtotal :  subtotal,  productsTaxTotal : tax };
+        result.products = products;
+
+        return result;
     }
 
 
