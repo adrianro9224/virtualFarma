@@ -1103,7 +1103,51 @@ class Product extends MY_Controller {
 
     }
 
-*/
+*/	public function load_data() {
+
+    	$result = $this->products->read_vehicles();
+
+    	//var_dump($result);
+
+    	$vehicles_filtered = $this->_filter_vehicles( $result );
+
+    	//var_dump($vehicles_filtered);
+
+    	//var_dump( $this->products->save_vechicles( $vehicles_filtered ) );
+
+	}
+
+	private function _filter_vehicles( $list ) {
+
+		$vehicles_filtered = array();
+		$text_to_search_aux = "TIPO ";
+		$text_to_search = "-";
+
+		$check_next = false;
+		$key_aux =  NULL;
+
+		foreach ($list as $key => $value) {
+
+			$model_data = new stdClass();
+
+			if( isset($value->type) ) {
+
+				$current_model = ( isset($value->model) && !empty($value->model) ) ? $value->model : "NO-MODEL";
+				$current_year = ( isset($value->year) && !empty($value->year) ) ? $value->year : "NO-ESPECIFICADO";
+				$current_pcd = ( isset($value->pcd) && !empty($value->pcd) ) ? $value->pcd : "NO-ESPECIFICADO";
+
+				$model_data->model = $current_model;
+				$model_data->pcd = $current_pcd;
+				$model_data->year = $current_year;
+
+				$vehicles_filtered[$value->brand]['models'][$current_model] = $model_data;
+			}
+
+		}
+
+		return $vehicles_filtered;
+
+	}
 
     public function save_copi_products( $admin_id ) {
 
