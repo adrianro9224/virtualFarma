@@ -116,7 +116,96 @@ Class Products {
 				
 		}
 	}
+
+	public function read_vehicles() {
+		$CI =& get_instance();
+		//ini_set( 'open_basedir' , '/var/www/html/Projects/virtualFarma.com.co/' );
+		
+		// $CI->load->model('product_model');
+		// $CI->load->model('product_json_model');
+		$CI->load->model('tym_vehicle_model');
+		
+		//$categories = $CI->category_model->all_categories();
+		
+		//$handle = fopen("ftp://user:password@example.com/somefile.txt", "w");
+		$handle = fopen(__ROOT__FILES__ . "csv/Tablas_finalescsv.csv", 'r');
+		
+		if( $handle !== FALSE ) {
+			$vehicles = array();
+				
+// 			$category_id = 1;
+
+			$count_aux = 0;
+				
+			while ( ($data = fgetcsv($handle, 150, ',')) !== FALSE  ){
+				$current_row = new stdClass();
+
+				//var_dump($data);
+				if ( ($count_aux >= 2) && (count($data) >= 5) ) {
+					//die();
+					$current_row->type = utf8_encode(trim($data[0]));
+					$current_row->brand = utf8_encode(trim($data[1]));
+					$current_row->model = utf8_encode(trim($data[2]));
+					$current_row->pcd = utf8_encode(trim($data[3]));
+					$current_row->year = utf8_encode(trim($data[4]));
+				}
+						
+					$vehicles[] = $current_row;
+						
+// 					$category_id++;
+				
+				$count_aux++;
+			}
+			fclose( $handle );
+			
+			return $vehicles;
+				
+		}
+	}
+
+	public function save_vechicles( $to_save ) {
+
+		$CI =& get_instance();
+		$CI->load->model('tym_vehicle_model');
+
+		$rin_types = $CI->tym_vehicle_model->get_rin_types();
+
+		//var_dump($rin_types);
+
+		//var_dump($to_save);
+
+		//var_dump($this->_search_rin_types( $rin_types, $to_save ));
+		$result = $CI->tym_vehicle_model->insert_vehicles( $this->_search_rin_types( $rin_types, $to_save ) );
+
+	  	return $result;
+	}
 	
+	private function _search_rin_types( $rin_types, $types_and_inch ) {
+
+		$rines = array();
+
+		$data = $types_and_inch;
+
+		$i =0;
+
+		foreach ($rin_types as $key1 => $value1) {
+
+			$current_rin = new stdClass();
+
+			foreach ($types_and_inch as $key2 => $value2) {
+				
+				if( $key2 == $value1->brand ) {
+					
+					$data[$value1->brand]['id'] = $value1->id;
+
+				}
+				//(var_dump($rines));
+			}
+		}
+
+		return $data;
+	}
+
 	public function create_json_of_products( $products ) {
 		
 		//$CI =& get_instance();
