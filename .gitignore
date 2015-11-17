@@ -5,6 +5,7 @@
 # files of config webstorm project
 public/app/.idea/
 public/app/.idea/workspace.xml
+.idea/
 
 #files of config eclipse IDE
 .project
@@ -12,3 +13,6 @@ public/app/.idea/workspace.xml
 
 #logs
 application/logs/
+
+#db config
+application/config/database.php

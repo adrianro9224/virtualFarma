@@ -28,6 +28,7 @@ class Product_model extends CI_Model {
     public function get_by_product_id ( $product_id_to_search ) {
 
         $this->db->where('id', $product_id_to_search );
+        $this->db->where('price !=', 0);
 
         $query = $this->db->get('product');
 
@@ -83,6 +84,7 @@ class Product_model extends CI_Model {
 		
 		$this->db->where('category_id', $category_id);
         $this->db->where('stock >', 0);
+        $this->db->where('price !=', 0);
 		$query = $this->db->get('product');
 		
 		if( $query->num_rows() > 0 ) {
@@ -100,6 +102,7 @@ class Product_model extends CI_Model {
     public function get_by_subcategory_id( $subcategory_id ) {
 
         $this->db->where('sub_category_id', $subcategory_id);
+        $this->db->where('price !=', 0);
         $query = $this->db->get('product');
 
         if( $query->num_rows() > 0 ) {
@@ -215,6 +218,7 @@ class Product_model extends CI_Model {
         $this->db->select('id, PLU, barcode, name, active_ingredient, category_id, presentation, stock, tax, price, discount, lab' );
 
         $this->db->where('active_ingredient', $active_ingredient);
+        $this->db->where('price !=', 0);
 
         $query = $this->db->get('product');
 
@@ -250,6 +254,7 @@ class Product_model extends CI_Model {
     public function get_by_active_ingredient_id ( $active_ingredient_id ) {
 
         $this->db->where('active_ingredient_id', $active_ingredient_id);
+        $this->db->where('price !=', 0);
 
         $query = $this->db->get('product');
 

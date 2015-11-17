@@ -181,7 +181,7 @@ class Account extends MY_Controller {
                     $data['messages'] = $messages_sorted;
                 }
 
-                $address = $this->address->get_sign_up_address( $account->id );
+                $address = $this->addresses->get_sign_up_address( $account->id );
 
                 $data['address'] = $address;
 

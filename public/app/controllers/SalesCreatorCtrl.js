@@ -14,6 +14,9 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
     $scope.shippingDataComplete = false;
     $scope.orderSummaryEnable = false;
 
+    $scope.searchingClient = false;
+    $scope.userNotFound = false;
+
     $scope.checkoutCurrentStep = "shippingData";
 
     var limitPayuOrderValue = ConstantsService.LIMIT_PAYU_ORDER_VALUE;
@@ -613,6 +616,56 @@ farmapp.controller('SalesCreatorCtrl', ['$scope', '$rootScope', '$http', '$filte
         var d = r * Math.acos(Math.sin(origin.lat) * Math.sin(destination.lat) + Math.cos(origin.lat) * Math.cos(destination.lat) * Math.cos(destination.lng - origin.lng));*/
 
         //console.info(distInMeters);
+
+    }
+
+    $scope.searchRecipient = function( phone ) {
+
+        $scope.searchingClient = true;
+
+        var post = {};
+            post.clientPhone = phone;
+
+        $http.post("http://virtualfarma.com.co/admin/search_client", post )
+            .success(function(data, status, headers, config) {
+
+                $scope.searchingClient = false;
+
+                var result;
+
+                if ( data != undefined ) {
+
+                    result = data;
+
+                    switch( data.status ) {
+                        case "FOUND":
+                            $scope.userNotFound = false;
+                            $scope.sale.shippingData = {};
+                            $scope.sale.shippingData.names = result.data.names;
+                            $scope.sale.shippingData.lastNames = result.data.last_names;
+                            $scope.sale.shippingData.email = result.data.email;
+                            $scope.sale.shippingData.id = result.data.identification_number;
+                            $scope.sale.shippingData.addressLine1 = result.data.address_line;
+                            $scope.sale.shippingData.neighborhood = result.data.neighborhood;
+                            $scope.sale.shippingData.phone = result.data.phone;
+                            $scope.sale.shippingData.notes = result.data.note;
+                        break;
+                        case "NOT_FOUND":
+                            $scope.userNotFound = true;
+                        break;
+
+                        default:
+                        break;
+
+                    }
+                }
+
+            }).
+            error(function(data, status, headers, config) {
+
+                console.info(data + ":(");
+            });
+
 
     }
 

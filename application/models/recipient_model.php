@@ -26,6 +26,9 @@ class Recipient_model extends CI_Model {
         if ( isset($recipient_data->neighborhood) )
             $data['neighborhood'] = $recipient_data->neighborhood;
 
+        if ( isset($recipient_data->email) )
+            $data['email'] = $recipient_data->email;
+
         if( isset($recipient_data->id) )
             $data['identification_number'] = $recipient_data->id;
 		
@@ -42,5 +45,22 @@ class Recipient_model extends CI_Model {
 		
 		
 		return NULL;
-	} 
+	}
+
+    public function get_last_by_phone( $phone_to_search ) {
+
+        $this->db->where( 'phone', $phone_to_search );
+
+        $this->db->order_by('id', 'asc');
+
+        $query = $this->db->get('recipient');
+
+        if ( $query->num_rows() == 1 )
+            return $query->row();
+        else {
+            if( $query->num_rows() > 1 )
+                return end($query->result());
+        }
+
+    }
 }

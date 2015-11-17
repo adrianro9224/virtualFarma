@@ -22,6 +22,14 @@ farmapp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cooki
 
     var orderInCookie = $cookies.getObject("order");
     var shoppingcartInCookie = $cookies.getObject("shoppingcart");
+
+    $rootScope.$on( ConstantsService.LOAD_NEW_SHOPPINGCART_COOKIE, function( event, data ){
+
+        $scope.order.shoppingcart = data;
+
+    });
+
+
     var origins = [
         new google.maps.LatLng(ConstantsService.GALERIAS_GEOMETRY_LOCATION.lat, ConstantsService.GALERIAS_GEOMETRY_LOCATION.lng),
         new google.maps.LatLng(ConstantsService.CAMPIN_GEOMETRY_LOCATION.lat, ConstantsService.CAMPIN_GEOMETRY_LOCATION.lng),

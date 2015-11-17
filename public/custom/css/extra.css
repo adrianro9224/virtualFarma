@@ -455,7 +455,7 @@ input.form-control {
 	margin-bottom: 5px;
 }
 
-#checkout-panel-content #payment-method-accordion .panel.panel-default .panel-body payment-method-description span {
+#checkout-panel-content #payment-method-accordion .panel.panel-default .panel-body .payment-method-description span {
 	
 }
 
@@ -1533,10 +1533,10 @@ ICONS START
     text-decoration: none;
     color: #FFF;
     font-weight: bold;
-    font-size: 1.4em;
+    font-size: 1.8em;
     position: absolute;
-    top: 55%;
-    right: 44%;
+    top: 56%;
+    right: 45%;
     border-radius: 13px;
     border: 2px solid;
 }
@@ -1553,10 +1553,10 @@ a:hover.argel-button {
     text-decoration: none;
     color: #09A7AA;
     font-weight: bold;
-    font-size: 1.4em;
+    font-size: 2.3em;
     position: absolute;
     top: 67%;
-    left: 20.5%;
+    left: 21.5%;
     border-radius: 13px;
     border: 2px solid;
 }
@@ -1574,10 +1574,10 @@ a:hover.entrenador-vaginal-button {
     text-decoration: none;
     color: black;
     font-weight: bold;
-    font-size: 1.4em;
+    font-size: 1.6em;
     position: absolute;
     top: 71%;
-    right: 24%;
+    right: 28%;
     border-radius: 13px;
     border: 2px solid black;
 }
@@ -1638,7 +1638,7 @@ a:hover.promelight-button {
 }
 
 .pathology-btn {
-    background-color: rgba(237, 47, 89, 0.71);;
+    background-color: rgba(237, 47, 89, 0.71);
     color: #FFF;
     display: inline-block;
     padding: 4px 12px;
