@@ -66,17 +66,6 @@
                                                 <?php endforeach;?> 
                                             </ul>
                                         </li>
-                                        <li class="dropdown">
-                                            <a href="#" title="lista de principios activos" class="dropdown-toggle" role="button" aria-expanded="false">Principios activos <span class="caret"></span></a>
-                                            <ul class="dropdown-menu" role="menu" id="categories-scroll">
-                                                <?php foreach ($active_ingredients as $ingredient):?>
-                                                    <li>
-                                                        <a href="<?= "/product/show_products_by_active_ingredient_id/" . $ingredient->id?>"><?= ucfirst(str_replace('\'', '', $ingredient->name)) ?></a>
-                                                    </li>
-                                                    <li class="divider"></li>
-                                                <?php endforeach;?>
-                                            </ul>
-                                        </li>
                                         <li><a href="/product/show_products_by_category/sex_shop" title="Todo lo que necesitas" >Salud sexual</a></li>
                                         <li><a href="/wordpress" title="Blog de noticias" target="_blank">Noticias</a></li>
                                         <li ng-controller="HoursOfOperationCtrl">

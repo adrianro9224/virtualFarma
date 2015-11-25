@@ -61,11 +61,6 @@ class Product extends MY_Controller {
 		$notifications = array();
 
 		$categories = $this->get_categories();
-        $active_ingredients = $this->get_active_ingredients();
-
-
-        $data['active_ingredients'] = $active_ingredients;
-
 
         $data['categories'] = $categories;
 		
@@ -176,12 +171,7 @@ class Product extends MY_Controller {
         $products_by_category_id = NULL;
         $notifications = array();
 
-        $categories = $this->get_categories();
-        $active_ingredients = $this->get_active_ingredients();
-
-
-        $data['active_ingredients'] = $active_ingredients;
-
+        $categories = $this->get_categories();}
 
         $data['categories'] = $categories;
 
@@ -558,11 +548,6 @@ class Product extends MY_Controller {
         $notifications = array();
 
         $categories = $this->get_categories();
-        $active_ingredients = $this->get_active_ingredients();
-
-
-        $data['active_ingredients'] = $active_ingredients;
-
 
         $data['categories'] = $categories;
 
@@ -672,11 +657,6 @@ class Product extends MY_Controller {
 		$notifications = array();
 		
 		$categories = $this->get_categories();
-        $active_ingredients = $this->get_active_ingredients();
-
-
-        $data['active_ingredients'] = $active_ingredients;
-
 
         $data['categories'] = $categories;
 		
@@ -821,9 +801,6 @@ class Product extends MY_Controller {
             $categories = $this->get_categories();
 
             $data['categories'] = $categories;
-            $active_ingredients = $this->get_active_ingredients();
-            $data['active_ingredients'] = $active_ingredients;
-
 
             if ($data['user_logged'])
                 $notifications['info'] = "Como has iniciado sesión puedes disfrutar de este, uno de nuestros servicios especialmente creados para tí";
@@ -953,10 +930,7 @@ class Product extends MY_Controller {
         $notifications = array();
 
         $categories = $this->get_categories();
-        $active_ingredients = $this->get_active_ingredients();
-
-
-        $data['active_ingredients'] = $active_ingredients;
+        
         $data['categories'] = $categories;
 
         if( isset($active_ingredient_id) ) {

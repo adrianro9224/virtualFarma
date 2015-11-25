@@ -44,8 +44,6 @@ Class Contact extends MY_Controller {
         }
 
         $categories = $this->get_categories();
-        $active_ingredients = $this->get_active_ingredients();
-
 
         $breadcrumb = new stdClass();
 
@@ -62,8 +60,7 @@ Class Contact extends MY_Controller {
         $breadcrumb->items = $breadcrumb_list;
 
         $data['breadcrumb'] = $breadcrumb;
-
-        $data['active_ingredients'] = $active_ingredients;
+    
         $data['categories'] = $categories;
 
         if( isset($session_data[$account_types[1] . '_id']) ){
