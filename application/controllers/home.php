@@ -42,10 +42,7 @@ class Home extends MY_Controller {
 		}
 		
 		$categories = $this->get_categories();
-        $active_ingredients = $this->get_active_ingredients();
-
-
-        $data['active_ingredients'] = $active_ingredients;
+        
 		$data['categories'] = $categories;
 		
 		if( isset($session_data[$account_types[1] . '_id']) ){

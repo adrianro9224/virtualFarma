@@ -41,11 +41,11 @@ class MY_Controller extends CI_Controller {
 		return $categories;
 	}
 
-    public function get_active_ingredients() {
+    /*public function get_active_ingredients() {
         $active_ingredients = $this->active_ingredient_model->get_all();
 
         return $active_ingredients;
-    }
+    }*/
 	
 	
 	
