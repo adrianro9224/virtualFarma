@@ -171,7 +171,7 @@ class Product extends MY_Controller {
         $products_by_category_id = NULL;
         $notifications = array();
 
-        $categories = $this->get_categories();}
+        $categories = $this->get_categories();
 
         $data['categories'] = $categories;
 
