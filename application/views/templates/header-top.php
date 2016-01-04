@@ -51,7 +51,7 @@
             <?php if ( isset($shoppingcart) ): ?>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div id="mini-shopping-cart-details-aux">
-                        <a ng-click="showShoppingCartAux()" ><i class="fa fa-shopping-cart"></i> Ver productos <i class="fa fa-chevron-down"></i></a>
+                        <a ng-click="showShoppingCartAux()" ><i class="fa fa-shopping-cart"></i> Ver <pro></pro>ductos <i class="fa fa-chevron-down"></i></a>
                     </div>
                     <!-- shoppingcart-aux-->
                     <div class="row ng-cloak" ng-cloak>
