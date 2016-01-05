@@ -5,7 +5,7 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 primary-background">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-8 col-xs-12">
                     <div class="header-item-container">
                         <div class="header-item">
                             <i class="fa fa-phone-square fa-2x"></i>
@@ -18,6 +18,14 @@
                             <i class="fa fa-whatsapp"></i>
                             <span ><strong>WhatsApp 322 5714648</strong></span>
                         </div>
+                    </div>
+                </div>
+                <div class="col-md-4 hidden-xs">
+                    <div class="header-item-container">
+                        <div class="header-item">
+                            <h4><i class="fa fa-qrcode"></i>&nbspDesde tu móvil</h4>
+                        </div>
+                        <img class="center-horizontaly" id="qr-code" src="<?= base_url() . 'assets/images/qr_code/m_qr_code.png'?>" class="img-responsive" alt="m.virtualfarma.com.co">
                     </div>
                 </div>
             </div>

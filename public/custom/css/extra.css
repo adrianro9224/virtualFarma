@@ -40,6 +40,10 @@ a#button-payment.btn-primary {
 
 }
 
+#qr-code {
+    width: 110px;
+}
+
 
 /*
 * header top styles over
@@ -506,7 +510,10 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.3em;
 }
 
-.header-item i, .header-item span, .header-item h1 {
+.header-item i,
+.header-item span,
+.header-item h1,
+.header-item h4  {
     color: #FFFFFF;
 }
 
