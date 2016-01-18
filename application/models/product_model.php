@@ -1,18 +1,18 @@
 <?php
 class Product_model extends CI_Model {
-	
+
 	function __construct()
 	{
 		// Call the Model constructor
 		parent::__construct();
 	}
-	
+
 	public function get_all() {
-		
+
 		$this->db->select('id, PLU, barcode, name, category_id, active_ingredient, presentation, stock, tax, price, discount, lab' );
-		
+
 		$query = $this->db->get('product');
-		
+
 		if( $query->num_rows() > 0 ) {
 
             $products = $query->result();
@@ -21,7 +21,7 @@ class Product_model extends CI_Model {
 
 			return $products;
 		}
-		
+
 		return NULL;
 	}
 
@@ -79,14 +79,14 @@ class Product_model extends CI_Model {
         return NULL;
 
     }
-	
+
 	public function get_by_category_id($category_id) {
-		
+
 		$this->db->where('category_id', $category_id);
         $this->db->where('stock >', 0);
         $this->db->where('price !=', 0);
 		$query = $this->db->get('product');
-		
+
 		if( $query->num_rows() > 0 ) {
 
             $products = $query->result();
@@ -95,7 +95,7 @@ class Product_model extends CI_Model {
 
 			return $products;
 		}
-		
+
 		return null;
 	}
 
@@ -115,22 +115,22 @@ class Product_model extends CI_Model {
 
         return null;
     }
-	
+
 	public function create_products_from_csv( $list_products ) {
 		$product_ids = array();
-		
+
 		$num_of_products_to_save = count($list_products);
 
 		foreach ($list_products as $product ) {
 			$data = array(
 					"name" => $product->name,
 					"description" => $product->presentation,
-					"stock" => $product->stock,
-                    "tax" => $product->tax,
+					"stock" => 1,
+                    "tax" => 0,
 					"price" => $product->price,
                     "uri_img" => "productwithoutimage",
                     "image_format_id" => ".jpg"
-					
+
 			);
 
             if ( isset($product->PLU) )
@@ -138,9 +138,6 @@ class Product_model extends CI_Model {
 
             if ( isset($product->barcode) )
                 $data["barcode"] = $product->barcode;
-
-            if ( isset($product->category_id) )
-                $data["category_id"] = $product->category_id;
 
             if ( isset($product->presentation) )
                 $data["presentation"] = $product->presentation;
@@ -150,19 +147,19 @@ class Product_model extends CI_Model {
 
 
 			$this->db->insert("product", $data);
-			
+
 			if( $this->db->affected_rows() == 1 )
 				$product_ids[] = $this->db->insert_id();
 		}
 
-		
+
 		if ( $num_of_products_to_save == count($product_ids) )
 			return $product_ids;
 
 		return false;
-		
+
 	}
-	
+
 	public function get_by_name( $pattern_to_search ) {
 
         $text_exploded = explode(' ', $pattern_to_search);
@@ -176,7 +173,7 @@ class Product_model extends CI_Model {
 
         $this->db->where('price !=', 0);
 		$query = $this->db->get('product');
-		
+
 		if( $query->num_rows() > 0 ) {
 
             $products = $query->result();
@@ -184,9 +181,9 @@ class Product_model extends CI_Model {
 
 			return $products;
 		}
-		
+
 		return NULL;
-		
+
 	}
 
     public function update_active_ingredients( $products_to_update ) {

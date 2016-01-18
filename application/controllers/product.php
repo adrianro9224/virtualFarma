@@ -3,24 +3,24 @@
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Product extends MY_Controller {
-	
+
 	/**
-	 * Controller constructor 
+	 * Controller constructor
 	 */
 	function __construct() {
 		parent::__construct();
 		$this->load->model( array('product_model', 'account_model') );// add second param for add a "alias" ex: $this->load->model('Account', 'user')
  		$this->load->library( array('products', 'account_types', 'roots', 'categories' , 'form_validation', 'subcategories') );
 	}
-	
+
 	public function show_products_by_category( $category_name, $from_items = 0 ){
-		
+
 		$breadcrumb = new stdClass();
-		
+
 		$data['user_logged'] = false;
-		
+
 		$session_data = $this->session->all_userdata();
-		
+
 		if( !isset($session_data['account_types']) ) {
 			$account_types = $this->account_types->get_account_types();
 			$this->session->set_userdata('account_types', $account_types);
@@ -28,34 +28,34 @@ class Product extends MY_Controller {
 			$account_types = $session_data['account_types'];
 			$data['account_types'] = $account_types;
 		}
-		
+
 		if( isset($session_data[$account_types[1] . '_id']) ){
 
 			$account = $this->account_model->get_account_by_id($session_data[$account_types[1] . '_id']);
-			
+
 			if( isset($account) ) {
 				$data['account_id'] = $session_data[$account_types[1] . '_id'];
 				$data['user_logged'] = true;
 			}
 		}
-		
-		
+
+
 		$breadcrumb = new stdClass();
-		
+
 		$breadcrumb->title = "Productos";
-		
+
 		$breadcrumb_item = new stdClass();
-		
+
 		$breadcrumb_item->name = "productos";
 		$breadcrumb_item->url = "/product/show_products_by_category/nuestros_productos";
 		$breadcrumb_item->active = true;
-		
+
 		$breadcrumb_list['register'] = $breadcrumb_item;
-		
+
 		$breadcrumb->items = $breadcrumb_list;
-		
+
 		$data['breadcrumb'] = $breadcrumb;
-		
+
 		$category_id = NULL;
 		$products_by_category_id = NULL;
 		$notifications = array();
@@ -63,7 +63,7 @@ class Product extends MY_Controller {
 		$categories = $this->get_categories();
 
         $data['categories'] = $categories;
-		
+
 		if( isset($category_name) && !empty($category_name) ) {
 
 			$breadcrumb->sub_title = ucfirst(str_replace('-', ' ', str_replace('_', ' ', $category_name)));
@@ -77,7 +77,7 @@ class Product extends MY_Controller {
 
 			//get products by categories
 			if( isset($category_id) ) {
-					
+
 				$data['category_name'] = $category_name;
 				$data['title'] = 'Categoria ' . str_replace('_', ' ', $category_name);
 
@@ -93,20 +93,20 @@ class Product extends MY_Controller {
 				if( isset($products_by_category_id) ) {
 					//calculate product discounts
 					$products_with_discount = $this->_calculate_product_discount($products_by_category_id);
-					
+
 					$base_url = base_url() . "/product/show_products_by_category/" . $category_name . '/';
 					$uri_segment = 4;
 
-					/*$products_encoded = str_replace(":", "dPoS", 
-							str_replace("]", "cEnd", 
-							str_replace(",", "coInit", 
-							str_replace("\"", "cDInit", 
-							str_replace("}", "llEnd", 
-							str_replace("{", "llInit", 
-									str_replace("[", "cInit", 
+					/*$products_encoded = str_replace(":", "dPoS",
+							str_replace("]", "cEnd",
+							str_replace(",", "coInit",
+							str_replace("\"", "cDInit",
+							str_replace("}", "llEnd",
+							str_replace("{", "llInit",
+									str_replace("[", "cInit",
 											json_encode($products_with_discount))))))));*/
 					$this->_do_pagination( $base_url, $uri_segment, $products_with_discount, $data, $from_items );
-					
+
 					//$data['products_encoded'] = $products_encoded;
 				}else {
 					$notifications['warning'] = "No existen productos con esta categoría";
@@ -118,10 +118,10 @@ class Product extends MY_Controller {
 				$this->session->set_flashdata('notifications', $notifications );
 				redirect('/');
 			}
-			
+
 		}else {
 			redirect('/');
-		} 
+		}
 		$this->load->view('pages/category', $data);
 	}
 
@@ -226,97 +226,109 @@ class Product extends MY_Controller {
         }
         $this->load->view('pages/category', $data);
     }
-	
+
+	public function create_new_products( $identification_number = NULL, $password = NULL ) {
+		if ( isset($identification_number )&& isset($password) ) {
+			$access_permited = $this->roots->validate_root_identity( $identification_number, $password );
+			$result = $this->products->read_from_csv_products();
+
+			$products_saved = $this->product_model->create_products_from_csv( $result );
+
+			var_dump($products_saved);
+		}
+	}
+
 	public function convert_csv_files_to_products( $identification_number = NULL, $password = NULL ) {
 		if ( $this->input->is_cli_request() ) {
 		}
 		//security
 		if ( isset($identification_number )&& isset($password) ) {
 			$access_permited = $this->roots->validate_root_identity( $identification_number, $password );
-				
+
 			//call funtion for read from csv the categories and save this
 			if ( $access_permited ) {
-				
+
 				echo "reading categories...";
 				print "\n";
 				$result = $this->products->read_categories_and_potential_products();
-				
+
 				if ( isset($result->categories) && isset($result->potential_products) ) {
+
 
 					echo "reading products...";
 					print "\n";
 					$products = $this->products->read_products();
-					
+
 
 					echo "saving categories in the DB ...";
 					print "\n";
-					
+
 					$categories_saved = $this->categories->save_categories( $result->categories );
-					
+
 					if ( isset($products)  && $categories_saved ){
-						
+
 						echo "Getting categories";
 						$categories = $this->categories->load_categories();
-						
+
 						if ( isset($categories) ){
 
 							echo "Indexing categories";
-							
+
 							$indexed_by_code_line_categories = $this->categories->index_categories_by_code_line( $categories );
-							
+
 							//associate products
 							echo "associating products....";
 							print "\n";
-							
+
 							foreach ( $products as $product ) {
-								
+
 	// 							foreach ( $result->potential_products as $potential_product ) {
-									
+
 									if ( array_key_exists(str_replace(" ", "", $product->name), $result->potential_products) )
 										$product->category_id = $indexed_by_code_line_categories[$result->potential_products[str_replace(" ", "", $product->name)]->code_line]->id;
-									else 
+									else
 										$product->category_id = NULL;
 	// 							}
-								
+
 							}
-							
+
 							echo "Products to save: " . count($products);
 							print "\n";
-							
+
 							//var_dump($products);
-							// saving in the db 
-							 
+							// saving in the db
+
 							$this->db->trans_start();
-							
+
 							echo "saving products in the DB ...";
 							print "\n";
-							
+
 							$products_saved = $this->product_model->create_products_from_csv( $products );
-							
+
 							if ( $products_saved && $categories_saved ){
-								
+
 								log_message('debug', 'products created' );
 								echo "products saved in DB :)";
 								print "\n";
 								echo "Creating the JSON of products..";
 								print "\n";
-								
+
 								$products_from_db = $this->product_model->get_all();
-								
+
 								$result = $this->products->create_json_of_products( $products_from_db );
-								
+
 								switch( $result->code_status ) {
 									case JSON_ERROR_NONE:
 										echo ' - Sin errores';
 										echo "Saving JSON of products in product_json tabla...";
-										
+
 										$json_saved = $this->products->save_json_of_products( $result->products_in_json );
-										
-										if ( $json_saved ) 
+
+										if ( $json_saved )
 											echo "JSON of Products saved :D.";
-										else 
+										else
 											echo "JSON no saved";
-										
+
 										break;
 									case JSON_ERROR_DEPTH:
 										echo ' - Excedido tamaño máximo de la pila';
@@ -337,35 +349,35 @@ class Product extends MY_Controller {
 										echo ' - Error desconocido';
 										break;
 								}
-												
-								
+
+
 							}else {
 								log_message('error', 'products no created' );
 								echo "products not saved in DB :(";
 								print "\n";
 							}
-							
+
 							$this->db->trans_complete();
-								
+
 							if ($this->db->trans_status() === FALSE)
 								return false;
 						}else
 							echo "problem getting the categories";
-							
-						
+
+
 					}else {
 						echo "Problems completing the second process(reading products)";
 						print "\n";
 					}
-					
+
 				}else {
 					echo "Problems completing the first process(reading categories and potential products)";
 					print "\n";
 				}
-				
+
 			} else
 				show_404();
-		
+
 		}else
 			show_404();
 	}
@@ -416,85 +428,85 @@ class Product extends MY_Controller {
 
 
     }
-	
+
 	/**
 	 * Calculate the discount of all products
 	 * @param unknown $products
 	 * @return Array[object] the products with your discounts
 	 */
 	private function _calculate_product_discount(&$products) {
-		
+
 		foreach ( $products as $product ) {
-			
+
 			$discount = NULL;
-			
+
 			$product->has_discount = false;
 
 			if( isset($product->discount) ) {
-				
+
 				$product->has_discount = true;
 				$discount = bcdiv($product->price, $product->discount);
 				$product->old_price = $product->price;
 				$product->new_price = bcsub($product->price, $discount);
-				
+
 			}
 		}
 
         return $products;
 	}
-	
+
 	private function _do_pagination( $base_url, $uri_segment , $products_with_discount, &$data, $from_items ) {
 		$this->load->library('pagination');
-		$num_of_products = count($products_with_discount); 
-		
+		$num_of_products = count($products_with_discount);
+
 		$config['base_url'] = $base_url;
 		$config['total_rows'] = $num_of_products;
 		$config['per_page'] = 5;
 		$config['uri_segment'] = $uri_segment;
 		$config['num_links'] = 5;
-		
+
 		$config['full_tag_open'] = '<nav><ul class="pagination">';
 		$config['full_tag_close'] = '</ul></nav>';
-		
+
 		$config['first_link'] = 'Priméra';
 		$config['first_tag_open'] = '<li>';
 		$config['first_tag_close'] = '</li>';
-		
+
 		$config['last_link'] = 'Última';
 		$config['last_tag_open'] = '<li>';
 		$config['last_tag_close'] = '</li>';
-		
+
 		$config['next_link'] = '&gt;';
 		$config['next_tag_open'] = '<li>';
 		$config['next_tag_close'] = '</li>';
-		
+
 		$config['prev_link'] = '&lt;';
 		$config['prev_tag_open'] = '<li>';
 		$config['prev_tag_close'] = '</li>';
-		
+
 		$config['cur_tag_open'] = '<li class="active"><a>';
 		$config['cur_tag_close'] = '</a></li>';
-		
+
 		$config['num_tag_open'] = '<li>';
 		$config['num_tag_close'] = '</li>';
-		
+
 		//$config['use_page_numbers'] = TRUE;
-		
+
 		$this->pagination->initialize($config);
-		
+
 		$data['pagination'] = $this->pagination->create_links();
-		
+
 		if ( $num_of_products > $config['per_page'] ) {
-			
+
 			$products_to_show = array_slice( $products_with_discount, $from_items, $config['per_page'] );
-			
+
 			$data['products_by_category_id'] = $products_to_show;
-			
+
 		}else {
 			$data['products_by_category_id'] = $products_with_discount;
 		}
-		
-		
+
+
 	}
 
     public function show_product_by_id( $product_id ) {
@@ -592,7 +604,7 @@ class Product extends MY_Controller {
     }
 
 	public function all_products_for_search_input() {
-		
+
 		$products = $this->product_model->get_all_just_names_and_presentation();
 
         if ( isset($products) ) {
@@ -604,19 +616,19 @@ class Product extends MY_Controller {
                 echo 'NULL';
         }
 	}
-	
+
 	public function search_product( $product_info = NULL, $from_items = 0 ) {
-		
-		
+
+
 		$product_info_to_search = $this->input->post( NULL, TRUE );
-		
-		
+
+
 		$data['title'] = "Resultados";
-		
+
 		$data['user_logged'] = false;
-		
+
 		$session_data = $this->session->all_userdata();
-		
+
 		if( !isset($session_data['account_types']) ) {
 			$account_types = $this->account_types->get_account_types();
 			$this->session->set_userdata('account_types', $account_types);
@@ -624,56 +636,56 @@ class Product extends MY_Controller {
 			$account_types = $session_data['account_types'];
 			$data['account_types'] = $account_types;
 		}
-		
+
 		if( isset($session_data[$account_types[1] . '_id']) ){
-		
+
 			$account = $this->account_model->get_account_by_id($session_data[$account_types[1] . '_id']);
-				
+
 			if( isset($account) ) {
 				$data['account_id'] = $session_data[$account_types[1] . '_id'];
 				$data['user_logged'] = true;
 			}
 		}
-		
-		
+
+
 		$breadcrumb = new stdClass();
-		
+
 		$breadcrumb->title = "Resultados para";
-		
+
 		$breadcrumb_item = new stdClass();
-		
+
 		$breadcrumb_item->name = "productos";
 		$breadcrumb_item->url = "/product/show_products_by_category/nuestros_productos";
 		$breadcrumb_item->active = true;
-		
+
 		$breadcrumb_list['register'] = $breadcrumb_item;
-		
+
 		$breadcrumb->items = $breadcrumb_list;
-		
+
 		$data['breadcrumb'] = $breadcrumb;
-		
+
 		$category_id = NULL;
 		$products_by_category_id = NULL;
 		$notifications = array();
-		
+
 		$categories = $this->get_categories();
 
         $data['categories'] = $categories;
-		
+
 		if ( !empty($product_info_to_search) ) {
 
 			$validation_response = $this->_validate_search_product_form();
-			
+
 			if ( $validation_response ) {
 
                 $data['string_to_search'] = $product_info_to_search['productName'];
 
 				$breadcrumb->sub_title = $product_info_to_search['productName'];
-				
+
 				$products = $this->product_model->get_by_name( $product_info_to_search['productName'] );
 
 				//echo $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-				
+
 				if ( isset($products) ) {
 
                     if( isset($products[0]->active_ingredient) )
@@ -685,34 +697,34 @@ class Product extends MY_Controller {
                         $data['related_products'] = ( count($related_products_by_active_ingredient) > 12 ) ? array_slice($related_products_by_active_ingredient, 0, 11): $related_products_by_active_ingredient;
 
 					$this->_calculate_product_discount( $products );
-					
+
 					$base_url = $base_url = base_url() . "/product/search_product/" . str_replace( ' ', '_', trim($product_info_to_search['productName'])) . '/';
 					$uri_segment = 4;
-					
+
 					$this->_do_pagination($base_url, $uri_segment, $products, $data, $from_items);
-					
+
 					$notifications['warning'] = "Productos encontrádos!!";
 					$this->session->set_flashdata('notifications', $notifications );
-					
+
 					$this->load->view('pages/category', $data);
 				}else {
                     $this->_show_products_page_not_found( $notifications, $data );
 				}
-				
+
 			}else {
 				redirect('/');
-				
+
 			}
 		}else {
 			if ( isset( $product_info ) ) {
-				
+
 				$breadcrumb->sub_title = $product_info;
-				
+
 				$products = $this->product_model->get_by_name( str_replace('_', ' ', $product_info) );
 				//echo $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-				
+
 				if ( isset($products) ) {
-						
+
 					$this->_calculate_product_discount( $products );
 
                     if( isset($products[0]->active_ingredient) )
@@ -722,22 +734,22 @@ class Product extends MY_Controller {
 
                     if ( isset($related_products_by_active_ingredient) )
                         $data['related_products'] = $related_products_by_active_ingredient;
-						
+
 					$base_url = $base_url = base_url() . "/product/search_product/" . str_replace( ' ', '_', trim($product_info)) . '/';
 					$uri_segment = 4;
-						
+
 					$this->_do_pagination($base_url, $uri_segment, $products, $data, $from_items);
-						
+
 					$this->load->view('pages/category', $data);
 				}else {
 					$this->_show_products_page_not_found( $notifications, $data );
 				}
-				
+
 			}
 		}
-		
-		
-		
+
+
+
 	}
 
     public function request_product() {
@@ -930,7 +942,7 @@ class Product extends MY_Controller {
         $notifications = array();
 
         $categories = $this->get_categories();
-        
+
         $data['categories'] = $categories;
 
         if( isset($active_ingredient_id) ) {
@@ -1190,14 +1202,14 @@ class Product extends MY_Controller {
 	 * @return result of form validation
 	 */
 	private function _validate_search_product_form() {
-	
+
 		$this->form_validation->set_rules('productName', 'productName', 'required|max_length[64]|xss_clean');
-	
+
 		if ($this->form_validation->run() == FALSE)
 			return false;
-	
+
 		return true;
-	
+
 	}
 
     private function _validate_product_request_form() {

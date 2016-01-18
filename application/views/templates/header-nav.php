@@ -1,5 +1,5 @@
 <header ng-controller="DevicesMenuAccordionCtrl">
-	
+
 	<div class="container-fluid">
         <div id="sticky-anchor"></div>
         <div class="row ng-cloak" id="search-nav" ng-cloak>
@@ -50,12 +50,12 @@
                                         <!--<i class="fa fa-cart-plus"></i>-->
                                     </a>
                                 </div>
-                        
+
                                 <!-- Collect the nav links, forms, and other content for toggling -->
                                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                     <ul class="nav navbar-nav">
                                         <li class="active"><a title="Página principal" href="/">Inicio<span class="sr-only">(current)</span></a></li>
-                                        <li class="dropdown">
+                                        <!-- <li class="dropdown">
                                             <a href="#" title="lista de categorías" class="dropdown-toggle" role="button" aria-expanded="false">Categorias <span class="caret"></span></a>
                                             <ul class="dropdown-menu" role="menu" id="categories-scroll">
                                                 <?php foreach ($categories as $category):?>
@@ -63,9 +63,9 @@
                                                         <a href="<?= "/product/show_products_by_category/" . lcfirst(str_replace(array(' '), '_', $category->name))?>"><?= $category->name?></a>
                                                     </li>
                                                     <li class="divider"></li>
-                                                <?php endforeach;?> 
+                                                <?php endforeach;?>
                                             </ul>
-                                        </li>
+                                        </li> -->
                                         <li><a href="/product/show_products_by_category/sex_shop" title="Todo lo que necesitas" >Salud sexual</a></li>
                                         <li><a href="/wordpress" title="Blog de noticias" target="_blank">Noticias</a></li>
                                         <li ng-controller="HoursOfOperationCtrl">
